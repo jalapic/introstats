@@ -1,0 +1,151 @@
+# Hypothesis Testing
+
+
+Descriptive statistics allows you to describe or summarize your data, whereas inferential statistics allows you to make predictions or draw inferences from the data. 
+
+In particular, we often wish to make predictions about our data samples. For instance, if we collected a sample of 12 Granny Smith apples, we may wish to predict if they came from a population of Granny Smith apples with a particular mean weight using a statistical test. This sort of procedure is called *hypothesis testing* or *significance testing*.
+
+A statistical hypothesis is a clear prediction to specific claims about a population parameter (almost always in intro stats a population mean, or the difference between the means of two populations). This prediction may or may not be true. There are two types of statistical hypotheses. 
+
+For one-sample tests they would be as follows:
+<br>
+  **Null Hypothesis (_H~0~_)**: a statistical hypothesis that states there is **_no_** difference between a parameter (e.g. population mean) and a specific value.
+<br>  
+  **Alternative Hypothesis (_H~1~_)**: a statistical hypothesis that states there **_is_** a meaningful difference between a parameter (e.g. population mean) and a specific value
+<br>
+
+
+For two-sample tests (see chapter 11) they would be as follows:
+<br>
+  **Null Hypothesis (_H~0~_)**: a statistical hypothesis that states there is **_no_** difference between two parameters e.g. population means.
+<br>  
+  **Alternative Hypothesis (_H~1~_)**: a statistical hypothesis that states there **_is_** a meaningful difference between two parameters e.g. population means. 
+<br>
+
+<br>
+
+Let's think of an example.  Say we predicted that a species of bird, a Silvereye, had beaks that were 11mm long. We're essentially making the prediction that the population mean of Silvereye beaks is $\mu=11$. 
+
+![](img/silvereye.png)
+
+
+We therefore would make our null hypothesis that the population mean (parameter) of this species beak length was 11mm. 
+
+We would then make the alternative hypothesis that the population mean beak length was not equal to 11mm. We can write those like this using shorthand abbreviations:
+
+$H_0:  \mu = 11.0$ 
+<br>
+$H_1:  \mu \ne 11.0$
+
+
+We would then collect a sample of data and conduct a significance test to determine if we have sufficient evidence, or not, to suggest that the population mean was likely to be 11mm.  
+
+If we have sufficient evidence from our sample to suggest that the population mean is indeed highly **unlikely** to be 11mm then we **_reject_** the null hypothesis and **_accept_** the alternative hypothesis.
+
+If the null hypothesis is rejected then we must accept the the alternative hypothesis is true. These hypotheses are always stated together.
+
+The other outcome is that our sample of data does not provide us with sufficient evidence to reject the null hypothesis. In this case, we **_fail to reject_**  the null hypothesis. This isn't quite the same as saying we accept it - it just means that it is a likely prediction and we don't have enough evidence to say that it's wrong.
+
+<br>
+An important point to consider here is "what constitutes sufficient evidence?". Well typically we should use two pieces of information together. First, we can run a significance test and we will obtain a p-value for that test.  We discuss more about p-values below, but essentially if we get a p-value of <0.05 then we generally say that is sufficient evidence that our test is "significant" and we can reject the null hypothesis. If the p-value is >0.05, then we say we fail to reject the null hypothesis. Second, we can use confidence intervals (see chapter 8).
+
+
+<br>
+<br>
+
+
+## Two-tailed and One-tailed tests
+
+**Two-tailed tests**
+
+The above example is a type of significance test called a two-tailed test.  Here, we made a prediction about the parameter (the population mean in this case) for the null hypothesis. For the alternative hypothesis we did not make a prediction as to whether it would be higher or lower than the predicted value. In the test that we would carry out, we will account for this when calculating our probability of how likely the parameter is that specific value. We call these tests two-tailed (as will become evident later in the chapter). (Essentially we just double the p-value for the one-tailed tests - see below).
+
+<br>
+
+**One-tailed tests**
+
+When we do make a prediction as to the direction of the alternative hypothesis, we term these tests one-tailed tests. For instance, we could have suggested for the alternative hypothesis that that the population mean bill length was larger than 11mm.  This would mean that the null hypothesis would be that the bill length was 11mm or less.  We would write these out like this:
+
+$H_0:  \mu \le 11.0$ 
+<br>
+$H_1:  \mu \gt 11.0$
+
+<br>
+
+Practically, the p-value that we derive from one-tailed significance tests will be half the value of the p-value of that calculated with the same data but doing a two-tailed test. We discuss this more in chapters 10 and 11.
+
+Alternative hypotheses that test whether some value is higher than a parameter are sometimes called right-tailed tests. Alternative hypotheses that test whether some value is less than a parameter are sometimes called left-tailed tests. But I don't really like these terms - I think just calling them both one-tailed is better. 
+
+It is important to have specific predictions before doing significance testing, and to state ahead of time whether you will do a one-tailed or two-tailed test.
+
+<br>
+
+
+## Examples of 1- and 2-tailed tests
+
+<br>
+
+Given the above information, consider why the null and alternative hypotheses for the following experiments are as they are.
+
+1. Biologists are interested in determining whether mice given a dopamine infusion directly into the nucleus accumbens (a specific region of the brain) show an increase in aggression above the standard 3 aggressive interactions per minute. The biologist's hypotheses are:
+          <br>
+          _H~0~_: $\mu \le 3$
+          <br>
+          _H~1~_: $\mu > 3$
+          <br>
+          
+<br>
+
+2. A botanist is interested in determining whether sunflower seedlings treated with an Epsom salt fertilizer resulted in a lower average height of sunflower seedlings than the standard height of 23 cm. The botanist's hypotheses are:
+          <br>
+          _H~0~_: $\mu \ge 23$
+          <br>
+          _H~1~_: $\mu < 23$
+          <br>
+
+<br>
+
+3. An ecologist claims that the migration distance of the Arctic tern is 22,000 km. Another group of ecologists regularly check this claim. The ecologist's hypotheses are:
+          <br>
+          _H~0~_: $\mu = 22,000$
+          <br>    
+          _H~1~_: $\mu \ne  22,000$
+          <br>
+
+<br>
+
+<br>
+
+
+## Significance Levels and p-values
+
+In the sections below, we will introduce different types of significance tests. These differ in how they are implemented but they all are based on the principle of determine how likely it was for your sample data to have come from a population with specific characteristics/parameters.  
+
+Each time we run a significance or hypothesis test, we also need to set a significance or alpha level, symbolized as $\alpha$. By convention, this tends to be $\alpha = 0.05$, or a 95% significance level. There is a long history of why this value was chosen and why it may or may not be appropriate for different types of experiments - but for now, we'll go with it as an example.
+
+What we will do with each test is to generate a **_p-value_**.  This p-value is a measure of the likelihood or probability of our sample data coming from a population with certain parameters (e.g. a mean equal to 11mm, a mean less than or equal to 11mm).If this p-value is very, very small then we say, "wow, it was really unlikely for our sample data to have come from a population with that parameter".  The question becomes, how small is small enough for a p-value? This is where we use the convention of 0.05.  If our p-value is **_lower_** than 0.05 we **_reject the null hypothesis_** and accept the alternative. If our p-value is **_higher_** than 0.05 we **_fail to reject the null hypothesis_**.   
+
+<br>
+
+The above is a general overview of the decision making process:
+
+- make hypotheses about population parameter(s)
+- test sample data against hypotheses
+- get p-value
+- determine if p-value is lower than alpha level (usually 0.05)
+- if p-value lower than alpha level, reject null, accept alternative
+- if p-value higher than alpha level, fail to reject null
+
+<br>
+
+However, we do urge caution in following this pattern too dogmatically. In this course, we do use p-values to gain insights into whether samples of data are meaningfully different from population parameters, or in chapter 10 whether the inferred population parameters of two samples are different from each other - but p-values and significance tests are just one method. They should be used in conjunction with confidence intervals, effect sizes and other tools to gain insight into our data. Further, should 0.05 really be the alpha level that is appropriate for your data? This can be a hard question sometimes to answer, and people tend to ignore it and just use it regardless.  
+
+Another important caveat is that even when we collect awesome sample data, there is always a chance that we just won't have sample data that is reflective of the population. For example, say that our Silvereye bird population actually had a mean beak length of 11.5mm. We might take 20 samples of 10 birds and measure their beaks and run a significance test and find in 19 of these samples a p-value of less than 0.05 suggesting that the population mean was not equal to 11mm.  However, by chance, in one of our samples we might get a p-value of greater than 0.05 and fail to reject the null (even though it's not true).  We just have to accept with these kinds of inferential statistics that by chance these situations may occur.
+
+In fact there are two types of errors we could make here. The first error is called **Type I error**. This is when you <u>reject the null hypothesis when it is actually true (i.e. a false positive)</u>. The other error is **Type II error**. This is when you <u>do not reject the null hypothesis when it is false</u> (i.e. a false negative).  
+
+With an alpha level of 95%, we are essentially saying that we have a 1 in 20 chance of producing a type II error. This might be fine for some studies (e.g. measuring bird beak lengths) but be a real problem for other studies.
+
+<br><br>
+
+          

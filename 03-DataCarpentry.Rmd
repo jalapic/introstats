@@ -1,0 +1,1030 @@
+# Introduction to Data Carpentry
+
+Data carpentry gives us the tools to work with large data sets. During this chapter you will learn basic concepts and skills to help you import, tidy and manage your data. 
+
+<br>
+
+## Data Types 
+
+Before learning how to work with data in R, we should know about some of the different types of data there are. 
+
+Here is a figure that lays out the hierarchical levels of data types. We use the term 'variable' to refer here to data.
+
+![](img/datatypes.png){width=400px}
+
+<br>
+
+#### Qualitative vs. Quantitative Data
+
+As you can see at the highest level, there are two data types: quantitative and qualitative. The easiest way to distinguish these data types part is to think of qualitative data as data we that are types . In practical terms, you can think of quantitative data as measures such as values or counts that can be expressed as numbers and can be compared on a numeric scale - either whole numbers or numbers with decimal places. Qualitative data are measures or observations of qualities, types or characteristics. They are often cases not numbers but in text form (although they can sometimes be numbers).
+
+<br>
+
+### Categorical Data
+
+Under qualitative data, we have two different data types: Nominal and Ordinal. Both of these data types are known as categorical data, which means they represent characteristics such as a person's gender, education level, language, ethnicity etc.   
+
+Categorical data can also be represented in a dataset by numbers. For example, if we are studying smokers and non-smokers in a study, the variable "smoking" would be a categorical variable. We could represent that data in text format using "smoker" or "non-smoker" as our data entry, or we could represent smokers as a "0" and non-smokers as a "1". However, it is important to remember that these numbers don't have any mathematical meaning here - it's just a convenient way of representing the data. 
+
+<br>
+
+#### Nominal Data 
+
+Nominal data, sometimes referred to as unordered data are values which represent discrete units and are used to label a variable that have no quantitative value. The key thing about nominal data is that they do not have any natural value or rank, therefore if you change the order of the data, the meaning of the data does not change. 
+
+An example of nominal data would be the results to: "What languages do you speak at home?". If in our study we got the answers: French, English, Spanish & Hindi from different subjects, then the data type is unordered. There is no sense in that French, English, Spanish, or Hindi are higher in rank than any other - they are simply unordered categories.
+
+
+<br>
+
+#### Ordinal Data 
+
+Like nominal data, ordinal data describes discrete units or categories. However, unlike nominal data, ordinal data does have a natural order or ranking to it.  
+
+For example, in a study we may ask subjects, "What is the highest level of education you achieved?"  They may be able to choose from the following options:
+
+1- Elementary
+2- High School 
+3- Undergraduate
+4- Graduate 
+
+Here, each level of the data is a category, but it is ordered.  Graduate is higher than Undergraduate which is higher than High School which is higher than Elementary.  Therefore this data variable (education) is ordinal data.
+
+
+<br>
+
+### Numerical Data (Discrete vs. Continuous)
+
+Under quantitative data, there is numerical data consist of numbers with real mathematical meaning. There are two types of numerical data. 
+
+<br>
+
+1. **Discrete** data is data that is separated such that this data can only take on certain value. Most often, these are things that can only be counted in whole units.  e.g. If you asked subjects in a study - "how many unique people did you text this week?", then the answer has to be an integer (a whole number), e.g. 0,1,2,3,etc.  You cannot text 2.5 people. Think about discrete data as count data since it can only be counted and not measured. 
+
+<br>
+
+2. **Continuous** data is the opposite of discrete data, it can only be measured not counted. Continuous quantitative data is most often measured using some instrument. For example, if we collected the body weight or height of each subject in a study, then we would get values that would be measured using a scale or a measuring tape and could include decimal places. e.g. you could be 170.5 lbs heavy and you can be 180.2 cm tall.
+
+Additionally, quantitative data can be described in terms of interval and ratio data. 
+
+<br>
+
+#### Interval Data
+
+Interval data represents values that are ordered on a scale and the differences between any two values has meaning. 
+
+In interval data there is no true zero, which means if you have zero in your data, then zero is just another number. For example, zero on the Fahrenheit temperature scale means it is zero degrees outside, but doesn't mean the scale stops - 0 actually refers to a temperature. We can also have negative numbers in interval data which are meaningful.
+
+
+<br>
+
+#### Ratio data 
+
+For a variable to be considered ratio data, it holds all the properties of an interval variable - it relates to numbers (including those with decimal places) that can be ordered on a scale. However, ratio data also has a true meaning of zero. Whenever a ratio variable is zero, it means there is none of that variable. 
+
+For example, in a study, if a subject reports that they texted zero people in the last week, then here 0 really means the absence of something - it relates to none. Another example of ratio scale data is temperature in Kelvin, where zero degrees Kelvin means there is no heat being emitted. 
+
+
+<br><br>
+
+## Importing Data
+
+There are different options for importing data. It's possible to import data of all different formats into RStudio. We will primarily use spreadsheet type files that have been saved with the `.csv` suffix.  These are called 'comma separated values'.  
+
+**Option 1. Import Tab** You can click on the "Import Dataset" tab in the top right of RStudio - it's located just above your global environment. 
+
+Depending on your RStudio version, you will be asked to select from a dropdown menu. When importing `.csv` files, you want to select `From CSV...` if your menu looks like this:
+
+
+![](img/import_dataset.png){width=800px}
+
+
+
+If your menu looks like the underneath, then you'll want to select `From Text (readr)`:
+
+![](img/import2.png){width=500px}
+
+
+<br>
+
+**Option 2. Writing code.**  This is the option that we will use in our scripts for this course. You may notice that all the datasets that we wish to use are in a folder called "data".  To read in any of these datasets, what we need to do is use the `read_csv()` function.  This comes from a package contained with the `tidyverse` package, so we must have imported that library first.  We then tell it which dataset to find within the 'data' folder. We use the notation "data/..." to tell it to look inside the data folder.  For instance, if we wished to load in the `bmi.csv` dataset, and assign it the name `bmi`, we would do it like this - make sure to put quotes around the whole file name and location:
+
+```{r, message=FALSE}
+library(tidyverse)  #load package
+
+bmi <- read_csv("data/bmi.csv") # bring in data
+
+head(bmi) # first six rows
+
+tail(bmi) # last six rows
+
+```
+
+If you want to see more on what the data looks like the following functions can help. 
+```{r}
+nrow(bmi) # how many rows in dataset
+
+ncol(bmi) # how many columns in dataset
+
+colnames(bmi) # column names
+```
+
+If you just want to view your entire dataset, there is a function for that. 
+
+`View(bmi)`
+
+
+
+
+## Introduction to Dataframes
+
+A dataframe, in R is like a spreadsheet that contains your data. Each column contains values or characters for one variable. In R, columns are called **variables**.  Rows are called **observations**.
+
+In R dataframes need to contain the following:
+
+1. Columns should all be the same length, with unique column names. These column names should not start with numbers or punctuation, and have no spaces. 
+
+2. The data stored in dataframes can hold many different data types. The most common are numbers. R describes columns with numbers as being **numeric**, although a column containing only whole numbers (e.g. 1, 5, 342, 1034) may be called **integers**. Columns containing any value with a decimal place (e.g. 0.01, 4.4, -7.39494) will be called **double**. Both `double` and `integer` are types of `numeric` data.
+
+The second most common data type for a column is **character**. This is the case if the data in the column have any text or punctuation. 
+
+A related column type is **factor**. This occurs when the `character` type is grouped, e.g. if you had a column with different days of the week, you may wish for R to recognize that each is a separate category.
+
+Another column type that comes up semi-regularly, although not much in this course, is **logical**. This is when the column contains either `TRUE` or `FALSE` values.
+
+
+
+Let's dive into all the features of a dataframe.
+
+First import data, using `read_csv()`.
+
+
+```{r, warning=F, message=FALSE}
+
+df <- read_csv("data/cheese.csv")
+```
+
+
+
+### Dataframe basics
+
+ 1. Look at top few rows using `head()`. The default for `head()` is to look at the top 6 rows. However, if you put a comma, and then a number, you can get that number of rows instead. Here we get the default 6, and then we get 4 and 8 rows.
+ 
+```{r}
+head(df)
+
+head(df, 4)
+
+head(df, 8)
+
+```
+
+You can do the same thing with `tail()` to look at the bottom rows. The default again is 6, but you can tell it how many rows you wish to look at:
+
+```{r}
+tail(df)
+
+tail(df, 10)
+```
+
+
+We can also get various dimensions of a dataframe. `nrow()` gets the number of rows (also termed observations), `ncol()` gets the number of columns (also called variables), `dim()` returns both the number of rows and the number of columns, and `length()` is another way to get the number of columns.
+
+
+```{r}
+nrow(df)  
+
+ncol(df)  
+
+dim(df) 
+
+length(df) 
+```
+
+
+As we showed earlier, `colnames()` is a very useful function for retrieving the names of columns in a dataframe. This is particularly useful when you can't fit all of the columns onto your screen which is common with big datasets.
+
+```{r}
+colnames(df)
+
+```
+
+Sometimes you may wish to change column names. This is common when you've imported some messy data from elsewhere. Hopefully if it is your own data you named your columns well in the first place.
+
+The way to change column names is to assign the new name to the appropriate column, by indicating which column with square brackets `[]`:
+
+```{r}
+colnames(df)[6] <- "carbo"
+
+colnames(df)
+```
+
+In the above example, we changed the name of the 6th column to `carbo`.  You can change all column names by doing the following:
+
+```{r}
+colnames(df) <- c("type1", "sat_fat1", "polysat_fat1", "monosat_fat1", "protein1", "carb1", "chol1", "fiber1", "kcal1")
+
+head(df)
+
+```
+
+Let's return them back to the original values:
+
+```{r}
+colnames(df) <- c("type", "sat_fat", "polysat_fat", "monosat_fat", "protein", "carb", "chol", "fiber", "kcal")
+
+head(df)
+```
+
+<br>
+<br>
+
+
+
+### Indexing dataframes.
+
+There are two indexing methods we need to learn. One is the `$` sign, which indicates we want to get data from a specific column. The other is the square brackets `[]`.
+
+
+ The `$` indicates which column to call.  For instance, if we wish to get all the data from the `chol` column of the dataset `df`, then we would type `df$chol` and it returns all the data in that column:
+
+```{r}
+df$chol
+```
+
+
+What if you just want the first 10 rows of kcal?  Then we could get all the data from that column with `df$kcal` but then use the square brackets to tell it to get the values in positions 1 to 10 with `[1:10]`:
+
+```{r}
+df$kcal[1:10]
+```
+
+This works, because you can think of all the data values in each column as essentially its own vector. The square brackets work just as they would with any other vector indexing (see section \@ref(vectors)).
+
+
+Square brackets can be used on the whole dataframe to call just certain rows and columns. **Importantly** row numbers need to be written before the comma, and columns after comma.  If you leave anything blank, then it will assume that you mean "all" of the rows or columns.
+
+Technically, running `df`, and `df[,]` all return the whole dataframe. What you're saying is return all of the rows and all of the columns from `df`.
+
+
+
+```{r}
+df
+```
+
+```{r}
+df[,] #return all rows and all columns
+```
+
+
+To just get the 7th row, you put a `7` before the comma, and leave after the comma blank:
+```{r}
+df[7,]
+```
+
+To get the 10th to 14th rows you can put `10:14` before the comma and leave after the comma blank:
+```{r}
+df[10:14,]
+```
+
+To get the 3rd column you can leave before the comma blank, and put a `3` after the comma:
+
+```{r}
+df[,3]
+```
+
+
+To get the first and second columns, leave before the comma blank and put a `1:2` after the comma:
+```{r}
+df[,1:2]
+```
+
+
+If you want to get non-consecutive columns, you need to use `c()` with your numbers. For example, to get the 3rd, 5th, and 9th columns you leave before the comma blank and put `c(3,5,9)` after the comma: 
+```{r}
+df[,c(3,5,9)]
+```
+
+
+
+
+You can also combine these. So, to get the 20th to 22nd row, and the 1st, 5th and 9th column, you put `20:22` before the comma, and `c(1,5,9)` after the comma:
+
+```{r}
+df[20:22,c(1,5,9)]
+```
+
+
+
+
+### Adding and removing columns
+
+As we will see below in the `tidyverse` section, there is a way to creating new columns using the function `mutate()` which we recommend.  However, there is also a quick way to create and delete new columns which is worth knowing about.
+
+To create a new column, you can simply type a new name after writing your dataframe name and the dollar sign, and then assign something to it. So, if you wished to create a column called `food_type` you'd write `df$food_type <- ` and then put whatever you wanted to put into that column.   For example, if you wanted it to contain the word 'cheese' you'd do the following:
+
+
+```{r}
+df$food_type <- "cheese"
+
+head(df)
+```
+
+Now every observation (row) has the entry `cheese` in the column `food_type`. 
+
+If you wanted to put in different data for each observation, e.g. the country of origin of each cheese, then you'd need a vector that was the same length as the number of rows of the dataset.  See the section on manually creating dataframes just below for some examples of this.
+ 
+ 
+To delete a column from a dataframe, you just assign the word `NULL`, which is a special term in R, to that column, and then it will disappear: 
+
+
+```{r}
+df$food_type <- NULL
+
+head(df)
+```
+
+<br>
+
+
+
+
+### Structure of Datasets
+
+This little subsection is a bit more about the inner workings of dataframes. It won't be coding that we use during this course, but if you ever do any extra R things by yourself, you may run into issues that this section could help you resolve.
+
+You can see the structure of your data, whether each variable is a number, character, factor, logical, etc. This can be useful when trying to graph and analysis different types of data.  
+
+```{r}
+str(bmi)
+```
+
+Here you can see that all variables are `numeric`, except for education with is a `character`. 
+
+Another common variable type is `factor`. This is similar to a `character` but it has `levels`. This means, that R knows that there are groups in that variable. You might notice that the variable `smoke` is currently a numerical variable with values being either a `1` (non smoker) or `2` (smoker). If we wanted to make a graph and plot non-smoker or smoker on the x-axis, then this would appear as 1 or 2, which isn't helpful. In these situations, it can be helpful to convert our `numeric` variable into a `factor`. The way to do that is as follows:
+
+```{r}
+bmi$smoke <- as.factor(bmi$smoke)
+```
+
+The `$` basically allows you to call certain columns in a dataframe. The code `bmi$smoke` is allowing us to only change that column, or variable to a factor without changing anything else in the dataframe. 
+
+You can also change variables to characters with `as.character()` and to numbers with `as.numeric()`. 
+
+
+<br>
+
+
+
+## Manually creating a Dataframe
+
+Often in R, we don't want to import a dataset, but rather create a dataset of our own manually in the script. We can do that using the function `data.frame()`.
+
+Let's just do a small example.  Say, we want to create a dataframe with four columns. We will have the names of 6 different pets in column 1 and call that column `name`.  In the second column, we want the ages of those pets and we'll call that column `age`. In the third column we will have the type of animal that pet is, and we'll call that column `animal`. In the fourth column, we'll have whether it's a male or female pet and we'll call that column `sex`. In the fifth column, we'll have the main color of the pet, and we'll call that column `color`.
+
+Here are our 6 pets:
+
+1.  Steve, an orange male goldfish who is 5.
+2.  Hannah, a female blue parrot who is 12.
+3.  Colin, a brown male cat who is 15.
+4.  Archibald, a grouchy green male terrapin who is 3.
+5.  Missy, a female yellow labrador dog who is 2.
+6.  Bob, a black male spider who is 10.
+
+We need to make sure we put each of the column information  in the right order in our dataframe. This is how we manually enter the data:
+
+```{r}
+
+petdf <-
+  data.frame(
+    name   = c("Steve", "Hannah", "Colin", "Archibald", "Missy", "Bob"),
+    age    = c(5, 12, 15, 3, 2, 10),
+    animal = c("goldfish", "parrot", "cat", "terrapin", "dog", "spider"),
+    sex    = c("M", "F", "M", "M", "F", "M"),
+    color  = c("orange", "blue", "brown", "green", "yellow", "black")
+  )
+
+petdf
+
+
+
+```
+
+Inside `dataframe()` we write each column name. Then we put an `=` sign, and then write the vector of characters or numbers. After each column's data is entered, we write a comma `,` to indicate we're going to the next column. The exception to this is after the last column is entered, `color` in this case, where we don't write a comma after we're done entering all the color information. This indicates that we're done.  Also note that every column has the same number of pieces of information (6).  If we had unequal bits of information, R would generally not allow us to make the dataframe.  There is one *gotcha* here though - if you enter less than the number of rows of your new dataframe, e.g. if you'd only entered two values in the color column say, R will repeat those two colors through the remaining empty rows.  You need to be careful! If you're not sure what you're doing, the best is to ensure that you have the exact number of values as you want rows inside each vector.
+
+
+    
+<br><br><br><br>
+
+
+
+## tidyverse
+
+The package `tidyverse` is what we will be using for most of our data carpentry. `tidyverse` is a larger package which includes several packages useful for managing, exploring and visualizing  data such as `tidyr`, `dplyr`, `ggplot2`, and more. 
+
+
+In this section, we will learn the following functions and syntax: 
+
+
+`filter()`    - subsetting data
+
+`select()`    - selecting columns
+
+`arrange()`   - sorting a column
+
+`mutate()`    - adding a new column
+
+`count()`    - counts the number of values in a column
+
+
+
+`%>%`  means "and next do this"  
+
+`==`  means "is equal to"
+
+`!=` means "is not equal to"
+
+`|`  means "or"
+
+
+
+First, make sure that you have the `tidyverse` installed.  If you run the following code and do not get an error message saying "tidyverse not found", then you are good:
+
+```{r}
+library(tidyverse)
+```
+
+
+If you did get the error message, then you'll need to install the library. You only need to do this once, but you will have to load a library on every script you plan to use it. 
+
+To install the package:
+
+```{r, eval=FALSE}
+install.package(tidyverse) #install
+```
+
+
+To load the package to use each time you need it:
+
+```{r}
+library(tidyverse)
+```
+
+
+
+
+
+From the `tidyverse` package `readr` we can read in our data. We are going to work with a dataset called `bloodwork` that we will shorten to `bw`. It contains health information on several subjects:
+
+
+```{r, message = FALSE}
+library(tidyverse) #load
+bw <- read_csv("data/bloodwork.csv")
+
+```
+
+```{r}
+head(bw) 
+```
+
+
+```{r}
+tail(bw) 
+```
+
+As you can see, we have variables such as `ids`, `age`, the state people live in, their heart rate, how many children they have etc. etc.
+
+
+### table()
+
+
+This function is not a `tidyverse` function but is a quick summary function that is useful to know - `table()`. It is good for quickly summarizing categorical or discrete numerical variables. 
+
+For example, to look at the number of smokers and non-smokers, we can do the following:
+
+```{r}
+table(bw$smoker)
+```
+
+We have 15 non-smokers and 15 smokers in the dataset.
+
+
+To look at the frequency count of how many subjects have 0, 1, 2, 3  children we can do: 
+
+```{r}
+table(bw$children)
+```
+
+We have thirteen people with 0 children ten  with 1 child, five with 2 children and two with 3 children.
+
+
+You can also compare two categories at once. For instance, to look at the smokers and non-smokers that have different numbers of children, we can include both in the `table()` function and separate by a comma:
+
+```{r}
+table(bw$smoker, bw$children)
+```
+
+
+The `tidyverse` version of `table()` is to use a function called `count()`. It does come in useful sometimes, but most of the time you'll find using `table()` to be easier.  However, here is an example of counting how many individual by each state there are in the data.  You first take your dataset, then chain with the pipe `%>%` the next command which is to `count()` the column `state`.
+
+
+```{r}
+bw %>%
+  count(state)
+```
+
+
+We can also get frequency counts for more than one column e.g. to see how many children non-smokers and smokers have, though again, the output from `table()` is nicer to look at:
+
+```{r}
+bw %>%
+  count(smoker, children)
+```
+
+<br><br>
+
+### filter()  - Subsetting Data
+
+`filter()` is a way to subset data. In other words, it is a way to only keep certain rows in your dataset. These are rows that must fulfill specific criteria.  For example, let's say we wish to only keep rows that have values in the `hrate` column that are over 70.
+
+The first step is to take the dataframe `bw()` and then tell R that you are about to do something else with the `%>%` syntax. Then use `filter()` with `hrate > 70` inside it. This mean, *keep* the rows with `hrate>70`.  See sections \ref(chaining-syntax) and \@ref(chaining-together) for a bit more on chaining using `%>%`.
+
+
+```{r} 
+bw %>% 
+  filter(hrate > 70)
+```
+
+
+To only keep values that are precisely equal to some value (be it a number or a character), we use `filter()` with `==` to mean "is equal to":
+
+For example, to only keep rows where the state is equal to `NJ`.
+
+```{r} 
+bw %>% 
+  filter(state == "NJ")
+```
+
+
+If you want to include all subjects that had 3 children, you'd do the following - note that the number does not go in quote marks:
+
+```{r} 
+bw %>% 
+  filter(children == 3)
+```
+
+
+
+
+If you want to include rows that are equal to one of two values, you can use `|` to mean "OR". The following will include rows where the `state` column is equal to either "NJ" or "NY" in the bloodwork dataset.
+
+```{r}
+bw %>% 
+  filter(state == "NJ"  |  state == "NY")
+```
+
+
+
+
+
+
+
+You can also keep rows that are not equal to some value using the syntax `!=` which means "not equal to". For example, to keep rows where the `children` column is not equal to 0:
+
+```{r}
+bw %>% 
+  filter(children != 0)
+
+
+```
+
+You can also filter several variables at one time. Here, we are keeping all individuals from New York, with a heart rate of over 70, and who have more than 0 children: 
+
+```{r}
+bw %>% 
+  filter( state == "NY", hrate > 70, children != "0" )
+
+```
+
+
+You can create new datasets from filtered data by creating a new object. Here, we create a new dataset called `ny1` that is based on filtering out rows from our `bw` dataset.
+
+```{r} 
+ny1 <- bw %>% 
+  filter( state == "NY", hrate > 70, children != "0" )
+
+ny1
+
+```
+
+
+<br><br>
+
+
+
+### select() - Selecting specific columns
+
+Sometimes datasets are too big and unwieldy to look at all at once. Often, we are just interested in certain columns and it makes more sense just to keep the ones we want to focus on. We can use `select()` to only keep certain columns:
+
+
+For example, to only keep the columns `ids`, `smoker`, `hrate` and `children`, we'd do the following:
+
+```{r}
+bw %>% 
+  select(ids, smoker,hrate,children)
+```
+
+
+Occasionally, you may just want to get rid of certain columns from your data. To get rid of one column you can use `select(-column_name)`.  To get rid of the `children` column, we'd do the following:
+
+
+```{r}
+bw %>% 
+  select(-children)
+```
+
+To get rid of the `children`, `bpsyst` and `smoker` columns, we'd do the following:
+
+```{r}
+bw %>% 
+  select(-children, -bpsyst, -smoker)
+```
+
+
+
+You can also select and rename columns as you go. Here, we are selecting the columns `ids`, `sex`, `smoker`, `hrate` and `children`. We are renaming `sex` to be `gender` and `ids` to be `subject`. You rename by just typing the new name and then putting an `=` sign in front of the old name:
+
+```{r}
+bw %>% 
+  select(subject = ids, gender = sex, smoker, hrate, children)
+```
+
+
+If you want these selections to be permanent then you need to rewrite selections in new dataframe. Here we call our new dataframe `bw1`. You can see the difference between bw and bw1:
+
+```{r}
+bw1 <- bw %>%  
+  select(subject = ids, gender = sex, smoker,hrate,children)
+
+head(bw)
+
+head(bw1)
+```
+
+
+Instead of typing out the column name each time you use `select()`, you can also use the column number.
+
+The code below selects for columns 1-2, 8, 10, but does not save the information as a new object. Notice that you don't need to put these numbers inside of `c()` for this to work: 
+
+```{r}
+bw %>% select(1:2,8,10)
+
+```
+
+
+
+<br><br>
+
+
+### mutate() - Creating new columns
+
+We use `mutate()` to add new columns to our dataset. Say we wanted to create a new column called `totalimmune` that is the sum of the two columns `immuncount` and `immuncount2`. Basically, we want to add each subject's `immuncount` and `immuncount2` value together to create a new value called `totalimmune` that we'll put into the new column.
+
+The first thing you put inside `mutate()` is the name we want of the new column. `immuncount + immuncount` means to add these two columns.
+
+To make these easier to see, we'll just select three columns and call the new dataset `bw2`:
+
+```{r}
+bw2 <- bw %>%
+  select(ids, immuncount, immuncount2)
+
+bw2
+
+```
+
+``` {r}
+bw2 %>% 
+  mutate(totalimmune = immuncount + immuncount2)
+```
+
+
+You can also create new columns in other ways. For example, if you want to create a new column called `year` and put 2020 into each row, we'd do the following:
+
+```{r}
+bw2 %>% 
+  mutate(year = 2020)
+
+```
+
+<br><br>
+
+
+
+### arrange() - Sort Data Columns
+
+
+Often it's easier to see data if the columns are sorted in ascending or descending order. We can do this using `arrange()`.
+
+Lets try another example! We'll use the `pga.csv` dataset that has historical golf data summary statistics in it.  Let's load in that dataset:
+
+```{r, warning=FALSE,  message=FALSE}
+pga <- read_csv("data/pga.csv")
+```
+
+We will select the columns `name`, `year`, `total.holes`, `total.putts`, and `score.avg` and save as `pga1`. 
+```{r}
+
+pga1 <- pga %>% select(name, year, total.holes, total.putts, score.avg)  
+
+head(pga1)
+```
+
+You can see that we have the total number of holes played, the total number of putts made, and the scoring average (lower is better in golf) made each year by various PGA golfers. 
+
+Perhaps we want to know who has the highest or lowest scoring average. We can sort based on the column `score.avg` in ascending order with `arrange()` like this:
+
+```{r}
+pga1 %>% 
+  arrange(score.avg)  
+```
+
+So, the lowest average score was 67.794 by Tiger Woods in 2007. The second lowest was 68.052 by Tiger Woods in 2009.
+
+
+To sort data in descending order, we need to put a negative sign (hyphen) `-` in front of the column name:
+
+```{r}
+pga1 %>% 
+  arrange(-score.avg)  
+```
+
+The worst average score on the PGA tour was by David Gossett in 2004 with an average of 75.013.
+
+
+`arrange()` can also sort data in ascending alphabetical order, if you put a column with character data into the function, such as the `name` column in our data:
+
+```{r}
+pga1 %>% 
+  arrange(name) 
+```
+
+It turns out that Aaron Baddeley is the player that is closest to the beginning of the alphabet.  You cannot sort in a descending way on character data.
+
+
+If you wish to sort over multiple columns, you just need to separate your column names with a comma inside `arrange()`. So, to first sort by `year`, and then by `score.avg`, we'd do the following:
+
+
+``` {r}
+pga1 %>% 
+  arrange(year, score.avg)  
+```
+
+You can see that the lowest year in this dataset is 2004, and so it put all the rows with 2004 at the top, and then sorted each of these rows by `score.avg`. So, Vijay Singh had the lowest score with 68.839 in 2004.
+
+<br><br>
+
+### Chaining together
+
+Just as an extra note, the real power of these `tidyverse` commands, is by chaining them all together. So, one thing we could do is select from our original `pga` dataset the columns above, then create a new column called `putt.avg` which is equal to the total number of putts `total.putts` divided by the total number of holes `total.holes` columns, and then arrange in ascending order by the new `putt.avg` column. Here it is in one bit of code:
+
+
+```{r}
+pga %>%
+  select(name, year, total.holes, total.putts, score.avg)  %>%
+  mutate(putt.avg = total.putts / total.holes) %>%
+  arrange(putt.avg)
+
+```
+
+It turns out that Brian Gay in 2013 had the fewest putts per hole.
+
+
+
+
+<br><br>
+
+
+## Wide versus Long Data
+
+Sometimes you will need to rearrange your data for some data analysis and more commonly for data visualization. Dataframes can come in two broad shapes. There is **wide data** where each row is a separate subject and each column has variables that may or may not contain the same type of data.  The other is **long data** where values of the same type are only in one column, and the same subject may appear on several rows.
+
+This is easier to understand with a visual aid. The image below show data that is in **wide** format. Each row contains all the information for each subject - those being three NHL hockey teams. We see the division that each team belongs to, and the total goals they scored in the seasons beginning in 2016, 2017, 2018.  
+
+![](img/carp1.png)
+
+
+These data are also **untidy** - as we prefer to have each row contain all the information for one unique value. To do that we need to turn the data into **long** format which looks like this:
+
+![](img/carp2.png)
+
+
+
+
+Here, each row contains information related to the team, division, the total number of goals scored, and the year that that piece of data came from. Because each row contains unique information, we call this type of data **tidy**. Essentially, you can see we took columns 3,4, and 5 from the wide data and made these longer.
+
+It can take a bit of practice to fully recognize what data are in wide or long format - sometimes it's not so clear in really large datasets. This does become important though, because some visualization and analyses can only be done with data in wide format, and others with data in long format. It's therefore important to be able to switch our dataframes through these two formats.
+
+Fortunately, the `tidyverse` has built in functions that can turn your dataframe from long format to wide format and vice versa. 
+
+`pivot_longer` makes the dataframes longer by increasing the number of rows by combing the number of columns. This is called long form data, which is needed to tidy data for graphing and some analysis.
+
+
+First, we'll make some small dataframe examples manually. The first dataframe is a wide dataframe. You could imagine this as showing five subjects and their reaction times at two different timepoints. We call this dataframe `df.wide`:
+
+```{r}
+# wide data has more than one score of each type per individual in rows
+
+df.wide <- data.frame(
+                 name = c("James", "Tyler", "Stephen", "Jennifer", "Carmen"),
+                 time1 = c(15, 17, 14, 13, 11),
+                 time2 = c(16, 19, 20, 21, 23)
+                 )
+
+
+df.wide
+
+```
+
+The second dataframe we'll create manually contains the same data, but in a long tidy format:
+
+```{r}
+
+# long data (also called tidy data) has only one column for each type of score
+# Every row has the information to make each score unique
+
+df.long <- data.frame(
+                 name = c("James", "Tyler", "Stephen", "Jennifer", "Carmen"),
+                 score = c(15, 17, 14, 13, 11, 16, 19, 20, 21, 23),
+                 time = rep(c("time1", "time2"), each = 5)
+)
+
+df.long 
+
+```
+
+
+
+
+### Wide to Long
+
+
+To go from wide to long format we can use `pivot_longer`. We need to tell R which columns contain the data that are currently in wide format and need to be turned into long format. Here, we put `cols = 2:3` to indicate that the data are in columns 2 and 3. We also use `names_to` to tell it that we want the new column to be called `time`:
+
+```{r}
+# turn columns 2 and 3 into one long column:
+df.wide %>% 
+  pivot_longer(cols = 2:3, names_to="time")  
+```
+
+Our example dataset was very simple, only containing an identifier (`name`) column and the two columns with data. What if we had other columns in our dataset? Here we add a column called `group` that indicates if our subject are in a control or treatment group:
+
+```{r}
+df.wide$group <- c("control", "control", "treatment", "treatment", "treatment")
+
+df.wide
+```
+
+To convert this dataframe to a long dataframe, we still use the same code indicating that the data to make long are contained in columns 2 and 3. Because each individual is always in the same group (e.g. James is always a control, Carmen is always in treatment), R will just make this a new column: 
+
+```{r}
+df.wide %>% 
+  pivot_longer(cols = 2:3, names_to="time")  
+```
+
+
+
+
+
+### Long to Wide
+
+If we start with data in the long format, we can convert the dataframe to wide format using `pivot_wider()`. Here, we need to provide the name of the column that contains the data to become new wide columns. We do that below with `values_from = score`. We also need to state which column contains the new column headers. In this example they are in the column `time`, so we do that with `names_from = time`.
+
+```{r}
+head(df.long)
+```
+
+```{r}
+df.long %>% 
+  pivot_wider(values_from = score, names_from = time)
+```
+
+Now our data are in a wide format.
+
+Again, it is more common that we have more columns in our dataset. Say we had rated the confidence of each participant on the tasks prior to testing them. We may have a column called confidence that might look like this:
+
+```{r}
+# if we had more columns in our dataset:
+df.long$confidence <- c(3, 8, 9, 4, 10) # this repeats all the way down the dataset
+
+df.long
+```
+
+Even when we have more columns, we still can make our data go wide in the same way:
+
+
+```{r}
+df.long %>% 
+  pivot_wider(values_from = score, names_from = time)
+```
+
+Here, it just truncates the `confidence` column into one column to go along with `name`.
+
+
+
+
+
+### Real Data Example.
+
+It can be quite hard to work out which columns to select when converting data from long to wide. It mainly comes from practice and from trial-and-error. You can always check if you got it right, and correct yourself if you did not.  In this section, we'll just show an example of converting dataframes between these two formats using some real data.
+
+The dataset we'll use is called `wheels1.csv`. We'll read it in and assign the name `wheel`:
+
+```{r, warning=FALSE, message=FALSE}
+wheel <- read_csv("data/wheels1.csv")
+
+head(wheel)
+```
+
+We're mainly interested in the `id`, `strain` and columns with day in, so we shall use `select()` to select these columns:
+
+
+```{r}
+wheeldf <- wheel %>% select(id, strain, day1,day2,day3,day4)
+
+head(wheeldf)
+```
+
+These data represent the number id of individual mice, the strain of that mouse, and the number of wheel revolutions made on day1, day2, day3 and day4.  It's currently in wide format.
+
+Let's convert it to long format, by taking the data in each day column and forcing them to go long:
+
+```{r}
+#convert to long
+wheeldf.long <- wheeldf %>% 
+  pivot_longer(cols = 3:6, names_to="day")  
+
+wheeldf.long
+
+```
+
+
+If we wished to make our new `wheeldf.long` dataset to go back to a wide format, we could do this:
+
+```{r}
+# to make it go wider again, we do:
+wheeldf.long %>% 
+              pivot_wider(
+                 names_from = day,
+                 values_from = value
+                    )
+```
+
+
+
+
+
+## Joins
+
+A common requirement in data science is to join together two datasets. Usually these two datasets will have some bits of data in common. For instance, you may have one dataset that contains subject names and lots of demographic information. Another dataset might contain the subject names and their performance on various tests.  Ideally, you'd have all of this information in one dataframe.  The `tidyverse` is excellent at joining dataframes quickly and automatically. It is *far* more foolproof than cutting, copying and pasting in excel which should always be a no-no.  
+
+In this course, we won't actually ever ask you to do any joining. All the datasets that we provide are already cleaned up.  However, we are including this small subsection in this guide to introduce you to the topic, should it be something you ever need to do on your own.  Joining is surprisingly a really big topic by itself, so we just scratch the surface here. For much more information on this topic, we highly recommend [Prof Jenny Bryan's guides](https://stat545.com/join-cheatsheet.html) as a good starting point.
+
+
+To illustrate the power of joining, lets make up some data.
+
+The first dataframe, `x` contains ten subjects who are referred to by an `id` and their ages (`age`).
+
+```{r}
+
+x <- data.frame("id" = 1:10, "age" = c(21,25,17,34,25,33,22,27,29,24))
+
+head(x)
+
+```
+
+The second dataframe, `y`, contains the `id` of each individual again, but this time we also have data on their height, as well as how many hours they spent on an activity and some work.
+
+```{r}
+y <- data.frame(
+  "id" = 1:10, 
+  "height_cm" = c(156, 155, 154, 149, 153, 152, 151, 150, 147, 155), 
+  "activity_hr"= c(3,5,3,6,7,4,2,8,4,5), 
+  "work_hr" =c(40,35,38,46,50,42,40,46,41,40)
+  )
+
+head(y)
+
+```
+
+Currently we have 'age' in a separate dataframe. Perhaps we want to join it together with all the other information in our dataframe `y`.  We can use `full_join()` to do this. `full_join()` joins two different dataframes based on one or more shared variable(s). The following will join based on id. 
+
+
+```{r}
+x %>% 
+  full_join(y)
+```
+
+As you can see, R joined the two dataframes together and `age` is now included in the new dataframe.
+
+For this to work, you must have at least one column in each of your two dataframes that exactly matches by name. If you do not have this, R will not know how to join the dataframes together. If you have multiple matching columns, then R will match based on all columns that match - so be careful!
+
