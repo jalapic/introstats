@@ -1,0 +1,8 @@
+welcome-to-psy317-psy120r
+what-this-book-includes-and-what-it-doesnt
+how-to-use-this-guide
+acknowledgements
+references
+other-places-to-find-help-about-r-and-statistics
+the-pool-of-tears
+a-caucus-race-and-a-long-tale

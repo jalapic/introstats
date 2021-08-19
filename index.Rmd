@@ -1,9 +1,82 @@
 --- 
-title: "YOUR TITLE HERE"
-author: "YOUR NAME HERE"
+title: "PSY317L & PSY120R Guidebook"
+author: "James P. Curley & Tyler M. Milewski"
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
 ---
 
-# Down the rabbit-hole
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+
+
+# Welcome to PSY317 / PSY120R ! 
+
+
+This book is written to help students enrolled in the University of Texas at Austin **Introduction to Statistics for the Behavioral Sciences** (PSY317L) course or **R Programming for Behavioral Sciences** (PSY120R) led by Professor James Curley.
+
+We hope that the book will be a useful resource to help you learn both R and statistics. If you have any suggestions for improvements, please get in touch with Professor Curley.
+
+
+## What this book includes and what it doesn't
+
+This is in between a textbook and a study guide. We're trying to build materials that will enable students to quickly find what they're looking for to help them understand these statistical concepts.
+
+This book is primarily aimed at the content in PSY317L and PSY120R, but occasionally we describe concepts that we don't directly cover in these courses.  This is when we feel that it's worth explaining things in a bit more detail for those students that want to know a bit more about a subject.
+
+
+## How to use this guide
+
+This guide covers the material presented in the video segments. In some parts, we go beyond what is presented. This is to supplement the material and to help you understand the content or to round out some subjects a little more. You will not be tested directly on information that is in this guide if it did not appear in the video segments. Quizzes and tests are only based on the videos. This guidebook is exactly that - an extra reference to help you understand that material and a place to look for help or answers.
+
+
+## Acknowledgements
+
+This guidebook is built upon the work of several others' teaching materials.  In particular, Danielle Navarro's book [Learning statistics with R: A tutorial for psychology students and other beginners](https://learningstatisticswithr.com/book/). A couple of data examples also come from the book [Discovering Statistics Using R](https://www.amazon.com/Discovering-Statistics-Using-Andy-Field/dp/1446200469) Field's intro to statistics using R.
+
+
+
+## References
+
+The following books are all freely available online (like this one!) and are helpful resources. 
+
+For Statistics and R Help:
+Danielle Navarro - [Learning statistics with R: A tutorial for psychology students and other beginners](https://learningstatisticswithr.com/book/)
+
+
+For more on Data Visualization including using R:
+Claus O Wilke - [Fundamentals of Data Visualization](https://serialmentor.com/dataviz/)
+
+Hadley Wickham - [ggplot2: Elegant Graphics for Data Analysis](https://ggplot2-book.org/index.html)
+
+
+For more on using R as a programming language:
+Garrett Grolemund & Hadley Wickham - [R for Data Science](https://r4ds.had.co.nz)
+
+
+
+
+
+## Other places to find help about R and Statistics
+
+With statistics stuff, you can never really have enough resources. Although throughout this course we try to explain difficult concepts in terms we hope all students can understand, sometimes you just need to read or hear about these concepts several times before they sink in. Other times, it's not until somebody else explains it in a slightly different way that it finally finds a home in your brain.  To that end, we recommend looking over some other help tutorials and reading. You certainly don't have to go looking at these materials - but if you feel like hearing a different voice, then these are some that I recommend.
+
+
+**R stuff**
+
+[Rstudio Cheatsheets](https://rstudio.com/resources/cheatsheets/)
+[R Community](https://community.rstudio.com/)
+[R Cookbook](http://www.cookbook-r.com/)
+[R for Data Science](https://r4ds.had.co.nz/)
+
+
+**Stats stuff**
+
+[Modern Dive by Chester Ismay & Albert Kim](https://moderndive.com)
+[Khan Academy videos](https://www.khanacademy.org/math/statistics-probability)
+
+
 
