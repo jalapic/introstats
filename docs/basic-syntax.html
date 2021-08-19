@@ -1,0 +1,1052 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 2 Basic Syntax | PSY317L &amp; PSY120R Textbook</title>
+  <meta name="description" content="Chapter 2 Basic Syntax | PSY317L &amp; PSY120R Textbook" />
+  <meta name="generator" content="bookdown 0.23 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 2 Basic Syntax | PSY317L &amp; PSY120R Textbook" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 2 Basic Syntax | PSY317L &amp; PSY120R Textbook" />
+  
+  
+  
+
+<meta name="author" content="James P. Curley &amp; Tyler M. Milewski" />
+
+
+<meta name="date" content="2021-08-19" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="index.html"/>
+<link rel="next" href="introduction-to-data-carpentry.html"/>
+<script src="libs/header-attrs-2.9/header-attrs.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Intro to Statistics & R</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Welcome to PSY317 / PSY120R !</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#what-this-book-includes-and-what-it-doesnt"><i class="fa fa-check"></i><b>1.1</b> What this book includes and what it doesn’t</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#how-to-use-this-guide"><i class="fa fa-check"></i><b>1.2</b> How to use this guide</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#acknowledgements"><i class="fa fa-check"></i><b>1.3</b> Acknowledgements</a></li>
+<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#references"><i class="fa fa-check"></i><b>1.4</b> References</a></li>
+<li class="chapter" data-level="1.5" data-path="index.html"><a href="index.html#other-places-to-find-help-about-r-and-statistics"><i class="fa fa-check"></i><b>1.5</b> Other places to find help about R and Statistics</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="basic-syntax.html"><a href="basic-syntax.html"><i class="fa fa-check"></i><b>2</b> Basic Syntax</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="basic-syntax.html"><a href="basic-syntax.html#simple-mathematical-syntax"><i class="fa fa-check"></i><b>2.1</b> Simple mathematical syntax</a></li>
+<li class="chapter" data-level="2.2" data-path="basic-syntax.html"><a href="basic-syntax.html#assignment"><i class="fa fa-check"></i><b>2.2</b> Assignment</a></li>
+<li class="chapter" data-level="2.3" data-path="basic-syntax.html"><a href="basic-syntax.html#vectors"><i class="fa fa-check"></i><b>2.3</b> Vectors</a></li>
+<li class="chapter" data-level="2.4" data-path="basic-syntax.html"><a href="basic-syntax.html#characters"><i class="fa fa-check"></i><b>2.4</b> Characters</a></li>
+<li class="chapter" data-level="2.5" data-path="basic-syntax.html"><a href="basic-syntax.html#naming-of-objects"><i class="fa fa-check"></i><b>2.5</b> Naming of objects</a></li>
+<li class="chapter" data-level="2.6" data-path="basic-syntax.html"><a href="basic-syntax.html#logical-operators"><i class="fa fa-check"></i><b>2.6</b> Logical Operators</a></li>
+<li class="chapter" data-level="2.7" data-path="basic-syntax.html"><a href="basic-syntax.html#some-things-that-are-useful-to-know."><i class="fa fa-check"></i><b>2.7</b> Some things that are useful to know.</a>
+<ul>
+<li class="chapter" data-level="2.7.1" data-path="basic-syntax.html"><a href="basic-syntax.html#tab-is-your-friend"><i class="fa fa-check"></i><b>2.7.1</b> Tab is your friend</a></li>
+</ul></li>
+<li class="chapter" data-level="2.8" data-path="basic-syntax.html"><a href="basic-syntax.html#error-messages"><i class="fa fa-check"></i><b>2.8</b> Error Messages</a></li>
+<li class="chapter" data-level="2.9" data-path="basic-syntax.html"><a href="basic-syntax.html#functions"><i class="fa fa-check"></i><b>2.9</b> Functions</a></li>
+<li class="chapter" data-level="2.10" data-path="basic-syntax.html"><a href="basic-syntax.html#chaining-syntax"><i class="fa fa-check"></i><b>2.10</b> Chaining Syntax</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="introduction-to-data-carpentry.html"><a href="introduction-to-data-carpentry.html"><i class="fa fa-check"></i><b>3</b> Introduction to Data Carpentry</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="introduction-to-data-carpentry.html"><a href="introduction-to-data-carpentry.html#data-types"><i class="fa fa-check"></i><b>3.1</b> Data Types</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="introduction-to-data-carpentry.html"><a href="introduction-to-data-carpentry.html#categorical-data"><i class="fa fa-check"></i><b>3.1.1</b> Categorical Data</a></li>
+<li class="chapter" data-level="3.1.2" data-path="introduction-to-data-carpentry.html"><a href="introduction-to-data-carpentry.html#numerical-data-discrete-vs.-continuous"><i class="fa fa-check"></i><b>3.1.2</b> Numerical Data (Discrete vs. Continuous)</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="introduction-to-data-carpentry.html"><a href="introduction-to-data-carpentry.html#importing-data"><i class="fa fa-check"></i><b>3.2</b> Importing Data</a></li>
+<li class="chapter" data-level="3.3" data-path="introduction-to-data-carpentry.html"><a href="introduction-to-data-carpentry.html#introduction-to-dataframes"><i class="fa fa-check"></i><b>3.3</b> Introduction to Dataframes</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="introduction-to-data-carpentry.html"><a href="introduction-to-data-carpentry.html#dataframe-basics"><i class="fa fa-check"></i><b>3.3.1</b> Dataframe basics</a></li>
+<li class="chapter" data-level="3.3.2" data-path="introduction-to-data-carpentry.html"><a href="introduction-to-data-carpentry.html#indexing-dataframes."><i class="fa fa-check"></i><b>3.3.2</b> Indexing dataframes.</a></li>
+<li class="chapter" data-level="3.3.3" data-path="introduction-to-data-carpentry.html"><a href="introduction-to-data-carpentry.html#adding-and-removing-columns"><i class="fa fa-check"></i><b>3.3.3</b> Adding and removing columns</a></li>
+<li class="chapter" data-level="3.3.4" data-path="introduction-to-data-carpentry.html"><a href="introduction-to-data-carpentry.html#structure-of-datasets"><i class="fa fa-check"></i><b>3.3.4</b> Structure of Datasets</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="introduction-to-data-carpentry.html"><a href="introduction-to-data-carpentry.html#manually-creating-a-dataframe"><i class="fa fa-check"></i><b>3.4</b> Manually creating a Dataframe</a></li>
+<li class="chapter" data-level="3.5" data-path="introduction-to-data-carpentry.html"><a href="introduction-to-data-carpentry.html#tidyverse"><i class="fa fa-check"></i><b>3.5</b> tidyverse</a>
+<ul>
+<li class="chapter" data-level="3.5.1" data-path="introduction-to-data-carpentry.html"><a href="introduction-to-data-carpentry.html#table"><i class="fa fa-check"></i><b>3.5.1</b> table()</a></li>
+<li class="chapter" data-level="3.5.2" data-path="introduction-to-data-carpentry.html"><a href="introduction-to-data-carpentry.html#filter---subsetting-data"><i class="fa fa-check"></i><b>3.5.2</b> filter() - Subsetting Data</a></li>
+<li class="chapter" data-level="3.5.3" data-path="introduction-to-data-carpentry.html"><a href="introduction-to-data-carpentry.html#select---selecting-specific-columns"><i class="fa fa-check"></i><b>3.5.3</b> select() - Selecting specific columns</a></li>
+<li class="chapter" data-level="3.5.4" data-path="introduction-to-data-carpentry.html"><a href="introduction-to-data-carpentry.html#mutate---creating-new-columns"><i class="fa fa-check"></i><b>3.5.4</b> mutate() - Creating new columns</a></li>
+<li class="chapter" data-level="3.5.5" data-path="introduction-to-data-carpentry.html"><a href="introduction-to-data-carpentry.html#arrange---sort-data-columns"><i class="fa fa-check"></i><b>3.5.5</b> arrange() - Sort Data Columns</a></li>
+<li class="chapter" data-level="3.5.6" data-path="introduction-to-data-carpentry.html"><a href="introduction-to-data-carpentry.html#chaining-together"><i class="fa fa-check"></i><b>3.5.6</b> Chaining together</a></li>
+</ul></li>
+<li class="chapter" data-level="3.6" data-path="introduction-to-data-carpentry.html"><a href="introduction-to-data-carpentry.html#wide-versus-long-data"><i class="fa fa-check"></i><b>3.6</b> Wide versus Long Data</a>
+<ul>
+<li class="chapter" data-level="3.6.1" data-path="introduction-to-data-carpentry.html"><a href="introduction-to-data-carpentry.html#wide-to-long"><i class="fa fa-check"></i><b>3.6.1</b> Wide to Long</a></li>
+<li class="chapter" data-level="3.6.2" data-path="introduction-to-data-carpentry.html"><a href="introduction-to-data-carpentry.html#long-to-wide"><i class="fa fa-check"></i><b>3.6.2</b> Long to Wide</a></li>
+<li class="chapter" data-level="3.6.3" data-path="introduction-to-data-carpentry.html"><a href="introduction-to-data-carpentry.html#real-data-example."><i class="fa fa-check"></i><b>3.6.3</b> Real Data Example.</a></li>
+</ul></li>
+<li class="chapter" data-level="3.7" data-path="introduction-to-data-carpentry.html"><a href="introduction-to-data-carpentry.html#joins"><i class="fa fa-check"></i><b>3.7</b> Joins</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="data-visualization.html"><a href="data-visualization.html"><i class="fa fa-check"></i><b>4</b> Data Visualization</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="data-visualization.html"><a href="data-visualization.html#introduction-to-ggplot2"><i class="fa fa-check"></i><b>4.1</b> Introduction to ggplot2</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="data-visualization.html"><a href="data-visualization.html#assigning-plots"><i class="fa fa-check"></i><b>4.1.1</b> Assigning plots</a></li>
+<li class="chapter" data-level="4.1.2" data-path="data-visualization.html"><a href="data-visualization.html#titles-and-axes-titles"><i class="fa fa-check"></i><b>4.1.2</b> Titles and Axes Titles</a></li>
+<li class="chapter" data-level="4.1.3" data-path="data-visualization.html"><a href="data-visualization.html#colors-shapes-and-sizes"><i class="fa fa-check"></i><b>4.1.3</b> Colors, Shapes and Sizes</a></li>
+<li class="chapter" data-level="4.1.4" data-path="data-visualization.html"><a href="data-visualization.html#themes"><i class="fa fa-check"></i><b>4.1.4</b> Themes</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="data-visualization.html"><a href="data-visualization.html#histograms"><i class="fa fa-check"></i><b>4.2</b> Histograms</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="data-visualization.html"><a href="data-visualization.html#histograms-with-ggplot2"><i class="fa fa-check"></i><b>4.2.1</b> Histograms with ggplot2</a></li>
+<li class="chapter" data-level="4.2.2" data-path="data-visualization.html"><a href="data-visualization.html#density-curves"><i class="fa fa-check"></i><b>4.2.2</b> Density Curves</a></li>
+<li class="chapter" data-level="4.2.3" data-path="data-visualization.html"><a href="data-visualization.html#comparing-distributions"><i class="fa fa-check"></i><b>4.2.3</b> Comparing Distributions</a></li>
+<li class="chapter" data-level="4.2.4" data-path="data-visualization.html"><a href="data-visualization.html#stem-and-leaf-plots"><i class="fa fa-check"></i><b>4.2.4</b> Stem-and-Leaf Plots</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="data-visualization.html"><a href="data-visualization.html#scatterplots"><i class="fa fa-check"></i><b>4.3</b> Scatterplots</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="data-visualization.html"><a href="data-visualization.html#bubble-charts"><i class="fa fa-check"></i><b>4.3.1</b> Bubble Charts</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="data-visualization.html"><a href="data-visualization.html#line-graphs"><i class="fa fa-check"></i><b>4.4</b> Line Graphs</a>
+<ul>
+<li class="chapter" data-level="4.4.1" data-path="data-visualization.html"><a href="data-visualization.html#multiple-line-graphs"><i class="fa fa-check"></i><b>4.4.1</b> Multiple Line Graphs</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="data-visualization.html"><a href="data-visualization.html#comparing-distributions-across-groups"><i class="fa fa-check"></i><b>4.5</b> Comparing Distributions across Groups</a>
+<ul>
+<li class="chapter" data-level="4.5.1" data-path="data-visualization.html"><a href="data-visualization.html#strip-plots"><i class="fa fa-check"></i><b>4.5.1</b> Strip Plots</a></li>
+<li class="chapter" data-level="4.5.2" data-path="data-visualization.html"><a href="data-visualization.html#boxplots"><i class="fa fa-check"></i><b>4.5.2</b> Boxplots</a></li>
+<li class="chapter" data-level="4.5.3" data-path="data-visualization.html"><a href="data-visualization.html#violin-plots"><i class="fa fa-check"></i><b>4.5.3</b> Violin Plots</a></li>
+<li class="chapter" data-level="4.5.4" data-path="data-visualization.html"><a href="data-visualization.html#stacked-boxplots"><i class="fa fa-check"></i><b>4.5.4</b> Stacked Boxplots</a></li>
+<li class="chapter" data-level="4.5.5" data-path="data-visualization.html"><a href="data-visualization.html#ridgeline-plots"><i class="fa fa-check"></i><b>4.5.5</b> Ridgeline Plots</a></li>
+</ul></li>
+<li class="chapter" data-level="4.6" data-path="data-visualization.html"><a href="data-visualization.html#bar-graphs"><i class="fa fa-check"></i><b>4.6</b> Bar Graphs</a></li>
+<li class="chapter" data-level="4.7" data-path="data-visualization.html"><a href="data-visualization.html#small-multiples"><i class="fa fa-check"></i><b>4.7</b> Small Multiples</a></li>
+<li class="chapter" data-level="4.8" data-path="data-visualization.html"><a href="data-visualization.html#saving-and-exporting-ggplot2-graphs"><i class="fa fa-check"></i><b>4.8</b> Saving and Exporting ggplot2 graphs</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="descriptives.html"><a href="descriptives.html"><i class="fa fa-check"></i><b>5</b> Descriptives</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="descriptives.html"><a href="descriptives.html#sample-vs-population"><i class="fa fa-check"></i><b>5.1</b> Sample vs Population</a></li>
+<li class="chapter" data-level="5.2" data-path="descriptives.html"><a href="descriptives.html#sample-and-population-size"><i class="fa fa-check"></i><b>5.2</b> Sample and Population Size</a></li>
+<li class="chapter" data-level="5.3" data-path="descriptives.html"><a href="descriptives.html#central-tendency"><i class="fa fa-check"></i><b>5.3</b> Central Tendency</a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="descriptives.html"><a href="descriptives.html#mode"><i class="fa fa-check"></i><b>5.3.1</b> Mode</a></li>
+<li class="chapter" data-level="5.3.2" data-path="descriptives.html"><a href="descriptives.html#median"><i class="fa fa-check"></i><b>5.3.2</b> Median</a></li>
+<li class="chapter" data-level="5.3.3" data-path="descriptives.html"><a href="descriptives.html#mean"><i class="fa fa-check"></i><b>5.3.3</b> Mean</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="descriptives.html"><a href="descriptives.html#variation"><i class="fa fa-check"></i><b>5.4</b> Variation</a>
+<ul>
+<li class="chapter" data-level="5.4.1" data-path="descriptives.html"><a href="descriptives.html#range"><i class="fa fa-check"></i><b>5.4.1</b> Range</a></li>
+<li class="chapter" data-level="5.4.2" data-path="descriptives.html"><a href="descriptives.html#interquartile-range"><i class="fa fa-check"></i><b>5.4.2</b> Interquartile Range</a></li>
+<li class="chapter" data-level="5.4.3" data-path="descriptives.html"><a href="descriptives.html#average-deviation"><i class="fa fa-check"></i><b>5.4.3</b> Average Deviation</a></li>
+<li class="chapter" data-level="5.4.4" data-path="descriptives.html"><a href="descriptives.html#standard-deviation"><i class="fa fa-check"></i><b>5.4.4</b> Standard Deviation</a></li>
+<li class="chapter" data-level="5.4.5" data-path="descriptives.html"><a href="descriptives.html#variance"><i class="fa fa-check"></i><b>5.4.5</b> Variance</a></li>
+<li class="chapter" data-level="5.4.6" data-path="descriptives.html"><a href="descriptives.html#average-versus-standard-deviation"><i class="fa fa-check"></i><b>5.4.6</b> Average versus Standard Deviation</a></li>
+<li class="chapter" data-level="5.4.7" data-path="descriptives.html"><a href="descriptives.html#sample-standard-deviation"><i class="fa fa-check"></i><b>5.4.7</b> Sample Standard Deviation</a></li>
+<li class="chapter" data-level="5.4.8" data-path="descriptives.html"><a href="descriptives.html#sample-versus-population-standard-deviation"><i class="fa fa-check"></i><b>5.4.8</b> Sample versus Population Standard Deviation</a></li>
+</ul></li>
+<li class="chapter" data-level="5.5" data-path="descriptives.html"><a href="descriptives.html#descriptive-statistics-in-r"><i class="fa fa-check"></i><b>5.5</b> Descriptive Statistics in R</a>
+<ul>
+<li class="chapter" data-level="5.5.1" data-path="descriptives.html"><a href="descriptives.html#dealing-with-missing-data"><i class="fa fa-check"></i><b>5.5.1</b> Dealing with Missing Data</a></li>
+</ul></li>
+<li class="chapter" data-level="5.6" data-path="descriptives.html"><a href="descriptives.html#descriptives-for-datasets"><i class="fa fa-check"></i><b>5.6</b> Descriptives for Datasets</a>
+<ul>
+<li class="chapter" data-level="5.6.1" data-path="descriptives.html"><a href="descriptives.html#descriptives-for-groups"><i class="fa fa-check"></i><b>5.6.1</b> Descriptives for Groups</a></li>
+<li class="chapter" data-level="5.6.2" data-path="descriptives.html"><a href="descriptives.html#counts-by-group"><i class="fa fa-check"></i><b>5.6.2</b> Counts by Group</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="distributions.html"><a href="distributions.html"><i class="fa fa-check"></i><b>6</b> Distributions</a>
+<ul>
+<li class="chapter" data-level="6.0.1" data-path="distributions.html"><a href="distributions.html#uniform-distribution"><i class="fa fa-check"></i><b>6.0.1</b> Uniform Distribution</a></li>
+<li class="chapter" data-level="6.0.2" data-path="distributions.html"><a href="distributions.html#bimodal-distribution"><i class="fa fa-check"></i><b>6.0.2</b> Bimodal Distribution</a></li>
+<li class="chapter" data-level="6.0.3" data-path="distributions.html"><a href="distributions.html#normal-distribution"><i class="fa fa-check"></i><b>6.0.3</b> Normal Distribution</a></li>
+<li class="chapter" data-level="6.0.4" data-path="distributions.html"><a href="distributions.html#standard-normal-distribution"><i class="fa fa-check"></i><b>6.0.4</b> Standard Normal Distribution</a></li>
+<li class="chapter" data-level="6.0.5" data-path="distributions.html"><a href="distributions.html#skewness-and-kurtosis"><i class="fa fa-check"></i><b>6.0.5</b> Skewness and Kurtosis</a></li>
+<li class="chapter" data-level="6.1" data-path="distributions.html"><a href="distributions.html#z-scores"><i class="fa fa-check"></i><b>6.1</b> Z-scores</a>
+<ul>
+<li class="chapter" data-level="6.1.1" data-path="distributions.html"><a href="distributions.html#z-scores-in-samples."><i class="fa fa-check"></i><b>6.1.1</b> z-scores in samples.</a></li>
+<li class="chapter" data-level="6.1.2" data-path="distributions.html"><a href="distributions.html#using-z-scores-to-determine-probabilities"><i class="fa fa-check"></i><b>6.1.2</b> Using z-scores to determine probabilities</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="distributions.html"><a href="distributions.html#what-is-a-sampling-distribution"><i class="fa fa-check"></i><b>6.2</b> What is a Sampling Distribution ?</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="distributions.html"><a href="distributions.html#sample-size-and-the-sampling-distribution"><i class="fa fa-check"></i><b>6.2.1</b> Sample Size and the Sampling Distribution</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="distributions.html"><a href="distributions.html#central-limit-theorem"><i class="fa fa-check"></i><b>6.3</b> Central Limit Theorem</a></li>
+<li class="chapter" data-level="6.4" data-path="distributions.html"><a href="distributions.html#sampling-distribution-problems"><i class="fa fa-check"></i><b>6.4</b> Sampling distribution problems</a></li>
+<li class="chapter" data-level="6.5" data-path="distributions.html"><a href="distributions.html#the-t-distribution"><i class="fa fa-check"></i><b>6.5</b> The t-distribution</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="confidence-intervals.html"><a href="confidence-intervals.html"><i class="fa fa-check"></i><b>7</b> Confidence Intervals</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="confidence-intervals.html"><a href="confidence-intervals.html#sample-means-as-estimates."><i class="fa fa-check"></i><b>7.1</b> Sample means as estimates.</a></li>
+<li class="chapter" data-level="7.2" data-path="confidence-intervals.html"><a href="confidence-intervals.html#calculating-a-confidence-interval-with-z-distribution"><i class="fa fa-check"></i><b>7.2</b> Calculating a confidence interval with z-distribution</a>
+<ul>
+<li class="chapter" data-level="7.2.1" data-path="confidence-intervals.html"><a href="confidence-intervals.html#other-confidence-intervals-ranges"><i class="fa fa-check"></i><b>7.2.1</b> Other Confidence Intervals ranges</a></li>
+<li class="chapter" data-level="7.2.2" data-path="confidence-intervals.html"><a href="confidence-intervals.html#confidence-intervals-and-sample-size"><i class="fa fa-check"></i><b>7.2.2</b> Confidence Intervals and Sample Size</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="confidence-intervals.html"><a href="confidence-intervals.html#confidence-intervals-with-t-distribution"><i class="fa fa-check"></i><b>7.3</b> Confidence Intervals with t-distribution</a></li>
+<li class="chapter" data-level="7.4" data-path="confidence-intervals.html"><a href="confidence-intervals.html#calculating-a-t-distribution-confidence-interval"><i class="fa fa-check"></i><b>7.4</b> Calculating a t-distribution Confidence Interval</a>
+<ul>
+<li class="chapter" data-level="7.4.1" data-path="confidence-intervals.html"><a href="confidence-intervals.html#t-distribution-cis-and-sample-size."><i class="fa fa-check"></i><b>7.4.1</b> t-distribution CIs and sample size.</a></li>
+<li class="chapter" data-level="7.4.2" data-path="confidence-intervals.html"><a href="confidence-intervals.html#other-confidence-intervals-ranges-for-t-distribution"><i class="fa fa-check"></i><b>7.4.2</b> Other Confidence Intervals ranges for t-distribution</a></li>
+</ul></li>
+<li class="chapter" data-level="7.5" data-path="confidence-intervals.html"><a href="confidence-intervals.html#comparing-cis-using-the-z--and-t-distributions"><i class="fa fa-check"></i><b>7.5</b> Comparing CIs using the z- and t-distributions</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html"><i class="fa fa-check"></i><b>8</b> Hypothesis Testing</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#two-tailed-and-one-tailed-tests"><i class="fa fa-check"></i><b>8.1</b> Two-tailed and One-tailed tests</a></li>
+<li class="chapter" data-level="8.2" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#examples-of-1--and-2-tailed-tests"><i class="fa fa-check"></i><b>8.2</b> Examples of 1- and 2-tailed tests</a></li>
+<li class="chapter" data-level="8.3" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#significance-levels-and-p-values"><i class="fa fa-check"></i><b>8.3</b> Significance Levels and p-values</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="one-sample-inferential-statistics.html"><a href="one-sample-inferential-statistics.html"><i class="fa fa-check"></i><b>9</b> One Sample Inferential Statistics</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="one-sample-inferential-statistics.html"><a href="one-sample-inferential-statistics.html#one-sample-z-tests"><i class="fa fa-check"></i><b>9.1</b> One-sample z-tests</a>
+<ul>
+<li class="chapter" data-level="9.1.1" data-path="one-sample-inferential-statistics.html"><a href="one-sample-inferential-statistics.html#sampling-distribution-recap"><i class="fa fa-check"></i><b>9.1.1</b> Sampling Distribution Recap</a></li>
+<li class="chapter" data-level="9.1.2" data-path="one-sample-inferential-statistics.html"><a href="one-sample-inferential-statistics.html#calculating-p-values-for-z-test"><i class="fa fa-check"></i><b>9.1.2</b> Calculating p-values for z-test</a></li>
+<li class="chapter" data-level="9.1.3" data-path="one-sample-inferential-statistics.html"><a href="one-sample-inferential-statistics.html#using-critical-values"><i class="fa fa-check"></i><b>9.1.3</b> Using critical values</a></li>
+</ul></li>
+<li class="chapter" data-level="9.2" data-path="one-sample-inferential-statistics.html"><a href="one-sample-inferential-statistics.html#one-sample-t-tests"><i class="fa fa-check"></i><b>9.2</b> One-sample t-tests</a>
+<ul>
+<li class="chapter" data-level="9.2.1" data-path="one-sample-inferential-statistics.html"><a href="one-sample-inferential-statistics.html#critical-values-for-the-one-sample-t-test"><i class="fa fa-check"></i><b>9.2.1</b> Critical values for the one-sample t-test</a></li>
+</ul></li>
+<li class="chapter" data-level="9.3" data-path="one-sample-inferential-statistics.html"><a href="one-sample-inferential-statistics.html#conducting-one-sample-t-tests-in-r"><i class="fa fa-check"></i><b>9.3</b> Conducting one-sample t-tests in R</a></li>
+<li class="chapter" data-level="9.4" data-path="one-sample-inferential-statistics.html"><a href="one-sample-inferential-statistics.html#assumptions-of-the-one-sample-t-test"><i class="fa fa-check"></i><b>9.4</b> Assumptions of the one-sample t-test</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="two-sample-inferential-statistics.html"><a href="two-sample-inferential-statistics.html"><i class="fa fa-check"></i><b>10</b> Two Sample Inferential Statistics</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="two-sample-inferential-statistics.html"><a href="two-sample-inferential-statistics.html#independent-samples-t-test"><i class="fa fa-check"></i><b>10.1</b> Independent Samples t-test</a></li>
+<li class="chapter" data-level="10.2" data-path="two-sample-inferential-statistics.html"><a href="two-sample-inferential-statistics.html#sampling-distribution-of-the-difference-in-sample-means"><i class="fa fa-check"></i><b>10.2</b> Sampling Distribution of the Difference in Sample Means</a>
+<ul>
+<li class="chapter" data-level="10.2.1" data-path="two-sample-inferential-statistics.html"><a href="two-sample-inferential-statistics.html#visualizing-the-sampling-distribution"><i class="fa fa-check"></i><b>10.2.1</b> Visualizing the Sampling Distribution</a></li>
+</ul></li>
+<li class="chapter" data-level="10.3" data-path="two-sample-inferential-statistics.html"><a href="two-sample-inferential-statistics.html#pooled-standard-deviation"><i class="fa fa-check"></i><b>10.3</b> Pooled Standard Deviation</a></li>
+<li class="chapter" data-level="10.4" data-path="two-sample-inferential-statistics.html"><a href="two-sample-inferential-statistics.html#theory-behind-students-t-test"><i class="fa fa-check"></i><b>10.4</b> Theory behind Student’s t-test</a></li>
+<li class="chapter" data-level="10.5" data-path="two-sample-inferential-statistics.html"><a href="two-sample-inferential-statistics.html#confidence-interval-for-difference-in-means"><i class="fa fa-check"></i><b>10.5</b> Confidence Interval for Difference in Means</a></li>
+<li class="chapter" data-level="10.6" data-path="two-sample-inferential-statistics.html"><a href="two-sample-inferential-statistics.html#conducting-the-student-t-test-in-r"><i class="fa fa-check"></i><b>10.6</b> Conducting the Student t-test in R</a></li>
+<li class="chapter" data-level="10.7" data-path="two-sample-inferential-statistics.html"><a href="two-sample-inferential-statistics.html#assumptions-of-the-independent-t-test"><i class="fa fa-check"></i><b>10.7</b> Assumptions of the Independent t-test</a></li>
+<li class="chapter" data-level="10.8" data-path="two-sample-inferential-statistics.html"><a href="two-sample-inferential-statistics.html#welchs-t-test"><i class="fa fa-check"></i><b>10.8</b> Welch’s t-test</a></li>
+<li class="chapter" data-level="10.9" data-path="two-sample-inferential-statistics.html"><a href="two-sample-inferential-statistics.html#effect-size-for-independent-two-sample-t-tests"><i class="fa fa-check"></i><b>10.9</b> Effect Size for Independent two sample t-tests:</a></li>
+<li class="chapter" data-level="10.10" data-path="two-sample-inferential-statistics.html"><a href="two-sample-inferential-statistics.html#paired-t-tests"><i class="fa fa-check"></i><b>10.10</b> Paired t-tests</a>
+<ul>
+<li class="chapter" data-level="10.10.1" data-path="two-sample-inferential-statistics.html"><a href="two-sample-inferential-statistics.html#the-paired-t-test-is-a-one-sample-t-test"><i class="fa fa-check"></i><b>10.10.1</b> The paired t-test is a one-sample t-test</a></li>
+<li class="chapter" data-level="10.10.2" data-path="two-sample-inferential-statistics.html"><a href="two-sample-inferential-statistics.html#one-tailed-paired-t-tests"><i class="fa fa-check"></i><b>10.10.2</b> One-tailed paired t-tests</a></li>
+<li class="chapter" data-level="10.10.3" data-path="two-sample-inferential-statistics.html"><a href="two-sample-inferential-statistics.html#calculating-effect-sizes"><i class="fa fa-check"></i><b>10.10.3</b> Calculating effect sizes</a></li>
+</ul></li>
+<li class="chapter" data-level="10.11" data-path="two-sample-inferential-statistics.html"><a href="two-sample-inferential-statistics.html#non-parametric-alternatives-for-independent-t-tests"><i class="fa fa-check"></i><b>10.11</b> Non-parametric Alternatives for Independent t-tests</a></li>
+<li class="chapter" data-level="10.12" data-path="two-sample-inferential-statistics.html"><a href="two-sample-inferential-statistics.html#non-parametric-alternatives-to-the-two-sample-t-tests"><i class="fa fa-check"></i><b>10.12</b> Non-parametric Alternatives to the Two Sample t-tests</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="correlation.html"><a href="correlation.html"><i class="fa fa-check"></i><b>11</b> Correlation</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="correlation.html"><a href="correlation.html#pearson-correlation"><i class="fa fa-check"></i><b>11.1</b> Pearson Correlation</a></li>
+<li class="chapter" data-level="11.2" data-path="correlation.html"><a href="correlation.html#cross-products"><i class="fa fa-check"></i><b>11.2</b> Cross-products</a></li>
+<li class="chapter" data-level="11.3" data-path="correlation.html"><a href="correlation.html#conducting-a-pearson-correlation-test"><i class="fa fa-check"></i><b>11.3</b> Conducting a Pearson Correlation Test</a>
+<ul>
+<li class="chapter" data-level="11.3.1" data-path="correlation.html"><a href="correlation.html#significance-testing-a-pearson-correlation"><i class="fa fa-check"></i><b>11.3.1</b> Significance Testing a Pearson Correlation</a></li>
+</ul></li>
+<li class="chapter" data-level="11.4" data-path="correlation.html"><a href="correlation.html#assumptions-of-pearsons-correlation"><i class="fa fa-check"></i><b>11.4</b> Assumptions of Pearson’s Correlation</a></li>
+<li class="chapter" data-level="11.5" data-path="correlation.html"><a href="correlation.html#confidence-intervals-for-r"><i class="fa fa-check"></i><b>11.5</b> Confidence Intervals for r</a></li>
+<li class="chapter" data-level="11.6" data-path="correlation.html"><a href="correlation.html#partial-correlations"><i class="fa fa-check"></i><b>11.6</b> Partial Correlations</a></li>
+<li class="chapter" data-level="11.7" data-path="correlation.html"><a href="correlation.html#non-parametric-correlations"><i class="fa fa-check"></i><b>11.7</b> Non-parametric Correlations</a></li>
+<li class="chapter" data-level="11.8" data-path="correlation.html"><a href="correlation.html#point-biserial-correlation"><i class="fa fa-check"></i><b>11.8</b> Point-Biserial Correlation</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="linear-regression.html"><a href="linear-regression.html"><i class="fa fa-check"></i><b>12</b> Linear Regression</a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="linear-regression.html"><a href="linear-regression.html#introduction-to-linear-regression"><i class="fa fa-check"></i><b>12.1</b> Introduction to Linear Regression</a></li>
+<li class="chapter" data-level="12.2" data-path="linear-regression.html"><a href="linear-regression.html#a-and-b"><i class="fa fa-check"></i><b>12.2</b> a and b</a>
+<ul>
+<li class="chapter" data-level="12.2.1" data-path="linear-regression.html"><a href="linear-regression.html#how-to-calculate-a-and-b-in-r"><i class="fa fa-check"></i><b>12.2.1</b> How to calculate a and b in R</a></li>
+<li class="chapter" data-level="12.2.2" data-path="linear-regression.html"><a href="linear-regression.html#how-to-calculate-a-and-b-by-hand"><i class="fa fa-check"></i><b>12.2.2</b> How to calculate a and b ‘by hand’</a></li>
+</ul></li>
+<li class="chapter" data-level="12.3" data-path="linear-regression.html"><a href="linear-regression.html#residuals"><i class="fa fa-check"></i><b>12.3</b> Residuals</a>
+<ul>
+<li class="chapter" data-level="12.3.1" data-path="linear-regression.html"><a href="linear-regression.html#how-to-calculate-the-residuals"><i class="fa fa-check"></i><b>12.3.1</b> How to calculate the residuals</a></li>
+<li class="chapter" data-level="12.3.2" data-path="linear-regression.html"><a href="linear-regression.html#visualizing-the-residuals"><i class="fa fa-check"></i><b>12.3.2</b> Visualizing the Residuals</a></li>
+<li class="chapter" data-level="12.3.3" data-path="linear-regression.html"><a href="linear-regression.html#comparing-our-trendline-to-other-trendlines"><i class="fa fa-check"></i><b>12.3.3</b> Comparing our trendline to other trendlines</a></li>
+<li class="chapter" data-level="12.3.4" data-path="linear-regression.html"><a href="linear-regression.html#coefficient-of-determination-r2"><i class="fa fa-check"></i><b>12.3.4</b> Coefficient of Determination R2</a></li>
+</ul></li>
+<li class="chapter" data-level="12.4" data-path="linear-regression.html"><a href="linear-regression.html#standard-error-of-the-estimate"><i class="fa fa-check"></i><b>12.4</b> Standard Error of the Estimate</a>
+<ul>
+<li class="chapter" data-level="12.4.1" data-path="linear-regression.html"><a href="linear-regression.html#what-to-do-with-the-standard-error-of-the-estimate"><i class="fa fa-check"></i><b>12.4.1</b> What to do with the Standard Error of the Estimate ?</a></li>
+</ul></li>
+<li class="chapter" data-level="12.5" data-path="linear-regression.html"><a href="linear-regression.html#goodness-of-fit-test---f-ratio"><i class="fa fa-check"></i><b>12.5</b> Goodness of Fit Test - F-ratio</a></li>
+<li class="chapter" data-level="12.6" data-path="linear-regression.html"><a href="linear-regression.html#assumptions-of-linear-regression"><i class="fa fa-check"></i><b>12.6</b> Assumptions of Linear Regression</a>
+<ul>
+<li class="chapter" data-level="12.6.1" data-path="linear-regression.html"><a href="linear-regression.html#normality-of-residuals"><i class="fa fa-check"></i><b>12.6.1</b> Normality of Residuals</a></li>
+<li class="chapter" data-level="12.6.2" data-path="linear-regression.html"><a href="linear-regression.html#linearity"><i class="fa fa-check"></i><b>12.6.2</b> 2. Linearity —</a></li>
+<li class="chapter" data-level="12.6.3" data-path="linear-regression.html"><a href="linear-regression.html#homogeneity-of-variance-homoscedasticity"><i class="fa fa-check"></i><b>12.6.3</b> 3. Homogeneity of Variance / Homoscedasticity</a></li>
+<li class="chapter" data-level="12.6.4" data-path="linear-regression.html"><a href="linear-regression.html#no-colinearity"><i class="fa fa-check"></i><b>12.6.4</b> No Colinearity</a></li>
+<li class="chapter" data-level="12.6.5" data-path="linear-regression.html"><a href="linear-regression.html#unusual-datapoints"><i class="fa fa-check"></i><b>12.6.5</b> Unusual Datapoints</a></li>
+</ul></li>
+<li class="chapter" data-level="12.7" data-path="linear-regression.html"><a href="linear-regression.html#examining-individual-predictor-estimates"><i class="fa fa-check"></i><b>12.7</b> Examining individual predictor estimates</a>
+<ul>
+<li class="chapter" data-level="12.7.1" data-path="linear-regression.html"><a href="linear-regression.html#confidence-interval-of-b."><i class="fa fa-check"></i><b>12.7.1</b> 95% confidence interval of ‘b’.</a></li>
+<li class="chapter" data-level="12.7.2" data-path="linear-regression.html"><a href="linear-regression.html#standard-error-of-b"><i class="fa fa-check"></i><b>12.7.2</b> Standard Error of b</a></li>
+<li class="chapter" data-level="12.7.3" data-path="linear-regression.html"><a href="linear-regression.html#calculating-95-confidence-interval-of-b-by-hand"><i class="fa fa-check"></i><b>12.7.3</b> Calculating 95% confidence interval of ‘b’ by hand</a></li>
+<li class="chapter" data-level="12.7.4" data-path="linear-regression.html"><a href="linear-regression.html#signifcance-testing-b"><i class="fa fa-check"></i><b>12.7.4</b> Signifcance Testing b</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="permutation-testing.html"><a href="permutation-testing.html"><i class="fa fa-check"></i><b>13</b> Permutation Testing</a>
+<ul>
+<li class="chapter" data-level="13.1" data-path="permutation-testing.html"><a href="permutation-testing.html#t-test-permutation"><i class="fa fa-check"></i><b>13.1</b> t-test Permutation</a></li>
+<li class="chapter" data-level="13.2" data-path="permutation-testing.html"><a href="permutation-testing.html#correlation-coefficient-permutation-tests"><i class="fa fa-check"></i><b>13.2</b> Correlation Coefficient Permutation Tests</a></li>
+<li class="chapter" data-level="13.3" data-path="permutation-testing.html"><a href="permutation-testing.html#permutation-test-for-a-paired-t-test"><i class="fa fa-check"></i><b>13.3</b> Permutation test for a Paired t-test</a></li>
+<li class="chapter" data-level="13.4" data-path="permutation-testing.html"><a href="permutation-testing.html#permutation-tests-in-packages"><i class="fa fa-check"></i><b>13.4</b> Permutation tests in Packages</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">PSY317L &amp; PSY120R Textbook</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="basic-syntax" class="section level1" number="2">
+<h1><span class="header-section-number">Chapter 2</span> Basic Syntax</h1>
+<p>Before we move forward it is important to know a little bit of R syntax. This chapter contains lots of information about how R is organized and works. Don’t feel like you have to learn all of this now. This chapter is here for reference and for help. Also, these nuts and bolts of programming languages are things that you pick up over time - they are pretty hard to remember at first and you constantly do have to check and copy/paste things. That’s ok. Another very helpful resource on basic syntax in R is <a href="https://learningstatisticswithr.com/book/introR.html">Chapter 3 of Danielle’ Navarro’s book</a> which we highly recommend.</p>
+<div id="simple-mathematical-syntax" class="section level2" number="2.1">
+<h2><span class="header-section-number">2.1</span> Simple mathematical syntax</h2>
+<p>R is, first and foremost, a statistical programming language. So, unsurprisingly, you can do a bunch of mathematical operations fairly easily. Let’s do some really tedious math:</p>
+<p>You can add with the <code>+</code> key:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="basic-syntax.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="dv">4</span> <span class="sc">+</span> <span class="dv">6</span></span></code></pre></div>
+<pre><code>## [1] 10</code></pre>
+<p>You can see that the output returned <code>10</code> indicating that that is the answer to <code>4 + 6</code>. However, we also see in the output a <code>[1]</code> before it. What does this mean? This is an index - which we’ll talk about in more detail later- but essentially all it is telling us is that the number that comes directly after it is the first bit of the output. We only have one thing in our output here - the number <code>10</code>, so it’s pretty pointless - but it does have relevance in the future. For now though, you can safely ignore it.</p>
+<p>Subtracting uses a hyphen or minus key <code>-</code>:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="basic-syntax.html#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="dv">43</span> <span class="sc">-</span> <span class="dv">18</span></span></code></pre></div>
+<pre><code>## [1] 25</code></pre>
+<p>Multiplying uses the asterisk <code>*</code>:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="basic-syntax.html#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="dv">5</span> <span class="sc">*</span> <span class="dv">3</span></span></code></pre></div>
+<pre><code>## [1] 15</code></pre>
+<p>Dividing uses this slash key <code>/</code>:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="basic-syntax.html#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="dv">34</span> <span class="sc">/</span> <span class="dv">7</span></span></code></pre></div>
+<pre><code>## [1] 4.857143</code></pre>
+<p>You can square root like so by typing <code>sqrt()</code> and putting your number to square root in the brackets:</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="basic-syntax.html#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sqrt</span>(<span class="dv">45</span>)</span></code></pre></div>
+<pre><code>## [1] 6.708204</code></pre>
+<p>Squaring a number requires us to use the cute <code>^</code> key followed by a number <code>2</code> to indicate that we are raising to the power 2 (which is squaring):</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="basic-syntax.html#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="dv">12</span><span class="sc">^</span><span class="dv">2</span></span></code></pre></div>
+<pre><code>## [1] 144</code></pre>
+<p>We can also get the logarithm of numbers:</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="basic-syntax.html#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">log</span>(<span class="dv">12</span>)</span></code></pre></div>
+<pre><code>## [1] 2.484907</code></pre>
+<p><em>Our first little warning</em></p>
+<p>Like all programming languages, R will only do what it’s told. One thing that catches people out is that it will read code in order from left to right. So, if you’re doing several things at once, you may need to insert brackets to make sure that it does what you want it to. For instance, say you want to multiply 5 by the sum of 7 and 9.</p>
+<p>You might write that like this:</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="basic-syntax.html#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="dv">5</span> <span class="sc">*</span> <span class="dv">7</span> <span class="sc">+</span> <span class="dv">9</span> </span></code></pre></div>
+<pre><code>## [1] 44</code></pre>
+<p>but <code>44</code> is not the answer you’re looking for! What it has done is to take 5, then multiply it by 7 (makes 35) and then add 9 to make 44.</p>
+<p>OK, how about you write it like this instead:</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="basic-syntax.html#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="dv">7</span> <span class="sc">+</span> <span class="dv">9</span> <span class="sc">*</span> <span class="dv">5</span></span></code></pre></div>
+<pre><code>## [1] 52</code></pre>
+<p>Erm, this time it multiplied 9 by 5 to get 45 and then added 7 to make 52. What is happening is that some mathematical operations are taking precedence over others and R does things in certain order. To explicitly make sure that it does what you want, insert some brackets like this:</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="basic-syntax.html#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="dv">5</span> <span class="sc">*</span> (<span class="dv">7</span> <span class="sc">+</span> <span class="dv">9</span>) </span></code></pre></div>
+<pre><code>## [1] 80</code></pre>
+<p>Now it <strong>knows</strong> that what you wanted to do was to add 7 and 9 to get 16 and have that number multiplied by 5 to get 80. This sort of thing is something to look out for, but as you get experienced you’ll have a sense for it. Well placed brackets can save you a headache.</p>
+</div>
+<div id="assignment" class="section level2" number="2.2">
+<h2><span class="header-section-number">2.2</span> Assignment</h2>
+<p>e.g. what the assignment operator is.</p>
+<p>This symbol <code>&lt;-</code> which is just a “less than sign” followed by a “hyphen” is called an assignment operator. It basically is equivalent to saying you want to save something. You write what you want to be saved on the right hand side of it, and the name of your newly saved thing on the left of it. We call the ‘thing’ that you’ve saved an ‘object’ in programming speak.</p>
+<p>For instance, say you wanted to save the number <code>17</code>, and you wanted to call that saved number an object called <code>x</code>. You’d do it like this:</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="basic-syntax.html#cb21-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">17</span></span></code></pre></div>
+<p>Now, whenever you type, <code>x</code>, R thinks that it is the number 17.</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="basic-syntax.html#cb22-1" aria-hidden="true" tabindex="-1"></a>x </span></code></pre></div>
+<pre><code>## [1] 17</code></pre>
+<p>We should probably fess up right now and tell you that there is another way that you can assign things in R. On the face of it, it’s a much easier way too, but we’re going to recommend you don’t do it. The only reason that we’re bringing it up at this point is that if you look up help on the internet or in some books, you’ll see people doing it - so we should mention it.</p>
+<p>You can assign using the equal key <code>=</code> like this:</p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="basic-syntax.html#cb24-1" aria-hidden="true" tabindex="-1"></a>y <span class="ot">=</span> <span class="dv">10</span> <span class="sc">-</span> <span class="dv">2</span></span>
+<span id="cb24-2"><a href="basic-syntax.html#cb24-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-3"><a href="basic-syntax.html#cb24-3" aria-hidden="true" tabindex="-1"></a>y</span></code></pre></div>
+<pre><code>## [1] 8</code></pre>
+<p>So, as you can see, we created an object called <code>y</code> that was equal to 10 minus 2, that is 8. Using <code>=</code> seems so much easier than using <code>&lt;-</code> so what is the reason not to do it? Well, the equal sign gets used for a ton of other commands and sometimes it gets a little messy and confusing if too many equal signs fly around. Therefore, we’re going to politely ask that whenever you assign things, please use the <code>&lt;-</code> operator, even though it’s two bits of punctuation stuck together:</p>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="basic-syntax.html#cb26-1" aria-hidden="true" tabindex="-1"></a>hooray <span class="ot">&lt;-</span> <span class="dv">17</span> <span class="sc">+</span> <span class="dv">4</span>  <span class="co"># thanks for using this sign</span></span>
+<span id="cb26-2"><a href="basic-syntax.html#cb26-2" aria-hidden="true" tabindex="-1"></a>hooray</span></code></pre></div>
+<pre><code>## [1] 21</code></pre>
+</div>
+<div id="vectors" class="section level2" number="2.3">
+<h2><span class="header-section-number">2.3</span> Vectors</h2>
+<p>Of course, you can save even more complex things as the object. For example, if you wished to save the numbers <code>5, 6, 7, 8, 9, 10</code>, you have two ways of doing that. Let’s just see them in action, and then we’ll explain the syntax:</p>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="basic-syntax.html#cb28-1" aria-hidden="true" tabindex="-1"></a>v1 <span class="ot">&lt;-</span> <span class="dv">5</span><span class="sc">:</span><span class="dv">10</span></span>
+<span id="cb28-2"><a href="basic-syntax.html#cb28-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-3"><a href="basic-syntax.html#cb28-3" aria-hidden="true" tabindex="-1"></a>v1</span></code></pre></div>
+<pre><code>## [1]  5  6  7  8  9 10</code></pre>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="basic-syntax.html#cb30-1" aria-hidden="true" tabindex="-1"></a>v2 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">7</span>,<span class="dv">8</span>,<span class="dv">9</span>,<span class="dv">10</span>)</span>
+<span id="cb30-2"><a href="basic-syntax.html#cb30-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-3"><a href="basic-syntax.html#cb30-3" aria-hidden="true" tabindex="-1"></a>v2</span></code></pre></div>
+<pre><code>## [1]  5  6  7  8  9 10</code></pre>
+<p>As you can see both <code>v1</code> and <code>v2</code> are our newly saved objects and they both contain the numbers 5 through 10. For <code>v1</code> we separated the numbers 5 and 10 with a colon <code>:</code>. In R, the <code>:</code> sign can be used to mean “to” when talking about a series of numbers. e.g.</p>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="basic-syntax.html#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="dv">5</span><span class="sc">:</span><span class="dv">10</span></span></code></pre></div>
+<pre><code>## [1]  5  6  7  8  9 10</code></pre>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="basic-syntax.html#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="dv">101</span><span class="sc">:</span><span class="dv">103</span></span></code></pre></div>
+<pre><code>## [1] 101 102 103</code></pre>
+<p>The other way we did it with <code>v2</code> was to use the <code>c()</code> function. This stands for <code>concatenate</code> which is a mouthful. Basically, it’s a way of sticking things together. You write <code>c()</code> and then put the stuff you want to stick together inside the brackets, but make sure you separate each thing by a comma <code>,</code>. For example,</p>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="basic-syntax.html#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">10</span>,<span class="dv">100</span>,<span class="dv">1000</span>)</span></code></pre></div>
+<pre><code>## [1]    1   10  100 1000</code></pre>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="basic-syntax.html#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="dv">4</span>,<span class="dv">6</span>,<span class="dv">8</span>,<span class="dv">10</span>,<span class="dv">8</span>,<span class="dv">6</span>,<span class="dv">1</span>)</span></code></pre></div>
+<pre><code>## [1]  4  6  8 10  8  6  1</code></pre>
+<p>Another bit of terminology might be worth mentioning right now. Our saved objects <code>x</code>, <code>v1</code> and <code>v2</code>, as well as being called <code>objects</code> can also be called <code>vectors</code>. A vector is something in R that contains several items. These items are actually called <code>elements</code>. Importantly the items are indexed, which means that they are in order, not all jumbled up. That means that you can directly grab an element by it’s position. So, if you wished to get the first element (or item) of the object <code>v1</code> you’d type like this:</p>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="basic-syntax.html#cb40-1" aria-hidden="true" tabindex="-1"></a>v1[<span class="dv">1</span>]</span></code></pre></div>
+<pre><code>## [1] 5</code></pre>
+<p>That returns ‘5’ which was our first element we put into the vector.</p>
+<p>If we wish to get the 3rd element of <code>v1</code> we’d do this:</p>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="basic-syntax.html#cb42-1" aria-hidden="true" tabindex="-1"></a>v1[<span class="dv">3</span>]</span></code></pre></div>
+<pre><code>## [1] 7</code></pre>
+<p>And, if we wished to get the first, second and third element of <code>v1</code> we’d do this:</p>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="basic-syntax.html#cb44-1" aria-hidden="true" tabindex="-1"></a>v1[<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>]</span></code></pre></div>
+<pre><code>## [1] 5 6 7</code></pre>
+<p>We can also get non-consecutive elements of vectors. If we wanted to get the first, fourth and sixth elements of <code>v1</code> we’d do this:</p>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="basic-syntax.html#cb46-1" aria-hidden="true" tabindex="-1"></a>v1[<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">4</span>,<span class="dv">6</span>)]</span></code></pre></div>
+<pre><code>## [1]  5  8 10</code></pre>
+<p>Notice here that you can’t do this:</p>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="basic-syntax.html#cb48-1" aria-hidden="true" tabindex="-1"></a>v1[<span class="dv">1</span>,<span class="dv">4</span>,<span class="dv">6</span>]</span></code></pre></div>
+<pre><code>## Error in v1[1, 4, 6]: incorrect number of dimensions</code></pre>
+<p>You have to put the indexes of the elements you want inside <code>c()</code> and separate each with a comma, if they are non-consecutive.</p>
+<p>Be careful to make sure you’re referring to elements that actually exist. The vector <code>v1</code> has six elements in total, so if you ask it to give the seventh element, then you get the following:</p>
+<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="basic-syntax.html#cb50-1" aria-hidden="true" tabindex="-1"></a>v1[<span class="dv">7</span>]</span></code></pre></div>
+<pre><code>## [1] NA</code></pre>
+<p>It just says <code>NA</code>. This is R for “nothing” or “doesn’t exist” or “missing”. You’ll also see <code>NaN</code> in some situations to represent missing data.</p>
+<p>That’s quite a lot about vectors, their elements, and how to index them. Hopefully the below image will help you remember this terminology:</p>
+<p><img src="img/vector.png" /></p>
+<p><strong>Working with Vectors</strong></p>
+<p>Now, one of the great advantages of vectors is that you can do things to all of the numbers inside the vectors at once. For instance, say we wanted to square all the numbers inside of <code>v1</code>, then all we need to do is:</p>
+<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="basic-syntax.html#cb52-1" aria-hidden="true" tabindex="-1"></a>v1<span class="sc">^</span><span class="dv">2</span></span></code></pre></div>
+<pre><code>## [1]  25  36  49  64  81 100</code></pre>
+<p>and notice how it squared the numbers 5 through 10 that are the contents of <code>v1</code>.</p>
+<p>You can also do things to the entire contents of a vector at once. For instance, if you wanted to add up all the numbers in <code>v1</code> you could do this by using the function <code>sum()</code> like this:</p>
+<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="basic-syntax.html#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(v1)</span></code></pre></div>
+<pre><code>## [1] 45</code></pre>
+<p>and it added <code>5+6+7+8+9+10</code> to give one answer!</p>
+<p>You can also use the names of the vectors together. For example, if you do <code>v1 + v2</code> let’s see what happens:</p>
+<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="basic-syntax.html#cb56-1" aria-hidden="true" tabindex="-1"></a>v1</span></code></pre></div>
+<pre><code>## [1]  5  6  7  8  9 10</code></pre>
+<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="basic-syntax.html#cb58-1" aria-hidden="true" tabindex="-1"></a>v2</span></code></pre></div>
+<pre><code>## [1]  5  6  7  8  9 10</code></pre>
+<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="basic-syntax.html#cb60-1" aria-hidden="true" tabindex="-1"></a>v1 <span class="sc">+</span> v2</span></code></pre></div>
+<pre><code>## [1] 10 12 14 16 18 20</code></pre>
+<p>You can see that it added the first element of each vector to each other, then the second element of each vector to each other and so on. This only works though because <code>v1</code> and <code>v2</code> are the same length. If they had unequal number of elements, R would get mad and not do anything.</p>
+</div>
+<div id="characters" class="section level2" number="2.4">
+<h2><span class="header-section-number">2.4</span> Characters</h2>
+<p>The vectors that we’ve been looking at so far are all <code>numeric</code> meaning that they contain numbers. Another type of information that R uses is text - or <code>characters</code>. Sometimes called <code>strings</code>. Let’s make a vector of characters:</p>
+<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="basic-syntax.html#cb62-1" aria-hidden="true" tabindex="-1"></a>the_week <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Monday&quot;</span>, <span class="st">&quot;Tuesday&quot;</span>, <span class="st">&quot;Wednesday&quot;</span>, <span class="st">&quot;Thursday&quot;</span>, <span class="st">&quot;Friday&quot;</span>, <span class="st">&quot;Saturday&quot;</span>, <span class="st">&quot;Sunday&quot;</span>)</span>
+<span id="cb62-2"><a href="basic-syntax.html#cb62-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb62-3"><a href="basic-syntax.html#cb62-3" aria-hidden="true" tabindex="-1"></a>the_week</span></code></pre></div>
+<pre><code>## [1] &quot;Monday&quot;    &quot;Tuesday&quot;   &quot;Wednesday&quot; &quot;Thursday&quot;  &quot;Friday&quot;    &quot;Saturday&quot;  &quot;Sunday&quot;</code></pre>
+<p>Here we have an object called <code>the_week</code> that has 7 elements. Each element is separated by a comma. This is pretty similar to when we enter numbers except for situation when we can use the <code>:</code> shortcut such as using <code>5:8</code> to mean <code>5, 6, 7, 8</code>. We also stick everything together into a vector using <code>c()</code> as we did with numbers. The major difference is that to make sure R knows that each of these words is a character or text string, we have put quote marks around each word. If we didn’t do that, it would be looking for objects called <code>Monday</code>, <code>Tuesday</code> etc.</p>
+<p>Actually, let’s see an example of using words to create a vector, when the words are actually objects:</p>
+<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="basic-syntax.html#cb64-1" aria-hidden="true" tabindex="-1"></a>aa <span class="ot">&lt;-</span> <span class="dv">5</span></span>
+<span id="cb64-2"><a href="basic-syntax.html#cb64-2" aria-hidden="true" tabindex="-1"></a>bb <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">9</span>, <span class="dv">11</span>)</span>
+<span id="cb64-3"><a href="basic-syntax.html#cb64-3" aria-hidden="true" tabindex="-1"></a>cc <span class="ot">&lt;-</span> <span class="dv">10</span></span>
+<span id="cb64-4"><a href="basic-syntax.html#cb64-4" aria-hidden="true" tabindex="-1"></a>dd <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;james&quot;</span>, <span class="st">&quot;tyler&quot;</span>)</span>
+<span id="cb64-5"><a href="basic-syntax.html#cb64-5" aria-hidden="true" tabindex="-1"></a>ee <span class="ot">&lt;-</span> <span class="st">&quot;hedgehog&quot;</span></span>
+<span id="cb64-6"><a href="basic-syntax.html#cb64-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb64-7"><a href="basic-syntax.html#cb64-7" aria-hidden="true" tabindex="-1"></a>aa</span></code></pre></div>
+<pre><code>## [1] 5</code></pre>
+<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="basic-syntax.html#cb66-1" aria-hidden="true" tabindex="-1"></a>bb</span></code></pre></div>
+<pre><code>## [1]  9 11</code></pre>
+<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="basic-syntax.html#cb68-1" aria-hidden="true" tabindex="-1"></a>cc</span></code></pre></div>
+<pre><code>## [1] 10</code></pre>
+<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb70-1"><a href="basic-syntax.html#cb70-1" aria-hidden="true" tabindex="-1"></a>dd</span></code></pre></div>
+<pre><code>## [1] &quot;james&quot; &quot;tyler&quot;</code></pre>
+<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="basic-syntax.html#cb72-1" aria-hidden="true" tabindex="-1"></a>ee</span></code></pre></div>
+<pre><code>## [1] &quot;hedgehog&quot;</code></pre>
+<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb74-1"><a href="basic-syntax.html#cb74-1" aria-hidden="true" tabindex="-1"></a>example <span class="ot">&lt;-</span> <span class="fu">c</span>(aa, bb, cc, dd, ee)</span>
+<span id="cb74-2"><a href="basic-syntax.html#cb74-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb74-3"><a href="basic-syntax.html#cb74-3" aria-hidden="true" tabindex="-1"></a>example</span></code></pre></div>
+<pre><code>## [1] &quot;5&quot;        &quot;9&quot;        &quot;11&quot;       &quot;10&quot;       &quot;james&quot;    &quot;tyler&quot;    &quot;hedgehog&quot;</code></pre>
+<p>Here, each of <code>aa</code> to <code>ee</code> is assigned to be an object and they contain information. When we write <code>c(aa, bb, cc, dd, ee)</code> we don’t need to use quotes as we’re referring to the objects and not to words called <code>aa</code>, <code>ee</code> etc. Also notice that we were able to make vectors that mixed together numbers and characters. Also, some of our original vectors like <code>bb</code> and <code>dd</code> contained more than one element. When we put them all together with <code>c(aa, bb, cc, dd, ee)</code> to create the <code>example</code> object, R just stuck them all together in the order we wrote.</p>
+<p>It’s pretty unusual though to mix numeric and character vectors together. Let’s get back to talking about vectors that contain characters only.</p>
+<p>Some functions can work on both character vectors and numeric vectors. One example is <code>length()</code> which counts the number of elements in a vector:</p>
+<div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb76-1"><a href="basic-syntax.html#cb76-1" aria-hidden="true" tabindex="-1"></a>v1</span></code></pre></div>
+<pre><code>## [1]  5  6  7  8  9 10</code></pre>
+<div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb78-1"><a href="basic-syntax.html#cb78-1" aria-hidden="true" tabindex="-1"></a>the_week</span></code></pre></div>
+<pre><code>## [1] &quot;Monday&quot;    &quot;Tuesday&quot;   &quot;Wednesday&quot; &quot;Thursday&quot;  &quot;Friday&quot;    &quot;Saturday&quot;  &quot;Sunday&quot;</code></pre>
+<div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb80-1"><a href="basic-syntax.html#cb80-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(v1)</span></code></pre></div>
+<pre><code>## [1] 6</code></pre>
+<div class="sourceCode" id="cb82"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb82-1"><a href="basic-syntax.html#cb82-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(the_week)</span></code></pre></div>
+<pre><code>## [1] 7</code></pre>
+<p>However, some functions only make sense when working with one type or the other. For instance <code>sum()</code> to add up the elements of a vector, only works with numeric data:</p>
+<div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb84-1"><a href="basic-syntax.html#cb84-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(v1)</span></code></pre></div>
+<pre><code>## [1] 45</code></pre>
+<p>If you try it with character data, then it will give you an error:</p>
+<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb86-1"><a href="basic-syntax.html#cb86-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(the_week)</span></code></pre></div>
+<pre><code>## Error in sum(the_week): invalid &#39;type&#39; (character) of argument</code></pre>
+<p>Others work with characters. For example, <code>nchar()</code> calculates the number of letters in a piece of character text. Applying it to a vector will tell you how many letters are in each of the days of the week:</p>
+<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb88-1"><a href="basic-syntax.html#cb88-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nchar</span>(the_week)</span></code></pre></div>
+<pre><code>## [1] 6 7 9 8 6 8 6</code></pre>
+<p>If you try this with numeric vectors, it gives you a funny output of how many characters are in each number!</p>
+<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb90-1"><a href="basic-syntax.html#cb90-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nchar</span>(v1)</span></code></pre></div>
+<pre><code>## [1] 1 1 1 1 1 2</code></pre>
+<p>Regardless of whether you are using numerical or character vectors, indexing works in the same way.</p>
+<p>e.g. To get the 3rd element of each vector:</p>
+<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb92-1"><a href="basic-syntax.html#cb92-1" aria-hidden="true" tabindex="-1"></a>v1[<span class="dv">3</span>]</span></code></pre></div>
+<pre><code>## [1] 7</code></pre>
+<div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb94-1"><a href="basic-syntax.html#cb94-1" aria-hidden="true" tabindex="-1"></a>the_week[<span class="dv">3</span>]</span></code></pre></div>
+<pre><code>## [1] &quot;Wednesday&quot;</code></pre>
+<p>e.g. to get the 5th and 5th elements of each vector:</p>
+<div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb96-1"><a href="basic-syntax.html#cb96-1" aria-hidden="true" tabindex="-1"></a>v1[<span class="dv">5</span><span class="sc">:</span><span class="dv">6</span>]</span></code></pre></div>
+<pre><code>## [1]  9 10</code></pre>
+<div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb98-1"><a href="basic-syntax.html#cb98-1" aria-hidden="true" tabindex="-1"></a>the_week[<span class="dv">5</span><span class="sc">:</span><span class="dv">6</span>]</span></code></pre></div>
+<pre><code>## [1] &quot;Friday&quot;   &quot;Saturday&quot;</code></pre>
+<p>e.g. to get the first, fourth, and sixth element of each vector:</p>
+<div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb100-1"><a href="basic-syntax.html#cb100-1" aria-hidden="true" tabindex="-1"></a>v1[<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">4</span>,<span class="dv">6</span>)]</span></code></pre></div>
+<pre><code>## [1]  5  8 10</code></pre>
+<div class="sourceCode" id="cb102"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb102-1"><a href="basic-syntax.html#cb102-1" aria-hidden="true" tabindex="-1"></a>the_week[<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">4</span>,<span class="dv">6</span>)]</span></code></pre></div>
+<pre><code>## [1] &quot;Monday&quot;   &quot;Thursday&quot; &quot;Saturday&quot;</code></pre>
+</div>
+<div id="naming-of-objects" class="section level2" number="2.5">
+<h2><span class="header-section-number">2.5</span> Naming of objects</h2>
+<p>One of the hardest things in R is deciding what to name things. You run out of ideas very fast! There’s only so many times you can call things <code>x</code> or <code>df</code> or <code>v1</code> before you get bored. The best names tend to be short and memorable. If you were saving a vector of color names for example, you might want to call it <code>mycolors</code>:</p>
+<div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb104-1"><a href="basic-syntax.html#cb104-1" aria-hidden="true" tabindex="-1"></a>mycolors <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;mistyrose&quot;</span>, <span class="st">&quot;dodgerblue&quot;</span>, <span class="st">&quot;pink&quot;</span>)</span></code></pre></div>
+<p>There are some important rules for the naming of objects. These are some DOs and some important DON’Ts:</p>
+<ul>
+<li><p>you can use characters or numbers in object names, or both</p></li>
+<li><p>do not use spaces</p></li>
+<li><p>try to use lower case ideally</p></li>
+<li><p>do not use any punctuation in names for objects, dataframes or column names except for the period <code>.</code> or underscore <code>_</code>. Everything else is forbidden.</p></li>
+<li><p>if you do use an underscore <code>_</code> it cannot go at the beginning, e.g.</p></li>
+</ul>
+<div class="sourceCode" id="cb105"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb105-1"><a href="basic-syntax.html#cb105-1" aria-hidden="true" tabindex="-1"></a>_mynumber <span class="ot">&lt;-</span> <span class="dv">17</span></span></code></pre></div>
+<pre><code>## Error: &lt;text&gt;:1:1: unexpected input
+## 1: _
+##     ^</code></pre>
+<ul>
+<li><p>you can use a period <code>.</code> at the beginning of an object name, but please don’t.</p></li>
+<li><p>periods <code>.</code> and underscores <code>_</code> are best used in the middle of object names to help read the name, e.g.</p></li>
+</ul>
+<div class="sourceCode" id="cb107"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb107-1"><a href="basic-syntax.html#cb107-1" aria-hidden="true" tabindex="-1"></a>prime_numbers <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">5</span>,<span class="dv">7</span>,<span class="dv">11</span>,<span class="dv">13</span>)</span>
+<span id="cb107-2"><a href="basic-syntax.html#cb107-2" aria-hidden="true" tabindex="-1"></a>prime_numbers</span></code></pre></div>
+<pre><code>## [1]  1  3  5  7 11 13</code></pre>
+<ul>
+<li>but even better, use short object names!</li>
+</ul>
+<div class="sourceCode" id="cb109"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb109-1"><a href="basic-syntax.html#cb109-1" aria-hidden="true" tabindex="-1"></a>primes <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">5</span>,<span class="dv">7</span>,<span class="dv">11</span>,<span class="dv">13</span>)</span>
+<span id="cb109-2"><a href="basic-syntax.html#cb109-2" aria-hidden="true" tabindex="-1"></a>primes</span></code></pre></div>
+<pre><code>## [1]  1  3  5  7 11 13</code></pre>
+<ul>
+<li>you should avoid using certain words, as they have other meanings in R and calling something else by that name could confuse things. Examples of words to avoid: <code>if</code>, <code>else</code>, <code>repeat</code>, <code>library</code>, <code>break</code>, <code>while</code>, <code>stop</code>, <code>function</code>, <code>for</code>, <code>in</code>, <code>next</code>, <code>TRUE</code>, <code>FALSE</code>, <code>NULL</code>, <code>Inf</code>, <code>NaN</code>, <code>NA</code>, <code>data</code>, etc. That still leaves a lot of words you can use.</li>
+</ul>
+<p>Usually when you start to write one of these words in R, you’ll notice that they change color in the script (to which color depends upon your color settings) - this indicates that these words are ‘special’.</p>
+<ul>
+<li>for the same reason, there are several letters that I would avoid using, because they have special meaning: e.g. <code>c</code>, <code>t</code>, <code>T</code>, <code>F</code>. The last two are short for <code>TRUE</code> and <code>FALSE</code>. We’ve already seen <code>c()</code> in action. <code>t()</code> means to transpose data. You might find that we’ve called some objects of numbers <code>t</code> in this course - sorry in advance if we broke this ‘rule’.</li>
+</ul>
+</div>
+<div id="logical-operators" class="section level2" number="2.6">
+<h2><span class="header-section-number">2.6</span> Logical Operators</h2>
+<p>The R language contains several bits of punctuation that can be used for what’s termed ‘logical operators’. These will lead to an output of either <code>TRUE</code> or <code>FALSE</code> being printed to the console. It’s easiest to work out what they do by just seeing them in action:</p>
+<div class="sourceCode" id="cb111"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb111-1"><a href="basic-syntax.html#cb111-1" aria-hidden="true" tabindex="-1"></a><span class="st">&quot;is equals to&quot;</span></span></code></pre></div>
+<pre><code>## [1] &quot;is equals to&quot;</code></pre>
+<div class="sourceCode" id="cb113"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb113-1"><a href="basic-syntax.html#cb113-1" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span><span class="sc">+</span><span class="dv">2</span> <span class="sc">==</span> <span class="dv">4</span></span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<div class="sourceCode" id="cb115"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb115-1"><a href="basic-syntax.html#cb115-1" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span><span class="sc">+</span><span class="dv">2</span> <span class="sc">==</span> <span class="dv">5</span></span></code></pre></div>
+<pre><code>## [1] FALSE</code></pre>
+<p>The double equals sign <code>==</code> checks if the left hand side is equal to the right hands side. In the top example, 2+2 does equal 4 so we get a <code>TRUE</code>, while in the bottom example, 2+5 does not equal 5 so we get a <code>FALSE</code>.</p>
+<p>You don’t have to check one thing at a time. You could check all elements of a vector at once:</p>
+<div class="sourceCode" id="cb117"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb117-1"><a href="basic-syntax.html#cb117-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">10</span>, <span class="dv">15</span>, <span class="dv">10</span>, <span class="dv">1</span>, <span class="dv">11</span>, <span class="dv">10</span>)</span>
+<span id="cb117-2"><a href="basic-syntax.html#cb117-2" aria-hidden="true" tabindex="-1"></a>x <span class="sc">==</span> <span class="dv">10</span></span></code></pre></div>
+<pre><code>## [1] FALSE  TRUE FALSE  TRUE FALSE FALSE  TRUE</code></pre>
+<p>Here it is saying which elements of <code>x</code> are equal to 10 or not.</p>
+<p>If you want to ask whether something is <code>not equal to</code> something, then you use <code>!=</code> like this:</p>
+<div class="sourceCode" id="cb119"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb119-1"><a href="basic-syntax.html#cb119-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">10</span>, <span class="dv">15</span>, <span class="dv">10</span>, <span class="dv">1</span>, <span class="dv">11</span>, <span class="dv">10</span>)</span>
+<span id="cb119-2"><a href="basic-syntax.html#cb119-2" aria-hidden="true" tabindex="-1"></a>x <span class="sc">!=</span> <span class="dv">10</span></span></code></pre></div>
+<pre><code>## [1]  TRUE FALSE  TRUE FALSE  TRUE  TRUE FALSE</code></pre>
+<p>Other logical operators are <code>&lt;</code>, <code>&lt;=</code>, <code>&gt;</code> and <code>&gt;=</code> and can be used in the usual mathematical way:</p>
+<div class="sourceCode" id="cb121"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb121-1"><a href="basic-syntax.html#cb121-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">10</span>, <span class="dv">15</span>, <span class="dv">10</span>, <span class="dv">1</span>, <span class="dv">11</span>, <span class="dv">10</span>)</span>
+<span id="cb121-2"><a href="basic-syntax.html#cb121-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb121-3"><a href="basic-syntax.html#cb121-3" aria-hidden="true" tabindex="-1"></a>x <span class="sc">&lt;</span> <span class="dv">10</span></span></code></pre></div>
+<pre><code>## [1]  TRUE FALSE FALSE FALSE  TRUE FALSE FALSE</code></pre>
+<div class="sourceCode" id="cb123"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb123-1"><a href="basic-syntax.html#cb123-1" aria-hidden="true" tabindex="-1"></a>x <span class="sc">&lt;=</span> <span class="dv">10</span></span></code></pre></div>
+<pre><code>## [1]  TRUE  TRUE FALSE  TRUE  TRUE FALSE  TRUE</code></pre>
+<div class="sourceCode" id="cb125"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb125-1"><a href="basic-syntax.html#cb125-1" aria-hidden="true" tabindex="-1"></a>x <span class="sc">&gt;</span> <span class="dv">10</span></span></code></pre></div>
+<pre><code>## [1] FALSE FALSE  TRUE FALSE FALSE  TRUE FALSE</code></pre>
+<div class="sourceCode" id="cb127"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb127-1"><a href="basic-syntax.html#cb127-1" aria-hidden="true" tabindex="-1"></a>x <span class="sc">&gt;=</span> <span class="dv">10</span></span></code></pre></div>
+<pre><code>## [1] FALSE  TRUE  TRUE  TRUE FALSE  TRUE  TRUE</code></pre>
+<p>You can also add up the logical output. Say you wanted to know how many of your vector of <code>x</code> were equal to 10. You can use <code>sum()</code> to add up. With the <code>TRUE</code> AND <code>FALSE</code> output, <code>sum()</code> will count up the number of <code>TRUE</code>s you have. (It considers <code>TRUE</code> to be 1’s and <code>FALSE</code> to be 0’s)</p>
+<div class="sourceCode" id="cb129"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb129-1"><a href="basic-syntax.html#cb129-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">10</span>, <span class="dv">15</span>, <span class="dv">10</span>, <span class="dv">1</span>, <span class="dv">11</span>, <span class="dv">10</span>)</span>
+<span id="cb129-2"><a href="basic-syntax.html#cb129-2" aria-hidden="true" tabindex="-1"></a>x <span class="sc">==</span> <span class="dv">10</span></span></code></pre></div>
+<pre><code>## [1] FALSE  TRUE FALSE  TRUE FALSE FALSE  TRUE</code></pre>
+<div class="sourceCode" id="cb131"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb131-1"><a href="basic-syntax.html#cb131-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(x<span class="sc">==</span><span class="dv">10</span>)</span></code></pre></div>
+<pre><code>## [1] 3</code></pre>
+<p><strong>Indexing Vectors with Logical Operators</strong></p>
+<p>This is all a bit abstract and vague as to why we should care about logical operators. One common situation we use them is when we want to subset vectors. Remember, we use the square brackets <code>[]</code> to index a vector like this:</p>
+<div class="sourceCode" id="cb133"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb133-1"><a href="basic-syntax.html#cb133-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">10</span>, <span class="dv">15</span>, <span class="dv">10</span>, <span class="dv">1</span>, <span class="dv">11</span>, <span class="dv">10</span>)</span>
+<span id="cb133-2"><a href="basic-syntax.html#cb133-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb133-3"><a href="basic-syntax.html#cb133-3" aria-hidden="true" tabindex="-1"></a>x[<span class="dv">5</span>]</span></code></pre></div>
+<pre><code>## [1] 1</code></pre>
+<div class="sourceCode" id="cb135"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb135-1"><a href="basic-syntax.html#cb135-1" aria-hidden="true" tabindex="-1"></a>x[<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>]</span></code></pre></div>
+<pre><code>## [1]  5 10</code></pre>
+<p>Above we first got the 5th element of <code>x</code> and then we got the first and second elements of <code>x</code>. We can also grab things from vectors using logic. Effectively keeping those elements that give the output <code>TRUE</code> in response to the logic statement. Here are examples:</p>
+<div class="sourceCode" id="cb137"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb137-1"><a href="basic-syntax.html#cb137-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">10</span>, <span class="dv">15</span>, <span class="dv">10</span>, <span class="dv">1</span>, <span class="dv">11</span>, <span class="dv">10</span>)</span>
+<span id="cb137-2"><a href="basic-syntax.html#cb137-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb137-3"><a href="basic-syntax.html#cb137-3" aria-hidden="true" tabindex="-1"></a>x[x<span class="sc">==</span><span class="dv">10</span>]</span></code></pre></div>
+<pre><code>## [1] 10 10 10</code></pre>
+<div class="sourceCode" id="cb139"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb139-1"><a href="basic-syntax.html#cb139-1" aria-hidden="true" tabindex="-1"></a>x[x<span class="sc">!=</span><span class="dv">10</span>]</span></code></pre></div>
+<pre><code>## [1]  5 15  1 11</code></pre>
+<div class="sourceCode" id="cb141"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb141-1"><a href="basic-syntax.html#cb141-1" aria-hidden="true" tabindex="-1"></a>x[x<span class="sc">&gt;</span><span class="dv">10</span>]</span></code></pre></div>
+<pre><code>## [1] 15 11</code></pre>
+<p>Another funky piece of syntax that comes in useful from time to time is <code>%in%</code>. You can basically use it only keep those elements that match those that exist inside another element.</p>
+<div class="sourceCode" id="cb143"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb143-1"><a href="basic-syntax.html#cb143-1" aria-hidden="true" tabindex="-1"></a>stuff <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">5</span>, <span class="dv">15</span>)</span>
+<span id="cb143-2"><a href="basic-syntax.html#cb143-2" aria-hidden="true" tabindex="-1"></a>x[x <span class="sc">%in%</span> stuff]</span></code></pre></div>
+<pre><code>## [1]  5 15  1</code></pre>
+</div>
+<div id="some-things-that-are-useful-to-know." class="section level2" number="2.7">
+<h2><span class="header-section-number">2.7</span> Some things that are useful to know.</h2>
+<p><strong>whitespace</strong></p>
+<p>R doesn’t, on the whole, care that much about whitespace - this is space that is between code. It just ignores it. For instance, all of the following give the same result (what’s happening here is that <code>a</code> and <code>b</code> are <code>vectors</code> that each have three <code>elements</code>. Telling <code>a+b</code> will make it add the first element of <code>a</code> to the first element of <code>b</code> and then the 2nd element of <code>a</code> to the 2nd element of <code>b</code> and so on:</p>
+<div class="sourceCode" id="cb145"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb145-1"><a href="basic-syntax.html#cb145-1" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>)</span>
+<span id="cb145-2"><a href="basic-syntax.html#cb145-2" aria-hidden="true" tabindex="-1"></a>b <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>)</span>
+<span id="cb145-3"><a href="basic-syntax.html#cb145-3" aria-hidden="true" tabindex="-1"></a>a <span class="sc">+</span> b</span></code></pre></div>
+<pre><code>## [1] 5 7 9</code></pre>
+<div class="sourceCode" id="cb147"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb147-1"><a href="basic-syntax.html#cb147-1" aria-hidden="true" tabindex="-1"></a>a<span class="ot">&lt;-</span> <span class="fu">c</span>(   <span class="dv">1</span>,            <span class="dv">2</span>,     <span class="dv">3</span>)</span>
+<span id="cb147-2"><a href="basic-syntax.html#cb147-2" aria-hidden="true" tabindex="-1"></a>b <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>           )</span>
+<span id="cb147-3"><a href="basic-syntax.html#cb147-3" aria-hidden="true" tabindex="-1"></a>a <span class="sc">+</span>              b</span></code></pre></div>
+<pre><code>## [1] 5 7 9</code></pre>
+<div class="sourceCode" id="cb149"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb149-1"><a href="basic-syntax.html#cb149-1" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>    ,<span class="dv">2</span>,   <span class="dv">3</span>)</span>
+<span id="cb149-2"><a href="basic-syntax.html#cb149-2" aria-hidden="true" tabindex="-1"></a>b <span class="ot">&lt;-</span>    <span class="fu">c</span>(    <span class="dv">4</span>,<span class="dv">5</span>  ,<span class="dv">6</span>)</span>
+<span id="cb149-3"><a href="basic-syntax.html#cb149-3" aria-hidden="true" tabindex="-1"></a>            a <span class="sc">+</span>    b</span></code></pre></div>
+<pre><code>## [1] 5 7 9</code></pre>
+<p>Hopefully, you get the point.</p>
+<p>You can also leave whitespace across lines and R will, for the most part, jump to the code ahead and not worry about the whitespace. This example looks ugly because the commas, numbers, and brackets are all on different lines, but R reads it ok:</p>
+<div class="sourceCode" id="cb151"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb151-1"><a href="basic-syntax.html#cb151-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(  </span>
+<span id="cb151-2"><a href="basic-syntax.html#cb151-2" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb151-3"><a href="basic-syntax.html#cb151-3" aria-hidden="true" tabindex="-1"></a>   <span class="dv">4</span>, <span class="dv">5</span>, </span>
+<span id="cb151-4"><a href="basic-syntax.html#cb151-4" aria-hidden="true" tabindex="-1"></a>       </span>
+<span id="cb151-5"><a href="basic-syntax.html#cb151-5" aria-hidden="true" tabindex="-1"></a>       </span>
+<span id="cb151-6"><a href="basic-syntax.html#cb151-6" aria-hidden="true" tabindex="-1"></a>       <span class="dv">3</span>,    <span class="dv">6</span></span>
+<span id="cb151-7"><a href="basic-syntax.html#cb151-7" aria-hidden="true" tabindex="-1"></a>       </span>
+<span id="cb151-8"><a href="basic-syntax.html#cb151-8" aria-hidden="true" tabindex="-1"></a>       ,   <span class="dv">14</span></span>
+<span id="cb151-9"><a href="basic-syntax.html#cb151-9" aria-hidden="true" tabindex="-1"></a>       )</span>
+<span id="cb151-10"><a href="basic-syntax.html#cb151-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb151-11"><a href="basic-syntax.html#cb151-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb151-12"><a href="basic-syntax.html#cb151-12" aria-hidden="true" tabindex="-1"></a>x</span></code></pre></div>
+<pre><code>## [1]  4  5  3  6 14</code></pre>
+<p>Although this is possible. Please, please, don’t do it! It’s ugly to read, and what’s more, there are situations in which it can cause you problems.</p>
+<p>Indeed, there are some important place where whitespace needs to be adhered to.</p>
+<p>Firstly, when using the assignment operator <code>&lt;-</code>. R cannot stand it if you put a space in between the <code>&lt;</code> and the <code>-</code>. e.g.</p>
+<div class="sourceCode" id="cb153"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb153-1"><a href="basic-syntax.html#cb153-1" aria-hidden="true" tabindex="-1"></a>eg <span class="sc">&lt;</span> <span class="sc">-</span> <span class="dv">5</span><span class="sc">:</span><span class="dv">10</span></span></code></pre></div>
+<pre><code>## Error in eval(expr, envir, enclos): object &#39;eg&#39; not found</code></pre>
+<div class="sourceCode" id="cb155"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb155-1"><a href="basic-syntax.html#cb155-1" aria-hidden="true" tabindex="-1"></a>eg</span></code></pre></div>
+<pre><code>## Error in eval(expr, envir, enclos): object &#39;eg&#39; not found</code></pre>
+<p>It is stating here that <code>object 'eg' not found</code> because it thinks you’re trying to ask it if <code>eg</code> is <code>less than</code> <code>-5:10</code>. If <code>eg</code> already existed, then you need to be extra careful here. We won’t go into what could happen in that situation, but it could be bad! So, golden rule, no spaces with <code>&lt;-</code> !</p>
+<p>Secondly, in future sections on carpentry and visualization, you’ll use some syntax that <code>pipes</code> or chains together a series of commands. These operators are <code>+</code> or <code>%&gt;%</code>. When using this syntax, you need to finish each line (expect the last line) with one of these pipe syntaxes. If you do not do that, you’ll get an error message, because R won’t jump to the later lines when it is chaining things together. Although this might be a bit early in your R journey to mention - it is such a frequent error, that we just wanted to reference it here. Hopefully, this will be a useful reference aid if you see this error.</p>
+<p>Here’s a simple example of what this looks like.</p>
+<div class="sourceCode" id="cb157"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb157-1"><a href="basic-syntax.html#cb157-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">4</span>, <span class="dv">6</span>, <span class="dv">5</span>, <span class="dv">10</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">7</span>)</span>
+<span id="cb157-2"><a href="basic-syntax.html#cb157-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb157-3"><a href="basic-syntax.html#cb157-3" aria-hidden="true" tabindex="-1"></a>x </span>
+<span id="cb157-4"><a href="basic-syntax.html#cb157-4" aria-hidden="true" tabindex="-1"></a><span class="sc">%&gt;%</span> unique</span>
+<span id="cb157-5"><a href="basic-syntax.html#cb157-5" aria-hidden="true" tabindex="-1"></a>  </span></code></pre></div>
+<pre><code>## Error: &lt;text&gt;:4:1: unexpected SPECIAL
+## 3: x 
+## 4: %&gt;%
+##    ^</code></pre>
+<p>Here we get an error message saying <code>Error: unexpected SPECIAL in "%&gt;%"</code>. What has happened is that R read the lines where we assigned the numbers to <code>x</code> and then on the line that just had <code>x</code> it printed out the numbers. Then when it got to <code>%&gt;% unique</code> it didn’t know what this was referring to. When using chain syntax such as <code>%&gt;%</code> you cannot start a new line with it. Instead you should write:</p>
+<div class="sourceCode" id="cb159"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb159-1"><a href="basic-syntax.html#cb159-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">4</span>, <span class="dv">6</span>, <span class="dv">5</span>, <span class="dv">10</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">7</span>)</span>
+<span id="cb159-2"><a href="basic-syntax.html#cb159-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb159-3"><a href="basic-syntax.html#cb159-3" aria-hidden="true" tabindex="-1"></a>x  <span class="sc">%&gt;%</span> unique</span></code></pre></div>
+<pre><code>## [1]  3  5  6  7  4 10</code></pre>
+<p>Now, it has processed the code appropriately and the output is what we want. Basically, we took our vector of <code>x</code> and extracted all the unique numbers.</p>
+<p>A golden rule should be - be neat with your code !!! and this will avoid a lot of errors and problems.</p>
+<p><strong>Other common errors</strong></p>
+<p><em>Close your brackets</em></p>
+<p>Missing commas or brackets might be the most common errors! You will get an error message though, and it usually will tell you what you did wrong. Also, when you start to type <code>(</code> RStudio will automatically autocomplete to write <code>()</code> which helps you to not forget to close your bracket.</p>
+<div class="sourceCode" id="cb161"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb161-1"><a href="basic-syntax.html#cb161-1" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">7</span></span></code></pre></div>
+<pre><code>## Error: &lt;text&gt;:2:0: unexpected end of input
+## 1: a &lt;- c(4, 4, 2, 7
+##    ^</code></pre>
+<p>When you forget to close your brackets, but you run your code anyway, you’ll notice that in your console you get a flashing bar and the cursor still has a plus sign like this :</p>
+<p><img src="img/plus.png" /></p>
+<p>This is telling you that it’s waiting for something else to finish the code. It expected you to close your brackets! If you do this and you want to reset to get back to the <code>&gt;</code> cursor sign (which means it’s ready for action), then just click next to the plus on the flashing <code>|</code> and hit <code>Esc</code> key. This should reset it to the <code>&gt;</code> cursor, and look like this:</p>
+<p><img src="img/plusok.png" /></p>
+<p><em>Don’t forget commas</em></p>
+<p>Commas need to be watched out for too. They are usually used to split separate items up, such as numbers in a vector or arguments in a function (see section <a href="basic-syntax.html#functions">2.9</a>). Missing them out can cause issues! For instance, here we are trying to make the vector <code>b</code> have the numbers 3, 6, 9 &amp; 10. But the way we write it, R might think we mean 3, 6 &amp; 910 because we forgot the comma. Remember, R often ignores spaces. Fortunately, R catches it because it ‘knows’ numbers need to be paid attention to - and suggests that you’ve missed out a comma. Well, technically it tells you <code>Error: unexpected numeric constant in ....</code> which doesn’t help much - but it’s because we forgot the comma.</p>
+<div class="sourceCode" id="cb163"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb163-1"><a href="basic-syntax.html#cb163-1" aria-hidden="true" tabindex="-1"></a>b <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">6</span>, <span class="dv">9</span> <span class="dv">10</span>)</span></code></pre></div>
+<pre><code>## Error: &lt;text&gt;:1:16: unexpected numeric constant
+## 1: b &lt;- c(3, 6, 9 10
+##                    ^</code></pre>
+<p>RStudio can help you as you write code. During most of this course, you will be following code already written by us. However, in the <code>try for yourself</code> examples, you’ll have to fill in blanks. Whenever there is an issue with code and it won’t run, RStudio flags this for you as soon as it realizes. It will give you a big red circle with an X inside of it. These appear in your script. You can see an example below for our problems with missing brackets and commas.</p>
+<p><img src="img/x.png" /></p>
+<p>Another thing that often happens with commas, is that people forget to put something in between them. Here’s this issue:</p>
+<div class="sourceCode" id="cb165"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb165-1"><a href="basic-syntax.html#cb165-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">5</span>,  <span class="dv">8</span>, )</span></code></pre></div>
+<pre><code>## Error in c(5, 8, ): argument 3 is empty</code></pre>
+<p>You get warned that one of your <code>arguments</code> are empty. If you scroll away from your code, you’ll get the X in the red circle telling you something is wrong. If your cursor is still by your code, you may get a yellow warning triangle telling you to beware, similar to this:</p>
+<p><img src="img/yellow.png" /></p>
+<p><em>Check your quote marks</em></p>
+<p>Quote marks <code>"hello"</code> or <code>'hello'</code> are often used in R when we want to make sure something is a character (i.e. text). Most commonly used when we’re inputting data that include words, or when we’re stating a color, or when we’re adding a title or a label to a graph.</p>
+<p>An error that we often see is that quote marks are either missing or not closed. Up to this point in the book, we haven’t yet covered the situations in which this is most likely to occur - so don’t worry about following this code just yet. We’re actually trying to make a scatterplot, that we discuss more in section <a href="data-visualization.html#scatterplots">4.3</a>. Instead, just focus on the error message:</p>
+<div class="sourceCode" id="cb167"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb167-1"><a href="basic-syntax.html#cb167-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb167-2"><a href="basic-syntax.html#cb167-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mtcars, <span class="fu">aes</span>(<span class="at">x=</span>wt, <span class="at">y=</span>mpg)) <span class="sc">+</span> <span class="fu">geom_point</span>(<span class="at">color =</span> purple)</span></code></pre></div>
+<pre><code>## Error in layer(data = data, mapping = mapping, stat = stat, geom = GeomPoint, : object &#39;purple&#39; not found</code></pre>
+<p>Note that it says <code>object 'purple' not found</code>. That’s because, even though we are trying to make the points of the scatterplot purple, because we didn’t put it in quotes, it’s looking for the <code>object</code> called purple. It thinks there is something called purple that contains the information it needs. The actual code should include purple in quotes, to make sure it processes the word ‘purple’ literally:</p>
+<div class="sourceCode" id="cb169"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb169-1"><a href="basic-syntax.html#cb169-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb169-2"><a href="basic-syntax.html#cb169-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mtcars, <span class="fu">aes</span>(<span class="at">x=</span>wt, <span class="at">y=</span>mpg)) <span class="sc">+</span> <span class="fu">geom_point</span>(<span class="at">color =</span> <span class="st">&quot;purple&quot;</span>)</span></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-62-1.png" width="672" /></p>
+<p>For the most part in R, you can choose whether you use double quotes <code>"</code> or single quotes <code>'</code> when using quotes. Just make sure you match them, and close them. For example, the following examples are correct:</p>
+<div class="sourceCode" id="cb170"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb170-1"><a href="basic-syntax.html#cb170-1" aria-hidden="true" tabindex="-1"></a>days <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Monday&quot;</span>, <span class="st">&quot;Tuesday&quot;</span>, <span class="st">&quot;Wednesday&quot;</span>)</span>
+<span id="cb170-2"><a href="basic-syntax.html#cb170-2" aria-hidden="true" tabindex="-1"></a>days</span></code></pre></div>
+<pre><code>## [1] &quot;Monday&quot;    &quot;Tuesday&quot;   &quot;Wednesday&quot;</code></pre>
+<div class="sourceCode" id="cb172"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb172-1"><a href="basic-syntax.html#cb172-1" aria-hidden="true" tabindex="-1"></a>days <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&#39;Monday&#39;</span>, <span class="st">&#39;Tuesday&#39;</span>, <span class="st">&#39;Wednesday&#39;</span>)</span>
+<span id="cb172-2"><a href="basic-syntax.html#cb172-2" aria-hidden="true" tabindex="-1"></a>days</span></code></pre></div>
+<pre><code>## [1] &quot;Monday&quot;    &quot;Tuesday&quot;   &quot;Wednesday&quot;</code></pre>
+<p>You can also do this, although it looks a bit odd:</p>
+<div class="sourceCode" id="cb174"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb174-1"><a href="basic-syntax.html#cb174-1" aria-hidden="true" tabindex="-1"></a>days <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&#39;Monday&#39;</span>, <span class="st">&quot;Tuesday&quot;</span>, <span class="st">&#39;Wednesday&#39;</span>)</span>
+<span id="cb174-2"><a href="basic-syntax.html#cb174-2" aria-hidden="true" tabindex="-1"></a>days</span></code></pre></div>
+<pre><code>## [1] &quot;Monday&quot;    &quot;Tuesday&quot;   &quot;Wednesday&quot;</code></pre>
+<p>Here are some examples of what happens if you don’t close your quotes:</p>
+<div class="sourceCode" id="cb176"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb176-1"><a href="basic-syntax.html#cb176-1" aria-hidden="true" tabindex="-1"></a>days <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Monday, &quot;</span>Tuesday<span class="st">&quot;, &quot;</span>Wednesday<span class="st">&quot;)</span></span></code></pre></div>
+<pre><code>## Error: &lt;text&gt;:1:21: unexpected symbol
+## 1: days &lt;- c(&quot;Monday, &quot;Tuesday
+##                         ^</code></pre>
+<p>Often you’ll get the error message <code>Error: unexpected symbol...</code> in such situations. This is usually a clue to look for a punctuation error.</p>
+<p>Another think you’ll notice when you make this error, is that the colors of your code don’t look right. Notice that the colors of each day aren’t consistent:</p>
+<p><img src="img/quotes.png" /></p>
+<p>In general, we’d recommend that when you need to use quotes, that the double quotes <code>"hello"</code> are the better option. There are two reasons for this. First, if you start to type those in R then the second quote mark magically appears. RStudio knows you’re using quotes and already produces the closing quote. This doesn’t happen (for some reason) when you use the single quote <code>'hello'</code>. Secondly, often we use quote marks because we’re adding a title or a label to something. Some example code to add a title to a graph might be:</p>
+<div class="sourceCode" id="cb178"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb178-1"><a href="basic-syntax.html#cb178-1" aria-hidden="true" tabindex="-1"></a>p <span class="sc">+</span> <span class="fu">ggtitle</span>(<span class="st">&quot;Tyler&#39;s first graph&quot;</span>)</span></code></pre></div>
+<p>Notice in this title that one of the words requires an apostrophe <code>'</code>. If you had used single quotes to wrap around <code>Tyler's first graph</code> then this would have caused confusion as to where you wanted to end the text string. This only arises when using single quotes - so we say that double quotes are safer!</p>
+<p><em>Typos are bad!</em></p>
+<p>R can only run the code that you tell it to run….. (well this is not 100% true… but wait until the end of the paragraph for that). If you don’t precisely tell it what you want, it will get confused or angry. If you typo, then this can cause problems. Let’s do an example. Say we want to make two vectors called <code>apples</code> and <code>oranges</code> and we want to add them together. This works:</p>
+<div class="sourceCode" id="cb179"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb179-1"><a href="basic-syntax.html#cb179-1" aria-hidden="true" tabindex="-1"></a>apples <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">7</span>, <span class="dv">10</span>)</span>
+<span id="cb179-2"><a href="basic-syntax.html#cb179-2" aria-hidden="true" tabindex="-1"></a>oranges <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">2</span>)</span>
+<span id="cb179-3"><a href="basic-syntax.html#cb179-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb179-4"><a href="basic-syntax.html#cb179-4" aria-hidden="true" tabindex="-1"></a>apples <span class="sc">+</span> oranges</span></code></pre></div>
+<pre><code>## [1]  7  8 12</code></pre>
+<p>but this will not work:</p>
+<div class="sourceCode" id="cb181"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb181-1"><a href="basic-syntax.html#cb181-1" aria-hidden="true" tabindex="-1"></a>apples <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">7</span>, <span class="dv">10</span>)</span>
+<span id="cb181-2"><a href="basic-syntax.html#cb181-2" aria-hidden="true" tabindex="-1"></a>oranges <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">2</span>)</span>
+<span id="cb181-3"><a href="basic-syntax.html#cb181-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb181-4"><a href="basic-syntax.html#cb181-4" aria-hidden="true" tabindex="-1"></a>appless <span class="sc">+</span> oranges</span></code></pre></div>
+<pre><code>## Error in eval(expr, envir, enclos): object &#39;appless&#39; not found</code></pre>
+<p>You’ll get the error saying <code>object 'blah' not found</code>. This is the most common error that we see. Basically, it cannot find an object (be it a vector or a dataframe) if it’s not spelled correctly. This also applies to column names of dataframes and so on. R is also case sensitive. The following doesn’t work:</p>
+<div class="sourceCode" id="cb183"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb183-1"><a href="basic-syntax.html#cb183-1" aria-hidden="true" tabindex="-1"></a>apples <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">7</span>, <span class="dv">10</span>)</span>
+<span id="cb183-2"><a href="basic-syntax.html#cb183-2" aria-hidden="true" tabindex="-1"></a>oranges <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">2</span>)</span>
+<span id="cb183-3"><a href="basic-syntax.html#cb183-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb183-4"><a href="basic-syntax.html#cb183-4" aria-hidden="true" tabindex="-1"></a>apples <span class="sc">+</span> ORANGES</span></code></pre></div>
+<pre><code>## Error in eval(expr, envir, enclos): object &#39;ORANGES&#39; not found</code></pre>
+<p>It will not automatically realize you meant <code>oranges</code>.</p>
+<p>However, there is a bit of help that RStudio will give you. Look what happens when we write <code>ORANGES</code> in our code script:</p>
+<p><img src="img/oranges.png" /></p>
+<p>It automatically popped up <code>oranges</code> as a suggestion. The little colored icon to the left of it indicates that it is in an object. So - RStudio can be your friend!</p>
+<p>Actually, when you first start to type the first letter of any object, you can hit the <code>Tab</code> key and various options will pop up for you to choose from. You can then either use your up and down arrows or your mouse to click on the thing you want. In the example below, you can see it includes our <code>oranges</code> object and ton of other stuff that we don’t need right now that also beings with <code>o</code>. This is super helpful when you’ve forgotten what you called something:</p>
+<p><img src="img/oranges1.png" /></p>
+<ul>
+<li>We said that it’s not 100% true that R cannot ‘guess’ what you mean. There are a few exceptions. One example, is that sometimes R can guess the name of a column in a dataset if you only type half of it or the first few letters. However, many programmers think this is a terrible thing to be able to do and so perhaps we should just forget about it. We would highly recommend always writing everything precisely.</li>
+</ul>
+<div id="tab-is-your-friend" class="section level3" number="2.7.1">
+<h3><span class="header-section-number">2.7.1</span> Tab is your friend</h3>
+<p>As seen from the example above, the <code>Tab</code> key can be used to get help as you’re writing code. This is a super useful little trick as it can be hard to remember the names of some of the commands (functions) in R. Earlier in this section we saw that it was possible to calculate the <code>sum</code> of a vector with a function called <code>sum()</code>. However, what if you forgot the name of this but you just had a vague recollection that it began with an <code>s</code> ? You could start to type <code>s</code> and then hit the <code>Tab</code> key. Scroll through the list that pops up by your code until you find the one that you think is correct!</p>
+<p><img src="img/sum.png" /></p>
+<p>You’ll also notice that you get a big yellow help box that appears to the side. This gives you a bit more information about what the thing you’ve highlighted does - and this may help jog your memory as to what you were looking for.</p>
+<p>After you have clicked on the thing you want- it will automatically include it in your script- and you’re good to go:</p>
+<p><img src="img/sum1.png" /></p>
+</div>
+</div>
+<div id="error-messages" class="section level2" number="2.8">
+<h2><span class="header-section-number">2.8</span> Error Messages</h2>
+<p>We’ll be honest here and say that often times when you get an error message, they aren’t massively helpful. Or, at least this was the case until recently. There still are many error messages that don’t really help you too much in learning what you did wrong, but if you make errors when using the <code>tidyverse</code> (see section <a href="introduction-to-data-carpentry.html#tidyverse">3.5</a>) such as when making visualization - these error messages are much more helpful now than they once were.</p>
+<p>Making errors when coding is part of the learning curve though. It’s like learning to play the piano. There is almost no way you can do it just by watching somebody else. You have to practice and be ok with making small mistakes. At first they catch you out, but over time you’ll realize when you’re about to mess up and you’ll avoid it. Or, you’ll mess up and be faster at working out how to get past it.</p>
+<p>If people are stuck on particular error messages during this course - please do let us know. We’ll try and collate an FAQ of error messages that we can provide answers to - that will hopefully make the learning process a lot less painful.</p>
+</div>
+<div id="functions" class="section level2" number="2.9">
+<h2><span class="header-section-number">2.9</span> Functions</h2>
+<p>Functions are operations that you can conduct in R. There are many built-in functions to R, and several that come in packages that we can install and load in.</p>
+<p>There is usually (although not always) an object that is the focus of the function. Functions have names and end in brackets. We’ve already met some of these, e.g.:</p>
+<p><code>sum()</code>
+<code>length()</code>
+<code>c()</code>
+<code>sqrt()</code></p>
+<p>As we go through the course, we’ll see lots more functions and it will become second nature to use them. There is one additional thing that we’ll bring up at this point. The things that you put inside functions are called <code>arguments</code>. Sometimes you’ll see them called <code>parameters</code> - but that has other meanings in statistics, so let’s use ‘arguments’. Some functions have one argument, others have more. Most functions have defaults for these arguments, so if you don’t include them, it will still run using it’s predefined default.</p>
+<p>Let’s illustrate this by introducing you to the function called <code>round()</code>. This function will round numbers to various decimal places. Let’s use the number <code>17.10771947</code> as an example. What does round do to this number?</p>
+<div class="sourceCode" id="cb185"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb185-1"><a href="basic-syntax.html#cb185-1" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fl">17.10771947</span>)</span></code></pre></div>
+<pre><code>## [1] 17</code></pre>
+<p>It’s default is to round it to 0 decimal places. Inside of <code>round()</code> the number is in the position of the 1st argument. <code>round()</code> can have two arguments - the second one relates to how many decimal places you would like to round to. So, if you want to round to 3 decimal places, you need to do this:</p>
+<div class="sourceCode" id="cb187"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb187-1"><a href="basic-syntax.html#cb187-1" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fl">17.10771047</span>, <span class="dv">3</span>)</span></code></pre></div>
+<pre><code>## [1] 17.108</code></pre>
+<p>Now we have two arguments. In actual fact, those arguments have names, and you can most often work out what the names for the arguments should be from help guides. Technically, what we have just performed is the following:</p>
+<div class="sourceCode" id="cb189"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb189-1"><a href="basic-syntax.html#cb189-1" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="at">x =</span> <span class="fl">17.10771047</span>, <span class="at">digits =</span> <span class="dv">3</span>)</span></code></pre></div>
+<pre><code>## [1] 17.108</code></pre>
+<p>But as you have already worked out, we didn’t need to write the names of the arguments. R worked it out already. What if we’d got the arguments, the wrong way round?</p>
+<div class="sourceCode" id="cb191"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb191-1"><a href="basic-syntax.html#cb191-1" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="dv">3</span>, <span class="fl">17.10771047</span>)</span></code></pre></div>
+<pre><code>## [1] 3</code></pre>
+<p>Now it defaulted to giving us the first argument to zero decimal places. Because the second argument isn’t a whole number (integer) then it just ignored it. What if you keep these in this order, but give them their correct argument names?</p>
+<div class="sourceCode" id="cb193"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb193-1"><a href="basic-syntax.html#cb193-1" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="at">digits =</span> <span class="dv">3</span>, <span class="at">x =</span> <span class="fl">17.10771047</span>)</span></code></pre></div>
+<pre><code>## [1] 17.108</code></pre>
+<p>Now it works as expected again. The moral of this story is that it is best practice to use the argument names! If you hit the <code>Tab</code> key as you type out a function name, then it will give you a list of possible arguments for that function:</p>
+<p><img src="img/round.png" /></p>
+<p>Arguments of functions aren’t always numeric. Sometimes you need to write in words, punctuation or the logical statements <code>TRUE</code> or <code>FALSE</code> to tell the function what you want to do. An example is the function <code>paste</code> which joins together two objects. Here we tell it to paste together three objects with an underscore:</p>
+<div class="sourceCode" id="cb195"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb195-1"><a href="basic-syntax.html#cb195-1" aria-hidden="true" tabindex="-1"></a>obj1 <span class="ot">&lt;-</span> <span class="st">&quot;hello&quot;</span></span>
+<span id="cb195-2"><a href="basic-syntax.html#cb195-2" aria-hidden="true" tabindex="-1"></a>obj2 <span class="ot">&lt;-</span> <span class="st">&quot;james&quot;</span></span>
+<span id="cb195-3"><a href="basic-syntax.html#cb195-3" aria-hidden="true" tabindex="-1"></a>obj3 <span class="ot">&lt;-</span> <span class="st">&quot;curley&quot;</span></span>
+<span id="cb195-4"><a href="basic-syntax.html#cb195-4" aria-hidden="true" tabindex="-1"></a><span class="fu">paste</span>(obj1, obj2, obj3, <span class="at">sep =</span> <span class="st">&quot;_&quot;</span>)</span></code></pre></div>
+<pre><code>## [1] &quot;hello_james_curley&quot;</code></pre>
+<p>In functions, punctuation and characters need quote marks around them. <code>TRUE</code> and <code>FALSE</code> should not have punctuation around them.</p>
+<p>If you want to continue with R then it’s also possible to write custom functions that will do what we do whatever we ask them to do - but that is for the future.</p>
+<p><strong>R works from in to out</strong></p>
+<p>One thing to remember about R as a coding language is that it will apply functions from in to out. It will start with the innermost function in a statement, and then move outwards.</p>
+<p>So, if you have the following vector:</p>
+<div class="sourceCode" id="cb197"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb197-1"><a href="basic-syntax.html#cb197-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">5</span>, <span class="dv">3</span>, <span class="dv">7</span>, <span class="dv">10</span>, <span class="dv">11</span>, <span class="dv">13</span>, <span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">2</span>, <span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">3</span>, <span class="dv">7</span>)</span>
+<span id="cb197-2"><a href="basic-syntax.html#cb197-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb197-3"><a href="basic-syntax.html#cb197-3" aria-hidden="true" tabindex="-1"></a>x</span></code></pre></div>
+<pre><code>##  [1]  1  5  3  7 10 11 13  5  6  2  5  6  3  7</code></pre>
+<p>and you want to get the unique numbers (i.e. get rid of the repeating numbers and only keep one of each of all the numbers), then you could use <code>unique()</code>:</p>
+<div class="sourceCode" id="cb199"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb199-1"><a href="basic-syntax.html#cb199-1" aria-hidden="true" tabindex="-1"></a><span class="fu">unique</span>(x)</span></code></pre></div>
+<pre><code>## [1]  1  5  3  7 10 11 13  6  2</code></pre>
+<p>If you wanted to take the unique numbers, and then square root each of them you could wrap <code>unique(x)</code> in <code>sqrt()</code> like this:</p>
+<div class="sourceCode" id="cb201"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb201-1"><a href="basic-syntax.html#cb201-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sqrt</span>(<span class="fu">unique</span>(x))</span></code></pre></div>
+<pre><code>## [1] 1.000000 2.236068 1.732051 2.645751 3.162278 3.316625 3.605551 2.449490 1.414214</code></pre>
+<p>That code is still just about readable.</p>
+<p>However, say you want to (for some reason), keep the unique numbers, then take the square root of each number, then add them all up, then round the answer to 2 decimal places. This is what it would like:</p>
+<div class="sourceCode" id="cb203"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb203-1"><a href="basic-syntax.html#cb203-1" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">sum</span>(<span class="fu">sqrt</span>(<span class="fu">unique</span>(x))), <span class="at">digits =</span> <span class="dv">2</span>)</span></code></pre></div>
+<pre><code>## [1] 21.56</code></pre>
+<p>It finds the object you are working with <code>x</code> then the first function outside of that is <code>unique()</code> then the next one outside of <code>unique(x)</code> is <code>sqrt()</code>, then the next one outside of <code>sqrt(unique(x))</code> is <code>sum()</code> and the next one outside of <code>sum(sqrt(unique(x)))</code> is <code>round()</code>. That’s quite hard to follow!</p>
+<p>Another approach would be to do this in steps and assign objects at each step, like this:</p>
+<div class="sourceCode" id="cb205"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb205-1"><a href="basic-syntax.html#cb205-1" aria-hidden="true" tabindex="-1"></a>x</span></code></pre></div>
+<pre><code>##  [1]  1  5  3  7 10 11 13  5  6  2  5  6  3  7</code></pre>
+<div class="sourceCode" id="cb207"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb207-1"><a href="basic-syntax.html#cb207-1" aria-hidden="true" tabindex="-1"></a>x1 <span class="ot">&lt;-</span> <span class="fu">unique</span>(x)</span>
+<span id="cb207-2"><a href="basic-syntax.html#cb207-2" aria-hidden="true" tabindex="-1"></a>x1</span></code></pre></div>
+<pre><code>## [1]  1  5  3  7 10 11 13  6  2</code></pre>
+<div class="sourceCode" id="cb209"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb209-1"><a href="basic-syntax.html#cb209-1" aria-hidden="true" tabindex="-1"></a>x2 <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(x1)</span>
+<span id="cb209-2"><a href="basic-syntax.html#cb209-2" aria-hidden="true" tabindex="-1"></a>x2</span></code></pre></div>
+<pre><code>## [1] 1.000000 2.236068 1.732051 2.645751 3.162278 3.316625 3.605551 2.449490 1.414214</code></pre>
+<div class="sourceCode" id="cb211"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb211-1"><a href="basic-syntax.html#cb211-1" aria-hidden="true" tabindex="-1"></a>x3 <span class="ot">&lt;-</span> <span class="fu">sum</span>(x2)</span>
+<span id="cb211-2"><a href="basic-syntax.html#cb211-2" aria-hidden="true" tabindex="-1"></a>x3</span></code></pre></div>
+<pre><code>## [1] 21.56203</code></pre>
+<div class="sourceCode" id="cb213"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb213-1"><a href="basic-syntax.html#cb213-1" aria-hidden="true" tabindex="-1"></a>x4 <span class="ot">&lt;-</span> <span class="fu">round</span>(x3, <span class="at">digits =</span> <span class="dv">2</span>)</span>
+<span id="cb213-2"><a href="basic-syntax.html#cb213-2" aria-hidden="true" tabindex="-1"></a>x4</span></code></pre></div>
+<pre><code>## [1] 21.56</code></pre>
+<p>Another alternative is to chain the syntax together (see next section).</p>
+</div>
+<div id="chaining-syntax" class="section level2" number="2.10">
+<h2><span class="header-section-number">2.10</span> Chaining Syntax</h2>
+<p>The code in the previous section was pretty ugly! Here it is:</p>
+<div class="sourceCode" id="cb215"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb215-1"><a href="basic-syntax.html#cb215-1" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">sum</span>(<span class="fu">sqrt</span>(<span class="fu">unique</span>(x))), <span class="at">digits =</span> <span class="dv">2</span>)</span></code></pre></div>
+<pre><code>## [1] 21.56</code></pre>
+<p>We could rewrite it however by chaining together the outputs of each function using the <code>pipe</code> or chaining piece of syntax that looks like this <code>%&gt;%</code>. This is how it would look if we chained each function together:</p>
+<div class="sourceCode" id="cb217"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb217-1"><a href="basic-syntax.html#cb217-1" aria-hidden="true" tabindex="-1"></a>x <span class="sc">%&gt;%</span></span>
+<span id="cb217-2"><a href="basic-syntax.html#cb217-2" aria-hidden="true" tabindex="-1"></a>  unique <span class="sc">%&gt;%</span></span>
+<span id="cb217-3"><a href="basic-syntax.html#cb217-3" aria-hidden="true" tabindex="-1"></a>  sqrt <span class="sc">%&gt;%</span></span>
+<span id="cb217-4"><a href="basic-syntax.html#cb217-4" aria-hidden="true" tabindex="-1"></a>  sum <span class="sc">%&gt;%</span></span>
+<span id="cb217-5"><a href="basic-syntax.html#cb217-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">round</span>(<span class="dv">2</span>)</span></code></pre></div>
+<pre><code>## [1] 21.56</code></pre>
+<p>Let’s break down what’s happening bit by bit. Essentially you can read the <code>%&gt;%</code> as <code>and next do this</code>.</p>
+<p>This first bit just keeps the numbers that are unique in the vector, removing duplicates:</p>
+<div class="sourceCode" id="cb219"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb219-1"><a href="basic-syntax.html#cb219-1" aria-hidden="true" tabindex="-1"></a>x <span class="sc">%&gt;%</span></span>
+<span id="cb219-2"><a href="basic-syntax.html#cb219-2" aria-hidden="true" tabindex="-1"></a>  unique </span></code></pre></div>
+<pre><code>## [1]  1  5  3  7 10 11 13  6  2</code></pre>
+<p>Next we square root each of those unique numbers:</p>
+<div class="sourceCode" id="cb221"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb221-1"><a href="basic-syntax.html#cb221-1" aria-hidden="true" tabindex="-1"></a>x <span class="sc">%&gt;%</span></span>
+<span id="cb221-2"><a href="basic-syntax.html#cb221-2" aria-hidden="true" tabindex="-1"></a>  unique <span class="sc">%&gt;%</span></span>
+<span id="cb221-3"><a href="basic-syntax.html#cb221-3" aria-hidden="true" tabindex="-1"></a>  sqrt </span></code></pre></div>
+<pre><code>## [1] 1.000000 2.236068 1.732051 2.645751 3.162278 3.316625 3.605551 2.449490 1.414214</code></pre>
+<p>Then the next step is to add up those six square rooted numbers:</p>
+<div class="sourceCode" id="cb223"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb223-1"><a href="basic-syntax.html#cb223-1" aria-hidden="true" tabindex="-1"></a>x <span class="sc">%&gt;%</span></span>
+<span id="cb223-2"><a href="basic-syntax.html#cb223-2" aria-hidden="true" tabindex="-1"></a>  unique <span class="sc">%&gt;%</span></span>
+<span id="cb223-3"><a href="basic-syntax.html#cb223-3" aria-hidden="true" tabindex="-1"></a>  sqrt <span class="sc">%&gt;%</span></span>
+<span id="cb223-4"><a href="basic-syntax.html#cb223-4" aria-hidden="true" tabindex="-1"></a>  sum </span></code></pre></div>
+<pre><code>## [1] 21.56203</code></pre>
+<p>Then we round that value to two decimal places:</p>
+<div class="sourceCode" id="cb225"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb225-1"><a href="basic-syntax.html#cb225-1" aria-hidden="true" tabindex="-1"></a>x <span class="sc">%&gt;%</span></span>
+<span id="cb225-2"><a href="basic-syntax.html#cb225-2" aria-hidden="true" tabindex="-1"></a>  unique <span class="sc">%&gt;%</span></span>
+<span id="cb225-3"><a href="basic-syntax.html#cb225-3" aria-hidden="true" tabindex="-1"></a>  sqrt <span class="sc">%&gt;%</span></span>
+<span id="cb225-4"><a href="basic-syntax.html#cb225-4" aria-hidden="true" tabindex="-1"></a>  sum <span class="sc">%&gt;%</span></span>
+<span id="cb225-5"><a href="basic-syntax.html#cb225-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">round</span>(<span class="dv">2</span>)</span></code></pre></div>
+<pre><code>## [1] 21.56</code></pre>
+<p>It’s also worth pointing out that you don’t have to start a new line after every <code>%&gt;%</code>, you can have these in the middle of rows. Just don’t start rows with them (see errors above)!</p>
+<p>This also is fine:</p>
+<div class="sourceCode" id="cb227"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb227-1"><a href="basic-syntax.html#cb227-1" aria-hidden="true" tabindex="-1"></a>x <span class="sc">%&gt;%</span> unique <span class="sc">%&gt;%</span> sqrt <span class="sc">%&gt;%</span> sum <span class="sc">%&gt;%</span> <span class="fu">round</span>(<span class="dv">2</span>)</span></code></pre></div>
+<pre><code>## [1] 21.56</code></pre>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="introduction-to-data-carpentry.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/jalapic/introstats/edit/master/02-BasicSyntax.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": "https://github.com/jalapic/introstats/blob/master/02-BasicSyntax.Rmd",
+"text": null
+},
+"download": null,
+"search": {
+"engine": "lunr",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
