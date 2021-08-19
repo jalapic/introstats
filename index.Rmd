@@ -1,5 +1,5 @@
 --- 
-title: "PSY317L & PSY120R Guidebook"
+title: "PSY317L & PSY120R Textbook"
 author: "James P. Curley & Tyler M. Milewski"
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
