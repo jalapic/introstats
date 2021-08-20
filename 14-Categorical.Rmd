@@ -1,0 +1,14 @@
+# Analyzing Categorical Data
+
+Background to analyzing categorical data.
+
+
+
+
+## Chi-Squared Test
+
+
+
+## Fisher-Exact Test
+
+
