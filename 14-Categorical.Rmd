@@ -1,14 +1,3 @@
 # Analyzing Categorical Data
 
-Background to analyzing categorical data.
-
-
-
-
-## Chi-Squared Test
-
-
-
-## Fisher-Exact Test
-
-
+This chapter will explore analyzing categorical data using Chi-Squared and Fisher-Exact tests.
