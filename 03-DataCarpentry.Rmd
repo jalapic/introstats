@@ -631,7 +631,7 @@ For example, to only keep the columns `ids`, `smoker`, `hrate` and `children`, w
 
 ```{r}
 bw %>% 
-  select(ids, smoker,hrate,children)
+  select(ids, smoker, hrate, children)
 ```
 
 
