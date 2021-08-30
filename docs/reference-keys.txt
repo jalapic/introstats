@@ -4,6 +4,21 @@ how-to-use-this-guide
 acknowledgements
 references
 other-places-to-find-help-about-r-and-statistics
+introduction
+downloading-r
+downloading-rstudio
+successful-installation
+using-rcloud
+the-rstudio-environment
+running-code
+the-console
+rscript
+saving-an-rscript
+open-an-existing-rscript
+running-code-in-scripts
+packages
+working-with-rstudio-in-psy317l
+quitting-rstudio
 basic-syntax
 simple-mathematical-syntax
 assignment
@@ -195,3 +210,4 @@ t-test-permutation
 correlation-coefficient-permutation-tests
 permutation-test-for-a-paired-t-test
 permutation-tests-in-packages
+analyzing-categorical-data

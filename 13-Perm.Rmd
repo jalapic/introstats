@@ -409,7 +409,7 @@ We can apply the same principle of permutation to the paired t-test. Remember, e
 Let's look at the following data that record scores for the same individual over two time points - 'before' and 'after'.
 
 
-```{r}
+```{r, message=FALSE}
 
 # take a look at these before and after scores
 
@@ -531,7 +531,7 @@ This suggests that we have a highly significant `p=0.002` difference between our
 
 Above we wrote script from scratch to perform our permutation tests. In many ways, this is our preferred approach as it is more customizable. However, in some packages there are some permutation tests already available as functions.  One example is the `independence_test` from the package `coin` that will do a permutation t-test for between subjects. The code for this is below (this requires dataframes to be in the long format):
 
-```{r}
+```{r, message=FALSE}
 library(coin)
 
 head(ddf)
