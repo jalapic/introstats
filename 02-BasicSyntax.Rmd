@@ -400,6 +400,8 @@ There are some important rules for the naming of objects. These are some DOs and
 
 - try to use lower case ideally
 
+- do not start an object name with a number
+
 - do not use any punctuation in names for objects, dataframes or column names except for the period `.` or underscore `_`. Everything else is forbidden.
 
 - if you do use an underscore `_` it cannot go at the beginning, e.g.
