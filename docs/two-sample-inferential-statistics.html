@@ -24,7 +24,7 @@
 <meta name="author" content="James P. Curley &amp; Tyler M. Milewski" />
 
 
-<meta name="date" content="2021-08-21" />
+<meta name="date" content="2021-09-01" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -492,7 +492,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb1111-7"><a href="two-sample-inferential-statistics.html#cb1111-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="dv">15</span>, <span class="at">color=</span><span class="st">&quot;red&quot;</span>, <span class="at">lwd=</span><span class="dv">1</span>, <span class="at">lty=</span><span class="dv">1</span>)<span class="sc">+</span></span>
 <span id="cb1111-8"><a href="two-sample-inferential-statistics.html#cb1111-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="dv">12</span>, <span class="at">color=</span><span class="st">&quot;dodgerblue&quot;</span>, <span class="at">lwd=</span><span class="dv">1</span>, <span class="at">lty=</span><span class="dv">2</span>) <span class="sc">+</span></span>
 <span id="cb1111-9"><a href="two-sample-inferential-statistics.html#cb1111-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">2</span>,<span class="dv">26</span>,<span class="dv">2</span>))</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-528-1.png" width="672" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-486-1.png" width="672" /></p>
 <p>We can calculate the true difference in population means <span class="math inline">\(\mu_{A} - \mu_{B}\)</span> to be 2.997.</p>
 <div class="sourceCode" id="cb1112"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1112-1"><a href="two-sample-inferential-statistics.html#cb1112-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(A) <span class="sc">-</span> <span class="fu">mean</span>(B) </span></code></pre></div>
 <pre><code>## [1] 2.997348</code></pre>
@@ -502,12 +502,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb1114-2"><a href="two-sample-inferential-statistics.html#cb1114-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1114-3"><a href="two-sample-inferential-statistics.html#cb1114-3" aria-hidden="true" tabindex="-1"></a>a1 <span class="ot">&lt;-</span> <span class="fu">sample</span>(A, <span class="dv">17</span>)</span>
 <span id="cb1114-4"><a href="two-sample-inferential-statistics.html#cb1114-4" aria-hidden="true" tabindex="-1"></a>a1</span></code></pre></div>
-<pre><code>##  [1] 12.71908 12.92693 15.57082 10.12655 14.14926 11.05455 18.55350 16.56168 13.77205 11.85902 15.30585
-## [12] 19.11841 11.05516 17.02920 13.56701 12.41693 12.65853</code></pre>
+<pre><code>##  [1] 12.71908 12.92693 15.57082 10.12655 14.14926 11.05455 18.55350 16.56168
+##  [9] 13.77205 11.85902 15.30585 19.11841 11.05516 17.02920 13.56701 12.41693
+## [17] 12.65853</code></pre>
 <div class="sourceCode" id="cb1116"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1116-1"><a href="two-sample-inferential-statistics.html#cb1116-1" aria-hidden="true" tabindex="-1"></a>b1 <span class="ot">&lt;-</span> <span class="fu">sample</span>(B, <span class="dv">20</span>)</span>
 <span id="cb1116-2"><a href="two-sample-inferential-statistics.html#cb1116-2" aria-hidden="true" tabindex="-1"></a>b1</span></code></pre></div>
-<pre><code>##  [1] 13.858019 13.763390 15.319093 16.544886 12.123180 16.548515 14.489600 12.282872 17.494397 18.731744
-## [11] 15.390983 12.210302  4.441760 13.084765 16.135640 10.655858  8.588236 12.964748  8.492675 15.173493</code></pre>
+<pre><code>##  [1] 13.858019 13.763390 15.319093 16.544886 12.123180 16.548515 14.489600
+##  [8] 12.282872 17.494397 18.731744 15.390983 12.210302  4.441760 13.084765
+## [15] 16.135640 10.655858  8.588236 12.964748  8.492675 15.173493</code></pre>
 <div class="sourceCode" id="cb1118"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1118-1"><a href="two-sample-inferential-statistics.html#cb1118-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(a1)</span></code></pre></div>
 <pre><code>## [1] 14.02615</code></pre>
 <div class="sourceCode" id="cb1120"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1120-1"><a href="two-sample-inferential-statistics.html#cb1120-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(b1)</span></code></pre></div>
@@ -518,12 +520,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>We could do this again. Let’s select another sample from population A of size 17, and another sample from population B of size 20:</p>
 <div class="sourceCode" id="cb1124"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1124-1"><a href="two-sample-inferential-statistics.html#cb1124-1" aria-hidden="true" tabindex="-1"></a>a2 <span class="ot">&lt;-</span> <span class="fu">sample</span>(A, <span class="dv">17</span>)</span>
 <span id="cb1124-2"><a href="two-sample-inferential-statistics.html#cb1124-2" aria-hidden="true" tabindex="-1"></a>a2</span></code></pre></div>
-<pre><code>##  [1] 14.64137 14.27232 17.76051 13.22621 19.59587 17.75243 13.07573 15.97000 12.42184 15.64717 16.65829
-## [12] 14.46694 15.17954 14.59615 11.85324 12.99201 13.77815</code></pre>
+<pre><code>##  [1] 14.64137 14.27232 17.76051 13.22621 19.59587 17.75243 13.07573 15.97000
+##  [9] 12.42184 15.64717 16.65829 14.46694 15.17954 14.59615 11.85324 12.99201
+## [17] 13.77815</code></pre>
 <div class="sourceCode" id="cb1126"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1126-1"><a href="two-sample-inferential-statistics.html#cb1126-1" aria-hidden="true" tabindex="-1"></a>b2 <span class="ot">&lt;-</span> <span class="fu">sample</span>(B, <span class="dv">20</span>)</span>
 <span id="cb1126-2"><a href="two-sample-inferential-statistics.html#cb1126-2" aria-hidden="true" tabindex="-1"></a>b2</span></code></pre></div>
-<pre><code>##  [1] 12.329417 15.680443 11.936513  9.741032  9.916850 10.447803 13.427905  6.700831  4.941283 11.883711
-## [11] 10.742010 13.571716 12.491560 10.580204 12.902325 10.743859 14.281017 13.581381  6.859580  9.807432</code></pre>
+<pre><code>##  [1] 12.329417 15.680443 11.936513  9.741032  9.916850 10.447803 13.427905
+##  [8]  6.700831  4.941283 11.883711 10.742010 13.571716 12.491560 10.580204
+## [15] 12.902325 10.743859 14.281017 13.581381  6.859580  9.807432</code></pre>
 <div class="sourceCode" id="cb1128"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1128-1"><a href="two-sample-inferential-statistics.html#cb1128-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(a2)</span></code></pre></div>
 <pre><code>## [1] 14.93457</code></pre>
 <div class="sourceCode" id="cb1130"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1130-1"><a href="two-sample-inferential-statistics.html#cb1130-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(b2)</span></code></pre></div>
@@ -564,7 +568,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb1146-5"><a href="two-sample-inferential-statistics.html#cb1146-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;Difference in Sample Means&quot;</span>)<span class="sc">+</span></span>
 <span id="cb1146-6"><a href="two-sample-inferential-statistics.html#cb1146-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;Sampling Distribution of Difference in Sample Means&quot;</span>) <span class="sc">+</span></span>
 <span id="cb1146-7"><a href="two-sample-inferential-statistics.html#cb1146-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="fu">mean</span>(<span class="fu">unlist</span>(difs)), <span class="at">lwd=</span><span class="dv">1</span>, <span class="at">color=</span><span class="st">&quot;red&quot;</span>)</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-533-1.png" width="672" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-491-1.png" width="672" /></p>
 <p>As you can see, the sampling distribution is approximately symmetrical. If we ran it for more simulations, it would become even more symmetrical. The average (mean) difference in sample means across all samples is <span class="math inline">\(\Large \mu_{\overline{x}_{A} - \overline{x}_{B}}= 2.987\)</span> which is approximately equal to the real difference in population means <span class="math inline">\(\mu_{A} - \mu_{B}\)</span>.</p>
 <p>An obvious next question is what is the standard deviation of this sampling distribution? i.e. the standard deviation of the sampling distribution of the differences in sample means. If we knew this, then we’d be able to describe how likely or unlikely we were to get any particular difference in sample means in terms of how many sampling distribution standard deviations that score is away from the mean.</p>
 <p>There are actually two different formulas that we can use to work out the standard deviation - which we will discuss shortly (see section <a href="two-sample-inferential-statistics.html#pooled-standard-deviation">11.3</a>). In brief, it is a bit trickier to calculate the standard deviation of this sampling distribution compared to the standard deviation of the sampling distribution of sample means, because our difference in sample means uses two different samples each with their own sample standard deviation.</p>
@@ -608,18 +612,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb1162-6"><a href="two-sample-inferential-statistics.html#cb1162-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;Comparison of Population C vs D&quot;</span>)<span class="sc">+</span></span>
 <span id="cb1162-7"><a href="two-sample-inferential-statistics.html#cb1162-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="dv">10</span>, <span class="at">color=</span><span class="st">&quot;red&quot;</span>, <span class="at">lwd=</span><span class="dv">1</span>, <span class="at">lty=</span><span class="dv">1</span>)<span class="sc">+</span></span>
 <span id="cb1162-8"><a href="two-sample-inferential-statistics.html#cb1162-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="dv">10</span>, <span class="at">color=</span><span class="st">&quot;dodgerblue&quot;</span>, <span class="at">lwd=</span><span class="dv">1</span>, <span class="at">lty=</span><span class="dv">2</span>)</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-539-1.png" width="672" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-497-1.png" width="672" /></p>
 <p>For this example, let’s look at one sample of size 11 for population C and one sample of size 14 for population D.</p>
 <div class="sourceCode" id="cb1163"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1163-1"><a href="two-sample-inferential-statistics.html#cb1163-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1</span>)</span>
 <span id="cb1163-2"><a href="two-sample-inferential-statistics.html#cb1163-2" aria-hidden="true" tabindex="-1"></a>c1 <span class="ot">&lt;-</span> <span class="fu">sample</span>(C, <span class="dv">11</span>)</span>
 <span id="cb1163-3"><a href="two-sample-inferential-statistics.html#cb1163-3" aria-hidden="true" tabindex="-1"></a>d1 <span class="ot">&lt;-</span> <span class="fu">sample</span>(D, <span class="dv">14</span>)</span>
 <span id="cb1163-4"><a href="two-sample-inferential-statistics.html#cb1163-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1163-5"><a href="two-sample-inferential-statistics.html#cb1163-5" aria-hidden="true" tabindex="-1"></a>c1</span></code></pre></div>
-<pre><code>##  [1]  7.262896  7.512318 10.684988  4.151858  8.979111  5.265462 14.264197 11.874013  8.526464  6.230820
-## [11] 10.367020</code></pre>
+<pre><code>##  [1]  7.262896  7.512318 10.684988  4.151858  8.979111  5.265462 14.264197
+##  [8] 11.874013  8.526464  6.230820 10.367020</code></pre>
 <div class="sourceCode" id="cb1165"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1165-1"><a href="two-sample-inferential-statistics.html#cb1165-1" aria-hidden="true" tabindex="-1"></a>d1</span></code></pre></div>
-<pre><code>##  [1] 17.197083  5.400551 16.514897 11.088543  4.907419  9.764055 12.229622 12.116067 13.982912 15.453863
-## [11] 10.147816 15.458219 12.987520 10.339447</code></pre>
+<pre><code>##  [1] 17.197083  5.400551 16.514897 11.088543  4.907419  9.764055 12.229622
+##  [8] 12.116067 13.982912 15.453863 10.147816 15.458219 12.987520 10.339447</code></pre>
 <div class="sourceCode" id="cb1167"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1167-1"><a href="two-sample-inferential-statistics.html#cb1167-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(c1)</span></code></pre></div>
 <pre><code>## [1] 8.647195</code></pre>
 <div class="sourceCode" id="cb1169"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1169-1"><a href="two-sample-inferential-statistics.html#cb1169-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(d1)</span></code></pre></div>
@@ -655,7 +659,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb1184-6"><a href="two-sample-inferential-statistics.html#cb1184-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>() <span class="sc">+</span></span>
 <span id="cb1184-7"><a href="two-sample-inferential-statistics.html#cb1184-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;Sampling Distribution of Difference in Sample Means&quot;</span>) <span class="sc">+</span></span>
 <span id="cb1184-8"><a href="two-sample-inferential-statistics.html#cb1184-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="fu">mean</span>(<span class="fu">unlist</span>(difs1)), <span class="at">lwd=</span><span class="dv">1</span>, <span class="at">color=</span><span class="st">&quot;red&quot;</span>)</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-543-1.png" width="672" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-501-1.png" width="672" /></p>
 <div class="sourceCode" id="cb1185"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1185-1"><a href="two-sample-inferential-statistics.html#cb1185-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(<span class="fu">unlist</span>(difs1))  </span></code></pre></div>
 <pre><code>## [1] 0.001920558</code></pre>
 <p>After 20,000 samples of size 11 from population C and size 14 from population D, we find that the mean difference in sample means is <span class="math inline">\(\mu_{\overline{x}_C - \overline{x}_D} = -0.006\)</span>. This is pretty close to the true difference in population means of 0. If we were to run our simulation for longer to get even more differences in sample means, then our mean difference would get even closer to 0.</p>
@@ -776,7 +780,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb1218-8"><a href="two-sample-inferential-statistics.html#cb1218-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_jitter</span>(<span class="at">width=</span>.<span class="dv">1</span>, <span class="at">size=</span><span class="dv">2</span>) <span class="sc">+</span></span>
 <span id="cb1218-9"><a href="two-sample-inferential-statistics.html#cb1218-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>() <span class="sc">+</span></span>
 <span id="cb1218-10"><a href="two-sample-inferential-statistics.html#cb1218-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">&quot;firebrick&quot;</span>, <span class="st">&quot;dodgerblue&quot;</span>))</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-555-1.png" width="672" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-513-1.png" width="672" /></p>
 <p>We can also get the sample mean <span class="math inline">\(\overline{x}\)</span>, standard deviation <span class="math inline">\(s\)</span> and <span class="math inline">\(n\)</span> of each sample:</p>
 <div class="sourceCode" id="cb1219"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1219-1"><a href="two-sample-inferential-statistics.html#cb1219-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(anastasia)            </span></code></pre></div>
 <pre><code>## [1] 74.53333</code></pre>
@@ -896,7 +900,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb1259-3"><a href="two-sample-inferential-statistics.html#cb1259-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_jitter</span>(<span class="at">width=</span>.<span class="dv">1</span>, <span class="at">size=</span><span class="dv">2</span>) <span class="sc">+</span></span>
 <span id="cb1259-4"><a href="two-sample-inferential-statistics.html#cb1259-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>() <span class="sc">+</span></span>
 <span id="cb1259-5"><a href="two-sample-inferential-statistics.html#cb1259-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">&quot;firebrick&quot;</span>, <span class="st">&quot;dodgerblue&quot;</span>))</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-566-1.png" width="672" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-524-1.png" width="672" /></p>
 <p>We can see from our data, that the observed difference in sample means between the two groups is <span class="math inline">\(\overline{x}_A - \overline{x}_B = -0.759\)</span></p>
 <div class="sourceCode" id="cb1260"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1260-1"><a href="two-sample-inferential-statistics.html#cb1260-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(groupA) <span class="sc">-</span> <span class="fu">mean</span>(groupB)</span></code></pre></div>
 <pre><code>## [1] -0.7585714</code></pre>
@@ -988,7 +992,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb1292-14"><a href="two-sample-inferential-statistics.html#cb1292-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_flip</span>() <span class="sc">+</span></span>
 <span id="cb1292-15"><a href="two-sample-inferential-statistics.html#cb1292-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;&quot;</span>) <span class="sc">+</span></span>
 <span id="cb1292-16"><a href="two-sample-inferential-statistics.html#cb1292-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&quot;Estimate of Difference in Sample Means&quot;</span>)</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-578-1.png" width="672" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-536-1.png" width="672" /></p>
 </div>
 <div id="conducting-the-student-t-test-in-r" class="section level2" number="11.6">
 <h2><span class="header-section-number">11.6</span> Conducting the Student t-test in R</h2>
@@ -1000,7 +1004,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb1293-4"><a href="two-sample-inferential-statistics.html#cb1293-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_jitter</span>(<span class="at">width=</span>.<span class="dv">1</span>, <span class="at">size=</span><span class="dv">2</span>) <span class="sc">+</span></span>
 <span id="cb1293-5"><a href="two-sample-inferential-statistics.html#cb1293-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>() <span class="sc">+</span></span>
 <span id="cb1293-6"><a href="two-sample-inferential-statistics.html#cb1293-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">&quot;firebrick&quot;</span>, <span class="st">&quot;dodgerblue&quot;</span>))</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-579-1.png" width="672" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-537-1.png" width="672" /></p>
 <p>You can do the Student’s t-test either from data stored in vectors, or in dataframes.</p>
 <p>Here’s how to do it for data stored in vectors. The first two arguments should be the names of the two independent samples. The final argument of <code>var.equal = T</code> tells R to do a Student’s t-test by assuming that variances are equal between the two groups.</p>
 <div class="sourceCode" id="cb1294"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1294-1"><a href="two-sample-inferential-statistics.html#cb1294-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(anastasia, bernadette, <span class="at">var.equal =</span> T)</span></code></pre></div>
@@ -1101,10 +1105,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>To make a QQ plot, we use <code>qnorm()</code> followed by <code>qqline()</code>. What we are looking for here is for our data points to roughly stick to the diagonal line. This would mean that our data values are approximately in line with what we’d expect for a normal distribution:</p>
 <div class="sourceCode" id="cb1310"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1310-1"><a href="two-sample-inferential-statistics.html#cb1310-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qqnorm</span>(anastasia)</span>
 <span id="cb1310-2"><a href="two-sample-inferential-statistics.html#cb1310-2" aria-hidden="true" tabindex="-1"></a><span class="fu">qqline</span>(anastasia, <span class="at">col =</span> <span class="st">&quot;steelblue&quot;</span>, <span class="at">lwd =</span> <span class="dv">2</span>) <span class="co"># looks ok</span></span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-586-1.png" width="672" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-544-1.png" width="672" /></p>
 <div class="sourceCode" id="cb1311"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1311-1"><a href="two-sample-inferential-statistics.html#cb1311-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qqnorm</span>(bernadette)</span>
 <span id="cb1311-2"><a href="two-sample-inferential-statistics.html#cb1311-2" aria-hidden="true" tabindex="-1"></a><span class="fu">qqline</span>(bernadette, <span class="at">col =</span> <span class="st">&quot;steelblue&quot;</span>, <span class="at">lwd =</span> <span class="dv">2</span>) <span class="co"># looks ok</span></span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-586-2.png" width="672" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-544-2.png" width="672" /></p>
 <p>In both of our plots, the data points are roughly against the line, which is good evidence that our data are normally distributed. Having some variability is fine, especially with datapoints at the tail of the x-axes.</p>
 <p><strong>Homogeneity of Variance</strong></p>
 <p>Another assumption of the Student’s t-test is that we have homogeneity of variance between the populations that our samples come from. We assume this when we calculate the pooled standard deviation which helps us calculate the standard deviation of the sampling distribution.</p>
@@ -1214,7 +1218,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb1328-7"><a href="two-sample-inferential-statistics.html#cb1328-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_jitter</span>(<span class="at">width=</span>.<span class="dv">1</span>, <span class="at">size=</span><span class="dv">1</span>) <span class="sc">+</span></span>
 <span id="cb1328-8"><a href="two-sample-inferential-statistics.html#cb1328-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>() <span class="sc">+</span></span>
 <span id="cb1328-9"><a href="two-sample-inferential-statistics.html#cb1328-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values=</span><span class="fu">c</span>(<span class="st">&quot;lightseagreen&quot;</span>,<span class="st">&quot;darkseagreen&quot;</span>))</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-594-1.png" width="672" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-552-1.png" width="672" /></p>
 <p>The issue with this plot however, is that our data our paired. It looks as if there isn’t much of a difference between the two groups. But with paired data we are actually more interested in how each individual changes their own score over time, not how the overall mean of each group changes.</p>
 <p>There are two other ways to present paired data. A good visualization to use on paired data is a scatterplot, plotting each subject’s twos scores as one datapoint.</p>
 <div class="sourceCode" id="cb1329"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1329-1"><a href="two-sample-inferential-statistics.html#cb1329-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Scatterplot</span></span>
@@ -1232,7 +1236,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb1331-2"><a href="two-sample-inferential-statistics.html#cb1331-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
 <span id="cb1331-3"><a href="two-sample-inferential-statistics.html#cb1331-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>()<span class="sc">+</span></span>
 <span id="cb1331-4"><a href="two-sample-inferential-statistics.html#cb1331-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_abline</span>(<span class="at">intercept =</span><span class="dv">0</span> , <span class="at">slope =</span> <span class="dv">1</span>)</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-595-1.png" width="672" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-553-1.png" width="672" /></p>
 <p>As you can see with this scatterplot, we have also added a diagonal line through the plot. This line represents values that are equivalent on test 1 and test 2. Most dots are above this diagonal line. This shows us that for most subjects, they have a higher score on test 2 than they do on test 1. We have 20 dots because we have 20 individual subjects.</p>
 <p>Another option is to use a slope graph. Here we plot the individual dots of each group as if we are doing a boxplot, but then we join dots who are the same individual in each group together:</p>
 <div class="sourceCode" id="cb1332"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1332-1"><a href="two-sample-inferential-statistics.html#cb1332-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Slope Graph</span></span>
@@ -1240,7 +1244,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb1332-3"><a href="two-sample-inferential-statistics.html#cb1332-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">alpha=</span>.<span class="dv">6</span>, <span class="at">size=</span><span class="dv">2</span>)<span class="sc">+</span></span>
 <span id="cb1332-4"><a href="two-sample-inferential-statistics.html#cb1332-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">color=</span><span class="st">&quot;gray50&quot;</span>)<span class="sc">+</span></span>
 <span id="cb1332-5"><a href="two-sample-inferential-statistics.html#cb1332-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>()</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-596-1.png" width="672" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-554-1.png" width="672" /></p>
 <p>What we are looking for in a plot such as this is whether a majority of the lines are going in the same direction as each other - either up or down. In this particular example, the absolute increase of each line is quite small and so it’s harder to see the differences in this graph than the scatterplot. For other datasets, where there is a lot more variation in the magnitude and direction of the differences for each individual, the slope graph might be better than the scatterplot.</p>
 <div id="the-paired-t-test-is-a-one-sample-t-test" class="section level3" number="11.10.1">
 <h3><span class="header-section-number">11.10.1</span> The paired t-test is a one-sample t-test</h3>
@@ -1279,7 +1283,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb1335-3"><a href="two-sample-inferential-statistics.html#cb1335-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">color=</span><span class="st">&#39;black&#39;</span>, <span class="at">fill=</span><span class="st">&#39;green&#39;</span>, <span class="at">alpha=</span>.<span class="dv">4</span>, <span class="at">boundary=</span><span class="dv">0</span>, <span class="at">binwidth =</span> .<span class="dv">5</span>) <span class="sc">+</span></span>
 <span id="cb1335-4"><a href="two-sample-inferential-statistics.html#cb1335-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>()<span class="sc">+</span></span>
 <span id="cb1335-5"><a href="two-sample-inferential-statistics.html#cb1335-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="dv">0</span>, <span class="at">lty=</span><span class="dv">2</span>, <span class="at">color=</span><span class="st">&#39;black&#39;</span>)</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-598-1.png" width="672" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-556-1.png" width="672" /></p>
 <p>This shows us that the vast majority of scores are positive, indicating that the students generally did better on test 2 than test 1. The fist bar contains two values - one is a negative improvement score, and the other is 0.</p>
 <p>We can also get the observed sample mean and standard deviation of these differences:</p>
 <div class="sourceCode" id="cb1336"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1336-1"><a href="two-sample-inferential-statistics.html#cb1336-1" aria-hidden="true" tabindex="-1"></a><span class="co"># descriptives of the difference scores</span></span>
@@ -1292,7 +1296,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb1340"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1340-1"><a href="two-sample-inferential-statistics.html#cb1340-1" aria-hidden="true" tabindex="-1"></a><span class="co"># check normality of difference scores</span></span>
 <span id="cb1340-2"><a href="two-sample-inferential-statistics.html#cb1340-2" aria-hidden="true" tabindex="-1"></a><span class="fu">qqnorm</span>(chico<span class="sc">$</span>improvement)</span>
 <span id="cb1340-3"><a href="two-sample-inferential-statistics.html#cb1340-3" aria-hidden="true" tabindex="-1"></a><span class="fu">qqline</span>(chico<span class="sc">$</span>improvement, <span class="at">col =</span> <span class="st">&quot;steelblue&quot;</span>, <span class="at">lwd =</span> <span class="dv">2</span>) <span class="co"># bit better</span></span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-600-1.png" width="672" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-558-1.png" width="672" /></p>
 <div class="sourceCode" id="cb1341"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1341-1"><a href="two-sample-inferential-statistics.html#cb1341-1" aria-hidden="true" tabindex="-1"></a><span class="fu">shapiro.test</span>(chico<span class="sc">$</span>improvement)</span></code></pre></div>
 <pre><code>## 
 ##  Shapiro-Wilk normality test
@@ -1408,7 +1412,7 @@ scores is <span class="math inline">\(CI_{95\%} = 1.405[0.951, 1.859]\)</span>. 
 <span id="cb1356-5"><a href="two-sample-inferential-statistics.html#cb1356-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_jitter</span>(<span class="at">width=</span>.<span class="dv">1</span>) <span class="sc">+</span></span>
 <span id="cb1356-6"><a href="two-sample-inferential-statistics.html#cb1356-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>() <span class="sc">+</span></span>
 <span id="cb1356-7"><a href="two-sample-inferential-statistics.html#cb1356-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values=</span><span class="fu">c</span>(<span class="st">&quot;orange&quot;</span>, <span class="st">&quot;brown&quot;</span>))</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-607-1.png" width="672" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-565-1.png" width="672" /></p>
 <p>Looking at these data, it seems that the anti-anxiety drug group does have subjects with generally lower overall anxiety scores than the placebo group. A logical next step would be to think about doing an independent t-test.</p>
 <p>To check whether our data are normally distributed, and therefore appropriate for an independent t-test, we need to perform a Shapiro-Wilk test on the data:</p>
 <div class="sourceCode" id="cb1357"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1357-1"><a href="two-sample-inferential-statistics.html#cb1357-1" aria-hidden="true" tabindex="-1"></a><span class="co"># test if each group is approximately normally distributed</span></span>
@@ -1428,7 +1432,8 @@ scores is <span class="math inline">\(CI_{95\%} = 1.405[0.951, 1.859]\)</span>. 
 <p>An alternative approach would be to do what’s called a non-parametric alternative to the independent t-test. This test is called <strong>Wilcoxon Ranked Sum Test</strong> (also called a Mann-Whitney U test). Essentially this test ranks the data from both groups and examines whether one group has significantly more of the higher or lower ranks. Practically, what it is testing is whether there is a difference in the medians of the populations that the two samples came from.</p>
 <p>To run this test in R, we just use the function <code>wilcox.test()</code> and include our two vectors of data:</p>
 <div class="sourceCode" id="cb1361"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1361-1"><a href="two-sample-inferential-statistics.html#cb1361-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wilcox.test</span>(placebo, drug) <span class="co"># 2-tailed</span></span></code></pre></div>
-<pre><code>## Warning in wilcox.test.default(placebo, drug): cannot compute exact p-value with ties</code></pre>
+<pre><code>## Warning in wilcox.test.default(placebo, drug): cannot compute exact p-value
+## with ties</code></pre>
 <pre><code>## 
 ##  Wilcoxon rank sum test with continuity correction
 ## 
@@ -1530,7 +1535,7 @@ scores is <span class="math inline">\(CI_{95\%} = 1.405[0.951, 1.859]\)</span>. 
 <span id="cb1382-3"><a href="two-sample-inferential-statistics.html#cb1382-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
 <span id="cb1382-4"><a href="two-sample-inferential-statistics.html#cb1382-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>() <span class="sc">+</span></span>
 <span id="cb1382-5"><a href="two-sample-inferential-statistics.html#cb1382-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_abline</span>(<span class="at">intercept =</span><span class="dv">0</span> , <span class="at">slope =</span> <span class="dv">1</span>)</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-617-1.png" width="672" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-575-1.png" width="672" /></p>
 <p>Looking at this, it looks like lots of low values are close to the line, some middle values are below the line and some are a long way above the line.</p>
 <p>We can next test if the population median of the difference scores is equal to 0 or not. We use the <code>wilcox.test</code> function but use the <code>paired=T</code> argument to ensure we do a paired test.</p>
 <div class="sourceCode" id="cb1383"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1383-1"><a href="two-sample-inferential-statistics.html#cb1383-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Wilcoxon Signed Rank Test</span></span>
