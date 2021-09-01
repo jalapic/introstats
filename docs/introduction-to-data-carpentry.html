@@ -24,7 +24,7 @@
 <meta name="author" content="James P. Curley &amp; Tyler M. Milewski" />
 
 
-<meta name="date" content="2021-08-21" />
+<meta name="date" content="2021-09-01" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -544,7 +544,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb236"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb236-1"><a href="introduction-to-data-carpentry.html#cb236-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ncol</span>(bmi) <span class="co"># how many columns in dataset</span></span></code></pre></div>
 <pre><code>## [1] 9</code></pre>
 <div class="sourceCode" id="cb238"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb238-1"><a href="introduction-to-data-carpentry.html#cb238-1" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(bmi) <span class="co"># column names</span></span></code></pre></div>
-<pre><code>## [1] &quot;id&quot;      &quot;age&quot;     &quot;bmi&quot;     &quot;chol&quot;    &quot;insulin&quot; &quot;dbp&quot;     &quot;sbp&quot;     &quot;smoke&quot;   &quot;educ&quot;</code></pre>
+<pre><code>## [1] &quot;id&quot;      &quot;age&quot;     &quot;bmi&quot;     &quot;chol&quot;    &quot;insulin&quot; &quot;dbp&quot;     &quot;sbp&quot;    
+## [8] &quot;smoke&quot;   &quot;educ&quot;</code></pre>
 <p>If you just want to view your entire dataset, there is a function for that.</p>
 <p><code>View(bmi)</code></p>
 </div>
@@ -600,28 +601,28 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>You can do the same thing with <code>tail()</code> to look at the bottom rows. The default again is 6, but you can tell it how many rows you wish to look at:</p>
 <div class="sourceCode" id="cb247"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb247-1"><a href="introduction-to-data-carpentry.html#cb247-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tail</span>(df)</span></code></pre></div>
 <pre><code>## # A tibble: 6 x 9
-##   type                                   sat_fat polysat_fat monosat_fat protein  carb  chol fiber  kcal
-##   &lt;chr&gt;                                    &lt;dbl&gt;       &lt;dbl&gt;       &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
-## 1 past process,swiss,lofat                 3.30        0.18        1.35     25.5   4.3    35     0   170
-## 2 cottage,lowfat,1% milkfat,w/veg          0.619       0.039       0.282    10.9   3       3     0    67
-## 3 past process,cheddar or american,lo na  19.7         0.988       8.93     22.2   1.6    94     0   375
-## 4 swiss,low sodium                        17.7         0.968       7.26     28.4   3.4    92     0   376
-## 5 swiss,low fat                            3.30        0.18        1.35     28.4   3.4    35     0   179
-## 6 mozzarella,lo na                        10.9         0.509       4.84     27.5   3.1    54     0   280</code></pre>
+##   type         sat_fat polysat_fat monosat_fat protein  carb  chol fiber  kcal
+##   &lt;chr&gt;          &lt;dbl&gt;       &lt;dbl&gt;       &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+## 1 past proces~   3.30        0.18        1.35     25.5   4.3    35     0   170
+## 2 cottage,low~   0.619       0.039       0.282    10.9   3       3     0    67
+## 3 past proces~  19.7         0.988       8.93     22.2   1.6    94     0   375
+## 4 swiss,low s~  17.7         0.968       7.26     28.4   3.4    92     0   376
+## 5 swiss,low f~   3.30        0.18        1.35     28.4   3.4    35     0   179
+## 6 mozzarella,~  10.9         0.509       4.84     27.5   3.1    54     0   280</code></pre>
 <div class="sourceCode" id="cb249"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb249-1"><a href="introduction-to-data-carpentry.html#cb249-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tail</span>(df, <span class="dv">10</span>)</span></code></pre></div>
 <pre><code>## # A tibble: 10 x 9
-##    type                                   sat_fat polysat_fat monosat_fat protein  carb  chol fiber  kcal
-##    &lt;chr&gt;                                    &lt;dbl&gt;       &lt;dbl&gt;       &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
-##  1 past process,american,lofat              4.41        0.222       2.00     24.6   3.5    35     0   180
-##  2 american cheddar,imitn                   8.79        0.409       4.10     16.7  11.6    36     0   239
-##  3 parmesan,lo na                          19.1         0.659       8.72     41.6   3.7    79     0   456
-##  4 cottage,lowfat,1% milkfat,no na          0.632       0.031       0.284    12.4   2.7     4     0    72
-##  5 past process,swiss,lofat                 3.30        0.18        1.35     25.5   4.3    35     0   170
-##  6 cottage,lowfat,1% milkfat,w/veg          0.619       0.039       0.282    10.9   3       3     0    67
-##  7 past process,cheddar or american,lo na  19.7         0.988       8.93     22.2   1.6    94     0   375
-##  8 swiss,low sodium                        17.7         0.968       7.26     28.4   3.4    92     0   376
-##  9 swiss,low fat                            3.30        0.18        1.35     28.4   3.4    35     0   179
-## 10 mozzarella,lo na                        10.9         0.509       4.84     27.5   3.1    54     0   280</code></pre>
+##    type        sat_fat polysat_fat monosat_fat protein  carb  chol fiber  kcal
+##    &lt;chr&gt;         &lt;dbl&gt;       &lt;dbl&gt;       &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+##  1 past proce~   4.41        0.222       2.00     24.6   3.5    35     0   180
+##  2 american c~   8.79        0.409       4.10     16.7  11.6    36     0   239
+##  3 parmesan,l~  19.1         0.659       8.72     41.6   3.7    79     0   456
+##  4 cottage,lo~   0.632       0.031       0.284    12.4   2.7     4     0    72
+##  5 past proce~   3.30        0.18        1.35     25.5   4.3    35     0   170
+##  6 cottage,lo~   0.619       0.039       0.282    10.9   3       3     0    67
+##  7 past proce~  19.7         0.988       8.93     22.2   1.6    94     0   375
+##  8 swiss,low ~  17.7         0.968       7.26     28.4   3.4    92     0   376
+##  9 swiss,low ~   3.30        0.18        1.35     28.4   3.4    35     0   179
+## 10 mozzarella~  10.9         0.509       4.84     27.5   3.1    54     0   280</code></pre>
 <p>We can also get various dimensions of a dataframe. <code>nrow()</code> gets the number of rows (also termed observations), <code>ncol()</code> gets the number of columns (also called variables), <code>dim()</code> returns both the number of rows and the number of columns, and <code>length()</code> is another way to get the number of columns.</p>
 <div class="sourceCode" id="cb251"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb251-1"><a href="introduction-to-data-carpentry.html#cb251-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(df)  </span></code></pre></div>
 <pre><code>## [1] 73</code></pre>
@@ -633,28 +634,28 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <pre><code>## [1] 9</code></pre>
 <p>As we showed earlier, <code>colnames()</code> is a very useful function for retrieving the names of columns in a dataframe. This is particularly useful when you can’t fit all of the columns onto your screen which is common with big datasets.</p>
 <div class="sourceCode" id="cb259"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb259-1"><a href="introduction-to-data-carpentry.html#cb259-1" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(df)</span></code></pre></div>
-<pre><code>## [1] &quot;type&quot;        &quot;sat_fat&quot;     &quot;polysat_fat&quot; &quot;monosat_fat&quot; &quot;protein&quot;     &quot;carb&quot;        &quot;chol&quot;       
-## [8] &quot;fiber&quot;       &quot;kcal&quot;</code></pre>
+<pre><code>## [1] &quot;type&quot;        &quot;sat_fat&quot;     &quot;polysat_fat&quot; &quot;monosat_fat&quot; &quot;protein&quot;    
+## [6] &quot;carb&quot;        &quot;chol&quot;        &quot;fiber&quot;       &quot;kcal&quot;</code></pre>
 <p>Sometimes you may wish to change column names. This is common when you’ve imported some messy data from elsewhere. Hopefully if it is your own data you named your columns well in the first place.</p>
 <p>The way to change column names is to assign the new name to the appropriate column, by indicating which column with square brackets <code>[]</code>:</p>
 <div class="sourceCode" id="cb261"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb261-1"><a href="introduction-to-data-carpentry.html#cb261-1" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(df)[<span class="dv">6</span>] <span class="ot">&lt;-</span> <span class="st">&quot;carbo&quot;</span></span>
 <span id="cb261-2"><a href="introduction-to-data-carpentry.html#cb261-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb261-3"><a href="introduction-to-data-carpentry.html#cb261-3" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(df)</span></code></pre></div>
-<pre><code>## [1] &quot;type&quot;        &quot;sat_fat&quot;     &quot;polysat_fat&quot; &quot;monosat_fat&quot; &quot;protein&quot;     &quot;carbo&quot;       &quot;chol&quot;       
-## [8] &quot;fiber&quot;       &quot;kcal&quot;</code></pre>
+<pre><code>## [1] &quot;type&quot;        &quot;sat_fat&quot;     &quot;polysat_fat&quot; &quot;monosat_fat&quot; &quot;protein&quot;    
+## [6] &quot;carbo&quot;       &quot;chol&quot;        &quot;fiber&quot;       &quot;kcal&quot;</code></pre>
 <p>In the above example, we changed the name of the 6th column to <code>carbo</code>. You can change all column names by doing the following:</p>
 <div class="sourceCode" id="cb263"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb263-1"><a href="introduction-to-data-carpentry.html#cb263-1" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(df) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;type1&quot;</span>, <span class="st">&quot;sat_fat1&quot;</span>, <span class="st">&quot;polysat_fat1&quot;</span>, <span class="st">&quot;monosat_fat1&quot;</span>, <span class="st">&quot;protein1&quot;</span>, <span class="st">&quot;carb1&quot;</span>, <span class="st">&quot;chol1&quot;</span>, <span class="st">&quot;fiber1&quot;</span>, <span class="st">&quot;kcal1&quot;</span>)</span>
 <span id="cb263-2"><a href="introduction-to-data-carpentry.html#cb263-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb263-3"><a href="introduction-to-data-carpentry.html#cb263-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(df)</span></code></pre></div>
 <pre><code>## # A tibble: 6 x 9
-##   type1     sat_fat1 polysat_fat1 monosat_fat1 protein1 carb1 chol1 fiber1 kcal1
-##   &lt;chr&gt;        &lt;dbl&gt;        &lt;dbl&gt;        &lt;dbl&gt;    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;
-## 1 blue          18.7        0.8           7.78     21.4  2.34    75      0   353
-## 2 brick         18.8        0.784         8.60     23.2  2.79    94      0   371
-## 3 brie          17.4        0.826         8.01     20.8  0.45   100      0   334
-## 4 camembert     15.3        0.724         7.02     19.8  0.46    72      0   300
-## 5 caraway       18.6        0.83          8.28     25.2  3.06    93      0   376
-## 6 cheddar       21.1        0.942         9.39     24.9  1.28   105      0   403</code></pre>
+##   type1   sat_fat1 polysat_fat1 monosat_fat1 protein1 carb1 chol1 fiber1 kcal1
+##   &lt;chr&gt;      &lt;dbl&gt;        &lt;dbl&gt;        &lt;dbl&gt;    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;
+## 1 blue        18.7        0.8           7.78     21.4  2.34    75      0   353
+## 2 brick       18.8        0.784         8.60     23.2  2.79    94      0   371
+## 3 brie        17.4        0.826         8.01     20.8  0.45   100      0   334
+## 4 camemb~     15.3        0.724         7.02     19.8  0.46    72      0   300
+## 5 caraway     18.6        0.83          8.28     25.2  3.06    93      0   376
+## 6 cheddar     21.1        0.942         9.39     24.9  1.28   105      0   403</code></pre>
 <p>Let’s return them back to the original values:</p>
 <div class="sourceCode" id="cb265"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb265-1"><a href="introduction-to-data-carpentry.html#cb265-1" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(df) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;type&quot;</span>, <span class="st">&quot;sat_fat&quot;</span>, <span class="st">&quot;polysat_fat&quot;</span>, <span class="st">&quot;monosat_fat&quot;</span>, <span class="st">&quot;protein&quot;</span>, <span class="st">&quot;carb&quot;</span>, <span class="st">&quot;chol&quot;</span>, <span class="st">&quot;fiber&quot;</span>, <span class="st">&quot;kcal&quot;</span>)</span>
 <span id="cb265-2"><a href="introduction-to-data-carpentry.html#cb265-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -676,9 +677,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>There are two indexing methods we need to learn. One is the <code>$</code> sign, which indicates we want to get data from a specific column. The other is the square brackets <code>[]</code>.</p>
 <p>The <code>$</code> indicates which column to call. For instance, if we wish to get all the data from the <code>chol</code> column of the dataset <code>df</code>, then we would type <code>df$chol</code> and it returns all the data in that column:</p>
 <div class="sourceCode" id="cb267"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb267-1"><a href="introduction-to-data-carpentry.html#cb267-1" aria-hidden="true" tabindex="-1"></a>df<span class="sc">$</span>chol</span></code></pre></div>
-<pre><code>##  [1]  75  94 100  72  93 105 103  95  17  13   7  10   4 110  89  89 116  94 114 110  90  89  79  89  64
-## [26]  54  96  74  88  68 123  69  51  31 104  90  92 102  94  94  85  72  94  85 105  79  46 105 105 105
-## [51]  21 100  12  88  55  62  65  11   4  63  18  14  54  35  36  79   4  35   3  94  92  35  54</code></pre>
+<pre><code>##  [1]  75  94 100  72  93 105 103  95  17  13   7  10   4 110  89  89 116  94
+## [19] 114 110  90  89  79  89  64  54  96  74  88  68 123  69  51  31 104  90
+## [37]  92 102  94  94  85  72  94  85 105  79  46 105 105 105  21 100  12  88
+## [55]  55  62  65  11   4  63  18  14  54  35  36  79   4  35   3  94  92  35
+## [73]  54</code></pre>
 <p>What if you just want the first 10 rows of kcal? Then we could get all the data from that column with <code>df$kcal</code> but then use the square brackets to tell it to get the values in positions 1 to 10 with <code>[1:10]</code>:</p>
 <div class="sourceCode" id="cb269"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb269-1"><a href="introduction-to-data-carpentry.html#cb269-1" aria-hidden="true" tabindex="-1"></a>df<span class="sc">$</span>kcal[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>]</span></code></pre></div>
 <pre><code>##  [1] 353 371 334 300 376 403 387 394  98  97</code></pre>
@@ -687,33 +690,33 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Technically, running <code>df</code>, and <code>df[,]</code> all return the whole dataframe. What you’re saying is return all of the rows and all of the columns from <code>df</code>.</p>
 <div class="sourceCode" id="cb271"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb271-1"><a href="introduction-to-data-carpentry.html#cb271-1" aria-hidden="true" tabindex="-1"></a>df</span></code></pre></div>
 <pre><code>## # A tibble: 73 x 9
-##    type                         sat_fat polysat_fat monosat_fat protein  carb  chol fiber  kcal
-##    &lt;chr&gt;                          &lt;dbl&gt;       &lt;dbl&gt;       &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
-##  1 blue                           18.7        0.8         7.78     21.4  2.34    75 0       353
-##  2 brick                          18.8        0.784       8.60     23.2  2.79    94 0       371
-##  3 brie                           17.4        0.826       8.01     20.8  0.45   100 0       334
-##  4 camembert                      15.3        0.724       7.02     19.8  0.46    72 0       300
-##  5 caraway                        18.6        0.83        8.28     25.2  3.06    93 0       376
-##  6 cheddar                        21.1        0.942       9.39     24.9  1.28   105 0       403
-##  7 cheshire                       19.5        0.87        8.67     23.4  4.78   103 0       387
-##  8 colby                          20.2        0.953       9.28     23.8  2.57    95 0       394
-##  9 cottage,crmd,lrg or sml curd    1.72       0.123       0.778    11.1  3.38    17 0        98
-## 10 cottage,crmd,w/fruit            2.31       0.124       1.04     10.7  4.61    13 0.200    97
+##    type        sat_fat polysat_fat monosat_fat protein  carb  chol fiber  kcal
+##    &lt;chr&gt;         &lt;dbl&gt;       &lt;dbl&gt;       &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+##  1 blue          18.7        0.8         7.78     21.4  2.34    75 0       353
+##  2 brick         18.8        0.784       8.60     23.2  2.79    94 0       371
+##  3 brie          17.4        0.826       8.01     20.8  0.45   100 0       334
+##  4 camembert     15.3        0.724       7.02     19.8  0.46    72 0       300
+##  5 caraway       18.6        0.83        8.28     25.2  3.06    93 0       376
+##  6 cheddar       21.1        0.942       9.39     24.9  1.28   105 0       403
+##  7 cheshire      19.5        0.87        8.67     23.4  4.78   103 0       387
+##  8 colby         20.2        0.953       9.28     23.8  2.57    95 0       394
+##  9 cottage,cr~    1.72       0.123       0.778    11.1  3.38    17 0        98
+## 10 cottage,cr~    2.31       0.124       1.04     10.7  4.61    13 0.200    97
 ## # ... with 63 more rows</code></pre>
 <div class="sourceCode" id="cb273"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb273-1"><a href="introduction-to-data-carpentry.html#cb273-1" aria-hidden="true" tabindex="-1"></a>df[,] <span class="co">#return all rows and all columns</span></span></code></pre></div>
 <pre><code>## # A tibble: 73 x 9
-##    type                         sat_fat polysat_fat monosat_fat protein  carb  chol fiber  kcal
-##    &lt;chr&gt;                          &lt;dbl&gt;       &lt;dbl&gt;       &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
-##  1 blue                           18.7        0.8         7.78     21.4  2.34    75 0       353
-##  2 brick                          18.8        0.784       8.60     23.2  2.79    94 0       371
-##  3 brie                           17.4        0.826       8.01     20.8  0.45   100 0       334
-##  4 camembert                      15.3        0.724       7.02     19.8  0.46    72 0       300
-##  5 caraway                        18.6        0.83        8.28     25.2  3.06    93 0       376
-##  6 cheddar                        21.1        0.942       9.39     24.9  1.28   105 0       403
-##  7 cheshire                       19.5        0.87        8.67     23.4  4.78   103 0       387
-##  8 colby                          20.2        0.953       9.28     23.8  2.57    95 0       394
-##  9 cottage,crmd,lrg or sml curd    1.72       0.123       0.778    11.1  3.38    17 0        98
-## 10 cottage,crmd,w/fruit            2.31       0.124       1.04     10.7  4.61    13 0.200    97
+##    type        sat_fat polysat_fat monosat_fat protein  carb  chol fiber  kcal
+##    &lt;chr&gt;         &lt;dbl&gt;       &lt;dbl&gt;       &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+##  1 blue          18.7        0.8         7.78     21.4  2.34    75 0       353
+##  2 brick         18.8        0.784       8.60     23.2  2.79    94 0       371
+##  3 brie          17.4        0.826       8.01     20.8  0.45   100 0       334
+##  4 camembert     15.3        0.724       7.02     19.8  0.46    72 0       300
+##  5 caraway       18.6        0.83        8.28     25.2  3.06    93 0       376
+##  6 cheddar       21.1        0.942       9.39     24.9  1.28   105 0       403
+##  7 cheshire      19.5        0.87        8.67     23.4  4.78   103 0       387
+##  8 colby         20.2        0.953       9.28     23.8  2.57    95 0       394
+##  9 cottage,cr~    1.72       0.123       0.778    11.1  3.38    17 0        98
+## 10 cottage,cr~    2.31       0.124       1.04     10.7  4.61    13 0.200    97
 ## # ... with 63 more rows</code></pre>
 <p>To just get the 7th row, you put a <code>7</code> before the comma, and leave after the comma blank:</p>
 <div class="sourceCode" id="cb275"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb275-1"><a href="introduction-to-data-carpentry.html#cb275-1" aria-hidden="true" tabindex="-1"></a>df[<span class="dv">7</span>,]</span></code></pre></div>
@@ -724,13 +727,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>To get the 10th to 14th rows you can put <code>10:14</code> before the comma and leave after the comma blank:</p>
 <div class="sourceCode" id="cb277"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb277-1"><a href="introduction-to-data-carpentry.html#cb277-1" aria-hidden="true" tabindex="-1"></a>df[<span class="dv">10</span><span class="sc">:</span><span class="dv">14</span>,]</span></code></pre></div>
 <pre><code>## # A tibble: 5 x 9
-##   type                                      sat_fat polysat_fat monosat_fat protein  carb  chol fiber  kcal
-##   &lt;chr&gt;                                       &lt;dbl&gt;       &lt;dbl&gt;       &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
-## 1 cottage,crmd,w/fruit                        2.31        0.124       1.04    10.7   4.61    13 0.200    97
-## 2 cottage,nonfat,uncrmd,dry,lrg or sml curd   0.169       0.003       0.079   10.3   6.66     7 0        72
-## 3 cottage,lowfat,2% milkfat                   0.979       0.07        0.443   11.8   3.66    10 0        86
-## 4 cottage,lowfat,1% milkfat                   0.645       0.031       0.291   12.4   2.72     4 0        72
-## 5 cream                                      19.3         1.44        8.62     5.93  4.07   110 0       342</code></pre>
+##   type         sat_fat polysat_fat monosat_fat protein  carb  chol fiber  kcal
+##   &lt;chr&gt;          &lt;dbl&gt;       &lt;dbl&gt;       &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+## 1 cottage,crm~   2.31        0.124       1.04    10.7   4.61    13 0.200    97
+## 2 cottage,non~   0.169       0.003       0.079   10.3   6.66     7 0        72
+## 3 cottage,low~   0.979       0.07        0.443   11.8   3.66    10 0        86
+## 4 cottage,low~   0.645       0.031       0.291   12.4   2.72     4 0        72
+## 5 cream         19.3         1.44        8.62     5.93  4.07   110 0       342</code></pre>
 <p>To get the 3rd column you can leave before the comma blank, and put a <code>3</code> after the comma:</p>
 <div class="sourceCode" id="cb279"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb279-1"><a href="introduction-to-data-carpentry.html#cb279-1" aria-hidden="true" tabindex="-1"></a>df[,<span class="dv">3</span>]</span></code></pre></div>
 <pre><code>## # A tibble: 73 x 1
@@ -796,14 +799,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb287-2"><a href="introduction-to-data-carpentry.html#cb287-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb287-3"><a href="introduction-to-data-carpentry.html#cb287-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(df)</span></code></pre></div>
 <pre><code>## # A tibble: 6 x 10
-##   type      sat_fat polysat_fat monosat_fat protein  carb  chol fiber  kcal food_type
-##   &lt;chr&gt;       &lt;dbl&gt;       &lt;dbl&gt;       &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;    
-## 1 blue         18.7       0.8          7.78    21.4  2.34    75     0   353 cheese   
-## 2 brick        18.8       0.784        8.60    23.2  2.79    94     0   371 cheese   
-## 3 brie         17.4       0.826        8.01    20.8  0.45   100     0   334 cheese   
-## 4 camembert    15.3       0.724        7.02    19.8  0.46    72     0   300 cheese   
-## 5 caraway      18.6       0.83         8.28    25.2  3.06    93     0   376 cheese   
-## 6 cheddar      21.1       0.942        9.39    24.9  1.28   105     0   403 cheese</code></pre>
+##   type      sat_fat polysat_fat monosat_fat protein  carb  chol fiber  kcal
+##   &lt;chr&gt;       &lt;dbl&gt;       &lt;dbl&gt;       &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+## 1 blue         18.7       0.8          7.78    21.4  2.34    75     0   353
+## 2 brick        18.8       0.784        8.60    23.2  2.79    94     0   371
+## 3 brie         17.4       0.826        8.01    20.8  0.45   100     0   334
+## 4 camembert    15.3       0.724        7.02    19.8  0.46    72     0   300
+## 5 caraway      18.6       0.83         8.28    25.2  3.06    93     0   376
+## 6 cheddar      21.1       0.942        9.39    24.9  1.28   105     0   403
+## # ... with 1 more variable: food_type &lt;chr&gt;</code></pre>
 <p>Now every observation (row) has the entry <code>cheese</code> in the column <code>food_type</code>.</p>
 <p>If you wanted to put in different data for each observation, e.g. the country of origin of each cheese, then you’d need a vector that was the same length as the number of rows of the dataset. See the section on manually creating dataframes just below for some examples of this.</p>
 <p>To delete a column from a dataframe, you just assign the word <code>NULL</code>, which is a special term in R, to that column, and then it will disappear:</p>
@@ -916,24 +920,26 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb299-2"><a href="introduction-to-data-carpentry.html#cb299-2" aria-hidden="true" tabindex="-1"></a>bw <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;data/bloodwork.csv&quot;</span>)</span></code></pre></div>
 <div class="sourceCode" id="cb300"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb300-1"><a href="introduction-to-data-carpentry.html#cb300-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(bw) </span></code></pre></div>
 <pre><code>## # A tibble: 6 x 11
-##   ids     age sex    state children smoker hrate bpsyst cellcount immuncount immuncount2
-##   &lt;chr&gt; &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;    &lt;dbl&gt; &lt;chr&gt;  &lt;dbl&gt;  &lt;dbl&gt;     &lt;dbl&gt;      &lt;dbl&gt;       &lt;dbl&gt;
-## 1 JEC      19 female NJ           1 no        63    101     0.126      0.993       0.921
-## 2 GBH      20 male   NY           1 yes       73    120     0.169      1.18        1.19 
-## 3 EDH      21 female NJ           0 no        65    100     0.281      4.34        3.21 
-## 4 AAA      21 female CT           3 no        66    109     0.244      2.56        4.01 
-## 5 AJF      24 female NJ           0 no        67    108     0.092      6.45        9.13 
-## 6 FJC      25 female NY           1 yes       80    118     0.014      3.97        2.85</code></pre>
+##   ids     age sex    state children smoker hrate bpsyst cellcount immuncount
+##   &lt;chr&gt; &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;    &lt;dbl&gt; &lt;chr&gt;  &lt;dbl&gt;  &lt;dbl&gt;     &lt;dbl&gt;      &lt;dbl&gt;
+## 1 JEC      19 female NJ           1 no        63    101     0.126      0.993
+## 2 GBH      20 male   NY           1 yes       73    120     0.169      1.18 
+## 3 EDH      21 female NJ           0 no        65    100     0.281      4.34 
+## 4 AAA      21 female CT           3 no        66    109     0.244      2.56 
+## 5 AJF      24 female NJ           0 no        67    108     0.092      6.45 
+## 6 FJC      25 female NY           1 yes       80    118     0.014      3.97 
+## # ... with 1 more variable: immuncount2 &lt;dbl&gt;</code></pre>
 <div class="sourceCode" id="cb302"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb302-1"><a href="introduction-to-data-carpentry.html#cb302-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tail</span>(bw) </span></code></pre></div>
 <pre><code>## # A tibble: 6 x 11
-##   ids     age sex    state children smoker hrate bpsyst cellcount immuncount immuncount2
-##   &lt;chr&gt; &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;    &lt;dbl&gt; &lt;chr&gt;  &lt;dbl&gt;  &lt;dbl&gt;     &lt;dbl&gt;      &lt;dbl&gt;       &lt;dbl&gt;
-## 1 JIB      66 female NY           0 no        62    121     0.097      1.39        2.13 
-## 2 HBB      67 female NJ           1 yes       74    147     0.288      2.27        1.73 
-## 3 HDG      68 female NY           3 yes       65    129     0.11       2.65        2.59 
-## 4 ECD      68 female NJ           2 yes       77    129     0.404      2.02        4.22 
-## 5 HHJ      69 male   CT           2 no        71    121     0.475      0.463       0.449
-## 6 CCG      70 male   CT           0 yes       80    132     0.078      1.06        1.01</code></pre>
+##   ids     age sex    state children smoker hrate bpsyst cellcount immuncount
+##   &lt;chr&gt; &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;    &lt;dbl&gt; &lt;chr&gt;  &lt;dbl&gt;  &lt;dbl&gt;     &lt;dbl&gt;      &lt;dbl&gt;
+## 1 JIB      66 female NY           0 no        62    121     0.097      1.39 
+## 2 HBB      67 female NJ           1 yes       74    147     0.288      2.27 
+## 3 HDG      68 female NY           3 yes       65    129     0.11       2.65 
+## 4 ECD      68 female NJ           2 yes       77    129     0.404      2.02 
+## 5 HHJ      69 male   CT           2 no        71    121     0.475      0.463
+## 6 CCG      70 male   CT           0 yes       80    132     0.078      1.06 
+## # ... with 1 more variable: immuncount2 &lt;dbl&gt;</code></pre>
 <p>As you can see, we have variables such as <code>ids</code>, <code>age</code>, the state people live in, their heart rate, how many children they have etc. etc.</p>
 <div id="table" class="section level3" number="4.5.1">
 <h3><span class="header-section-number">4.5.1</span> table()</h3>
@@ -988,118 +994,125 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb314"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb314-1"><a href="introduction-to-data-carpentry.html#cb314-1" aria-hidden="true" tabindex="-1"></a>bw <span class="sc">%&gt;%</span> </span>
 <span id="cb314-2"><a href="introduction-to-data-carpentry.html#cb314-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(hrate <span class="sc">&gt;</span> <span class="dv">70</span>)</span></code></pre></div>
 <pre><code>## # A tibble: 16 x 11
-##    ids     age sex    state children smoker hrate bpsyst cellcount immuncount immuncount2
-##    &lt;chr&gt; &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;    &lt;dbl&gt; &lt;chr&gt;  &lt;dbl&gt;  &lt;dbl&gt;     &lt;dbl&gt;      &lt;dbl&gt;       &lt;dbl&gt;
-##  1 GBH      20 male   NY           1 yes       73    120     0.169      1.18        1.19 
-##  2 FJC      25 female NY           1 yes       80    118     0.014      3.97        2.85 
-##  3 IEE      26 female NY           2 no        71    118     0.093      5.41       10.2  
-##  4 IEA      29 female CT           0 yes       74    117     0.429      5.15        4.97 
-##  5 FJG      40 female NJ           0 yes       80    109     0.253      5.63        4.11 
-##  6 AGC      43 male   NY           1 yes       77    108     0.072      1.44        0.775
-##  7 CAE      47 male   CT           1 yes       73    122     0.176      0.127       0.107
-##  8 FGD      50 male   NY           0 yes       77    147     0.428      0.037       0.066
-##  9 CGC      51 male   CT           0 yes       71    119     0.045      1.73        5.40 
-## 10 FHA      53 female CT           2 no        77    125     0.099      0.034       0.057
-## 11 JHC      55 female CT           0 no        73    121     0.093      1.32        1.17 
-## 12 CFC      65 male   CT           2 yes       77    129     0.151      2.40        1.89 
-## 13 HBB      67 female NJ           1 yes       74    147     0.288      2.27        1.73 
-## 14 ECD      68 female NJ           2 yes       77    129     0.404      2.02        4.22 
-## 15 HHJ      69 male   CT           2 no        71    121     0.475      0.463       0.449
-## 16 CCG      70 male   CT           0 yes       80    132     0.078      1.06        1.01</code></pre>
+##    ids     age sex    state children smoker hrate bpsyst cellcount immuncount
+##    &lt;chr&gt; &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;    &lt;dbl&gt; &lt;chr&gt;  &lt;dbl&gt;  &lt;dbl&gt;     &lt;dbl&gt;      &lt;dbl&gt;
+##  1 GBH      20 male   NY           1 yes       73    120     0.169      1.18 
+##  2 FJC      25 female NY           1 yes       80    118     0.014      3.97 
+##  3 IEE      26 female NY           2 no        71    118     0.093      5.41 
+##  4 IEA      29 female CT           0 yes       74    117     0.429      5.15 
+##  5 FJG      40 female NJ           0 yes       80    109     0.253      5.63 
+##  6 AGC      43 male   NY           1 yes       77    108     0.072      1.44 
+##  7 CAE      47 male   CT           1 yes       73    122     0.176      0.127
+##  8 FGD      50 male   NY           0 yes       77    147     0.428      0.037
+##  9 CGC      51 male   CT           0 yes       71    119     0.045      1.73 
+## 10 FHA      53 female CT           2 no        77    125     0.099      0.034
+## 11 JHC      55 female CT           0 no        73    121     0.093      1.32 
+## 12 CFC      65 male   CT           2 yes       77    129     0.151      2.40 
+## 13 HBB      67 female NJ           1 yes       74    147     0.288      2.27 
+## 14 ECD      68 female NJ           2 yes       77    129     0.404      2.02 
+## 15 HHJ      69 male   CT           2 no        71    121     0.475      0.463
+## 16 CCG      70 male   CT           0 yes       80    132     0.078      1.06 
+## # ... with 1 more variable: immuncount2 &lt;dbl&gt;</code></pre>
 <p>To only keep values that are precisely equal to some value (be it a number or a character), we use <code>filter()</code> with <code>==</code> to mean “is equal to”:</p>
 <p>For example, to only keep rows where the state is equal to <code>NJ</code>.</p>
 <div class="sourceCode" id="cb316"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb316-1"><a href="introduction-to-data-carpentry.html#cb316-1" aria-hidden="true" tabindex="-1"></a>bw <span class="sc">%&gt;%</span> </span>
 <span id="cb316-2"><a href="introduction-to-data-carpentry.html#cb316-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(state <span class="sc">==</span> <span class="st">&quot;NJ&quot;</span>)</span></code></pre></div>
 <pre><code>## # A tibble: 10 x 11
-##    ids     age sex    state children smoker hrate bpsyst cellcount immuncount immuncount2
-##    &lt;chr&gt; &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;    &lt;dbl&gt; &lt;chr&gt;  &lt;dbl&gt;  &lt;dbl&gt;     &lt;dbl&gt;      &lt;dbl&gt;       &lt;dbl&gt;
-##  1 JEC      19 female NJ           1 no        63    101     0.126      0.993       0.921
-##  2 EDH      21 female NJ           0 no        65    100     0.281      4.34        3.21 
-##  3 AJF      24 female NJ           0 no        67    108     0.092      6.45        9.13 
-##  4 BFB      28 female NJ           0 no        68    118     0.197      0.724       0.848
-##  5 ACC      33 male   NJ           1 no        63    131     0.065      4.66        8.50 
-##  6 CDC      38 female NJ           0 no        66    133     0.038      8.00       15.2  
-##  7 EEB      39 male   NJ           1 no        68    104     0.594      3.06        2.82 
-##  8 FJG      40 female NJ           0 yes       80    109     0.253      5.63        4.11 
-##  9 HBB      67 female NJ           1 yes       74    147     0.288      2.27        1.73 
-## 10 ECD      68 female NJ           2 yes       77    129     0.404      2.02        4.22</code></pre>
+##    ids     age sex    state children smoker hrate bpsyst cellcount immuncount
+##    &lt;chr&gt; &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;    &lt;dbl&gt; &lt;chr&gt;  &lt;dbl&gt;  &lt;dbl&gt;     &lt;dbl&gt;      &lt;dbl&gt;
+##  1 JEC      19 female NJ           1 no        63    101     0.126      0.993
+##  2 EDH      21 female NJ           0 no        65    100     0.281      4.34 
+##  3 AJF      24 female NJ           0 no        67    108     0.092      6.45 
+##  4 BFB      28 female NJ           0 no        68    118     0.197      0.724
+##  5 ACC      33 male   NJ           1 no        63    131     0.065      4.66 
+##  6 CDC      38 female NJ           0 no        66    133     0.038      8.00 
+##  7 EEB      39 male   NJ           1 no        68    104     0.594      3.06 
+##  8 FJG      40 female NJ           0 yes       80    109     0.253      5.63 
+##  9 HBB      67 female NJ           1 yes       74    147     0.288      2.27 
+## 10 ECD      68 female NJ           2 yes       77    129     0.404      2.02 
+## # ... with 1 more variable: immuncount2 &lt;dbl&gt;</code></pre>
 <p>If you want to include all subjects that had 3 children, you’d do the following - note that the number does not go in quote marks:</p>
 <div class="sourceCode" id="cb318"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb318-1"><a href="introduction-to-data-carpentry.html#cb318-1" aria-hidden="true" tabindex="-1"></a>bw <span class="sc">%&gt;%</span> </span>
 <span id="cb318-2"><a href="introduction-to-data-carpentry.html#cb318-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(children <span class="sc">==</span> <span class="dv">3</span>)</span></code></pre></div>
 <pre><code>## # A tibble: 2 x 11
-##   ids     age sex    state children smoker hrate bpsyst cellcount immuncount immuncount2
-##   &lt;chr&gt; &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;    &lt;dbl&gt; &lt;chr&gt;  &lt;dbl&gt;  &lt;dbl&gt;     &lt;dbl&gt;      &lt;dbl&gt;       &lt;dbl&gt;
-## 1 AAA      21 female CT           3 no        66    109     0.244       2.56        4.01
-## 2 HDG      68 female NY           3 yes       65    129     0.11        2.65        2.59</code></pre>
+##   ids     age sex    state children smoker hrate bpsyst cellcount immuncount
+##   &lt;chr&gt; &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;    &lt;dbl&gt; &lt;chr&gt;  &lt;dbl&gt;  &lt;dbl&gt;     &lt;dbl&gt;      &lt;dbl&gt;
+## 1 AAA      21 female CT           3 no        66    109     0.244       2.56
+## 2 HDG      68 female NY           3 yes       65    129     0.11        2.65
+## # ... with 1 more variable: immuncount2 &lt;dbl&gt;</code></pre>
 <p>If you want to include rows that are equal to one of two values, you can use <code>|</code> to mean “OR”. The following will include rows where the <code>state</code> column is equal to either “NJ” or “NY” in the bloodwork dataset.</p>
 <div class="sourceCode" id="cb320"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb320-1"><a href="introduction-to-data-carpentry.html#cb320-1" aria-hidden="true" tabindex="-1"></a>bw <span class="sc">%&gt;%</span> </span>
 <span id="cb320-2"><a href="introduction-to-data-carpentry.html#cb320-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(state <span class="sc">==</span> <span class="st">&quot;NJ&quot;</span>  <span class="sc">|</span>  state <span class="sc">==</span> <span class="st">&quot;NY&quot;</span>)</span></code></pre></div>
 <pre><code>## # A tibble: 18 x 11
-##    ids     age sex    state children smoker hrate bpsyst cellcount immuncount immuncount2
-##    &lt;chr&gt; &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;    &lt;dbl&gt; &lt;chr&gt;  &lt;dbl&gt;  &lt;dbl&gt;     &lt;dbl&gt;      &lt;dbl&gt;       &lt;dbl&gt;
-##  1 JEC      19 female NJ           1 no        63    101     0.126      0.993       0.921
-##  2 GBH      20 male   NY           1 yes       73    120     0.169      1.18        1.19 
-##  3 EDH      21 female NJ           0 no        65    100     0.281      4.34        3.21 
-##  4 AJF      24 female NJ           0 no        67    108     0.092      6.45        9.13 
-##  5 FJC      25 female NY           1 yes       80    118     0.014      3.97        2.85 
-##  6 IEE      26 female NY           2 no        71    118     0.093      5.41       10.2  
-##  7 BFB      28 female NJ           0 no        68    118     0.197      0.724       0.848
-##  8 ACC      33 male   NJ           1 no        63    131     0.065      4.66        8.50 
-##  9 CDC      38 female NJ           0 no        66    133     0.038      8.00       15.2  
-## 10 EEB      39 male   NJ           1 no        68    104     0.594      3.06        2.82 
-## 11 FJG      40 female NJ           0 yes       80    109     0.253      5.63        4.11 
-## 12 AGC      43 male   NY           1 yes       77    108     0.072      1.44        0.775
-## 13 FGD      50 male   NY           0 yes       77    147     0.428      0.037       0.066
-## 14 JCI      52 male   NY           1 yes       61    115     0.131      0.233       0.17 
-## 15 JIB      66 female NY           0 no        62    121     0.097      1.39        2.13 
-## 16 HBB      67 female NJ           1 yes       74    147     0.288      2.27        1.73 
-## 17 HDG      68 female NY           3 yes       65    129     0.11       2.65        2.59 
-## 18 ECD      68 female NJ           2 yes       77    129     0.404      2.02        4.22</code></pre>
+##    ids     age sex    state children smoker hrate bpsyst cellcount immuncount
+##    &lt;chr&gt; &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;    &lt;dbl&gt; &lt;chr&gt;  &lt;dbl&gt;  &lt;dbl&gt;     &lt;dbl&gt;      &lt;dbl&gt;
+##  1 JEC      19 female NJ           1 no        63    101     0.126      0.993
+##  2 GBH      20 male   NY           1 yes       73    120     0.169      1.18 
+##  3 EDH      21 female NJ           0 no        65    100     0.281      4.34 
+##  4 AJF      24 female NJ           0 no        67    108     0.092      6.45 
+##  5 FJC      25 female NY           1 yes       80    118     0.014      3.97 
+##  6 IEE      26 female NY           2 no        71    118     0.093      5.41 
+##  7 BFB      28 female NJ           0 no        68    118     0.197      0.724
+##  8 ACC      33 male   NJ           1 no        63    131     0.065      4.66 
+##  9 CDC      38 female NJ           0 no        66    133     0.038      8.00 
+## 10 EEB      39 male   NJ           1 no        68    104     0.594      3.06 
+## 11 FJG      40 female NJ           0 yes       80    109     0.253      5.63 
+## 12 AGC      43 male   NY           1 yes       77    108     0.072      1.44 
+## 13 FGD      50 male   NY           0 yes       77    147     0.428      0.037
+## 14 JCI      52 male   NY           1 yes       61    115     0.131      0.233
+## 15 JIB      66 female NY           0 no        62    121     0.097      1.39 
+## 16 HBB      67 female NJ           1 yes       74    147     0.288      2.27 
+## 17 HDG      68 female NY           3 yes       65    129     0.11       2.65 
+## 18 ECD      68 female NJ           2 yes       77    129     0.404      2.02 
+## # ... with 1 more variable: immuncount2 &lt;dbl&gt;</code></pre>
 <p>You can also keep rows that are not equal to some value using the syntax <code>!=</code> which means “not equal to”. For example, to keep rows where the <code>children</code> column is not equal to 0:</p>
 <div class="sourceCode" id="cb322"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb322-1"><a href="introduction-to-data-carpentry.html#cb322-1" aria-hidden="true" tabindex="-1"></a>bw <span class="sc">%&gt;%</span> </span>
 <span id="cb322-2"><a href="introduction-to-data-carpentry.html#cb322-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(children <span class="sc">!=</span> <span class="dv">0</span>)</span></code></pre></div>
 <pre><code>## # A tibble: 17 x 11
-##    ids     age sex    state children smoker hrate bpsyst cellcount immuncount immuncount2
-##    &lt;chr&gt; &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;    &lt;dbl&gt; &lt;chr&gt;  &lt;dbl&gt;  &lt;dbl&gt;     &lt;dbl&gt;      &lt;dbl&gt;       &lt;dbl&gt;
-##  1 JEC      19 female NJ           1 no        63    101     0.126      0.993       0.921
-##  2 GBH      20 male   NY           1 yes       73    120     0.169      1.18        1.19 
-##  3 AAA      21 female CT           3 no        66    109     0.244      2.56        4.01 
-##  4 FJC      25 female NY           1 yes       80    118     0.014      3.97        2.85 
-##  5 IEE      26 female NY           2 no        71    118     0.093      5.41       10.2  
-##  6 BHE      30 male   CT           1 no        63    120     0.215      1.19        1.6  
-##  7 ACC      33 male   NJ           1 no        63    131     0.065      4.66        8.50 
-##  8 EEB      39 male   NJ           1 no        68    104     0.594      3.06        2.82 
-##  9 AGC      43 male   NY           1 yes       77    108     0.072      1.44        0.775
-## 10 CAE      47 male   CT           1 yes       73    122     0.176      0.127       0.107
-## 11 JCI      52 male   NY           1 yes       61    115     0.131      0.233       0.17 
-## 12 FHA      53 female CT           2 no        77    125     0.099      0.034       0.057
-## 13 CFC      65 male   CT           2 yes       77    129     0.151      2.40        1.89 
-## 14 HBB      67 female NJ           1 yes       74    147     0.288      2.27        1.73 
-## 15 HDG      68 female NY           3 yes       65    129     0.11       2.65        2.59 
-## 16 ECD      68 female NJ           2 yes       77    129     0.404      2.02        4.22 
-## 17 HHJ      69 male   CT           2 no        71    121     0.475      0.463       0.449</code></pre>
+##    ids     age sex    state children smoker hrate bpsyst cellcount immuncount
+##    &lt;chr&gt; &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;    &lt;dbl&gt; &lt;chr&gt;  &lt;dbl&gt;  &lt;dbl&gt;     &lt;dbl&gt;      &lt;dbl&gt;
+##  1 JEC      19 female NJ           1 no        63    101     0.126      0.993
+##  2 GBH      20 male   NY           1 yes       73    120     0.169      1.18 
+##  3 AAA      21 female CT           3 no        66    109     0.244      2.56 
+##  4 FJC      25 female NY           1 yes       80    118     0.014      3.97 
+##  5 IEE      26 female NY           2 no        71    118     0.093      5.41 
+##  6 BHE      30 male   CT           1 no        63    120     0.215      1.19 
+##  7 ACC      33 male   NJ           1 no        63    131     0.065      4.66 
+##  8 EEB      39 male   NJ           1 no        68    104     0.594      3.06 
+##  9 AGC      43 male   NY           1 yes       77    108     0.072      1.44 
+## 10 CAE      47 male   CT           1 yes       73    122     0.176      0.127
+## 11 JCI      52 male   NY           1 yes       61    115     0.131      0.233
+## 12 FHA      53 female CT           2 no        77    125     0.099      0.034
+## 13 CFC      65 male   CT           2 yes       77    129     0.151      2.40 
+## 14 HBB      67 female NJ           1 yes       74    147     0.288      2.27 
+## 15 HDG      68 female NY           3 yes       65    129     0.11       2.65 
+## 16 ECD      68 female NJ           2 yes       77    129     0.404      2.02 
+## 17 HHJ      69 male   CT           2 no        71    121     0.475      0.463
+## # ... with 1 more variable: immuncount2 &lt;dbl&gt;</code></pre>
 <p>You can also filter several variables at one time. Here, we are keeping all individuals from New York, with a heart rate of over 70, and who have more than 0 children:</p>
 <div class="sourceCode" id="cb324"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb324-1"><a href="introduction-to-data-carpentry.html#cb324-1" aria-hidden="true" tabindex="-1"></a>bw <span class="sc">%&gt;%</span> </span>
 <span id="cb324-2"><a href="introduction-to-data-carpentry.html#cb324-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>( state <span class="sc">==</span> <span class="st">&quot;NY&quot;</span>, hrate <span class="sc">&gt;</span> <span class="dv">70</span>, children <span class="sc">!=</span> <span class="st">&quot;0&quot;</span> )</span></code></pre></div>
 <pre><code>## # A tibble: 4 x 11
-##   ids     age sex    state children smoker hrate bpsyst cellcount immuncount immuncount2
-##   &lt;chr&gt; &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;    &lt;dbl&gt; &lt;chr&gt;  &lt;dbl&gt;  &lt;dbl&gt;     &lt;dbl&gt;      &lt;dbl&gt;       &lt;dbl&gt;
-## 1 GBH      20 male   NY           1 yes       73    120     0.169       1.18       1.19 
-## 2 FJC      25 female NY           1 yes       80    118     0.014       3.97       2.85 
-## 3 IEE      26 female NY           2 no        71    118     0.093       5.41      10.2  
-## 4 AGC      43 male   NY           1 yes       77    108     0.072       1.44       0.775</code></pre>
+##   ids     age sex    state children smoker hrate bpsyst cellcount immuncount
+##   &lt;chr&gt; &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;    &lt;dbl&gt; &lt;chr&gt;  &lt;dbl&gt;  &lt;dbl&gt;     &lt;dbl&gt;      &lt;dbl&gt;
+## 1 GBH      20 male   NY           1 yes       73    120     0.169       1.18
+## 2 FJC      25 female NY           1 yes       80    118     0.014       3.97
+## 3 IEE      26 female NY           2 no        71    118     0.093       5.41
+## 4 AGC      43 male   NY           1 yes       77    108     0.072       1.44
+## # ... with 1 more variable: immuncount2 &lt;dbl&gt;</code></pre>
 <p>You can create new datasets from filtered data by creating a new object. Here, we create a new dataset called <code>ny1</code> that is based on filtering out rows from our <code>bw</code> dataset.</p>
 <div class="sourceCode" id="cb326"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb326-1"><a href="introduction-to-data-carpentry.html#cb326-1" aria-hidden="true" tabindex="-1"></a>ny1 <span class="ot">&lt;-</span> bw <span class="sc">%&gt;%</span> </span>
 <span id="cb326-2"><a href="introduction-to-data-carpentry.html#cb326-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>( state <span class="sc">==</span> <span class="st">&quot;NY&quot;</span>, hrate <span class="sc">&gt;</span> <span class="dv">70</span>, children <span class="sc">!=</span> <span class="st">&quot;0&quot;</span> )</span>
 <span id="cb326-3"><a href="introduction-to-data-carpentry.html#cb326-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb326-4"><a href="introduction-to-data-carpentry.html#cb326-4" aria-hidden="true" tabindex="-1"></a>ny1</span></code></pre></div>
 <pre><code>## # A tibble: 4 x 11
-##   ids     age sex    state children smoker hrate bpsyst cellcount immuncount immuncount2
-##   &lt;chr&gt; &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;    &lt;dbl&gt; &lt;chr&gt;  &lt;dbl&gt;  &lt;dbl&gt;     &lt;dbl&gt;      &lt;dbl&gt;       &lt;dbl&gt;
-## 1 GBH      20 male   NY           1 yes       73    120     0.169       1.18       1.19 
-## 2 FJC      25 female NY           1 yes       80    118     0.014       3.97       2.85 
-## 3 IEE      26 female NY           2 no        71    118     0.093       5.41      10.2  
-## 4 AGC      43 male   NY           1 yes       77    108     0.072       1.44       0.775</code></pre>
+##   ids     age sex    state children smoker hrate bpsyst cellcount immuncount
+##   &lt;chr&gt; &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;    &lt;dbl&gt; &lt;chr&gt;  &lt;dbl&gt;  &lt;dbl&gt;     &lt;dbl&gt;      &lt;dbl&gt;
+## 1 GBH      20 male   NY           1 yes       73    120     0.169       1.18
+## 2 FJC      25 female NY           1 yes       80    118     0.014       3.97
+## 3 IEE      26 female NY           2 no        71    118     0.093       5.41
+## 4 AGC      43 male   NY           1 yes       77    108     0.072       1.44
+## # ... with 1 more variable: immuncount2 &lt;dbl&gt;</code></pre>
 <p><br><br></p>
 </div>
 <div id="select---selecting-specific-columns" class="section level3" number="4.5.3">
@@ -1126,19 +1139,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb330"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb330-1"><a href="introduction-to-data-carpentry.html#cb330-1" aria-hidden="true" tabindex="-1"></a>bw <span class="sc">%&gt;%</span> </span>
 <span id="cb330-2"><a href="introduction-to-data-carpentry.html#cb330-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>children)</span></code></pre></div>
 <pre><code>## # A tibble: 30 x 10
-##    ids     age sex    state smoker hrate bpsyst cellcount immuncount immuncount2
-##    &lt;chr&gt; &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt;  &lt;dbl&gt;  &lt;dbl&gt;     &lt;dbl&gt;      &lt;dbl&gt;       &lt;dbl&gt;
-##  1 JEC      19 female NJ    no        63    101     0.126      0.993       0.921
-##  2 GBH      20 male   NY    yes       73    120     0.169      1.18        1.19 
-##  3 EDH      21 female NJ    no        65    100     0.281      4.34        3.21 
-##  4 AAA      21 female CT    no        66    109     0.244      2.56        4.01 
-##  5 AJF      24 female NJ    no        67    108     0.092      6.45        9.13 
-##  6 FJC      25 female NY    yes       80    118     0.014      3.97        2.85 
-##  7 IEE      26 female NY    no        71    118     0.093      5.41       10.2  
-##  8 BED      28 female CT    no        62    104     0.082      1.18        0.788
-##  9 BFB      28 female NJ    no        68    118     0.197      0.724       0.848
-## 10 IEA      29 female CT    yes       74    117     0.429      5.15        4.97 
-## # ... with 20 more rows</code></pre>
+##    ids     age sex    state smoker hrate bpsyst cellcount immuncount
+##    &lt;chr&gt; &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt;  &lt;dbl&gt;  &lt;dbl&gt;     &lt;dbl&gt;      &lt;dbl&gt;
+##  1 JEC      19 female NJ    no        63    101     0.126      0.993
+##  2 GBH      20 male   NY    yes       73    120     0.169      1.18 
+##  3 EDH      21 female NJ    no        65    100     0.281      4.34 
+##  4 AAA      21 female CT    no        66    109     0.244      2.56 
+##  5 AJF      24 female NJ    no        67    108     0.092      6.45 
+##  6 FJC      25 female NY    yes       80    118     0.014      3.97 
+##  7 IEE      26 female NY    no        71    118     0.093      5.41 
+##  8 BED      28 female CT    no        62    104     0.082      1.18 
+##  9 BFB      28 female NJ    no        68    118     0.197      0.724
+## 10 IEA      29 female CT    yes       74    117     0.429      5.15 
+## # ... with 20 more rows, and 1 more variable: immuncount2 &lt;dbl&gt;</code></pre>
 <p>To get rid of the <code>children</code>, <code>bpsyst</code> and <code>smoker</code> columns, we’d do the following:</p>
 <div class="sourceCode" id="cb332"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb332-1"><a href="introduction-to-data-carpentry.html#cb332-1" aria-hidden="true" tabindex="-1"></a>bw <span class="sc">%&gt;%</span> </span>
 <span id="cb332-2"><a href="introduction-to-data-carpentry.html#cb332-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>children, <span class="sc">-</span>bpsyst, <span class="sc">-</span>smoker)</span></code></pre></div>
@@ -1179,14 +1192,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb336-3"><a href="introduction-to-data-carpentry.html#cb336-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb336-4"><a href="introduction-to-data-carpentry.html#cb336-4" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(bw)</span></code></pre></div>
 <pre><code>## # A tibble: 6 x 11
-##   ids     age sex    state children smoker hrate bpsyst cellcount immuncount immuncount2
-##   &lt;chr&gt; &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;    &lt;dbl&gt; &lt;chr&gt;  &lt;dbl&gt;  &lt;dbl&gt;     &lt;dbl&gt;      &lt;dbl&gt;       &lt;dbl&gt;
-## 1 JEC      19 female NJ           1 no        63    101     0.126      0.993       0.921
-## 2 GBH      20 male   NY           1 yes       73    120     0.169      1.18        1.19 
-## 3 EDH      21 female NJ           0 no        65    100     0.281      4.34        3.21 
-## 4 AAA      21 female CT           3 no        66    109     0.244      2.56        4.01 
-## 5 AJF      24 female NJ           0 no        67    108     0.092      6.45        9.13 
-## 6 FJC      25 female NY           1 yes       80    118     0.014      3.97        2.85</code></pre>
+##   ids     age sex    state children smoker hrate bpsyst cellcount immuncount
+##   &lt;chr&gt; &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;    &lt;dbl&gt; &lt;chr&gt;  &lt;dbl&gt;  &lt;dbl&gt;     &lt;dbl&gt;      &lt;dbl&gt;
+## 1 JEC      19 female NJ           1 no        63    101     0.126      0.993
+## 2 GBH      20 male   NY           1 yes       73    120     0.169      1.18 
+## 3 EDH      21 female NJ           0 no        65    100     0.281      4.34 
+## 4 AAA      21 female CT           3 no        66    109     0.244      2.56 
+## 5 AJF      24 female NJ           0 no        67    108     0.092      6.45 
+## 6 FJC      25 female NY           1 yes       80    118     0.014      3.97 
+## # ... with 1 more variable: immuncount2 &lt;dbl&gt;</code></pre>
 <div class="sourceCode" id="cb338"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb338-1"><a href="introduction-to-data-carpentry.html#cb338-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(bw1)</span></code></pre></div>
 <pre><code>## # A tibble: 6 x 5
 ##   subject gender smoker hrate children
@@ -1547,14 +1561,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb379-2"><a href="introduction-to-data-carpentry.html#cb379-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb379-3"><a href="introduction-to-data-carpentry.html#cb379-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(wheel)</span></code></pre></div>
 <pre><code>## # A tibble: 6 x 14
-##   strain id      day1  day2   day3   day4 dob        mother sex   wheel startdate   total   age group 
-##   &lt;chr&gt;  &lt;chr&gt;  &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;  &lt;chr&gt; &lt;dbl&gt; &lt;chr&gt;       &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt; 
-## 1 B6     692ao 12853  8156.  9028. 12516. 4/18/2005  633ax  male      9 10/9/2005  42552.   174 inbred
-## 2 B6     656aa  2644  4012.  5237   7404. 12/16/2004 593ar  male      1 9/12/2005  19297    270 inbred
-## 3 B6     675ag  4004. 3054.  3816.  3761  2/9/2005   593ad  male      5 10/13/2005 14634.   246 inbred
-## 4 B6     675ai 11754. 8863  11784  11684  2/9/2005   593ad  male      4 10/13/2005 44086.   246 inbred
-## 5 B6     656af  6906. 5322. 10424.  8468. 12/16/2004 593ar  male      2 10/13/2005 31122    301 inbred
-## 6 B6     656al  6517  4440   5334.  9291  12/19/2004 554aa  male      8 10/9/2005  25582.   294 inbred</code></pre>
+##   strain id      day1  day2   day3   day4 dob        mother sex   wheel startdate
+##   &lt;chr&gt;  &lt;chr&gt;  &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;  &lt;chr&gt; &lt;dbl&gt; &lt;chr&gt;    
+## 1 B6     692ao 12853  8156.  9028. 12516. 4/18/2005  633ax  male      9 10/9/2005
+## 2 B6     656aa  2644  4012.  5237   7404. 12/16/2004 593ar  male      1 9/12/2005
+## 3 B6     675ag  4004. 3054.  3816.  3761  2/9/2005   593ad  male      5 10/13/20~
+## 4 B6     675ai 11754. 8863  11784  11684  2/9/2005   593ad  male      4 10/13/20~
+## 5 B6     656af  6906. 5322. 10424.  8468. 12/16/2004 593ar  male      2 10/13/20~
+## 6 B6     656al  6517  4440   5334.  9291  12/19/2004 554aa  male      8 10/9/2005
+## # ... with 3 more variables: total &lt;dbl&gt;, age &lt;dbl&gt;, group &lt;chr&gt;</code></pre>
 <p>We’re mainly interested in the <code>id</code>, <code>strain</code> and columns with day in, so we shall use <code>select()</code> to select these columns:</p>
 <div class="sourceCode" id="cb381"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb381-1"><a href="introduction-to-data-carpentry.html#cb381-1" aria-hidden="true" tabindex="-1"></a>wheeldf <span class="ot">&lt;-</span> wheel <span class="sc">%&gt;%</span> <span class="fu">select</span>(id, strain, day1,day2,day3,day4)</span>
 <span id="cb381-2"><a href="introduction-to-data-carpentry.html#cb381-2" aria-hidden="true" tabindex="-1"></a></span>

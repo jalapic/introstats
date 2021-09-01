@@ -24,7 +24,7 @@
 <meta name="author" content="James P. Curley &amp; Tyler M. Milewski" />
 
 
-<meta name="date" content="2021-08-21" />
+<meta name="date" content="2021-09-01" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -569,7 +569,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="basic-syntax.html#cb63-1" aria-hidden="true" tabindex="-1"></a>the_week <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Monday&quot;</span>, <span class="st">&quot;Tuesday&quot;</span>, <span class="st">&quot;Wednesday&quot;</span>, <span class="st">&quot;Thursday&quot;</span>, <span class="st">&quot;Friday&quot;</span>, <span class="st">&quot;Saturday&quot;</span>, <span class="st">&quot;Sunday&quot;</span>)</span>
 <span id="cb63-2"><a href="basic-syntax.html#cb63-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb63-3"><a href="basic-syntax.html#cb63-3" aria-hidden="true" tabindex="-1"></a>the_week</span></code></pre></div>
-<pre><code>## [1] &quot;Monday&quot;    &quot;Tuesday&quot;   &quot;Wednesday&quot; &quot;Thursday&quot;  &quot;Friday&quot;    &quot;Saturday&quot;  &quot;Sunday&quot;</code></pre>
+<pre><code>## [1] &quot;Monday&quot;    &quot;Tuesday&quot;   &quot;Wednesday&quot; &quot;Thursday&quot;  &quot;Friday&quot;    &quot;Saturday&quot; 
+## [7] &quot;Sunday&quot;</code></pre>
 <p>Here we have an object called <code>the_week</code> that has 7 elements. Each element is separated by a comma. This is pretty similar to when we enter numbers except for situation when we can use the <code>:</code> shortcut such as using <code>5:8</code> to mean <code>5, 6, 7, 8</code>. We also stick everything together into a vector using <code>c()</code> as we did with numbers. The major difference is that to make sure R knows that each of these words is a character or text string, we have put quote marks around each word. If we didn’t do that, it would be looking for objects called <code>Monday</code>, <code>Tuesday</code> etc.</p>
 <p>Actually, let’s see an example of using words to create a vector, when the words are actually objects:</p>
 <div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="basic-syntax.html#cb65-1" aria-hidden="true" tabindex="-1"></a>aa <span class="ot">&lt;-</span> <span class="dv">5</span></span>
@@ -591,14 +592,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb75-1"><a href="basic-syntax.html#cb75-1" aria-hidden="true" tabindex="-1"></a>example <span class="ot">&lt;-</span> <span class="fu">c</span>(aa, bb, cc, dd, ee)</span>
 <span id="cb75-2"><a href="basic-syntax.html#cb75-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb75-3"><a href="basic-syntax.html#cb75-3" aria-hidden="true" tabindex="-1"></a>example</span></code></pre></div>
-<pre><code>## [1] &quot;5&quot;        &quot;9&quot;        &quot;11&quot;       &quot;10&quot;       &quot;james&quot;    &quot;tyler&quot;    &quot;hedgehog&quot;</code></pre>
+<pre><code>## [1] &quot;5&quot;        &quot;9&quot;        &quot;11&quot;       &quot;10&quot;       &quot;james&quot;    &quot;tyler&quot;   
+## [7] &quot;hedgehog&quot;</code></pre>
 <p>Here, each of <code>aa</code> to <code>ee</code> is assigned to be an object and they contain information. When we write <code>c(aa, bb, cc, dd, ee)</code> we don’t need to use quotes as we’re referring to the objects and not to words called <code>aa</code>, <code>ee</code> etc. Also notice that we were able to make vectors that mixed together numbers and characters. Also, some of our original vectors like <code>bb</code> and <code>dd</code> contained more than one element. When we put them all together with <code>c(aa, bb, cc, dd, ee)</code> to create the <code>example</code> object, R just stuck them all together in the order we wrote.</p>
 <p>It’s pretty unusual though to mix numeric and character vectors together. Let’s get back to talking about vectors that contain characters only.</p>
 <p>Some functions can work on both character vectors and numeric vectors. One example is <code>length()</code> which counts the number of elements in a vector:</p>
 <div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb77-1"><a href="basic-syntax.html#cb77-1" aria-hidden="true" tabindex="-1"></a>v1</span></code></pre></div>
 <pre><code>## [1]  5  6  7  8  9 10</code></pre>
 <div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb79-1"><a href="basic-syntax.html#cb79-1" aria-hidden="true" tabindex="-1"></a>the_week</span></code></pre></div>
-<pre><code>## [1] &quot;Monday&quot;    &quot;Tuesday&quot;   &quot;Wednesday&quot; &quot;Thursday&quot;  &quot;Friday&quot;    &quot;Saturday&quot;  &quot;Sunday&quot;</code></pre>
+<pre><code>## [1] &quot;Monday&quot;    &quot;Tuesday&quot;   &quot;Wednesday&quot; &quot;Thursday&quot;  &quot;Friday&quot;    &quot;Saturday&quot; 
+## [7] &quot;Sunday&quot;</code></pre>
 <div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb81-1"><a href="basic-syntax.html#cb81-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(v1)</span></code></pre></div>
 <pre><code>## [1] 6</code></pre>
 <div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb83-1"><a href="basic-syntax.html#cb83-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(the_week)</span></code></pre></div>
@@ -641,6 +644,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><p>you can use characters or numbers in object names, or both</p></li>
 <li><p>do not use spaces</p></li>
 <li><p>try to use lower case ideally</p></li>
+<li><p>do not start an object name with a number</p></li>
 <li><p>do not use any punctuation in names for objects, dataframes or column names except for the period <code>.</code> or underscore <code>_</code>. Everything else is forbidden.</p></li>
 <li><p>if you do use an underscore <code>_</code> it cannot go at the beginning, e.g.</p></li>
 </ul>
@@ -817,7 +821,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Note that it says <code>object 'purple' not found</code>. That’s because, even though we are trying to make the points of the scatterplot purple, because we didn’t put it in quotes, it’s looking for the <code>object</code> called purple. It thinks there is something called purple that contains the information it needs. The actual code should include purple in quotes, to make sure it processes the word ‘purple’ literally:</p>
 <div class="sourceCode" id="cb170"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb170-1"><a href="basic-syntax.html#cb170-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
 <span id="cb170-2"><a href="basic-syntax.html#cb170-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mtcars, <span class="fu">aes</span>(<span class="at">x=</span>wt, <span class="at">y=</span>mpg)) <span class="sc">+</span> <span class="fu">geom_point</span>(<span class="at">color =</span> <span class="st">&quot;purple&quot;</span>)</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-106-1.png" width="672" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-64-1.png" width="672" /></p>
 <p>For the most part in R, you can choose whether you use double quotes <code>"</code> or single quotes <code>'</code> when using quotes. Just make sure you match them, and close them. For example, the following examples are correct:</p>
 <div class="sourceCode" id="cb171"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb171-1"><a href="basic-syntax.html#cb171-1" aria-hidden="true" tabindex="-1"></a>days <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Monday&quot;</span>, <span class="st">&quot;Tuesday&quot;</span>, <span class="st">&quot;Wednesday&quot;</span>)</span>
 <span id="cb171-2"><a href="basic-syntax.html#cb171-2" aria-hidden="true" tabindex="-1"></a>days</span></code></pre></div>
@@ -929,7 +933,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <pre><code>## [1]  1  5  3  7 10 11 13  6  2</code></pre>
 <p>If you wanted to take the unique numbers, and then square root each of them you could wrap <code>unique(x)</code> in <code>sqrt()</code> like this:</p>
 <div class="sourceCode" id="cb202"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb202-1"><a href="basic-syntax.html#cb202-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sqrt</span>(<span class="fu">unique</span>(x))</span></code></pre></div>
-<pre><code>## [1] 1.000000 2.236068 1.732051 2.645751 3.162278 3.316625 3.605551 2.449490 1.414214</code></pre>
+<pre><code>## [1] 1.000000 2.236068 1.732051 2.645751 3.162278 3.316625 3.605551 2.449490
+## [9] 1.414214</code></pre>
 <p>That code is still just about readable.</p>
 <p>However, say you want to (for some reason), keep the unique numbers, then take the square root of each number, then add them all up, then round the answer to 2 decimal places. This is what it would like:</p>
 <div class="sourceCode" id="cb204"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb204-1"><a href="basic-syntax.html#cb204-1" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">sum</span>(<span class="fu">sqrt</span>(<span class="fu">unique</span>(x))), <span class="at">digits =</span> <span class="dv">2</span>)</span></code></pre></div>
@@ -943,7 +948,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <pre><code>## [1]  1  5  3  7 10 11 13  6  2</code></pre>
 <div class="sourceCode" id="cb210"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb210-1"><a href="basic-syntax.html#cb210-1" aria-hidden="true" tabindex="-1"></a>x2 <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(x1)</span>
 <span id="cb210-2"><a href="basic-syntax.html#cb210-2" aria-hidden="true" tabindex="-1"></a>x2</span></code></pre></div>
-<pre><code>## [1] 1.000000 2.236068 1.732051 2.645751 3.162278 3.316625 3.605551 2.449490 1.414214</code></pre>
+<pre><code>## [1] 1.000000 2.236068 1.732051 2.645751 3.162278 3.316625 3.605551 2.449490
+## [9] 1.414214</code></pre>
 <div class="sourceCode" id="cb212"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb212-1"><a href="basic-syntax.html#cb212-1" aria-hidden="true" tabindex="-1"></a>x3 <span class="ot">&lt;-</span> <span class="fu">sum</span>(x2)</span>
 <span id="cb212-2"><a href="basic-syntax.html#cb212-2" aria-hidden="true" tabindex="-1"></a>x3</span></code></pre></div>
 <pre><code>## [1] 21.56203</code></pre>
@@ -973,7 +979,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb222"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb222-1"><a href="basic-syntax.html#cb222-1" aria-hidden="true" tabindex="-1"></a>x <span class="sc">%&gt;%</span></span>
 <span id="cb222-2"><a href="basic-syntax.html#cb222-2" aria-hidden="true" tabindex="-1"></a>  unique <span class="sc">%&gt;%</span></span>
 <span id="cb222-3"><a href="basic-syntax.html#cb222-3" aria-hidden="true" tabindex="-1"></a>  sqrt </span></code></pre></div>
-<pre><code>## [1] 1.000000 2.236068 1.732051 2.645751 3.162278 3.316625 3.605551 2.449490 1.414214</code></pre>
+<pre><code>## [1] 1.000000 2.236068 1.732051 2.645751 3.162278 3.316625 3.605551 2.449490
+## [9] 1.414214</code></pre>
 <p>Then the next step is to add up those six square rooted numbers:</p>
 <div class="sourceCode" id="cb224"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb224-1"><a href="basic-syntax.html#cb224-1" aria-hidden="true" tabindex="-1"></a>x <span class="sc">%&gt;%</span></span>
 <span id="cb224-2"><a href="basic-syntax.html#cb224-2" aria-hidden="true" tabindex="-1"></a>  unique <span class="sc">%&gt;%</span></span>

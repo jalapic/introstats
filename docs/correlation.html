@@ -24,7 +24,7 @@
 <meta name="author" content="James P. Curley &amp; Tyler M. Milewski" />
 
 
-<meta name="date" content="2021-08-21" />
+<meta name="date" content="2021-09-01" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -484,7 +484,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 9  4.4 7.1
 ## 10 3.9 5.8</code></pre>
 <div class="sourceCode" id="cb1393"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1393-1"><a href="correlation.html#cb1393-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y)) <span class="sc">+</span> <span class="fu">geom_point</span>(<span class="at">size=</span><span class="dv">2</span>)</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-621-1.png" width="672" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-579-1.png" width="672" /></p>
 <div class="sourceCode" id="cb1394"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1394-1"><a href="correlation.html#cb1394-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(x,y)</span></code></pre></div>
 <pre><code>## [1] 0.8418262</code></pre>
 <p>First, let’s calculate the means and standard deviation (using <code>sd</code> so a sample standard deviation) of <code>x</code> and <code>y</code>. We need to get these values so we can calculate the z-scores of each.</p>
@@ -558,7 +558,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb1415-6"><a href="correlation.html#cb1415-6" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(x, y)</span>
 <span id="cb1415-7"><a href="correlation.html#cb1415-7" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1415-8"><a href="correlation.html#cb1415-8" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y)) <span class="sc">+</span> <span class="fu">geom_point</span>(<span class="at">size=</span><span class="dv">2</span>)</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-627-1.png" width="672" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-585-1.png" width="672" /></p>
 <div class="sourceCode" id="cb1416"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1416-1"><a href="correlation.html#cb1416-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(df<span class="sc">$</span>x,df<span class="sc">$</span>y) </span></code></pre></div>
 <pre><code>## [1] -0.6112965</code></pre>
 <p>Here is the code, truncated for space:</p>
@@ -615,7 +615,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb1428"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1428-1"><a href="correlation.html#cb1428-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(jayM, <span class="fu">aes</span>(<span class="at">x=</span>Mass, <span class="at">y=</span>Head)) <span class="sc">+</span> </span>
 <span id="cb1428-2"><a href="correlation.html#cb1428-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">shape =</span> <span class="dv">21</span>, <span class="at">colour =</span> <span class="st">&quot;navy&quot;</span>, <span class="at">fill =</span> <span class="st">&quot;dodgerblue&quot;</span>) <span class="sc">+</span></span>
 <span id="cb1428-3"><a href="correlation.html#cb1428-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_smooth</span>(<span class="at">method=</span><span class="st">&quot;lm&quot;</span>, <span class="at">se=</span>F)</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-630-1.png" width="672" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-588-1.png" width="672" /></p>
 <div class="sourceCode" id="cb1429"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1429-1"><a href="correlation.html#cb1429-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(jayM<span class="sc">$</span>Mass, jayM<span class="sc">$</span>Head)  <span class="co"># r = 0.58,  a strong positive correlation.</span></span></code></pre></div>
 <pre><code>## [1] 0.5773562</code></pre>
 <p>To run the significance test, we do the following:</p>
@@ -698,7 +698,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb1443-7"><a href="correlation.html#cb1443-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size=</span><span class="dv">2</span>, <span class="at">color =</span> <span class="st">&quot;#123abc&quot;</span>, <span class="at">alpha=</span>.<span class="dv">7</span>)<span class="sc">+</span></span>
 <span id="cb1443-8"><a href="correlation.html#cb1443-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_smooth</span>(<span class="at">method=</span><span class="st">&quot;lm&quot;</span>, <span class="at">se=</span>F) <span class="sc">+</span></span>
 <span id="cb1443-9"><a href="correlation.html#cb1443-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>()</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-637-1.png" width="672" />
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-595-1.png" width="672" />
 <br></p>
 <p>Let’s look at the output if we conduct a two-tailed significance test on our sample <span class="math inline">\(r\)</span>:</p>
 <div class="sourceCode" id="cb1444"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1444-1"><a href="correlation.html#cb1444-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor.test</span>(x,y)</span></code></pre></div>
@@ -754,10 +754,10 @@ Now we see that we get the same <span class="math inline">\(t\)</span>- and p-va
 <p>We can also make a QQ-plot for each variable. Essentially what we require from this plot is for the majority of our data to fall on the straight line - especially the datapoints in the middle. Some deviation at the tails is ok. This plot orders our data and plots the observed data against values on the x-axis that we would expect to get if our data was truly from a normal population.</p>
 <div class="sourceCode" id="cb1452"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1452-1"><a href="correlation.html#cb1452-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qqnorm</span>(jayM<span class="sc">$</span>Mass)</span>
 <span id="cb1452-2"><a href="correlation.html#cb1452-2" aria-hidden="true" tabindex="-1"></a><span class="fu">qqline</span>(jayM<span class="sc">$</span>Mass, <span class="at">col =</span> <span class="st">&quot;steelblue&quot;</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-641-1.png" width="672" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-599-1.png" width="672" /></p>
 <div class="sourceCode" id="cb1453"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1453-1"><a href="correlation.html#cb1453-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qqnorm</span>(jayM<span class="sc">$</span>Head)</span>
 <span id="cb1453-2"><a href="correlation.html#cb1453-2" aria-hidden="true" tabindex="-1"></a><span class="fu">qqline</span>(jayM<span class="sc">$</span>Head, <span class="at">col =</span> <span class="st">&quot;steelblue&quot;</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-642-1.png" width="672" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-600-1.png" width="672" /></p>
 <p>Both of these QQ plots are ok, and indicate normality, as does our Shapiro-Wilk tests. Therefore we would be ok to use a Pearson Correlation test with these data.</p>
 <p>What should you do though if either of your continuous variables are not approximately normally distributed? In that case, there are other correlation coefficients and associated significance tests that you could run instead. We describe these in more detail in Section <a href="correlation.html#non-parametric-correlations">12.7</a>.</p>
 <p><br></p>
@@ -797,7 +797,7 @@ Now we see that we get the same <span class="math inline">\(t\)</span>- and p-va
 <span id="cb1460-3"><a href="correlation.html#cb1460-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>() <span class="sc">+</span></span>
 <span id="cb1460-4"><a href="correlation.html#cb1460-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_smooth</span>(<span class="at">method=</span><span class="st">&#39;lm&#39;</span>,<span class="at">se=</span>F) <span class="sc">+</span></span>
 <span id="cb1460-5"><a href="correlation.html#cb1460-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;Population of 25,000  r=0.75&quot;</span>)</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-644-1.png" width="672" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-602-1.png" width="672" /></p>
 <p>We can check the correlation for the population and we find that <span class="math inline">\(\rho=0.75\)</span>.</p>
 <div class="sourceCode" id="cb1461"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1461-1"><a href="correlation.html#cb1461-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(dfr<span class="sc">$</span>x, dfr<span class="sc">$</span>y)</span></code></pre></div>
 <pre><code>## [1] 0.75</code></pre>
@@ -830,7 +830,7 @@ Now we see that we get the same <span class="math inline">\(t\)</span>- and p-va
 <span id="cb1465-2"><a href="correlation.html#cb1465-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size=</span><span class="dv">2</span>) <span class="sc">+</span></span>
 <span id="cb1465-3"><a href="correlation.html#cb1465-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>() <span class="sc">+</span></span>
 <span id="cb1465-4"><a href="correlation.html#cb1465-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_smooth</span>(<span class="at">method=</span><span class="st">&#39;lm&#39;</span>,<span class="at">se=</span>F)</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-647-1.png" width="672" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-605-1.png" width="672" /></p>
 <div class="sourceCode" id="cb1466"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1466-1"><a href="correlation.html#cb1466-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(samp1<span class="sc">$</span>x, samp1<span class="sc">$</span>y)</span></code></pre></div>
 <pre><code>## [1] 0.5706988</code></pre>
 <p>In our sample we get <span class="math inline">\(r=0.80\)</span> which is a little bit higher than our population correlation. What if we take a few more samples of size 15? What would we get for those sample correlations? Let’s do it:</p>
@@ -873,7 +873,7 @@ Now we see that we get the same <span class="math inline">\(t\)</span>- and p-va
 <span id="cb1478-5"><a href="correlation.html#cb1478-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;Sample correlation r&quot;</span>) <span class="sc">+</span></span>
 <span id="cb1478-6"><a href="correlation.html#cb1478-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;Sampling Distribution of Correlation Coefficients&quot;</span>)<span class="sc">+</span></span>
 <span id="cb1478-7"><a href="correlation.html#cb1478-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept=</span><span class="fl">0.75</span>, <span class="at">lty=</span><span class="dv">1</span>, <span class="at">lwd=</span><span class="dv">1</span>, <span class="at">color=</span><span class="st">&quot;red&quot;</span>)</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-650-1.png" width="672" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-608-1.png" width="672" /></p>
 <p>What is the first thing that you notice about this sampling distribution? Hopefully it is that it is <em>not symmetrical</em>. It is highly skewed. This is because correlation coefficients are bounded between -1 and +1. We do not get an approximately normally distributed sampling distribution (with the one exception being when the population correlation <span class="math inline">\(\rho=0\)</span>. The red line represents our original population coefficient of <span class="math inline">\(\rho=0.75\)</span>.</p>
 <p>There is however a trick that we can employ to make this sampling distribution approximately normal. We can do something called <strong>Fisher Transform</strong> our sample correlations in the sampling distribution. So for every value of <span class="math inline">\(r\)</span> in our sampling distribution, we can apply the following formula:</p>
 <p><span class="math inline">\(\Large z&#39; = 0.5 \times \log(\frac{1 + r}{1 - r})\)</span></p>
@@ -904,7 +904,7 @@ Now we see that we get the same <span class="math inline">\(t\)</span>- and p-va
 <span id="cb1487-5"><a href="correlation.html#cb1487-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;Fisher Transformed z&#39;&quot;</span>) <span class="sc">+</span></span>
 <span id="cb1487-6"><a href="correlation.html#cb1487-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;Sampling Distribution of Correlation Coefficients&quot;</span>)<span class="sc">+</span></span>
 <span id="cb1487-7"><a href="correlation.html#cb1487-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept=</span><span class="fl">0.97</span>, <span class="at">lty=</span><span class="dv">1</span>, <span class="at">lwd=</span><span class="dv">1</span>, <span class="at">color=</span><span class="st">&quot;red&quot;</span>)</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-655-1.png" width="672" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-613-1.png" width="672" /></p>
 <p>This distribution is approximately symmetrical. The red line here represents the population correlation coefficient of <span class="math inline">\(r=0.75\)</span> which is <span class="math inline">\(z&#39;=0.97\)</span>. This is the approximate mean of the distribution.</p>
 <p>The standard deviation of this transformed sampling distribution can be calculated by this formula:</p>
 <p><span class="math inline">\(\Large se = \sqrt{\frac{1}{n-3}}\)</span></p>
@@ -988,7 +988,7 @@ rho=0.75$ which equates to <span class="math inline">\(z&#39;=0.97\)</span> is i
 <span id="cb1518-3"><a href="correlation.html#cb1518-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">color=</span><span class="st">&quot;navy&quot;</span>) <span class="sc">+</span></span>
 <span id="cb1518-4"><a href="correlation.html#cb1518-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_smooth</span>(<span class="at">method=</span><span class="st">&quot;lm&quot;</span>,<span class="at">se=</span>F) <span class="sc">+</span></span>
 <span id="cb1518-5"><a href="correlation.html#cb1518-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>()</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-664-1.png" width="672" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-622-1.png" width="672" /></p>
 <div class="sourceCode" id="cb1519"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1519-1"><a href="correlation.html#cb1519-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor.test</span>(gs<span class="sc">$</span>hours, gs<span class="sc">$</span>score, <span class="at">alternative =</span> <span class="st">&quot;greater&quot;</span>)  <span class="co"># p=0.049</span></span></code></pre></div>
 <pre><code>## 
 ##  Pearson&#39;s product-moment correlation
@@ -1053,7 +1053,7 @@ rho=0.75$ which equates to <span class="math inline">\(z&#39;=0.97\)</span> is i
 <div class="sourceCode" id="cb1534"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1534-1"><a href="correlation.html#cb1534-1" aria-hidden="true" tabindex="-1"></a><span class="co"># let&#39;s make a scatterplot of saturated fat against cholesterol</span></span>
 <span id="cb1534-2"><a href="correlation.html#cb1534-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(cheese, <span class="fu">aes</span>(<span class="at">x =</span> sat_fat, <span class="at">y =</span> chol)) <span class="sc">+</span> <span class="fu">geom_point</span>() <span class="sc">+</span></span>
 <span id="cb1534-3"><a href="correlation.html#cb1534-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_smooth</span>(<span class="at">method=</span><span class="st">&quot;lm&quot;</span>,<span class="at">se=</span>F)</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-669-1.png" width="672" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-627-1.png" width="672" /></p>
 <p>It looks like there is a pretty obvious relationship, but let’s check the normality of each variable before progressing. Firstly the Shapiro-Wilk tests suggest that our data do not come from a normal distribution:</p>
 <div class="sourceCode" id="cb1535"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1535-1"><a href="correlation.html#cb1535-1" aria-hidden="true" tabindex="-1"></a><span class="fu">shapiro.test</span>(cheese<span class="sc">$</span>sat_fat)  <span class="co"># P &lt; 0.05, therefore data may not be normal</span></span></code></pre></div>
 <pre><code>## 
@@ -1070,10 +1070,10 @@ rho=0.75$ which equates to <span class="math inline">\(z&#39;=0.97\)</span> is i
 <p>Secondly, we have quite dramatic deviation from the straight line of our datapoints in our QQ plots. This indicates that our data are likely skewed.</p>
 <div class="sourceCode" id="cb1539"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1539-1"><a href="correlation.html#cb1539-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qqnorm</span>(cheese<span class="sc">$</span>sat_fat)</span>
 <span id="cb1539-2"><a href="correlation.html#cb1539-2" aria-hidden="true" tabindex="-1"></a><span class="fu">qqline</span>(cheese<span class="sc">$</span>sat_fat, <span class="at">col =</span> <span class="st">&quot;steelblue&quot;</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-671-1.png" width="672" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-629-1.png" width="672" /></p>
 <div class="sourceCode" id="cb1540"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1540-1"><a href="correlation.html#cb1540-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qqnorm</span>(cheese<span class="sc">$</span>chol)</span>
 <span id="cb1540-2"><a href="correlation.html#cb1540-2" aria-hidden="true" tabindex="-1"></a><span class="fu">qqline</span>(cheese<span class="sc">$</span>chol, <span class="at">col =</span> <span class="st">&quot;steelblue&quot;</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-671-2.png" width="672" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-629-2.png" width="672" /></p>
 <p>We could be thorough and check this by plotting histograms of our data:</p>
 <div class="sourceCode" id="cb1541"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1541-1"><a href="correlation.html#cb1541-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gridExtra)</span>
 <span id="cb1541-2"><a href="correlation.html#cb1541-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -1081,7 +1081,7 @@ rho=0.75$ which equates to <span class="math inline">\(z&#39;=0.97\)</span> is i
 <span id="cb1541-4"><a href="correlation.html#cb1541-4" aria-hidden="true" tabindex="-1"></a>p2 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(cheese, <span class="fu">aes</span>(<span class="at">x=</span>chol)) <span class="sc">+</span> <span class="fu">geom_histogram</span>(<span class="at">color=</span><span class="st">&quot;black&quot;</span>, <span class="at">fill=</span><span class="st">&quot;lightseagreen&quot;</span>)</span>
 <span id="cb1541-5"><a href="correlation.html#cb1541-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1541-6"><a href="correlation.html#cb1541-6" aria-hidden="true" tabindex="-1"></a><span class="fu">grid.arrange</span>(p1,p2,<span class="at">nrow=</span><span class="dv">1</span>)</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-672-1.png" width="672" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-630-1.png" width="672" /></p>
 <p>Because our data do not appear to be normal, we cannot do a Pearson correlation coefficient. We should instead use a non-parametric correlation method. There are several of these to choose from. We don’t plan to go into the details here of how these methods determine their correlation coefficients or conduct significance test. In brief, these methods generally rank order the datapoints along the <code>x</code> and <code>y</code> axes and then determine how ordered these ranks are with respect to each other.</p>
 <p>Probably the most commonly used non-parametric correlation test is called the Spearman Rank Correlation test.</p>
 <p>To run this, we can use <code>cor()</code> to get the correlation or <code>cor.test()</code> to run the significance test in the same way we did the Pearson test. However, the difference here is that we specify <code>method="spearman"</code> at the end.</p>
@@ -1145,7 +1145,7 @@ rho=0.75$ which equates to <span class="math inline">\(z&#39;=0.97\)</span> is i
 <span id="cb1552-3"><a href="correlation.html#cb1552-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>, <span class="at">se=</span>F) <span class="sc">+</span></span>
 <span id="cb1552-4"><a href="correlation.html#cb1552-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;Dominance Rank&quot;</span>) <span class="sc">+</span></span>
 <span id="cb1552-5"><a href="correlation.html#cb1552-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&quot;Testosterone Level&quot;</span>) </span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-676-1.png" width="672" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-634-1.png" width="672" /></p>
 <div class="sourceCode" id="cb1553"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1553-1"><a href="correlation.html#cb1553-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(test<span class="sc">$</span>drank, test<span class="sc">$</span>testosterone, <span class="at">method =</span> <span class="st">&quot;spearman&quot;</span>) <span class="co"># rho = -0.91</span></span></code></pre></div>
 <pre><code>## [1] -0.9083378</code></pre>
 <p>If you had the <em>a priori</em> prediction, that more dominant animals would have higher testosterone, then you could do a one-tailed test. This would mean that you expect there to be a negative correlation - as the rank number gets higher, the levels of testosterone would fall. In this case, you’d use <code>alternative = "less"</code>.</p>
@@ -1241,7 +1241,7 @@ rho=0.75$ which equates to <span class="math inline">\(z&#39;=0.97\)</span> is i
 <span id="cb1579-4"><a href="correlation.html#cb1579-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>), <span class="at">labels=</span><span class="fu">c</span>(<span class="st">&quot;female&quot;</span>, <span class="st">&quot;male&quot;</span>))<span class="sc">+</span></span>
 <span id="cb1579-5"><a href="correlation.html#cb1579-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_smooth</span>(<span class="at">method=</span><span class="st">&#39;lm&#39;</span>,<span class="at">se=</span>F) <span class="sc">+</span></span>
 <span id="cb1579-6"><a href="correlation.html#cb1579-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>()</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-683-1.png" width="672" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-641-1.png" width="672" /></p>
 <p>What we have in this plot are individual points representing each cat. The points are jittered to make overlapping datapoints more readable. We have also put a trendline through the data. How was this achieved? Essentially, all the females are given the value 0, and all the males are given the value 1. We then run a Pearson’s correlation using the <code>X</code> values to be 0 or 1, and the <code>Y</code> values to be the <code>time</code> measurement.</p>
 <p>Doing this, we can simply run a Pearson’s correlation test using <code>cor.test()</code>:</p>
 <div class="sourceCode" id="cb1580"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1580-1"><a href="correlation.html#cb1580-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor.test</span>(cats<span class="sc">$</span>sex1, cats<span class="sc">$</span>time)</span></code></pre></div>

@@ -24,7 +24,7 @@
 <meta name="author" content="James P. Curley &amp; Tyler M. Milewski" />
 
 
-<meta name="date" content="2021-08-21" />
+<meta name="date" content="2021-09-01" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -447,13 +447,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="uniform-distribution" class="section level3" number="7.0.1">
 <h3><span class="header-section-number">7.0.1</span> Uniform Distribution</h3>
 <p>The first distribution we’ll look at is the uniform. A uniform distribution is one where there’s an equal probability of getting each value from the distribution. In the example below, we’ve grabbed 1,000,000 numbers from a uniform distribution that starts at 0 and ends at 100. Let’s look at it’s shape:</p>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-406-1.png" width="672" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-364-1.png" width="672" /></p>
 <p>As you can see, the histogram that we have generated is roughly flat across the top. This means that we have equal frequency counts in each bin. Each bin here is 5 across, so the first bin is 0-5, the next bin is 5-10, and so on. We have 25 bins in total in this histogram, and each has roughly 50,000 values in it. This is the classic shape of the uniform distribution.</p>
 </div>
 <div id="bimodal-distribution" class="section level3" number="7.0.2">
 <h3><span class="header-section-number">7.0.2</span> Bimodal Distribution</h3>
 <p>Another family of distributions that is worth our attention are bimodal distributions. In these distributions we have two peaks in the distribution. You can see an example below:</p>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-407-1.png" width="672" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-365-1.png" width="672" /></p>
 </div>
 <div id="normal-distribution" class="section level3" number="7.0.3">
 <h3><span class="header-section-number">7.0.3</span> Normal Distribution</h3>
@@ -477,7 +477,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb757-7"><a href="distributions.html#cb757-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;values&quot;</span>)</span>
 <span id="cb757-8"><a href="distributions.html#cb757-8" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb757-9"><a href="distributions.html#cb757-9" aria-hidden="true" tabindex="-1"></a>p</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-408-1.png" width="672" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-366-1.png" width="672" /></p>
 <p>Normal distributions can vary in their means and standard deviations. Below is an image of a selection of four different normal distributions that all vary in their means and standard deviations. The dotted vertical black line in each graph indicates where their respective means lie.</p>
 <p><img src="img/norm.png" /></p>
 <p>We use special notation to indicate that a distribution is a Normal Distribution. For instance, for the normal distribution that has a mean of 17 and a standard deviation of 7, we would write:</p>
@@ -518,12 +518,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb764-2"><a href="distributions.html#cb764-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="fu">median</span>(x), <span class="at">color =</span> <span class="st">&quot;blue&quot;</span>, <span class="at">lwd=</span><span class="dv">1</span>)<span class="sc">+</span> </span>
 <span id="cb764-3"><a href="distributions.html#cb764-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="fu">mean</span>(x), <span class="at">color =</span> <span class="st">&quot;red&quot;</span>, <span class="at">lwd=</span><span class="dv">1</span>)<span class="sc">+</span> </span>
 <span id="cb764-4"><a href="distributions.html#cb764-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="fu">estimate_mode</span>(x), <span class="at">color =</span> <span class="st">&quot;darkorange&quot;</span>, <span class="at">lwd=</span><span class="dv">1</span>)</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-410-1.png" width="672" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-368-1.png" width="672" /></p>
 <p>Now let’s look at some skewed distributions as to what happens to the mode, median and mean in such distributions.</p>
 <p>In this dataset, we have 7486 rows of data (observations). Each row is a MLB player. The three numerical columns refer to the career total hits (<code>totalH</code>), career total at bats (<code>totalAB</code>), and career batting average (<code>avg</code>) of each player.</p>
 <div class="sourceCode" id="cb765"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb765-1"><a href="distributions.html#cb765-1" aria-hidden="true" tabindex="-1"></a>bats <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;data/batting.csv&quot;</span>)</span></code></pre></div>
 <pre><code>## Rows: 7486 Columns: 4</code></pre>
-<pre><code>## -- Column specification -----------------------------------------------------------------------------------
+<pre><code>## -- Column specification ------------------------------------------------------
 ## Delimiter: &quot;,&quot;
 ## chr (1): playerID
 ## dbl (3): totalH, totalAB, avg</code></pre>
@@ -554,7 +554,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb773-10"><a href="distributions.html#cb773-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;Career Batting Average&quot;</span>)</span>
 <span id="cb773-11"><a href="distributions.html#cb773-11" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb773-12"><a href="distributions.html#cb773-12" aria-hidden="true" tabindex="-1"></a>p1</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-412-1.png" width="672" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-370-1.png" width="672" /></p>
 <p>As you can see, this distribution is very negatively (left) skewed. This means that there are many players who have career batting averages between 0.2 and 0.3. There are relatively few players with career averages over 0.3. There are more averages that are less than 0.2 causing the skew.</p>
 <p>We can directly measure the skewness using the <code>skewness()</code> function from the <code>moments</code> package. We can see that it is highly negatively skewed with a value of -1.01:</p>
 <div class="sourceCode" id="cb774"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb774-1"><a href="distributions.html#cb774-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(moments)</span>
@@ -573,7 +573,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb782-2"><a href="distributions.html#cb782-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="fu">median</span>(bats<span class="sc">$</span>avg), <span class="at">color =</span> <span class="st">&quot;blue&quot;</span>, <span class="at">lwd=</span><span class="dv">1</span>)<span class="sc">+</span> </span>
 <span id="cb782-3"><a href="distributions.html#cb782-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="fu">mean</span>(bats<span class="sc">$</span>avg), <span class="at">color =</span> <span class="st">&quot;red&quot;</span>, <span class="at">lwd=</span><span class="dv">1</span>)<span class="sc">+</span> </span>
 <span id="cb782-4"><a href="distributions.html#cb782-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="fu">estimate_mode</span>(bats<span class="sc">$</span>avg), <span class="at">color =</span> <span class="st">&quot;darkorange&quot;</span>, <span class="at">lwd=</span><span class="dv">1</span>)</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-415-1.png" width="672" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-373-1.png" width="672" /></p>
 <p>Now let’s look at what happens to the mode, median and mean in right skewed distributions. Let’s look at the career at-bats of MLB players.</p>
 <div class="sourceCode" id="cb783"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb783-1"><a href="distributions.html#cb783-1" aria-hidden="true" tabindex="-1"></a><span class="co">#histogram</span></span>
 <span id="cb783-2"><a href="distributions.html#cb783-2" aria-hidden="true" tabindex="-1"></a>p2 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(bats, <span class="fu">aes</span>(<span class="at">x =</span> totalAB)) <span class="sc">+</span> </span>
@@ -586,7 +586,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb783-9"><a href="distributions.html#cb783-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>()</span>
 <span id="cb783-10"><a href="distributions.html#cb783-10" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb783-11"><a href="distributions.html#cb783-11" aria-hidden="true" tabindex="-1"></a>p2</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-416-1.png" width="672" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-374-1.png" width="672" /></p>
 <p>This distribution is extremely right (positive) skewed. If we measure the skewness we find that the skewness is 1.63.</p>
 <div class="sourceCode" id="cb784"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb784-1"><a href="distributions.html#cb784-1" aria-hidden="true" tabindex="-1"></a><span class="fu">skewness</span>(bats<span class="sc">$</span>totalAB)</span></code></pre></div>
 <pre><code>## [1] 1.626115</code></pre>
@@ -601,7 +601,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb792-2"><a href="distributions.html#cb792-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="fu">median</span>(bats<span class="sc">$</span>totalAB), <span class="at">color =</span> <span class="st">&quot;blue&quot;</span>, <span class="at">lwd=</span><span class="dv">1</span>)<span class="sc">+</span> </span>
 <span id="cb792-3"><a href="distributions.html#cb792-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="fu">mean</span>(bats<span class="sc">$</span>totalAB), <span class="at">color =</span> <span class="st">&quot;red&quot;</span>, <span class="at">lwd=</span><span class="dv">1</span>)<span class="sc">+</span> </span>
 <span id="cb792-4"><a href="distributions.html#cb792-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="fu">estimate_mode</span>(bats<span class="sc">$</span>totalAB), <span class="at">color =</span> <span class="st">&quot;darkorange&quot;</span>, <span class="at">lwd=</span><span class="dv">1</span>)</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-418-1.png" width="672" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-376-1.png" width="672" /></p>
 <p>In these severely right skewed distribution, we again see that the median and mean get pulled towards the tail of the distribution, with the mean getting pulled even further than the median.</p>
 <p>Let’s have a look at a quick summary figure of where the mean, median and mode lie with respect to each other in skewed distributions. As you can see, the mean always gets pulled the furthest to the tail of distributions.The reason for this is that the mean is much more affected by extreme outliers than the median. The median is simply the boundary which divides the top 50% of the data from the bottom 50% of the data. The mean has to include all values in its calculation, so can be largely affected by extreme values more so than the median.</p>
 <div class="figure">
@@ -636,7 +636,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb797"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb797-1"><a href="distributions.html#cb797-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">10</span>)</span>
 <span id="cb797-2"><a href="distributions.html#cb797-2" aria-hidden="true" tabindex="-1"></a>x1 <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="at">n =</span> <span class="dv">10</span>, <span class="at">mean =</span> <span class="dv">100</span>, <span class="at">sd =</span> <span class="fl">5.0</span>)</span>
 <span id="cb797-3"><a href="distributions.html#cb797-3" aria-hidden="true" tabindex="-1"></a>x1</span></code></pre></div>
-<pre><code>##  [1] 100.09373  99.07874  93.14335  97.00416 101.47273 101.94897  93.95962  98.18162  91.86664  98.71761</code></pre>
+<pre><code>##  [1] 100.09373  99.07874  93.14335  97.00416 101.47273 101.94897  93.95962
+##  [8]  98.18162  91.86664  98.71761</code></pre>
 <div class="sourceCode" id="cb799"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb799-1"><a href="distributions.html#cb799-1" aria-hidden="true" tabindex="-1"></a><span class="fu">skewness</span>(x1)</span></code></pre></div>
 <pre><code>## [1] -0.4021377</code></pre>
 <div class="sourceCode" id="cb801"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb801-1"><a href="distributions.html#cb801-1" aria-hidden="true" tabindex="-1"></a><span class="fu">kurtosis</span>(x1)</span></code></pre></div>
@@ -686,8 +687,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb811"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb811-1"><a href="distributions.html#cb811-1" aria-hidden="true" tabindex="-1"></a>z <span class="ot">&lt;-</span> (ages <span class="sc">-</span> <span class="fu">mean</span>(ages)) <span class="sc">/</span> <span class="fu">sd</span>(ages)</span>
 <span id="cb811-2"><a href="distributions.html#cb811-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb811-3"><a href="distributions.html#cb811-3" aria-hidden="true" tabindex="-1"></a>z</span></code></pre></div>
-<pre><code>##  [1] -0.61398401 -0.86804636 -0.74101519  0.02117186  1.16445243  0.46578097 -1.05859312 -1.12210871
-##  [9]  1.79960831  1.41851478 -0.16937490 -0.29640607</code></pre>
+<pre><code>##  [1] -0.61398401 -0.86804636 -0.74101519  0.02117186  1.16445243  0.46578097
+##  [7] -1.05859312 -1.12210871  1.79960831  1.41851478 -0.16937490 -0.29640607</code></pre>
 <p>You’ll notice that those individuals that have negative z-scores are younger than the mean age of 32.67. Those individuals with positive z-scores are older than the mean age of 32.67. The largest z-score in terms of magnitude (either in the positive or negative direction) is 1.8. This person was 61 and was 1.8 standard deviations older than the average age.</p>
 <p>Although it’s possible to calculate z-scores for any sample, if the sample data come from a normally distributed population then we can use this z-score principle to perform inferential statistics (see xxx.xxx)</p>
 </div>
@@ -715,7 +716,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Let’s look at the proportions under the curve to the left of plus or minus 0, 1, 2, or 3 standard deviations from the mean.</p>
 <div class="sourceCode" id="cb819"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb819-1"><a href="distributions.html#cb819-1" aria-hidden="true" tabindex="-1"></a>zvals <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">3</span>,<span class="sc">-</span><span class="dv">2</span>,<span class="sc">-</span><span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>)</span>
 <span id="cb819-2"><a href="distributions.html#cb819-2" aria-hidden="true" tabindex="-1"></a><span class="fu">pnorm</span>(zvals)</span></code></pre></div>
-<pre><code>## [1] 0.001349898 0.022750132 0.158655254 0.500000000 0.841344746 0.977249868 0.998650102</code></pre>
+<pre><code>## [1] 0.001349898 0.022750132 0.158655254 0.500000000 0.841344746 0.977249868
+## [7] 0.998650102</code></pre>
 <p>Hopefully you can see that these values mirror those in the table provided above.</p>
 <p><br></p>
 <div id="z-score-and-probability-problems." class="section level4" number="7.1.2.1">
@@ -791,14 +793,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb843-7"><a href="distributions.html#cb843-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&quot;Frequency&quot;</span>) <span class="sc">+</span></span>
 <span id="cb843-8"><a href="distributions.html#cb843-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;Body Sizes of 1 million Archerfish&quot;</span>) <span class="sc">+</span></span>
 <span id="cb843-9"><a href="distributions.html#cb843-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="fl">100.0</span>, <span class="at">lwd=</span><span class="dv">1</span>, <span class="at">color=</span><span class="st">&#39;black&#39;</span>)</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-435-1.png" width="672" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-393-1.png" width="672" /></p>
 <p>OK, let’s say that you didn’t have the time to go out and catch 1 million archerfish and measure the body length of every single fish. What should you do? One thing you might decide is to just go and take a random sample of 10 archerfish (you could have picked another sample size - let’s just stick with 10 for now). Once you have your sample of 10 archerfish, you could then measure them and you will be able to calculate the sample mean of that sample.</p>
 <p>We’ll use <code>sample()</code> to randomly select 10 archerfish.</p>
 <div class="sourceCode" id="cb844"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb844-1"><a href="distributions.html#cb844-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1</span>) <span class="co"># so we all get the same sample.</span></span>
 <span id="cb844-2"><a href="distributions.html#cb844-2" aria-hidden="true" tabindex="-1"></a>samp1 <span class="ot">&lt;-</span> <span class="fu">sample</span>(archerfish, <span class="dv">10</span>, <span class="at">replace =</span> T)  </span>
 <span id="cb844-3"><a href="distributions.html#cb844-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb844-4"><a href="distributions.html#cb844-4" aria-hidden="true" tabindex="-1"></a>samp1</span></code></pre></div>
-<pre><code>##  [1]  95.84601 106.80884  95.77485  89.09022  94.47476  85.87588  90.68373  98.53963  91.73568  75.49939</code></pre>
+<pre><code>##  [1]  95.84601 106.80884  95.77485  89.09022  94.47476  85.87588  90.68373
+##  [8]  98.53963  91.73568  75.49939</code></pre>
 <div class="sourceCode" id="cb846"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb846-1"><a href="distributions.html#cb846-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(samp1)</span></code></pre></div>
 <pre><code>## [1] 92.4329</code></pre>
 <p>Our sample mean is <span class="math inline">\(\overline{x}=95.6\)</span> - that’s fairly close to the actual population mean of 100.0mm. Let’s grab another three samples of 10 archerfish and see what the sample means are of those sample:</p>
@@ -828,7 +831,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb855-7"><a href="distributions.html#cb855-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="fu">mean</span>(res), <span class="at">lwd=</span><span class="dv">1</span>)</span>
 <span id="cb855-8"><a href="distributions.html#cb855-8" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb855-9"><a href="distributions.html#cb855-9" aria-hidden="true" tabindex="-1"></a>psd</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-439-1.png" width="672" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-397-1.png" width="672" /></p>
 <p>This distribution that we’ve just plotted is the <strong>sampling distribution of sample means for samples of size n=10</strong>. We picked 20,000 as the number of samples of size 10 to collect as it’s reasonably large enough to get enough sample means that we can see the shape of the distribution. We could have picked 100,000 samples to collect, or 1,000,000… in fact the more the better, but 20,000 is enough to get the point across.</p>
 <p>Out of all of these sample means that we “collected”, what is the average across all of the 20,000 samples? - and what’s more, what is the standard deviation of that distribution?</p>
 <div class="sourceCode" id="cb856"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb856-1"><a href="distributions.html#cb856-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(res)</span></code></pre></div>
@@ -866,7 +869,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb863-7"><a href="distributions.html#cb863-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="fu">mean</span>(res1),<span class="at">lwd=</span><span class="dv">1</span>)</span>
 <span id="cb863-8"><a href="distributions.html#cb863-8" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb863-9"><a href="distributions.html#cb863-9" aria-hidden="true" tabindex="-1"></a>psd2</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-443-1.png" width="672" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-401-1.png" width="672" /></p>
 <p>If we look at the mean and standard deviation of this sampling distribution, we get the following values:</p>
 <div class="sourceCode" id="cb864"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb864-1"><a href="distributions.html#cb864-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(res1)  <span class="co"># still same as population mean</span></span></code></pre></div>
 <pre><code>## [1] 100.0038</code></pre>
@@ -878,7 +881,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb868"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb868-1"><a href="distributions.html#cb868-1" aria-hidden="true" tabindex="-1"></a><span class="dv">15</span> <span class="sc">/</span> <span class="fu">sqrt</span>(<span class="dv">50</span>)</span></code></pre></div>
 <pre><code>## [1] 2.12132</code></pre>
 <p>Let’s directly compare the two sampling distributions for the two different sample sizes. We adjusted the x-axis so it is the same for both figures, so you can see the change in the standard deviation between the two sample sizes:</p>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-446-1.png" width="672" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-404-1.png" width="672" /></p>
 <p><br><br></p>
 </div>
 </div>
@@ -904,7 +907,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb870-12"><a href="distributions.html#cb870-12" aria-hidden="true" tabindex="-1"></a>                 <span class="at">boundary =</span> <span class="dv">0</span>) <span class="sc">+</span></span>
 <span id="cb870-13"><a href="distributions.html#cb870-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>() <span class="sc">+</span></span>
 <span id="cb870-14"><a href="distributions.html#cb870-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;Distance from Center of Forest km&quot;</span>)</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-447-1.png" width="672" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-405-1.png" width="672" /></p>
 <div class="sourceCode" id="cb871"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb871-1"><a href="distributions.html#cb871-1" aria-hidden="true" tabindex="-1"></a><span class="do">### Population Mean &amp; SD</span></span>
 <span id="cb871-2"><a href="distributions.html#cb871-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(x1)  <span class="co">#37.5</span></span></code></pre></div>
 <pre><code>## [1] 37.49417</code></pre>
@@ -930,7 +933,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb875-16"><a href="distributions.html#cb875-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;Mean of each sample&quot;</span>) <span class="sc">+</span></span>
 <span id="cb875-17"><a href="distributions.html#cb875-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&quot;Frequency&quot;</span>) <span class="sc">+</span></span>
 <span id="cb875-18"><a href="distributions.html#cb875-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;Sampling Distribution of Sample Means for n=30&quot;</span>)</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-448-1.png" width="672" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-406-1.png" width="672" /></p>
 <p>This histogram represents our sampling distribution of sample means when we took samples of size 30 from a uniform distribution. Hopefully you notice that it is approximately normally distributed - even though the original population was uniformally distributed! Let’s calculate the mean and standard deviation of this sampling distribution:</p>
 <div class="sourceCode" id="cb876"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb876-1"><a href="distributions.html#cb876-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(res)  <span class="co"># the mean of the sample means is close to 37.5, the population mean</span></span></code></pre></div>
 <pre><code>## [1] 37.54835</code></pre>
@@ -957,7 +960,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb882-12"><a href="distributions.html#cb882-12" aria-hidden="true" tabindex="-1"></a>                 <span class="at">boundary =</span> <span class="dv">0</span>) <span class="sc">+</span></span>
 <span id="cb882-13"><a href="distributions.html#cb882-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>() <span class="sc">+</span></span>
 <span id="cb882-14"><a href="distributions.html#cb882-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;Charity Donation in $&quot;</span>)</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-451-1.png" width="672" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-409-1.png" width="672" /></p>
 <div class="sourceCode" id="cb883"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb883-1"><a href="distributions.html#cb883-1" aria-hidden="true" tabindex="-1"></a><span class="do">### Population Mean</span></span>
 <span id="cb883-2"><a href="distributions.html#cb883-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(q)  <span class="co">#7.5</span></span></code></pre></div>
 <pre><code>## [1] 7.504368</code></pre>
@@ -982,7 +985,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb887-15"><a href="distributions.html#cb887-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;Mean of each sample&quot;</span>) <span class="sc">+</span></span>
 <span id="cb887-16"><a href="distributions.html#cb887-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&quot;Frequency&quot;</span>) <span class="sc">+</span></span>
 <span id="cb887-17"><a href="distributions.html#cb887-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;Sampling Distribution of Sample Means for n=30&quot;</span>)</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-452-1.png" width="672" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-410-1.png" width="672" /></p>
 <p>So, it happened again. This is our sampling distribution of sample means, collected from samples of size 30 from a highly skewed distribution. But once again, the sampling distribution is approximately normally distributed. It might not be perfectly normally distributed, but it is close to being normal. We can calculate the mean and the standard deviation of this sampling distribution:</p>
 <div class="sourceCode" id="cb888"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb888-1"><a href="distributions.html#cb888-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(res)  <span class="co"># the mean of the sample means is close to 7.5</span></span></code></pre></div>
 <pre><code>## [1] 7.514097</code></pre>
@@ -1038,7 +1041,7 @@ Q. Say the weight of chicken eggs is normally distributed with mean 60g and stan
 <span id="cb894-33"><a href="distributions.html#cb894-33" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb894-34"><a href="distributions.html#cb894-34" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gridExtra)</span>
 <span id="cb894-35"><a href="distributions.html#cb894-35" aria-hidden="true" tabindex="-1"></a><span class="fu">grid.arrange</span>(p1,p2,<span class="at">nrow=</span><span class="dv">1</span>)</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-455-1.png" width="672" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-413-1.png" width="672" /></p>
 <p>What are the mean and standard deviation of this sampling distribution of sample means? Well, <span class="math inline">\(\mu_{\overline{x}} = 60\)</span> because that’s the population mean, and we know the mean of the sample means is approximately the same. We know we can calculate <span class="math inline">\(\sigma_{\overline{x}}\)</span> because we know the population standard deviation <span class="math inline">\(\sigma\)</span>.</p>
 <p>Again, the formula is <span class="math inline">\(\Large \sigma_{\overline{x}} = \frac{\sigma}{\sqrt{n}}\)</span>. Therefore, the standard deviation of the sampling distribution is <span class="math inline">\(\sigma_{\overline{x}} = 0.87\)</span>:</p>
 <div class="sourceCode" id="cb895"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb895-1"><a href="distributions.html#cb895-1" aria-hidden="true" tabindex="-1"></a>sem <span class="ot">&lt;-</span> <span class="dv">3</span> <span class="sc">/</span> <span class="fu">sqrt</span>(<span class="dv">12</span>)</span>
@@ -1048,7 +1051,7 @@ Q. Say the weight of chicken eggs is normally distributed with mean 60g and stan
 <p>Now, we’re interested in a sample of 12 that has a sample mean of 58g. Let’s visualize what that looks like on the histogram of the sampling distribution:</p>
 <div class="sourceCode" id="cb897"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb897-1"><a href="distributions.html#cb897-1" aria-hidden="true" tabindex="-1"></a>p2 <span class="sc">+</span> <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="dv">58</span>, <span class="at">lty=</span><span class="dv">2</span>, <span class="at">lwd=</span><span class="dv">1</span>, <span class="at">color=</span><span class="st">&quot;red&quot;</span>) <span class="sc">+</span></span>
 <span id="cb897-2"><a href="distributions.html#cb897-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;Sampling Distribution of Sample Means </span><span class="sc">\n</span><span class="st"> for sample size = 12&quot;</span>)</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-457-1.png" width="672" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-415-1.png" width="672" /></p>
 <p>Because we know the mean and standard deviation of this distribution, we can actually calculate the sample mean of 58g as a z-score. Doing this we find that <span class="math inline">\(z = -2.31\)</span>, which means that a sample mean of 58g is 2.31 standard deviations below the mean.</p>
 <div class="sourceCode" id="cb898"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb898-1"><a href="distributions.html#cb898-1" aria-hidden="true" tabindex="-1"></a><span class="co"># so, 58g as a z-score is...</span></span>
 <span id="cb898-2"><a href="distributions.html#cb898-2" aria-hidden="true" tabindex="-1"></a></span>

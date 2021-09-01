@@ -24,7 +24,7 @@
 <meta name="author" content="James P. Curley &amp; Tyler M. Milewski" />
 
 
-<meta name="date" content="2021-08-21" />
+<meta name="date" content="2021-09-01" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -734,7 +734,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb638"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb638-1"><a href="descriptives.html#cb638-1" aria-hidden="true" tabindex="-1"></a><span class="co">#first sample</span></span>
 <span id="cb638-2"><a href="descriptives.html#cb638-2" aria-hidden="true" tabindex="-1"></a>samp1 <span class="ot">&lt;-</span> <span class="fu">sample</span>(pop, <span class="at">size =</span> <span class="dv">10</span>, <span class="at">replace =</span> T)</span>
 <span id="cb638-3"><a href="descriptives.html#cb638-3" aria-hidden="true" tabindex="-1"></a>samp1</span></code></pre></div>
-<pre><code>##  [1]  3.722781  8.785220  6.045566 11.705993  7.297500  7.399121 11.976971  8.401657  6.306361  7.152555</code></pre>
+<pre><code>##  [1]  3.722781  8.785220  6.045566 11.705993  7.297500  7.399121 11.976971
+##  [8]  8.401657  6.306361  7.152555</code></pre>
 <div class="sourceCode" id="cb640"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb640-1"><a href="descriptives.html#cb640-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(samp1)</span></code></pre></div>
 <pre><code>## [1] 7.879373</code></pre>
 <p>Here our sample mean <span class="math inline">\(\overline{x}=8.62\)</span> which is close-ish, but a fair bit above <span class="math inline">\(\mu=7.99\)</span>.</p>
@@ -742,7 +743,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb642"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb642-1"><a href="descriptives.html#cb642-1" aria-hidden="true" tabindex="-1"></a><span class="co">#second sample</span></span>
 <span id="cb642-2"><a href="descriptives.html#cb642-2" aria-hidden="true" tabindex="-1"></a>samp2 <span class="ot">&lt;-</span> <span class="fu">sample</span>(pop, <span class="at">size =</span> <span class="dv">10</span>, <span class="at">replace =</span> T)</span>
 <span id="cb642-3"><a href="descriptives.html#cb642-3" aria-hidden="true" tabindex="-1"></a>samp2</span></code></pre></div>
-<pre><code>##  [1]  6.142884  7.614448  9.575279  9.072075  4.108463 10.599279  8.224608  6.735289  7.004465  7.791237</code></pre>
+<pre><code>##  [1]  6.142884  7.614448  9.575279  9.072075  4.108463 10.599279  8.224608
+##  [8]  6.735289  7.004465  7.791237</code></pre>
 <div class="sourceCode" id="cb644"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb644-1"><a href="descriptives.html#cb644-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(samp2)</span></code></pre></div>
 <pre><code>## [1] 7.686803</code></pre>
 <p>Again our value of <span class="math inline">\(\overline{x}=8.10\)</span> is above <span class="math inline">\(\mu=7.99\)</span>, but this time much closer.</p>
@@ -750,7 +752,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb646"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb646-1"><a href="descriptives.html#cb646-1" aria-hidden="true" tabindex="-1"></a><span class="co">#third sample</span></span>
 <span id="cb646-2"><a href="descriptives.html#cb646-2" aria-hidden="true" tabindex="-1"></a>samp3 <span class="ot">&lt;-</span> <span class="fu">sample</span>(pop, <span class="at">size =</span> <span class="dv">10</span>, <span class="at">replace =</span> T)</span>
 <span id="cb646-3"><a href="descriptives.html#cb646-3" aria-hidden="true" tabindex="-1"></a>samp3</span></code></pre></div>
-<pre><code>##  [1]  8.352818 12.802444 10.304643  6.061141  8.633719  8.028558  7.350359  5.904344  6.875784 11.512439</code></pre>
+<pre><code>##  [1]  8.352818 12.802444 10.304643  6.061141  8.633719  8.028558  7.350359
+##  [8]  5.904344  6.875784 11.512439</code></pre>
 <div class="sourceCode" id="cb648"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb648-1"><a href="descriptives.html#cb648-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(samp3)</span></code></pre></div>
 <pre><code>## [1] 8.582625</code></pre>
 <p>This time our value of <span class="math inline">\(\overline{x}=7.86\)</span> is a bit below <span class="math inline">\(\mu=7.99\)</span>.</p>
@@ -765,13 +768,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb650-6"><a href="descriptives.html#cb650-6" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <p>Let’s look at 10 of these sample means we just collected:</p>
 <div class="sourceCode" id="cb651"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb651-1"><a href="descriptives.html#cb651-1" aria-hidden="true" tabindex="-1"></a><span class="fu">unlist</span>(results.means)[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>]</span></code></pre></div>
-<pre><code>##  [1] 7.457507 7.804544 8.099342 7.886644 7.642569 8.228794 8.581173 7.417380 7.098994 7.458659</code></pre>
+<pre><code>##  [1] 7.457507 7.804544 8.099342 7.886644 7.642569 8.228794 8.581173 7.417380
+##  [9] 7.098994 7.458659</code></pre>
 <p>Some are above and some are below <span class="math inline">\(\mu=7.99\)</span>.</p>
 <p>Let’s calculate the mean of all the 20,000 sample means:</p>
 <div class="sourceCode" id="cb653"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb653-1"><a href="descriptives.html#cb653-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(<span class="fu">unlist</span>(results.means))</span></code></pre></div>
 <pre><code>## [1] 7.990952</code></pre>
 <p>It turns out that the average sample mean that we collect using the formula <span class="math inline">\(\Large \overline{x} = \frac{\Sigma{x}}{n}\)</span> is 7.99 which is the same as the population mean <span class="math inline">\(\mu\)</span>. What this means is that this formula is perfectly fine to use to <strong>estimate</strong> the population mean. It is what we call an <strong>unbiased estimator</strong>. Over the long run, it gives us a very good estimate of the population mean <span class="math inline">\(\mu\)</span>. Here is a histogram of our sample means from our 20,000 samples:</p>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-369-1.png" width="672" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-327-1.png" width="672" /></p>
 <p>The vertical solid black line represents <span class="math inline">\(\mu=7.99\)</span>. This histogram is centered on this value, showing that our sample mean formula is unbiased in estimating the population mean - overall, it isn’t under- or over-estimating the population mean.</p>
 <p>As a side note - what we just did in the exercise above was to calculate a <em>sampling distribution of sample means</em> - something we’ll discuss much more in section <a href="distributions.html#what-is-a-sampling-distribution">7.2</a>.</p>
 <p><br></p>
@@ -807,7 +811,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <pre><code>## [1] 1.866859</code></pre>
 <p>So, over 20,000 samples both formulas actually overall underestimate the true population standard deviation of <span class="math inline">\(\sigma=2.02\)</span>, however, the sample standard deviation formula is closer with it’s average being 1.97 compared to the population standard deviation’s formula being at 1.87.</p>
 <p>We can graph this like this:</p>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-374-1.png" width="672" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-332-1.png" width="672" /></p>
 <p>This visualization shows us a few things. First, over all 20,000 samples, some of our estimates of the true standard deviation <span class="math inline">\(\sigma\)</span> are higher and some are lower regardless of which formula we use. However, when we use the population formula (dividing by <span class="math inline">\(N\)</span>), we have far more samples with estimates of the standard deviation <span class="math inline">\(\sigma\)</span> which are too low. The distribution is clearly not symmetrical. If we consider the right histogram, when we use the sample SD formula (dividing by <span class="math inline">\(n-1\)</span>), we correct this by and large. This histogram is closer to symmetrical, and we are not underestimating the true population standard deviation nearly as much. In this way, we called the sample standard deviation <span class="math inline">\(s\)</span> an <strong>unbiased estimator</strong>.</p>
 <p>If we were to take larger sample sizes, then our estimates of the population standard deviation <span class="math inline">\(\sigma\)</span>, would get better and better when using the sample standard deviation formula.</p>
 <p><br><br></p>
@@ -834,7 +838,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb670-2"><a href="descriptives.html#cb670-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">color=</span><span class="st">&quot;black&quot;</span>, <span class="at">fill=</span><span class="st">&quot;lightseagreen&quot;</span>, <span class="at">binwidth =</span> <span class="dv">2</span>)<span class="sc">+</span></span>
 <span id="cb670-3"><a href="descriptives.html#cb670-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>()<span class="sc">+</span></span>
 <span id="cb670-4"><a href="descriptives.html#cb670-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;Average temperature&quot;</span>)</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-376-1.png" width="672" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-334-1.png" width="672" /></p>
 <p><strong>Basic Descriptives</strong></p>
 <p>Here is a list of some the basic descriptive commands such as calculating the <span class="math inline">\(n\)</span>, the minimum, maximum and range. We apply each function to the whole column of data <code>atx$temp</code>, i.e. all the numbers of the distribution:</p>
 <div class="sourceCode" id="cb671"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb671-1"><a href="descriptives.html#cb671-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(atx<span class="sc">$</span>temp) <span class="co"># length this tells you the &#39;n&#39;</span></span></code></pre></div>
@@ -931,48 +935,56 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb717-2"><a href="descriptives.html#cb717-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb717-3"><a href="descriptives.html#cb717-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(vg)</span></code></pre></div>
 <pre><code>## # A tibble: 6 x 12
-##   name       platform  year genre  publisher    NA_sales EU_sales JP_sales global_sales critic  user rating
-##   &lt;chr&gt;      &lt;chr&gt;    &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;           &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;        &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt; 
-## 1 Wii Sports Wii       2006 Sports Nintendo        41.4     29.0      3.77         82.5     76   8   E     
-## 2 Mario Kar~ Wii       2008 Racing Nintendo        15.7     12.8      3.79         35.6     82   8.3 E     
-## 3 Wii Sport~ Wii       2009 Sports Nintendo        15.6     11.0      3.28         32.8     80   8   E     
-## 4 Wii Fit    Wii       2007 Sports Nintendo         8.92     8.03     3.6          22.7     80   7.7 E     
-## 5 Wii Fit P~ Wii       2009 Sports Nintendo         9.01     8.49     2.53         21.8     80   7.4 E     
-## 6 Grand The~ PS3       2013 Action Take-Two In~     7.02     9.14     0.98         21.1     97   8.2 M</code></pre>
+##   name  platform  year genre publisher NA_sales EU_sales JP_sales global_sales
+##   &lt;chr&gt; &lt;chr&gt;    &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;        &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;        &lt;dbl&gt;
+## 1 Wii ~ Wii       2006 Spor~ Nintendo     41.4     29.0      3.77         82.5
+## 2 Mari~ Wii       2008 Raci~ Nintendo     15.7     12.8      3.79         35.6
+## 3 Wii ~ Wii       2009 Spor~ Nintendo     15.6     11.0      3.28         32.8
+## 4 Wii ~ Wii       2007 Spor~ Nintendo      8.92     8.03     3.6          22.7
+## 5 Wii ~ Wii       2009 Spor~ Nintendo      9.01     8.49     2.53         21.8
+## 6 Gran~ PS3       2013 Acti~ Take-Two~     7.02     9.14     0.98         21.1
+## # ... with 3 more variables: critic &lt;dbl&gt;, user &lt;dbl&gt;, rating &lt;chr&gt;</code></pre>
 <p>One way to get quick summary information is to use the R function <code>summary()</code> like this:</p>
 <div class="sourceCode" id="cb719"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb719-1"><a href="descriptives.html#cb719-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(vg)</span></code></pre></div>
-<pre><code>##      name             platform              year         genre            publisher        
-##  Length:2502        Length:2502        Min.   :1992   Length:2502        Length:2502       
-##  Class :character   Class :character   1st Qu.:2005   Class :character   Class :character  
-##  Mode  :character   Mode  :character   Median :2008   Mode  :character   Mode  :character  
-##                                        Mean   :2008                                        
-##                                        3rd Qu.:2011                                        
-##                                        Max.   :2016                                        
-##     NA_sales          EU_sales          JP_sales        global_sales         critic           user      
-##  Min.   : 0.0000   Min.   : 0.0000   Min.   :0.00000   Min.   : 0.0100   Min.   :13.00   Min.   :0.700  
-##  1st Qu.: 0.0700   1st Qu.: 0.0200   1st Qu.:0.00000   1st Qu.: 0.1500   1st Qu.:61.00   1st Qu.:6.200  
-##  Median : 0.1800   Median : 0.1000   Median :0.00000   Median : 0.3800   Median :72.00   Median :7.400  
-##  Mean   : 0.4852   Mean   : 0.3012   Mean   :0.04023   Mean   : 0.9463   Mean   :69.98   Mean   :7.027  
-##  3rd Qu.: 0.4675   3rd Qu.: 0.2800   3rd Qu.:0.01000   3rd Qu.: 0.9275   3rd Qu.:81.00   3rd Qu.:8.100  
-##  Max.   :41.3600   Max.   :28.9600   Max.   :3.79000   Max.   :82.5400   Max.   :98.00   Max.   :9.300  
-##     rating         
-##  Length:2502       
-##  Class :character  
-##  Mode  :character  
-##                    
-##                    
-## </code></pre>
+<pre><code>##      name             platform              year         genre          
+##  Length:2502        Length:2502        Min.   :1992   Length:2502       
+##  Class :character   Class :character   1st Qu.:2005   Class :character  
+##  Mode  :character   Mode  :character   Median :2008   Mode  :character  
+##                                        Mean   :2008                     
+##                                        3rd Qu.:2011                     
+##                                        Max.   :2016                     
+##   publisher            NA_sales          EU_sales          JP_sales      
+##  Length:2502        Min.   : 0.0000   Min.   : 0.0000   Min.   :0.00000  
+##  Class :character   1st Qu.: 0.0700   1st Qu.: 0.0200   1st Qu.:0.00000  
+##  Mode  :character   Median : 0.1800   Median : 0.1000   Median :0.00000  
+##                     Mean   : 0.4852   Mean   : 0.3012   Mean   :0.04023  
+##                     3rd Qu.: 0.4675   3rd Qu.: 0.2800   3rd Qu.:0.01000  
+##                     Max.   :41.3600   Max.   :28.9600   Max.   :3.79000  
+##   global_sales         critic           user          rating         
+##  Min.   : 0.0100   Min.   :13.00   Min.   :0.700   Length:2502       
+##  1st Qu.: 0.1500   1st Qu.:61.00   1st Qu.:6.200   Class :character  
+##  Median : 0.3800   Median :72.00   Median :7.400   Mode  :character  
+##  Mean   : 0.9463   Mean   :69.98   Mean   :7.027                     
+##  3rd Qu.: 0.9275   3rd Qu.:81.00   3rd Qu.:8.100                     
+##  Max.   :82.5400   Max.   :98.00   Max.   :9.300</code></pre>
 <p>You’ll notice here that it just gives you some summary information for different columns, even those that have no numerical data in them. It’s also not broken down by groups. However, <code>summary()</code> can be a quick way to get some summary information.</p>
 <p>A slightly better function is <code>Describe()</code> in the <code>psych</code> package. Remember to install the <code>psych</code> package before using it. Also, here we are telling it only to provide summaries of the relevant numeric columns (which are the 6th through 11th columns):</p>
 <div class="sourceCode" id="cb721"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb721-1"><a href="descriptives.html#cb721-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(psych)</span>
 <span id="cb721-2"><a href="descriptives.html#cb721-2" aria-hidden="true" tabindex="-1"></a><span class="fu">describe</span>(vg[<span class="fu">c</span>(<span class="dv">6</span><span class="sc">:</span><span class="dv">11</span>)])</span></code></pre></div>
-<pre><code>##              vars    n  mean    sd median trimmed   mad   min   max range  skew kurtosis   se
-## NA_sales        1 2502  0.49  1.29   0.18    0.27  0.21  0.00 41.36 41.36 15.79   422.23 0.03
-## EU_sales        2 2502  0.30  0.90   0.10    0.15  0.13  0.00 28.96 28.96 16.63   444.50 0.02
-## JP_sales        3 2502  0.04  0.20   0.00    0.01  0.00  0.00  3.79  3.79 12.05   191.56 0.00
-## global_sales    4 2502  0.95  2.56   0.38    0.53  0.42  0.01 82.54 82.53 16.52   441.74 0.05
-## critic          5 2502 69.98 14.34  72.00   71.03 14.83 13.00 98.00 85.00 -0.67     0.07 0.29
-## user            6 2502  7.03  1.44   7.40    7.19  1.33  0.70  9.30  8.60 -1.06     1.06 0.03</code></pre>
+<pre><code>##              vars    n  mean    sd median trimmed   mad   min   max range
+## NA_sales        1 2502  0.49  1.29   0.18    0.27  0.21  0.00 41.36 41.36
+## EU_sales        2 2502  0.30  0.90   0.10    0.15  0.13  0.00 28.96 28.96
+## JP_sales        3 2502  0.04  0.20   0.00    0.01  0.00  0.00  3.79  3.79
+## global_sales    4 2502  0.95  2.56   0.38    0.53  0.42  0.01 82.54 82.53
+## critic          5 2502 69.98 14.34  72.00   71.03 14.83 13.00 98.00 85.00
+## user            6 2502  7.03  1.44   7.40    7.19  1.33  0.70  9.30  8.60
+##               skew kurtosis   se
+## NA_sales     15.79   422.23 0.03
+## EU_sales     16.63   444.50 0.02
+## JP_sales     12.05   191.56 0.00
+## global_sales 16.52   441.74 0.05
+## critic       -0.67     0.07 0.29
+## user         -1.06     1.06 0.03</code></pre>
 <p>This function also includes some descriptives that we don’t necessarily need to worry about right now, but it does contain most of the ones we are concerned with.</p>
 <div id="descriptives-for-groups" class="section level3" number="6.6.1">
 <h3><span class="header-section-number">6.6.1</span> Descriptives for Groups</h3>
@@ -986,44 +998,76 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <pre><code>## 
 ##  Descriptive statistics by group 
 ## genre: Action
-##              vars   n  mean    sd median trimmed   mad   min   max range  skew kurtosis   se
-## genre*          1 997  1.00  0.00   1.00    1.00  0.00  1.00  1.00  0.00   NaN      NaN 0.00
-## NA_sales        2 997  0.41  0.82   0.17    0.24  0.19  0.00  9.66  9.66  6.19    52.60 0.03
-## EU_sales        3 997  0.27  0.58   0.10    0.15  0.13  0.00  9.14  9.14  7.14    77.32 0.02
-## JP_sales        4 997  0.05  0.14   0.00    0.01  0.00  0.00  1.13  1.13  4.44    22.38 0.00
-## global_sales    5 997  0.83  1.67   0.36    0.50  0.39  0.01 21.12 21.11  6.66    61.52 0.05
-## critic          6 997 68.02 14.21  70.00   68.63 14.83 20.00 98.00 78.00 -0.38    -0.31 0.45
-## user            7 997  7.12  1.34   7.40    7.26  1.19  1.70  9.30  7.60 -1.04     1.05 0.04
-## -------------------------------------------------------------------------------- 
+##              vars   n  mean    sd median trimmed   mad   min   max range
+## genre*          1 997  1.00  0.00   1.00    1.00  0.00  1.00  1.00  0.00
+## NA_sales        2 997  0.41  0.82   0.17    0.24  0.19  0.00  9.66  9.66
+## EU_sales        3 997  0.27  0.58   0.10    0.15  0.13  0.00  9.14  9.14
+## JP_sales        4 997  0.05  0.14   0.00    0.01  0.00  0.00  1.13  1.13
+## global_sales    5 997  0.83  1.67   0.36    0.50  0.39  0.01 21.12 21.11
+## critic          6 997 68.02 14.21  70.00   68.63 14.83 20.00 98.00 78.00
+## user            7 997  7.12  1.34   7.40    7.26  1.19  1.70  9.30  7.60
+##               skew kurtosis   se
+## genre*         NaN      NaN 0.00
+## NA_sales      6.19    52.60 0.03
+## EU_sales      7.14    77.32 0.02
+## JP_sales      4.44    22.38 0.00
+## global_sales  6.66    61.52 0.05
+## critic       -0.38    -0.31 0.45
+## user         -1.04     1.05 0.04
+## ---------------------------------------------------------- 
 ## genre: Racing
-##              vars   n  mean    sd median trimmed   mad   min   max range  skew kurtosis   se
-## genre*          1 349  1.00  0.00   1.00    1.00  0.00  1.00  1.00  0.00   NaN      NaN 0.00
-## NA_sales        2 349  0.40  1.03   0.13    0.22  0.18  0.00 15.68 15.68 10.36   140.24 0.06
-## EU_sales        3 349  0.31  0.85   0.10    0.17  0.13  0.00 12.80 12.80 10.23   135.03 0.05
-## JP_sales        4 349  0.03  0.24   0.00    0.00  0.00  0.00  3.79  3.79 12.65   180.01 0.01
-## global_sales    5 349  0.86  2.36   0.30    0.48  0.36  0.01 35.57 35.56 10.34   136.42 0.13
-## critic          6 349 69.84 14.01  72.00   71.18 14.83 13.00 95.00 82.00 -0.92     0.87 0.75
-## user            7 349  6.99  1.50   7.30    7.16  1.48  1.00  9.20  8.20 -1.05     1.06 0.08
-## -------------------------------------------------------------------------------- 
+##              vars   n  mean    sd median trimmed   mad   min   max range
+## genre*          1 349  1.00  0.00   1.00    1.00  0.00  1.00  1.00  0.00
+## NA_sales        2 349  0.40  1.03   0.13    0.22  0.18  0.00 15.68 15.68
+## EU_sales        3 349  0.31  0.85   0.10    0.17  0.13  0.00 12.80 12.80
+## JP_sales        4 349  0.03  0.24   0.00    0.00  0.00  0.00  3.79  3.79
+## global_sales    5 349  0.86  2.36   0.30    0.48  0.36  0.01 35.57 35.56
+## critic          6 349 69.84 14.01  72.00   71.18 14.83 13.00 95.00 82.00
+## user            7 349  6.99  1.50   7.30    7.16  1.48  1.00  9.20  8.20
+##               skew kurtosis   se
+## genre*         NaN      NaN 0.00
+## NA_sales     10.36   140.24 0.06
+## EU_sales     10.23   135.03 0.05
+## JP_sales     12.65   180.01 0.01
+## global_sales 10.34   136.42 0.13
+## critic       -0.92     0.87 0.75
+## user         -1.05     1.06 0.08
+## ---------------------------------------------------------- 
 ## genre: Shooter
-##              vars   n  mean    sd median trimmed   mad   min   max range  skew kurtosis   se
-## genre*          1 583  1.00  0.00   1.00    1.00  0.00  1.00  1.00  0.00   NaN      NaN 0.00
-## NA_sales        2 583  0.56  1.22   0.16    0.27  0.21  0.00  9.73  9.73  4.41    22.41 0.05
-## EU_sales        3 583  0.33  0.67   0.10    0.18  0.13  0.00  5.73  5.73  4.46    24.55 0.03
-## JP_sales        4 583  0.02  0.07   0.00    0.01  0.00  0.00  0.88  0.88  6.43    52.31 0.00
-## global_sales    5 583  1.02  2.09   0.35    0.54  0.43  0.01 14.77 14.76  4.20    19.81 0.09
-## critic          6 583 70.49 15.12  73.00   71.71 14.83 27.00 96.00 69.00 -0.68    -0.18 0.63
-## user            7 583  6.95  1.54   7.30    7.14  1.33  1.20  9.30  8.10 -1.14     1.08 0.06
-## -------------------------------------------------------------------------------- 
+##              vars   n  mean    sd median trimmed   mad   min   max range
+## genre*          1 583  1.00  0.00   1.00    1.00  0.00  1.00  1.00  0.00
+## NA_sales        2 583  0.56  1.22   0.16    0.27  0.21  0.00  9.73  9.73
+## EU_sales        3 583  0.33  0.67   0.10    0.18  0.13  0.00  5.73  5.73
+## JP_sales        4 583  0.02  0.07   0.00    0.01  0.00  0.00  0.88  0.88
+## global_sales    5 583  1.02  2.09   0.35    0.54  0.43  0.01 14.77 14.76
+## critic          6 583 70.49 15.12  73.00   71.71 14.83 27.00 96.00 69.00
+## user            7 583  6.95  1.54   7.30    7.14  1.33  1.20  9.30  8.10
+##               skew kurtosis   se
+## genre*         NaN      NaN 0.00
+## NA_sales      4.41    22.41 0.05
+## EU_sales      4.46    24.55 0.03
+## JP_sales      6.43    52.31 0.00
+## global_sales  4.20    19.81 0.09
+## critic       -0.68    -0.18 0.63
+## user         -1.14     1.08 0.06
+## ---------------------------------------------------------- 
 ## genre: Sports
-##              vars   n  mean    sd median trimmed   mad   min   max range  skew kurtosis   se
-## genre*          1 573  1.00  0.00   1.00    1.00  0.00  1.00  1.00  0.00   NaN      NaN 0.00
-## NA_sales        2 573  0.60  1.99   0.27    0.35  0.28  0.00 41.36 41.36 16.15   312.92 0.08
-## EU_sales        3 573  0.33  1.44   0.08    0.13  0.12  0.00 28.96 28.96 15.26   282.22 0.06
-## JP_sales        4 573  0.05  0.30   0.00    0.00  0.00  0.00  3.77  3.77  9.54   100.35 0.01
-## global_sales    5 573  1.11  4.00   0.50    0.64  0.50  0.01 82.54 82.53 16.17   307.46 0.17
-## critic          6 573 72.95 13.44  76.00   74.42 10.38 19.00 97.00 78.00 -1.10     1.26 0.56
-## user            7 573  6.97  1.46   7.30    7.12  1.33  0.70  9.20  8.50 -0.92     0.68 0.06</code></pre>
+##              vars   n  mean    sd median trimmed   mad   min   max range
+## genre*          1 573  1.00  0.00   1.00    1.00  0.00  1.00  1.00  0.00
+## NA_sales        2 573  0.60  1.99   0.27    0.35  0.28  0.00 41.36 41.36
+## EU_sales        3 573  0.33  1.44   0.08    0.13  0.12  0.00 28.96 28.96
+## JP_sales        4 573  0.05  0.30   0.00    0.00  0.00  0.00  3.77  3.77
+## global_sales    5 573  1.11  4.00   0.50    0.64  0.50  0.01 82.54 82.53
+## critic          6 573 72.95 13.44  76.00   74.42 10.38 19.00 97.00 78.00
+## user            7 573  6.97  1.46   7.30    7.12  1.33  0.70  9.20  8.50
+##               skew kurtosis   se
+## genre*         NaN      NaN 0.00
+## NA_sales     16.15   312.92 0.08
+## EU_sales     15.26   282.22 0.06
+## JP_sales      9.54   100.35 0.01
+## global_sales 16.17   307.46 0.17
+## critic       -1.10     1.26 0.56
+## user         -0.92     0.68 0.06</code></pre>
 <p>The above is a quick and dirty way of getting summary information by group. But it is messy. We suggest an alternative method which is to write code using the <code>tidyverse</code> package. This can give us descriptive statistics in a more organized way.</p>
 <p>For instance, if we wanted to get the mean of the column <code>NA_sales</code> by <code>genre</code> we would use <code>group_by()</code> and <code>summarise()</code> in this way:</p>
 <div class="sourceCode" id="cb727"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb727-1"><a href="descriptives.html#cb727-1" aria-hidden="true" tabindex="-1"></a>vg <span class="sc">%&gt;%</span> </span>
@@ -1138,14 +1182,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb743"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb743-1"><a href="descriptives.html#cb743-1" aria-hidden="true" tabindex="-1"></a>cats <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;data/catcolor.csv&quot;</span>)</span>
 <span id="cb743-2"><a href="descriptives.html#cb743-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(cats)</span></code></pre></div>
 <pre><code>## # A tibble: 6 x 7
-##   animal_id monthyear           name        color1 color2 sex    breed              
-##   &lt;chr&gt;     &lt;dttm&gt;              &lt;chr&gt;       &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt;              
-## 1 A685067   2014-08-14 18:45:00 Lucy        blue   white  Female domestic shorthair 
-## 2 A678580   2014-06-29 17:45:00 Frida       white  black  Female domestic shorthair 
-## 3 A675405   2014-03-28 14:55:00 Stella Luna black  white  Female domestic mediumhair
-## 4 A684460   2014-08-13 15:04:00 Elsa        brown  &lt;NA&gt;   Female domestic shorthair 
-## 5 A686497   2014-08-31 15:45:00 Chester     black  &lt;NA&gt;   Male   domestic shorthair 
-## 6 A687965   2014-10-31 18:29:00 Oliver      orange &lt;NA&gt;   Male   domestic shorthair</code></pre>
+##   animal_id monthyear           name        color1 color2 sex    breed        
+##   &lt;chr&gt;     &lt;dttm&gt;              &lt;chr&gt;       &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt;        
+## 1 A685067   2014-08-14 18:45:00 Lucy        blue   white  Female domestic sho~
+## 2 A678580   2014-06-29 17:45:00 Frida       white  black  Female domestic sho~
+## 3 A675405   2014-03-28 14:55:00 Stella Luna black  white  Female domestic med~
+## 4 A684460   2014-08-13 15:04:00 Elsa        brown  &lt;NA&gt;   Female domestic sho~
+## 5 A686497   2014-08-31 15:45:00 Chester     black  &lt;NA&gt;   Male   domestic sho~
+## 6 A687965   2014-10-31 18:29:00 Oliver      orange &lt;NA&gt;   Male   domestic sho~</code></pre>
 <p>Say we want to know how many male and female cats of each breed we have. With tidyverse, we would do it like this:</p>
 <div class="sourceCode" id="cb745"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb745-1"><a href="descriptives.html#cb745-1" aria-hidden="true" tabindex="-1"></a>cats <span class="sc">%&gt;%</span></span>
 <span id="cb745-2"><a href="descriptives.html#cb745-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(breed,sex) <span class="sc">%&gt;%</span></span>

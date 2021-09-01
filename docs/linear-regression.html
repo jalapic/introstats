@@ -24,7 +24,7 @@
 <meta name="author" content="James P. Curley &amp; Tyler M. Milewski" />
 
 
-<meta name="date" content="2021-08-21" />
+<meta name="date" content="2021-09-01" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -471,7 +471,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb1592-2"><a href="linear-regression.html#cb1592-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df, <span class="fu">aes</span>(<span class="at">x =</span> dan.sleep, <span class="at">y =</span> dan.grump)) <span class="sc">+</span> </span>
 <span id="cb1592-3"><a href="linear-regression.html#cb1592-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
 <span id="cb1592-4"><a href="linear-regression.html#cb1592-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_smooth</span>(<span class="at">method=</span><span class="st">&#39;lm&#39;</span>, <span class="at">se=</span>F) </span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-688-1.png" width="672" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-646-1.png" width="672" /></p>
 <p>It looks like these variables are clearly associated, with higher levels of sleep being related to lower levels of grumpiness.</p>
 <p>To get a measure of how big this relationship is, we could run a correlation test.</p>
 <div class="sourceCode" id="cb1593"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1593-1"><a href="linear-regression.html#cb1593-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor.test</span>(df<span class="sc">$</span>dan.sleep, df<span class="sc">$</span>dan.grump)</span></code></pre></div>
@@ -513,7 +513,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb1595-7"><a href="linear-regression.html#cb1595-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_abline</span>(<span class="at">intercept =</span><span class="fl">125.956</span> , <span class="at">slope =</span> <span class="sc">-</span><span class="fl">8.937</span>, <span class="at">lty=</span><span class="dv">2</span>)<span class="sc">+</span></span>
 <span id="cb1595-8"><a href="linear-regression.html#cb1595-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept=</span><span class="dv">0</span>, <span class="at">color=</span><span class="st">&#39;red&#39;</span>, <span class="at">lty=</span><span class="dv">2</span>) <span class="sc">+</span></span>
 <span id="cb1595-9"><a href="linear-regression.html#cb1595-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_segment</span>(<span class="at">x=</span><span class="sc">-</span><span class="fl">1.6</span>,<span class="at">xend=</span><span class="dv">0</span>,<span class="at">y=</span><span class="fl">125.96</span>,<span class="at">yend=</span><span class="fl">125.96</span>, <span class="at">lty=</span><span class="dv">2</span>, <span class="at">color=</span><span class="st">&#39;orange&#39;</span>)</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-690-1.png" width="672" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-648-1.png" width="672" /></p>
 <p>In reality, we do not ever extend the regression lines like this. In fact, a regression line by definition only fits the range of datapoints along the x-axis that we have - it should not extend beyond those points. This is more a theoretical construct to help us understand where the line is on the graph.</p>
 <p>To think a bit more about <code>a</code> and <code>b</code> let’s compare these regression lines and their respective equations.</p>
 <p><img src="img/ab.png" /></p>
@@ -593,15 +593,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb1605-4"><a href="linear-regression.html#cb1605-4" aria-hidden="true" tabindex="-1"></a>Y.pred <span class="ot">&lt;-</span>  <span class="fl">125.96</span>   <span class="sc">+</span>   (<span class="sc">-</span><span class="fl">8.94</span> <span class="sc">*</span> X)</span>
 <span id="cb1605-5"><a href="linear-regression.html#cb1605-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1605-6"><a href="linear-regression.html#cb1605-6" aria-hidden="true" tabindex="-1"></a>Y.pred</span></code></pre></div>
-<pre><code>##   [1] 58.1054 55.2446 80.0084 57.0326 66.2408 72.4094 52.7414 61.6814 59.8040 67.1348 67.9394 69.9062
-##  [13] 72.7670 66.5090 68.6546 69.3698 69.6380 50.2382 61.5026 58.6418 54.4400 60.2510 64.6316 55.6916
-##  [25] 82.5116 73.4822 50.8640 64.0058 61.5026 63.4694 52.9202 55.7810 69.9062 48.5396 81.4388 70.6214
-##  [37] 68.6546 82.6904 63.1118 57.4796 58.8206 55.1552 53.3672 59.1782 54.5294 77.3264 53.0096 57.8372
-##  [49] 73.4822 45.5000 51.6686 65.9726 59.5358 73.2140 49.7912 72.0518 60.7874 60.5192 64.4528 70.3532
-##  [61] 63.9164 63.2906 61.5920 69.6380 48.0032 56.0492 53.1884 60.9662 66.0620 58.4630 59.9828 56.8538
-##  [73] 78.3992 55.6916 69.1910 62.3966 77.2370 56.2280 62.2178 51.3110 64.0058 62.7542 48.5396 80.4554
-##  [85] 82.0646 63.1118 63.2012 57.3902 53.0990 73.3928 74.8232 66.4196 64.7210 76.1642 79.8296 78.4886
-##  [97] 56.4962 77.8628 63.2012 68.2970</code></pre>
+<pre><code>##   [1] 58.1054 55.2446 80.0084 57.0326 66.2408 72.4094 52.7414 61.6814 59.8040
+##  [10] 67.1348 67.9394 69.9062 72.7670 66.5090 68.6546 69.3698 69.6380 50.2382
+##  [19] 61.5026 58.6418 54.4400 60.2510 64.6316 55.6916 82.5116 73.4822 50.8640
+##  [28] 64.0058 61.5026 63.4694 52.9202 55.7810 69.9062 48.5396 81.4388 70.6214
+##  [37] 68.6546 82.6904 63.1118 57.4796 58.8206 55.1552 53.3672 59.1782 54.5294
+##  [46] 77.3264 53.0096 57.8372 73.4822 45.5000 51.6686 65.9726 59.5358 73.2140
+##  [55] 49.7912 72.0518 60.7874 60.5192 64.4528 70.3532 63.9164 63.2906 61.5920
+##  [64] 69.6380 48.0032 56.0492 53.1884 60.9662 66.0620 58.4630 59.9828 56.8538
+##  [73] 78.3992 55.6916 69.1910 62.3966 77.2370 56.2280 62.2178 51.3110 64.0058
+##  [82] 62.7542 48.5396 80.4554 82.0646 63.1118 63.2012 57.3902 53.0990 73.3928
+##  [91] 74.8232 66.4196 64.7210 76.1642 79.8296 78.4886 56.4962 77.8628 63.2012
+## [100] 68.2970</code></pre>
 <div class="sourceCode" id="cb1607"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1607-1"><a href="linear-regression.html#cb1607-1" aria-hidden="true" tabindex="-1"></a>df<span class="sc">$</span>Y.pred <span class="ot">&lt;-</span> Y.pred</span>
 <span id="cb1607-2"><a href="linear-regression.html#cb1607-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1607-3"><a href="linear-regression.html#cb1607-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(df)</span></code></pre></div>
@@ -617,16 +620,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Next, getting the raw residual is simply a matter of taking each observed value of <span class="math inline">\(y\)</span> and subtracting the predicted value of <span class="math inline">\(y\)</span>.</p>
 <div class="sourceCode" id="cb1609"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1609-1"><a href="linear-regression.html#cb1609-1" aria-hidden="true" tabindex="-1"></a><span class="co"># so to get the residual,  y - y&#39;</span></span>
 <span id="cb1609-2"><a href="linear-regression.html#cb1609-2" aria-hidden="true" tabindex="-1"></a>df<span class="sc">$</span>dan.grump <span class="sc">-</span> Y.pred</span></code></pre></div>
-<pre><code>##   [1]  -2.1054   4.7554   1.9916  -2.0326   0.7592  -0.4094   0.2586  -1.6814   0.1960   3.8652   4.0606
-##  [12]  -4.9062   1.2330   0.4910  -2.6546  -0.3698   3.3620   1.7618  -0.5026  -5.6418  -0.4400   2.7490
-##  [23]   9.3684   0.3084  -0.5116  -1.4822   8.1360   1.9942  -1.5026   3.5306  -8.9202  -2.7810   6.0938
-##  [34]  -7.5396   4.5612 -10.6214  -5.6546   6.3096  -2.1118  -0.4796   0.1794   4.8448  -5.3672  -6.1782
-##  [45]  -4.5294  -5.3264   3.9904   2.1628  -3.4822   0.5000   6.3314   2.0274  -1.5358  -2.2140   2.2088
-##  [56]   1.9482  -1.7874  -1.5192   2.5472  -3.3532  -2.9164   0.7094  -0.5920  -8.6380   5.9968   5.9508
-##  [67]  -1.1884   3.0338  -1.0620   6.5370  -2.9828   2.1462   0.6008  -2.6916  -2.1910  -1.3966   4.7630
-##  [78]  11.7720   4.7822   2.6890 -11.0058  -0.7542   1.4604  -0.4554   8.9354  -1.1118   0.7988  -0.3902
-##  [89]   0.9010  -1.3928   3.1768  -3.4196  -5.7210  -2.1642  -3.8296   0.5114  -5.4962   4.1372  -8.2012
-## [100]   5.7030</code></pre>
+<pre><code>##   [1]  -2.1054   4.7554   1.9916  -2.0326   0.7592  -0.4094   0.2586  -1.6814
+##   [9]   0.1960   3.8652   4.0606  -4.9062   1.2330   0.4910  -2.6546  -0.3698
+##  [17]   3.3620   1.7618  -0.5026  -5.6418  -0.4400   2.7490   9.3684   0.3084
+##  [25]  -0.5116  -1.4822   8.1360   1.9942  -1.5026   3.5306  -8.9202  -2.7810
+##  [33]   6.0938  -7.5396   4.5612 -10.6214  -5.6546   6.3096  -2.1118  -0.4796
+##  [41]   0.1794   4.8448  -5.3672  -6.1782  -4.5294  -5.3264   3.9904   2.1628
+##  [49]  -3.4822   0.5000   6.3314   2.0274  -1.5358  -2.2140   2.2088   1.9482
+##  [57]  -1.7874  -1.5192   2.5472  -3.3532  -2.9164   0.7094  -0.5920  -8.6380
+##  [65]   5.9968   5.9508  -1.1884   3.0338  -1.0620   6.5370  -2.9828   2.1462
+##  [73]   0.6008  -2.6916  -2.1910  -1.3966   4.7630  11.7720   4.7822   2.6890
+##  [81] -11.0058  -0.7542   1.4604  -0.4554   8.9354  -1.1118   0.7988  -0.3902
+##  [89]   0.9010  -1.3928   3.1768  -3.4196  -5.7210  -2.1642  -3.8296   0.5114
+##  [97]  -5.4962   4.1372  -8.2012   5.7030</code></pre>
 <div class="sourceCode" id="cb1611"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1611-1"><a href="linear-regression.html#cb1611-1" aria-hidden="true" tabindex="-1"></a>df<span class="sc">$</span>residuals <span class="ot">&lt;-</span> df<span class="sc">$</span>dan.grump <span class="sc">-</span> Y.pred</span>
 <span id="cb1611-2"><a href="linear-regression.html#cb1611-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1611-3"><a href="linear-regression.html#cb1611-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(df)</span></code></pre></div>
@@ -652,7 +658,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb1613-7"><a href="linear-regression.html#cb1613-7" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1613-8"><a href="linear-regression.html#cb1613-8" aria-hidden="true" tabindex="-1"></a>p1</span></code></pre></div>
 <pre><code>## `geom_smooth()` using formula &#39;y ~ x&#39;</code></pre>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-698-1.png" width="672" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-656-1.png" width="672" /></p>
 </div>
 <div id="comparing-our-trendline-to-other-trendlines" class="section level3" number="13.3.3">
 <h3><span class="header-section-number">13.3.3</span> Comparing our trendline to other trendlines</h3>
@@ -666,7 +672,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb1617"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1617-1"><a href="linear-regression.html#cb1617-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df, <span class="fu">aes</span>(<span class="at">x =</span> dan.sleep, <span class="at">y =</span> dan.grump)) <span class="sc">+</span> </span>
 <span id="cb1617-2"><a href="linear-regression.html#cb1617-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
 <span id="cb1617-3"><a href="linear-regression.html#cb1617-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="fu">mean</span>(df<span class="sc">$</span>dan.grump), <span class="at">color=</span><span class="st">&#39;blue&#39;</span>) </span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-700-1.png" width="672" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-658-1.png" width="672" /></p>
 <p>It doesn’t look like using the mean value of Y is that good a predictor of each datapoint. We could actually visualize how good.bad it is by calculating the residual of each datapoint from this new trendline. This time each residual is equal to:</p>
 <p><span class="math inline">\(residual = y - \overline{y}\)</span></p>
 <p>Let’s calculate these residuals, and then graph them on this scatterplot:</p>
@@ -693,11 +699,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb1620-8"><a href="linear-regression.html#cb1620-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;Residuals to the mean Y&quot;</span>)</span>
 <span id="cb1620-9"><a href="linear-regression.html#cb1620-9" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1620-10"><a href="linear-regression.html#cb1620-10" aria-hidden="true" tabindex="-1"></a>p2</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-701-1.png" width="672" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-659-1.png" width="672" /></p>
 <p>If we compare both graphs scatterplots side by side, it’s pretty clear that our best-fit trendline is doing a much better job of predicting each datapoint’s Y value. The horizontal trendline at the mean of Y looks pretty bad for the majority of datapoints - its residuals are much bigger.</p>
 <div class="sourceCode" id="cb1621"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1621-1"><a href="linear-regression.html#cb1621-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gridExtra)</span>
 <span id="cb1621-2"><a href="linear-regression.html#cb1621-2" aria-hidden="true" tabindex="-1"></a><span class="fu">grid.arrange</span>(p1,p2,<span class="at">nrow=</span><span class="dv">1</span>)</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-702-1.png" width="672" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-660-1.png" width="672" /></p>
 <p>In fact, let’s actually quantify the difference in residuals between these two trendlines.
 Because we have both positive and negative residuals, if we just added them together we’d end up with 0. In statistics, one common way to make numbers positive is to square them. As we saw with standard deviation, this also has the advantage of emphasizing large values.</p>
 <p>What we do to compare our residuals, is to therefore square them. We call the residuals from our trendline the raw residuals. We call the residuals from the horizontal line the total residuals.</p>
@@ -809,7 +815,7 @@ Because we have both positive and negative residuals, if we just added them toge
 <span id="cb1640-5"><a href="linear-regression.html#cb1640-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_abline</span>(<span class="at">intercept =</span> <span class="fl">125.956</span><span class="sc">+</span>s_est<span class="sc">+</span>s_est, <span class="at">slope =</span> <span class="sc">-</span><span class="fl">8.937</span>, <span class="at">color =</span> <span class="st">&#39;red&#39;</span>, <span class="at">lty=</span><span class="dv">2</span>)<span class="sc">+</span></span>
 <span id="cb1640-6"><a href="linear-regression.html#cb1640-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_abline</span>(<span class="at">intercept =</span> <span class="fl">125.956</span><span class="sc">-</span>s_est<span class="sc">-</span>s_est, <span class="at">slope =</span> <span class="sc">-</span><span class="fl">8.937</span>, <span class="at">color =</span> <span class="st">&#39;red&#39;</span>, <span class="at">lty=</span><span class="dv">2</span>) <span class="sc">+</span></span>
 <span id="cb1640-7"><a href="linear-regression.html#cb1640-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;Regression with 2 x Standard Error of the Estimate&quot;</span>)</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-710-1.png" width="672" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-668-1.png" width="672" /></p>
 <p>This is our original scatterplot again. The blue line is still the best fitting trendline. The two dashed red lines are two times <span class="math inline">\(\sigma_{est}\)</span> above and below the blue line respectively. That is they are 2 * 4.332 = 8.644 units of grumpiness above or below the trendline.</p>
 <p>If we count up the number of datapoints that our outside of the dotted red lines, we can see that there are six datapoints out of our 100 datapoints that are just outside, although some of these are very close indeed to the red line. This is probably ok as we’re only expecting 95% of datapoints on average to be inside the red lines.</p>
 </div>
@@ -820,7 +826,7 @@ Because we have both positive and negative residuals, if we just added them toge
 <p>As a reminder, these scatterplots show the difference in performance of our fitted model (left) compared to the null model (right).</p>
 <div class="sourceCode" id="cb1641"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1641-1"><a href="linear-regression.html#cb1641-1" aria-hidden="true" tabindex="-1"></a><span class="fu">grid.arrange</span>(p1,p2,<span class="at">nrow=</span><span class="dv">1</span>)</span></code></pre></div>
 <pre><code>## `geom_smooth()` using formula &#39;y ~ x&#39;</code></pre>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-711-1.png" width="672" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-669-1.png" width="672" /></p>
 <p>The F-ratio is essentially a method of determining the proportion of residual variance compared to total variance. We can calculate it using the following formula:</p>
 <p><span class="math inline">\(F = \frac{SSM/d.f.SSM}{SSR/d.f.SSR}\)</span></p>
 <p>Here, SSM refers to the sum of squares for the model (the model sum of squares). This is equal to:</p>
@@ -900,13 +906,13 @@ Because we have both positive and negative residuals, if we just added them toge
 <span id="cb1655-3"><a href="linear-regression.html#cb1655-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>()<span class="sc">+</span></span>
 <span id="cb1655-4"><a href="linear-regression.html#cb1655-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;Raw Residuals&quot;</span>)<span class="sc">+</span></span>
 <span id="cb1655-5"><a href="linear-regression.html#cb1655-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&quot;Standardized Residuals&quot;</span>)</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-716-1.png" width="672" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-674-1.png" width="672" /></p>
 <p>They are effectively the same - just transformed. One advantage of standardized residuals is that they can help us look for unusual datapoints with large residuals. While raw residuals are always in the original units of the y-axis, standardized residuals are, well, standardized. Standardized residuals that are greater than 2 or less than -2 are quite large, those that are larger than 3 or less than 3 are very large indeed and should be looked at in more detail.</p>
 <p>Let’s get back to checking the normality of these residuals.</p>
 <p>First up, we could plot a histogram and see if we think it’s approximately normal:</p>
 <div class="sourceCode" id="cb1656"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1656-1"><a href="linear-regression.html#cb1656-1" aria-hidden="true" tabindex="-1"></a><span class="co">#a) histogram plot</span></span>
 <span id="cb1656-2"><a href="linear-regression.html#cb1656-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df, <span class="fu">aes</span>(<span class="at">x=</span>std_resids)) <span class="sc">+</span> <span class="fu">geom_histogram</span>(<span class="at">color=</span><span class="st">&#39;white&#39;</span>) <span class="co"># possibly ok</span></span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-717-1.png" width="672" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-675-1.png" width="672" /></p>
 <p>This looks possibly ok. It’s not <strong>too</strong> skewed, but it can be hard from a histogram with just 100 datapoints to get a sense of the shape. A second approach would be to use a Shapiro-Wilk test which more formally test whether the data are approximately normally distributed:</p>
 <div class="sourceCode" id="cb1657"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1657-1"><a href="linear-regression.html#cb1657-1" aria-hidden="true" tabindex="-1"></a><span class="co">#b) Shapiro-Wilk test</span></span>
 <span id="cb1657-2"><a href="linear-regression.html#cb1657-2" aria-hidden="true" tabindex="-1"></a><span class="fu">shapiro.test</span>(df<span class="sc">$</span>std_resids)  <span class="co"># shapiro test says normal.</span></span></code></pre></div>
@@ -920,11 +926,11 @@ Because we have both positive and negative residuals, if we just added them toge
 <div class="sourceCode" id="cb1659"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1659-1"><a href="linear-regression.html#cb1659-1" aria-hidden="true" tabindex="-1"></a><span class="co">#c) QQ plot</span></span>
 <span id="cb1659-2"><a href="linear-regression.html#cb1659-2" aria-hidden="true" tabindex="-1"></a><span class="fu">qqnorm</span>(df<span class="sc">$</span>std_resids)</span>
 <span id="cb1659-3"><a href="linear-regression.html#cb1659-3" aria-hidden="true" tabindex="-1"></a><span class="fu">qqline</span>(df<span class="sc">$</span>std_resids, <span class="at">col =</span> <span class="st">&quot;steelblue&quot;</span>, <span class="at">lwd =</span> <span class="dv">2</span>)  <span class="co"># it&#39;s ok</span></span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-719-1.png" width="672" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-677-1.png" width="672" /></p>
 <p>A discussion of precisely what these QQ plots are is beyond the scope here. However, in general terms, what we are plotting is the residual against the theoretical value of each residual that we would expect if our data were normally distributed. In practical terms, what we’re looking for is that the bulk of our data fit along the blue line. It’s ok to have a bit of wobble at the extremes - that just means that our data distribution probably has slightly fat tails.</p>
 <p>It’s also possible to generate a version of the above plot quickly, directly from the saved linear model object.</p>
 <div class="sourceCode" id="cb1660"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1660-1"><a href="linear-regression.html#cb1660-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>( <span class="at">x =</span> mod1, <span class="at">which =</span> <span class="dv">2</span> )  <span class="co"># fast way of getting same plot</span></span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-720-1.png" width="672" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-678-1.png" width="672" /></p>
 </div>
 <div id="linearity" class="section level3" number="13.6.2">
 <h3><span class="header-section-number">13.6.2</span> 2. Linearity —</h3>
@@ -941,7 +947,7 @@ Because we have both positive and negative residuals, if we just added them toge
 <span id="cb1661-4"><a href="linear-regression.html#cb1661-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df, <span class="fu">aes</span>(<span class="at">x =</span> Y.fitted, <span class="at">y =</span> dan.grump)) <span class="sc">+</span> </span>
 <span id="cb1661-5"><a href="linear-regression.html#cb1661-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
 <span id="cb1661-6"><a href="linear-regression.html#cb1661-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_smooth</span>(<span class="at">method=</span><span class="st">&#39;lm&#39;</span>, <span class="at">se=</span>F) </span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-721-1.png" width="672" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-679-1.png" width="672" /></p>
 <p>As you can see from this plot, our fitted (predicted) values of Y on the x-axis have a strong linear relationship with our observed values of Y on the y-axis.</p>
 </div>
 <div id="homogeneity-of-variance-homoscedasticity" class="section level3" number="13.6.3">
@@ -954,11 +960,11 @@ Because we have both positive and negative residuals, if we just added them toge
 <span id="cb1662-2"><a href="linear-regression.html#cb1662-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df, <span class="fu">aes</span>(<span class="at">x =</span> Y.fitted, <span class="at">y =</span> std_resids)) <span class="sc">+</span> </span>
 <span id="cb1662-3"><a href="linear-regression.html#cb1662-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
 <span id="cb1662-4"><a href="linear-regression.html#cb1662-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_smooth</span>(<span class="at">method=</span><span class="st">&#39;lm&#39;</span>, <span class="at">se=</span>F) </span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-722-1.png" width="672" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-680-1.png" width="672" /></p>
 <p>As you can see, our plot is basically a random scatterplot and there is no overall pattern. That is good, it means we have homoscedasticity. If we did not have homoscedasticity, then we’d see a pattern in this scatterplot - such as the residuals getting larger or smaller for larger fitted (predicted) values of Y.</p>
 <p>You can access a version of this plot directly from the model object like this:</p>
 <div class="sourceCode" id="cb1663"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1663-1"><a href="linear-regression.html#cb1663-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(mod1, <span class="at">which =</span> <span class="dv">3</span>)</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-723-1.png" width="672" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-681-1.png" width="672" /></p>
 <p>There are some more formal tests of homoscedasticity but we don’t need to worry about them.</p>
 </div>
 <div id="no-colinearity" class="section level3" number="13.6.4">
@@ -1001,7 +1007,7 @@ Because we have both positive and negative residuals, if we just added them toge
 <p>And here, we’re plotting the best fitting regression line in blue. The dotted red line represents the best fitting trendline that we would have if we removed the datapoints that has the y value of 11.9. The dashed black line shows the distance from this datapoint to the trendline we would have if it was removed.</p>
 <pre><code>## (Intercept)           x 
 ##   0.8247787   0.8785270</code></pre>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-725-1.png" width="672" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-683-1.png" width="672" /></p>
 <p>As you can see from this small example, outliers are datapoints that have very large residuals from the trendline. They have an unusually large Y. Notice though that the slope of the trendline hasn’t change too much at all. It is slightly shifted down after you remove that outlier from the calculations, but overall the coefficient of ‘b’ is similar to before. This type of outlier is not necessarily a big deal.</p>
 </div>
 <div id="ii.-high-leverage" class="section level4" number="13.6.5.2">
@@ -1056,7 +1062,7 @@ Because we have both positive and negative residuals, if we just added them toge
 ## 11 8.00 8.0 8.0
 ## 12 9.70 6.1  NA</code></pre>
 <p>Let’s plot these data - I’m sparing you the code for this plot:</p>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-729-1.png" width="672" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-687-1.png" width="672" /></p>
 <p>What you can see here is the scatterplot of ‘x’ against ‘y2’. The blue trendline is the best fit line to the regression of ‘x’ against ‘y2’. The red dotted line is the regression line when we remove the datapoint at x=9.7. This datapoint has both high leverage and is an outlier (has an overly large residual). As a consequence of this, when you remove this datapoint it significantly shifts the angle of the slope of the regression line. That means that the value of <code>b</code> changes quite considerably.</p>
 <p>Let’s add the hat values (measuring leverage) to the data. We can also add what is called <code>Cook's Distance</code> which is a measure of the <strong>influence</strong> of each datapoint.</p>
 <div class="sourceCode" id="cb1673"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1673-1"><a href="linear-regression.html#cb1673-1" aria-hidden="true" tabindex="-1"></a>mod.out2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(y2<span class="sc">~</span>x, <span class="at">data =</span> ddf1)</span>
@@ -1081,13 +1087,13 @@ Because we have both positive and negative residuals, if we just added them toge
 <p>As you can see, datapoint 12 (x=9.7) has high leverage and it’s also an outlier. Consequently it has a very large Cook’s Distance. Typically a Cook’s distance &gt; 1 requires more consideration about how to proceed with your model.</p>
 <p>You can also quickly get a plot of the Cook’s Distances of all datapoints from a regression model like this:</p>
 <div class="sourceCode" id="cb1675"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1675-1"><a href="linear-regression.html#cb1675-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(mod.out2, <span class="at">which =</span> <span class="dv">4</span>)</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-731-1.png" width="672" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-689-1.png" width="672" /></p>
 </div>
 <div id="checking-influence" class="section level4" number="13.6.5.4">
 <h4><span class="header-section-number">13.6.5.4</span> Checking Influence:</h4>
 <p>Let’s look for influential datapoints in our Sleep vs Grumpiness Data. At the beginning of this section, we saved the linear model as <code>mod</code>. We can look at the Cook’s Distances with the <code>cooks.distance()</code> function, or we could just plot them:</p>
 <div class="sourceCode" id="cb1676"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1676-1"><a href="linear-regression.html#cb1676-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(mod1, <span class="at">which =</span> <span class="dv">4</span>)</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-732-1.png" width="672" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-690-1.png" width="672" /></p>
 <p>This plot shows each of our 100 datapoints in the order they appear in the original dataframe along the x-axis. Clearly, looking at the y-axis, all our datapoints have Cook’s distances of far below 1, so we are fine to assume that we have no overly influential datapoints.</p>
 </div>
 </div>
