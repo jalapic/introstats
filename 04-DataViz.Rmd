@@ -1118,7 +1118,7 @@ Another useful way of displaying distributions of data across groups is using ri
 Let's go back to the `olives` data.  Say we are interested in displaying the distribution of `oleic` acid content by `macro.area`.  We plot the categorical group of interest (here `macro.area`) on the y-axis, and the continuous variable whose distribution we are interested in (`oleic`) on the x-axis. We then use `stat_density_ridges()` to plot the ridgeline plots.
 
 
-```{r, warning=FALSE, message=FALSE, fig.width = 6, fig.height = 4}
+```{r, warning=FALSE, message=FALSE, fig.width = 7, fig.height = 4}
 library(ggridges)
 
 ggplot(olives, aes(x = oleic, y = macro.area)) +
@@ -1126,38 +1126,50 @@ ggplot(olives, aes(x = oleic, y = macro.area)) +
   theme_classic()
 
 ```
+
+<br>
+
 You can add color by adding in a `fill=` to the `aes()`. 
 
-```{r, message=FALSE, warning=FALSE, fig.width = 6, fig.height = 4}
+```{r, message=FALSE, warning=FALSE, fig.width = 7, fig.height = 4}
 
 ggplot(olives, aes(x = oleic, y = macro.area, fill = macro.area)) +
   stat_density_ridges() +
   theme_classic() 
 ```
+
+<br>
+
 ... and perhaps we can manually override the default color scheme - here I'm using hex codes to pick a very purpley color scheme:
 
-```{r, message=FALSE, warning=FALSE, fig.width = 6, fig.height = 4}
+```{r, message=FALSE, warning=FALSE, fig.width = 7, fig.height =4}
 
 ggplot(olives, aes(x = oleic, y = macro.area, fill = macro.area)) +
   stat_density_ridges() +
   theme_classic() +
   scale_fill_manual(values=c("#D1B8D0", "#F78EF2", "#AC33FF"))
 ```
+
+<br>
+
 A nice thing about these ridgeline plots is that we can easily add on lines that represent the lower quartile, median  and upper quartile by adding in the argument `quantile_lines = TRUE` like this:
 
-```{r, message=FALSE, warning=FALSE, fig.width = 6, fig.height = 4}
+```{r, message=FALSE, warning=FALSE, fig.width = 7, fig.height =4}
 
 ggplot(olives, aes(x = oleic, y = macro.area, fill = macro.area)) +
   stat_density_ridges(quantile_lines = TRUE) +
   theme_classic() +
   scale_fill_manual(values=c("#D1B8D0", "#F78EF2", "#AC33FF"))
 ```
+
+<br>
+
 The final ridgeline plot below plots the distributions of oleic acid by region. There are 9 regions. It's best in these plots to try and plot the categories from highest to lowest median, as it looks nicer. The following code is a bit tricky, and if you're not interested - then you can safely ignore. However, just in case it is of interest to anyone:  to do that you need to make sure `ggplot` recognizes the categorical variable `region` in this case to be a factor (a grouped variable) and that they are in the right order. It can be done using using this line: `fct_reorder(region, -oleic, .fun = median)`. Essentially this says, make the `region` variable a factor, and reorder it to be from highest median of oleic acid to lowest.  One final thing - you have to do this for both the `y` axis category, and the `fill` - otherwise your colors won't match your y-axis categories.
 
 In the below code, I also added quantiles, x-axis and y-axis titles, a title and I removed the legend as it didn't add any extra information that isn't already on the plot.
 
 
-```{r, message=FALSE, warning=FALSE, fig.width = 6, fig.height = 4}
+```{r, message=FALSE, warning=FALSE, fig.width = 7, fig.height =4}
 
 ggplot(olives, aes(x = oleic, 
                    y = fct_reorder(region, -oleic, .fun = median), 
@@ -1172,6 +1184,9 @@ ggplot(olives, aes(x = oleic,
   ggtitle("Oleic Acid Content of Italian Olives by Region")
 
 ```
+
+
+<br>
 
 For more information about these plots, you can look up the help documentation for this [package here](https://cran.r-project.org/web/packages/ggridges/vignettes/introduction.html).
 
