@@ -24,7 +24,7 @@
 <meta name="author" content="James P. Curley &amp; Tyler M. Milewski" />
 
 
-<meta name="date" content="2021-09-01" />
+<meta name="date" content="2021-09-02" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -464,14 +464,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Essentially, the steps are to convert all the <code>X</code> and <code>Y</code> scores into their respective z-scores. Then you multiply these two values together to get the <code>cross-product</code>. After summing up all the cross-products for each data point, we divide this number by <code>n-1</code> if we’re dealing with a sample (we usually are), or <code>N</code> if we’re dealing with a population.</p>
 <p>The sum of the cross-products will therefore be largely positive if positive z-scores are multiple together or if negative z-scores are multiplied together. The sum of the cross-products will be largely negative if negative z-scores are multiplied with positive z-scores.</p>
 <p>The following example should help make this clearer. Look at the following data, its scatterplot and the correlation coefficient. They show that we have a positive correlation of <code>r=0.84</code>. Let’s break it down how we got that value.</p>
-<div class="sourceCode" id="cb1391"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1391-1"><a href="correlation.html#cb1391-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb1391-2"><a href="correlation.html#cb1391-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1391-3"><a href="correlation.html#cb1391-3" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">1.1</span>, <span class="fl">1.5</span>, <span class="fl">2.1</span>, <span class="fl">3.5</span>, <span class="fl">3.6</span>, <span class="fl">3.5</span>, <span class="fl">2.6</span>, <span class="fl">5.6</span>, <span class="fl">4.4</span>, <span class="fl">3.9</span>)</span>
-<span id="cb1391-4"><a href="correlation.html#cb1391-4" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">2.8</span>, <span class="fl">2.9</span>, <span class="fl">1.6</span>, <span class="fl">5.5</span>, <span class="fl">4.7</span>, <span class="fl">8.1</span>, <span class="fl">3.3</span>, <span class="fl">7.7</span>, <span class="fl">7.1</span>, <span class="fl">5.8</span>)</span>
-<span id="cb1391-5"><a href="correlation.html#cb1391-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1391-6"><a href="correlation.html#cb1391-6" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(x, y)</span>
-<span id="cb1391-7"><a href="correlation.html#cb1391-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1391-8"><a href="correlation.html#cb1391-8" aria-hidden="true" tabindex="-1"></a>df</span></code></pre></div>
+<div class="sourceCode" id="cb1393"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1393-1"><a href="correlation.html#cb1393-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1393-2"><a href="correlation.html#cb1393-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1393-3"><a href="correlation.html#cb1393-3" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">1.1</span>, <span class="fl">1.5</span>, <span class="fl">2.1</span>, <span class="fl">3.5</span>, <span class="fl">3.6</span>, <span class="fl">3.5</span>, <span class="fl">2.6</span>, <span class="fl">5.6</span>, <span class="fl">4.4</span>, <span class="fl">3.9</span>)</span>
+<span id="cb1393-4"><a href="correlation.html#cb1393-4" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">2.8</span>, <span class="fl">2.9</span>, <span class="fl">1.6</span>, <span class="fl">5.5</span>, <span class="fl">4.7</span>, <span class="fl">8.1</span>, <span class="fl">3.3</span>, <span class="fl">7.7</span>, <span class="fl">7.1</span>, <span class="fl">5.8</span>)</span>
+<span id="cb1393-5"><a href="correlation.html#cb1393-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1393-6"><a href="correlation.html#cb1393-6" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(x, y)</span>
+<span id="cb1393-7"><a href="correlation.html#cb1393-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1393-8"><a href="correlation.html#cb1393-8" aria-hidden="true" tabindex="-1"></a>df</span></code></pre></div>
 <pre><code>##      x   y
 ## 1  1.1 2.8
 ## 2  1.5 2.9
@@ -483,30 +483,30 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 8  5.6 7.7
 ## 9  4.4 7.1
 ## 10 3.9 5.8</code></pre>
-<div class="sourceCode" id="cb1393"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1393-1"><a href="correlation.html#cb1393-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y)) <span class="sc">+</span> <span class="fu">geom_point</span>(<span class="at">size=</span><span class="dv">2</span>)</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-579-1.png" width="672" /></p>
-<div class="sourceCode" id="cb1394"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1394-1"><a href="correlation.html#cb1394-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(x,y)</span></code></pre></div>
+<div class="sourceCode" id="cb1395"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1395-1"><a href="correlation.html#cb1395-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y)) <span class="sc">+</span> <span class="fu">geom_point</span>(<span class="at">size=</span><span class="dv">2</span>)</span></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-580-1.png" width="672" /></p>
+<div class="sourceCode" id="cb1396"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1396-1"><a href="correlation.html#cb1396-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(x,y)</span></code></pre></div>
 <pre><code>## [1] 0.8418262</code></pre>
 <p>First, let’s calculate the means and standard deviation (using <code>sd</code> so a sample standard deviation) of <code>x</code> and <code>y</code>. We need to get these values so we can calculate the z-scores of each.</p>
-<div class="sourceCode" id="cb1396"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1396-1"><a href="correlation.html#cb1396-1" aria-hidden="true" tabindex="-1"></a><span class="co"># step 1:  Get the mean and sd of x and y</span></span>
-<span id="cb1396-2"><a href="correlation.html#cb1396-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1396-3"><a href="correlation.html#cb1396-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1396-4"><a href="correlation.html#cb1396-4" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(x)</span></code></pre></div>
+<div class="sourceCode" id="cb1398"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1398-1"><a href="correlation.html#cb1398-1" aria-hidden="true" tabindex="-1"></a><span class="co"># step 1:  Get the mean and sd of x and y</span></span>
+<span id="cb1398-2"><a href="correlation.html#cb1398-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1398-3"><a href="correlation.html#cb1398-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1398-4"><a href="correlation.html#cb1398-4" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(x)</span></code></pre></div>
 <pre><code>## [1] 3.18</code></pre>
-<div class="sourceCode" id="cb1398"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1398-1"><a href="correlation.html#cb1398-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(x)</span></code></pre></div>
+<div class="sourceCode" id="cb1400"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1400-1"><a href="correlation.html#cb1400-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(x)</span></code></pre></div>
 <pre><code>## [1] 1.370158</code></pre>
-<div class="sourceCode" id="cb1400"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1400-1"><a href="correlation.html#cb1400-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(y)</span></code></pre></div>
+<div class="sourceCode" id="cb1402"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1402-1"><a href="correlation.html#cb1402-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(y)</span></code></pre></div>
 <pre><code>## [1] 4.95</code></pre>
-<div class="sourceCode" id="cb1402"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1402-1"><a href="correlation.html#cb1402-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(y)</span></code></pre></div>
+<div class="sourceCode" id="cb1404"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1404-1"><a href="correlation.html#cb1404-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(y)</span></code></pre></div>
 <pre><code>## [1] 2.259916</code></pre>
 <p>Now, we can calculate the z-scores, remembering that the formula for that is:</p>
 <p><span class="math inline">\(\Large z = \frac{x - \overline{x}}{s_{x}}\)</span></p>
-<div class="sourceCode" id="cb1404"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1404-1"><a href="correlation.html#cb1404-1" aria-hidden="true" tabindex="-1"></a><span class="co"># step 2. Calculate z-scores of x, and z-scores of y.</span></span>
-<span id="cb1404-2"><a href="correlation.html#cb1404-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1404-3"><a href="correlation.html#cb1404-3" aria-hidden="true" tabindex="-1"></a>df<span class="sc">$</span>zx <span class="ot">&lt;-</span> (x <span class="sc">-</span> <span class="fu">mean</span>(x)) <span class="sc">/</span> <span class="fu">sd</span>(x)  <span class="co"># z scores of x</span></span>
-<span id="cb1404-4"><a href="correlation.html#cb1404-4" aria-hidden="true" tabindex="-1"></a>df<span class="sc">$</span>zy <span class="ot">&lt;-</span> (y <span class="sc">-</span> <span class="fu">mean</span>(y)) <span class="sc">/</span> <span class="fu">sd</span>(y)  <span class="co"># z scores of y</span></span>
-<span id="cb1404-5"><a href="correlation.html#cb1404-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1404-6"><a href="correlation.html#cb1404-6" aria-hidden="true" tabindex="-1"></a>df</span></code></pre></div>
+<div class="sourceCode" id="cb1406"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1406-1"><a href="correlation.html#cb1406-1" aria-hidden="true" tabindex="-1"></a><span class="co"># step 2. Calculate z-scores of x, and z-scores of y.</span></span>
+<span id="cb1406-2"><a href="correlation.html#cb1406-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1406-3"><a href="correlation.html#cb1406-3" aria-hidden="true" tabindex="-1"></a>df<span class="sc">$</span>zx <span class="ot">&lt;-</span> (x <span class="sc">-</span> <span class="fu">mean</span>(x)) <span class="sc">/</span> <span class="fu">sd</span>(x)  <span class="co"># z scores of x</span></span>
+<span id="cb1406-4"><a href="correlation.html#cb1406-4" aria-hidden="true" tabindex="-1"></a>df<span class="sc">$</span>zy <span class="ot">&lt;-</span> (y <span class="sc">-</span> <span class="fu">mean</span>(y)) <span class="sc">/</span> <span class="fu">sd</span>(y)  <span class="co"># z scores of y</span></span>
+<span id="cb1406-5"><a href="correlation.html#cb1406-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1406-6"><a href="correlation.html#cb1406-6" aria-hidden="true" tabindex="-1"></a>df</span></code></pre></div>
 <pre><code>##      x   y         zx         zy
 ## 1  1.1 2.8 -1.5180729 -0.9513626
 ## 2  1.5 2.9 -1.2261358 -0.9071132
@@ -519,11 +519,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 9  4.4 7.1  0.8904082  0.9513626
 ## 10 3.9 5.8  0.5254868  0.3761201</code></pre>
 <p>Following this, we simply multiple the z-scores of <code>x</code> and <code>y</code> against each other for every data point:</p>
-<div class="sourceCode" id="cb1406"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1406-1"><a href="correlation.html#cb1406-1" aria-hidden="true" tabindex="-1"></a><span class="co"># step 3. Calculate the cross-product:  zx * zy</span></span>
-<span id="cb1406-2"><a href="correlation.html#cb1406-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1406-3"><a href="correlation.html#cb1406-3" aria-hidden="true" tabindex="-1"></a>df<span class="sc">$</span>zxzy <span class="ot">&lt;-</span> df<span class="sc">$</span>zx <span class="sc">*</span> df<span class="sc">$</span>zy</span>
-<span id="cb1406-4"><a href="correlation.html#cb1406-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1406-5"><a href="correlation.html#cb1406-5" aria-hidden="true" tabindex="-1"></a>df</span></code></pre></div>
+<div class="sourceCode" id="cb1408"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1408-1"><a href="correlation.html#cb1408-1" aria-hidden="true" tabindex="-1"></a><span class="co"># step 3. Calculate the cross-product:  zx * zy</span></span>
+<span id="cb1408-2"><a href="correlation.html#cb1408-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1408-3"><a href="correlation.html#cb1408-3" aria-hidden="true" tabindex="-1"></a>df<span class="sc">$</span>zxzy <span class="ot">&lt;-</span> df<span class="sc">$</span>zx <span class="sc">*</span> df<span class="sc">$</span>zy</span>
+<span id="cb1408-4"><a href="correlation.html#cb1408-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1408-5"><a href="correlation.html#cb1408-5" aria-hidden="true" tabindex="-1"></a>df</span></code></pre></div>
 <pre><code>##      x   y         zx         zy        zxzy
 ## 1  1.1 2.8 -1.5180729 -0.9513626  1.44423785
 ## 2  1.5 2.9 -1.2261358 -0.9071132  1.11224399
@@ -537,41 +537,41 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 10 3.9 5.8  0.5254868  0.3761201  0.19764615</code></pre>
 <p>We now have all of our cross-products. Notice why the majority are positive. This is because we have multiplied positive <span class="math inline">\(z_{x}\)</span> with positive <span class="math inline">\(z_{y}\)</span> or we multiplied negative <span class="math inline">\(z_{x}\)</span> with negative <span class="math inline">\(z_{y}\)</span>. This happens because datapoints that tend to be above the mean for <code>x</code> are also above the mean for <code>y</code>, and points that are below the mean of <code>x</code> are also below the mean of <code>y</code>.</p>
 <p>We can add this up to get the sum of the cross-products. That is the <span class="math inline">\(\sum_{}^{} z_{x}z_{y}\)</span> in the formula.</p>
-<div class="sourceCode" id="cb1408"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1408-1"><a href="correlation.html#cb1408-1" aria-hidden="true" tabindex="-1"></a><span class="co"># step 4.  Sum up the cross products.</span></span>
-<span id="cb1408-2"><a href="correlation.html#cb1408-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1408-3"><a href="correlation.html#cb1408-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(df<span class="sc">$</span>zxzy) <span class="co"># 7.58</span></span></code></pre></div>
+<div class="sourceCode" id="cb1410"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1410-1"><a href="correlation.html#cb1410-1" aria-hidden="true" tabindex="-1"></a><span class="co"># step 4.  Sum up the cross products.</span></span>
+<span id="cb1410-2"><a href="correlation.html#cb1410-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1410-3"><a href="correlation.html#cb1410-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(df<span class="sc">$</span>zxzy) <span class="co"># 7.58</span></span></code></pre></div>
 <pre><code>## [1] 7.576436</code></pre>
 <p>We now divide that by <code>n-1</code> as we have a sample, to get the correlation coefficient <code>r</code>. That gives us an estimation of the average cross-product.</p>
-<div class="sourceCode" id="cb1410"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1410-1"><a href="correlation.html#cb1410-1" aria-hidden="true" tabindex="-1"></a><span class="co"># step 5- calculate &#39;r&#39; by dividing by n-1. (for a sample)</span></span>
-<span id="cb1410-2"><a href="correlation.html#cb1410-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1410-3"><a href="correlation.html#cb1410-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(df<span class="sc">$</span>zxzy) <span class="sc">/</span> <span class="dv">9</span>   <span class="co"># our n was 10, so n-1 = 9</span></span></code></pre></div>
+<div class="sourceCode" id="cb1412"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1412-1"><a href="correlation.html#cb1412-1" aria-hidden="true" tabindex="-1"></a><span class="co"># step 5- calculate &#39;r&#39; by dividing by n-1. (for a sample)</span></span>
+<span id="cb1412-2"><a href="correlation.html#cb1412-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1412-3"><a href="correlation.html#cb1412-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(df<span class="sc">$</span>zxzy) <span class="sc">/</span> <span class="dv">9</span>   <span class="co"># our n was 10, so n-1 = 9</span></span></code></pre></div>
 <pre><code>## [1] 0.8418262</code></pre>
-<div class="sourceCode" id="cb1412"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1412-1"><a href="correlation.html#cb1412-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(df<span class="sc">$</span>zxzy) <span class="sc">/</span> (<span class="fu">nrow</span>(df) <span class="sc">-</span> <span class="dv">1</span>)  <span class="co"># nrow(df) is more generalizable</span></span></code></pre></div>
+<div class="sourceCode" id="cb1414"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1414-1"><a href="correlation.html#cb1414-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(df<span class="sc">$</span>zxzy) <span class="sc">/</span> (<span class="fu">nrow</span>(df) <span class="sc">-</span> <span class="dv">1</span>)  <span class="co"># nrow(df) is more generalizable</span></span></code></pre></div>
 <pre><code>## [1] 0.8418262</code></pre>
-<div class="sourceCode" id="cb1414"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1414-1"><a href="correlation.html#cb1414-1" aria-hidden="true" tabindex="-1"></a><span class="co"># r=0.84</span></span></code></pre></div>
+<div class="sourceCode" id="cb1416"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1416-1"><a href="correlation.html#cb1416-1" aria-hidden="true" tabindex="-1"></a><span class="co"># r=0.84</span></span></code></pre></div>
 <p>Just as a quick second example, here is a work through calculating a negative correlation. Notice the <span class="math inline">\(z_{x}\)</span> and <span class="math inline">\(z_{y}\)</span> scores that are multiplied together. They are largely opposite in terms of signs. This is what leads to a negative sum of cross-products and the negative correlation. Why? Because data points that are above the mean for <code>x</code> are generally below the mean in terms of <code>y</code> and visa-versa.</p>
-<div class="sourceCode" id="cb1415"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1415-1"><a href="correlation.html#cb1415-1" aria-hidden="true" tabindex="-1"></a><span class="do">### Example 2.   Negative Correlation.</span></span>
-<span id="cb1415-2"><a href="correlation.html#cb1415-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1415-3"><a href="correlation.html#cb1415-3" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">1.1</span>, <span class="fl">1.5</span>, <span class="fl">2.1</span>, <span class="fl">3.5</span>, <span class="fl">3.6</span>, <span class="fl">3.5</span>, <span class="fl">2.6</span>, <span class="fl">5.6</span>, <span class="fl">4.4</span>, <span class="fl">3.9</span>)</span>
-<span id="cb1415-4"><a href="correlation.html#cb1415-4" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">10.4</span>, <span class="fl">10.0</span>, <span class="fl">8.4</span>, <span class="fl">8.5</span>, <span class="fl">8.4</span>, <span class="fl">6.3</span>, <span class="fl">7.1</span>, <span class="fl">6.2</span>, <span class="fl">8.1</span>, <span class="fl">10.0</span>)</span>
-<span id="cb1415-5"><a href="correlation.html#cb1415-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1415-6"><a href="correlation.html#cb1415-6" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(x, y)</span>
-<span id="cb1415-7"><a href="correlation.html#cb1415-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1415-8"><a href="correlation.html#cb1415-8" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y)) <span class="sc">+</span> <span class="fu">geom_point</span>(<span class="at">size=</span><span class="dv">2</span>)</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-585-1.png" width="672" /></p>
-<div class="sourceCode" id="cb1416"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1416-1"><a href="correlation.html#cb1416-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(df<span class="sc">$</span>x,df<span class="sc">$</span>y) </span></code></pre></div>
+<div class="sourceCode" id="cb1417"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1417-1"><a href="correlation.html#cb1417-1" aria-hidden="true" tabindex="-1"></a><span class="do">### Example 2.   Negative Correlation.</span></span>
+<span id="cb1417-2"><a href="correlation.html#cb1417-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1417-3"><a href="correlation.html#cb1417-3" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">1.1</span>, <span class="fl">1.5</span>, <span class="fl">2.1</span>, <span class="fl">3.5</span>, <span class="fl">3.6</span>, <span class="fl">3.5</span>, <span class="fl">2.6</span>, <span class="fl">5.6</span>, <span class="fl">4.4</span>, <span class="fl">3.9</span>)</span>
+<span id="cb1417-4"><a href="correlation.html#cb1417-4" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">10.4</span>, <span class="fl">10.0</span>, <span class="fl">8.4</span>, <span class="fl">8.5</span>, <span class="fl">8.4</span>, <span class="fl">6.3</span>, <span class="fl">7.1</span>, <span class="fl">6.2</span>, <span class="fl">8.1</span>, <span class="fl">10.0</span>)</span>
+<span id="cb1417-5"><a href="correlation.html#cb1417-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1417-6"><a href="correlation.html#cb1417-6" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(x, y)</span>
+<span id="cb1417-7"><a href="correlation.html#cb1417-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1417-8"><a href="correlation.html#cb1417-8" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y)) <span class="sc">+</span> <span class="fu">geom_point</span>(<span class="at">size=</span><span class="dv">2</span>)</span></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-586-1.png" width="672" /></p>
+<div class="sourceCode" id="cb1418"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1418-1"><a href="correlation.html#cb1418-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(df<span class="sc">$</span>x,df<span class="sc">$</span>y) </span></code></pre></div>
 <pre><code>## [1] -0.6112965</code></pre>
 <p>Here is the code, truncated for space:</p>
-<div class="sourceCode" id="cb1418"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1418-1"><a href="correlation.html#cb1418-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate z-scores for each x and each y</span></span>
-<span id="cb1418-2"><a href="correlation.html#cb1418-2" aria-hidden="true" tabindex="-1"></a>df<span class="sc">$</span>zx <span class="ot">&lt;-</span> (x <span class="sc">-</span> <span class="fu">mean</span>(x)) <span class="sc">/</span> <span class="fu">sd</span>(x)</span>
-<span id="cb1418-3"><a href="correlation.html#cb1418-3" aria-hidden="true" tabindex="-1"></a>df<span class="sc">$</span>zy <span class="ot">&lt;-</span> (y <span class="sc">-</span> <span class="fu">mean</span>(y)) <span class="sc">/</span> <span class="fu">sd</span>(y)</span>
-<span id="cb1418-4"><a href="correlation.html#cb1418-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1418-5"><a href="correlation.html#cb1418-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate the cross-product:  zx * zy</span></span>
-<span id="cb1418-6"><a href="correlation.html#cb1418-6" aria-hidden="true" tabindex="-1"></a>df<span class="sc">$</span>zxzy <span class="ot">&lt;-</span> df<span class="sc">$</span>zx <span class="sc">*</span> df<span class="sc">$</span>zy</span>
-<span id="cb1418-7"><a href="correlation.html#cb1418-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1418-8"><a href="correlation.html#cb1418-8" aria-hidden="true" tabindex="-1"></a><span class="co"># let&#39;s look at the dataframe</span></span>
-<span id="cb1418-9"><a href="correlation.html#cb1418-9" aria-hidden="true" tabindex="-1"></a><span class="co"># notice the cross products:</span></span>
-<span id="cb1418-10"><a href="correlation.html#cb1418-10" aria-hidden="true" tabindex="-1"></a>df</span></code></pre></div>
+<div class="sourceCode" id="cb1420"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1420-1"><a href="correlation.html#cb1420-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate z-scores for each x and each y</span></span>
+<span id="cb1420-2"><a href="correlation.html#cb1420-2" aria-hidden="true" tabindex="-1"></a>df<span class="sc">$</span>zx <span class="ot">&lt;-</span> (x <span class="sc">-</span> <span class="fu">mean</span>(x)) <span class="sc">/</span> <span class="fu">sd</span>(x)</span>
+<span id="cb1420-3"><a href="correlation.html#cb1420-3" aria-hidden="true" tabindex="-1"></a>df<span class="sc">$</span>zy <span class="ot">&lt;-</span> (y <span class="sc">-</span> <span class="fu">mean</span>(y)) <span class="sc">/</span> <span class="fu">sd</span>(y)</span>
+<span id="cb1420-4"><a href="correlation.html#cb1420-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1420-5"><a href="correlation.html#cb1420-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate the cross-product:  zx * zy</span></span>
+<span id="cb1420-6"><a href="correlation.html#cb1420-6" aria-hidden="true" tabindex="-1"></a>df<span class="sc">$</span>zxzy <span class="ot">&lt;-</span> df<span class="sc">$</span>zx <span class="sc">*</span> df<span class="sc">$</span>zy</span>
+<span id="cb1420-7"><a href="correlation.html#cb1420-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1420-8"><a href="correlation.html#cb1420-8" aria-hidden="true" tabindex="-1"></a><span class="co"># let&#39;s look at the dataframe</span></span>
+<span id="cb1420-9"><a href="correlation.html#cb1420-9" aria-hidden="true" tabindex="-1"></a><span class="co"># notice the cross products:</span></span>
+<span id="cb1420-10"><a href="correlation.html#cb1420-10" aria-hidden="true" tabindex="-1"></a>df</span></code></pre></div>
 <pre><code>##      x    y         zx          zy        zxzy
 ## 1  1.1 10.4 -1.5180729  1.37762597 -2.09133671
 ## 2  1.5 10.0 -1.2261358  1.11012578 -1.36116500
@@ -583,11 +583,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 8  5.6  6.2  1.7662195 -1.43112601 -2.52768263
 ## 9  4.4  8.1  0.8904082 -0.16050011 -0.14291061
 ## 10 3.9 10.0  0.5254868  1.11012578  0.58335643</code></pre>
-<div class="sourceCode" id="cb1420"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1420-1"><a href="correlation.html#cb1420-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Sum up the cross products and Calculate &#39;r&#39; by dividing by N-1.</span></span>
-<span id="cb1420-2"><a href="correlation.html#cb1420-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1420-3"><a href="correlation.html#cb1420-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(df<span class="sc">$</span>zxzy) <span class="sc">/</span> (<span class="fu">nrow</span>(df) <span class="sc">-</span> <span class="dv">1</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb1422"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1422-1"><a href="correlation.html#cb1422-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Sum up the cross products and Calculate &#39;r&#39; by dividing by N-1.</span></span>
+<span id="cb1422-2"><a href="correlation.html#cb1422-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1422-3"><a href="correlation.html#cb1422-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(df<span class="sc">$</span>zxzy) <span class="sc">/</span> (<span class="fu">nrow</span>(df) <span class="sc">-</span> <span class="dv">1</span>)</span></code></pre></div>
 <pre><code>## [1] -0.6112965</code></pre>
-<div class="sourceCode" id="cb1422"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1422-1"><a href="correlation.html#cb1422-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(df<span class="sc">$</span>x,df<span class="sc">$</span>y) </span></code></pre></div>
+<div class="sourceCode" id="cb1424"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1424-1"><a href="correlation.html#cb1424-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(df<span class="sc">$</span>x,df<span class="sc">$</span>y) </span></code></pre></div>
 <pre><code>## [1] -0.6112965</code></pre>
 <p><br></p>
 </div>
@@ -595,13 +595,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">12.3</span> Conducting a Pearson Correlation Test</h2>
 <p>Although <code>cor()</code> gives you the correlation between two continuous variables, to actually run a significance test, you need to use <code>cor.test()</code>.</p>
 <p>Let’s use some BlueJay data to do this. We’ll just use data on male birds.</p>
-<div class="sourceCode" id="cb1424"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1424-1"><a href="correlation.html#cb1424-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb1424-2"><a href="correlation.html#cb1424-2" aria-hidden="true" tabindex="-1"></a>jays <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;data/BlueJays.csv&quot;</span>)</span>
-<span id="cb1424-3"><a href="correlation.html#cb1424-3" aria-hidden="true" tabindex="-1"></a>jayM <span class="ot">&lt;-</span> jays <span class="sc">%&gt;%</span> <span class="fu">filter</span>(KnownSex <span class="sc">==</span> <span class="st">&quot;M&quot;</span>) <span class="co"># we&#39;ll just look at Males</span></span>
-<span id="cb1424-4"><a href="correlation.html#cb1424-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1424-5"><a href="correlation.html#cb1424-5" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(jayM) <span class="co"># 63 observations</span></span></code></pre></div>
+<div class="sourceCode" id="cb1426"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1426-1"><a href="correlation.html#cb1426-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1426-2"><a href="correlation.html#cb1426-2" aria-hidden="true" tabindex="-1"></a>jays <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;data/BlueJays.csv&quot;</span>)</span>
+<span id="cb1426-3"><a href="correlation.html#cb1426-3" aria-hidden="true" tabindex="-1"></a>jayM <span class="ot">&lt;-</span> jays <span class="sc">%&gt;%</span> <span class="fu">filter</span>(KnownSex <span class="sc">==</span> <span class="st">&quot;M&quot;</span>) <span class="co"># we&#39;ll just look at Males</span></span>
+<span id="cb1426-4"><a href="correlation.html#cb1426-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1426-5"><a href="correlation.html#cb1426-5" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(jayM) <span class="co"># 63 observations</span></span></code></pre></div>
 <pre><code>## [1] 63</code></pre>
-<div class="sourceCode" id="cb1426"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1426-1"><a href="correlation.html#cb1426-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(jayM)</span></code></pre></div>
+<div class="sourceCode" id="cb1428"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1428-1"><a href="correlation.html#cb1428-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(jayM)</span></code></pre></div>
 <pre><code>## # A tibble: 6 x 9
 ##   BirdID     KnownSex BillDepth BillWidth BillLength  Head  Mass Skull   Sex
 ##   &lt;chr&gt;      &lt;chr&gt;        &lt;dbl&gt;     &lt;dbl&gt;      &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
@@ -612,14 +612,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 5 1142-05912 M             8.74      9.28       25.4  57.1  75.1  31.8     1
 ## 6 1142-05914 M             8.72      9.94       30    60.7  78.1  30.7     1</code></pre>
 <p>Let’s say you’re interested in examining whether there is an association between Body Mass and Head Size. First we’ll make a scatterplot between the <code>Mass</code> and <code>Head</code> columns. We’ll also investigate the correlation using <code>cor()</code>.</p>
-<div class="sourceCode" id="cb1428"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1428-1"><a href="correlation.html#cb1428-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(jayM, <span class="fu">aes</span>(<span class="at">x=</span>Mass, <span class="at">y=</span>Head)) <span class="sc">+</span> </span>
-<span id="cb1428-2"><a href="correlation.html#cb1428-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">shape =</span> <span class="dv">21</span>, <span class="at">colour =</span> <span class="st">&quot;navy&quot;</span>, <span class="at">fill =</span> <span class="st">&quot;dodgerblue&quot;</span>) <span class="sc">+</span></span>
-<span id="cb1428-3"><a href="correlation.html#cb1428-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_smooth</span>(<span class="at">method=</span><span class="st">&quot;lm&quot;</span>, <span class="at">se=</span>F)</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-588-1.png" width="672" /></p>
-<div class="sourceCode" id="cb1429"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1429-1"><a href="correlation.html#cb1429-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(jayM<span class="sc">$</span>Mass, jayM<span class="sc">$</span>Head)  <span class="co"># r = 0.58,  a strong positive correlation.</span></span></code></pre></div>
+<div class="sourceCode" id="cb1430"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1430-1"><a href="correlation.html#cb1430-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(jayM, <span class="fu">aes</span>(<span class="at">x=</span>Mass, <span class="at">y=</span>Head)) <span class="sc">+</span> </span>
+<span id="cb1430-2"><a href="correlation.html#cb1430-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">shape =</span> <span class="dv">21</span>, <span class="at">colour =</span> <span class="st">&quot;navy&quot;</span>, <span class="at">fill =</span> <span class="st">&quot;dodgerblue&quot;</span>) <span class="sc">+</span></span>
+<span id="cb1430-3"><a href="correlation.html#cb1430-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_smooth</span>(<span class="at">method=</span><span class="st">&quot;lm&quot;</span>, <span class="at">se=</span>F)</span></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-589-1.png" width="672" /></p>
+<div class="sourceCode" id="cb1431"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1431-1"><a href="correlation.html#cb1431-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(jayM<span class="sc">$</span>Mass, jayM<span class="sc">$</span>Head)  <span class="co"># r = 0.58,  a strong positive correlation.</span></span></code></pre></div>
 <pre><code>## [1] 0.5773562</code></pre>
 <p>To run the significance test, we do the following:</p>
-<div class="sourceCode" id="cb1431"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1431-1"><a href="correlation.html#cb1431-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor.test</span>(jayM<span class="sc">$</span>Head, jayM<span class="sc">$</span>Mass) </span></code></pre></div>
+<div class="sourceCode" id="cb1433"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1433-1"><a href="correlation.html#cb1433-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor.test</span>(jayM<span class="sc">$</span>Head, jayM<span class="sc">$</span>Mass) </span></code></pre></div>
 <pre><code>## 
 ##  Pearson&#39;s product-moment correlation
 ## 
@@ -635,8 +635,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>The default for <code>cor.test()</code> is to do a two-tailed test. This is testing whether your observed correlation <code>r</code> is different from <code>r=0</code> in either the positive or negative direction. This default version also gives us the confidence interval for the correlation coefficient. Essentially, this gives us the interval in which we have a 95% confidence that the true population <code>r</code> lies (remember we just have data from one sample that theoretically comes from a population).</p>
 <p>It’s also possible however that you had an <strong>a priori</strong> prediction about the direction of the effect. For instance, you may have predicted that Body Mass would be positively correlated with Head Size. In this case, you could do a one-tailed correlation test, where your alternative hypothesis is that there is a positive correlation and the null is that the correlation coefficient is equal to 0 or less than 0.</p>
 <p>To do one-tailed tests you need to add the <code>alternative</code> argument.</p>
-<div class="sourceCode" id="cb1433"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1433-1"><a href="correlation.html#cb1433-1" aria-hidden="true" tabindex="-1"></a><span class="co"># testing if there is a positive correlation</span></span>
-<span id="cb1433-2"><a href="correlation.html#cb1433-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cor.test</span>(jayM<span class="sc">$</span>Head, jayM<span class="sc">$</span>Mass, <span class="at">alternative =</span> <span class="st">&quot;greater&quot;</span>) </span></code></pre></div>
+<div class="sourceCode" id="cb1435"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1435-1"><a href="correlation.html#cb1435-1" aria-hidden="true" tabindex="-1"></a><span class="co"># testing if there is a positive correlation</span></span>
+<span id="cb1435-2"><a href="correlation.html#cb1435-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cor.test</span>(jayM<span class="sc">$</span>Head, jayM<span class="sc">$</span>Mass, <span class="at">alternative =</span> <span class="st">&quot;greater&quot;</span>) </span></code></pre></div>
 <pre><code>## 
 ##  Pearson&#39;s product-moment correlation
 ## 
@@ -648,8 +648,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## sample estimates:
 ##       cor 
 ## 0.5773562</code></pre>
-<div class="sourceCode" id="cb1435"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1435-1"><a href="correlation.html#cb1435-1" aria-hidden="true" tabindex="-1"></a><span class="co"># testing if there is a negative correlation</span></span>
-<span id="cb1435-2"><a href="correlation.html#cb1435-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cor.test</span>(jayM<span class="sc">$</span>Head, jayM<span class="sc">$</span>Mass, <span class="at">alternative =</span> <span class="st">&quot;less&quot;</span>) </span></code></pre></div>
+<div class="sourceCode" id="cb1437"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1437-1"><a href="correlation.html#cb1437-1" aria-hidden="true" tabindex="-1"></a><span class="co"># testing if there is a negative correlation</span></span>
+<span id="cb1437-2"><a href="correlation.html#cb1437-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cor.test</span>(jayM<span class="sc">$</span>Head, jayM<span class="sc">$</span>Mass, <span class="at">alternative =</span> <span class="st">&quot;less&quot;</span>) </span></code></pre></div>
 <pre><code>## 
 ##  Pearson&#39;s product-moment correlation
 ## 
@@ -671,37 +671,37 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>You’ll also see this same formula written like this:</p>
 <p><span class="math inline">\(\Large t = \frac{r}{\sqrt{\frac{1-r^2}{n-2}}}\)</span></p>
 <p>So, as an example, if we calculated a correlation coefficient of <span class="math inline">\(r=0.42\)</span> from a sample size of 19, then we could calculate our observed <span class="math inline">\(t\)</span> value as follows:</p>
-<div class="sourceCode" id="cb1437"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1437-1"><a href="correlation.html#cb1437-1" aria-hidden="true" tabindex="-1"></a>r <span class="ot">&lt;-</span> <span class="fl">0.42</span></span>
-<span id="cb1437-2"><a href="correlation.html#cb1437-2" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">19</span></span>
-<span id="cb1437-3"><a href="correlation.html#cb1437-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1437-4"><a href="correlation.html#cb1437-4" aria-hidden="true" tabindex="-1"></a>tval <span class="ot">&lt;-</span> r <span class="sc">*</span> <span class="fu">sqrt</span>( (n<span class="dv">-2</span>) <span class="sc">/</span> (<span class="dv">1</span> <span class="sc">-</span> r<span class="sc">^</span><span class="dv">2</span>) )</span>
-<span id="cb1437-5"><a href="correlation.html#cb1437-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1437-6"><a href="correlation.html#cb1437-6" aria-hidden="true" tabindex="-1"></a>tval</span></code></pre></div>
+<div class="sourceCode" id="cb1439"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1439-1"><a href="correlation.html#cb1439-1" aria-hidden="true" tabindex="-1"></a>r <span class="ot">&lt;-</span> <span class="fl">0.42</span></span>
+<span id="cb1439-2"><a href="correlation.html#cb1439-2" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">19</span></span>
+<span id="cb1439-3"><a href="correlation.html#cb1439-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1439-4"><a href="correlation.html#cb1439-4" aria-hidden="true" tabindex="-1"></a>tval <span class="ot">&lt;-</span> r <span class="sc">*</span> <span class="fu">sqrt</span>( (n<span class="dv">-2</span>) <span class="sc">/</span> (<span class="dv">1</span> <span class="sc">-</span> r<span class="sc">^</span><span class="dv">2</span>) )</span>
+<span id="cb1439-5"><a href="correlation.html#cb1439-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1439-6"><a href="correlation.html#cb1439-6" aria-hidden="true" tabindex="-1"></a>tval</span></code></pre></div>
 <pre><code>## [1] 1.908163</code></pre>
 <p>We calculate the observed <span class="math inline">\(t\)</span> value to be <span class="math inline">\(t = 1.91\)</span>. We can visualize our sampling distribution of possible correlations as a <span class="math inline">\(t\)</span>-distribution with degrees of freedom equal to 17 (19-2).
 <br></p>
 <p><img src="img/tr.png" /></p>
 <p>Like with other t-distributions, we can calculate how likely we were to get our observed value of <span class="math inline">\(t\)</span> by calculating the area under the curve in the tails. For a positive <span class="math inline">\(t\)</span>-value we want to know the area under the curve for values greater than our <span class="math inline">\(t\)</span>-value. That would tell us how likely we were to get that value. We do this in the same way as with t-tests, using <code>pt()</code>. We put in our <span class="math inline">\(t\)</span>-value, and our degrees of freedom. Because <code>pt()</code> returns the area under the curve to the left of our <span class="math inline">\(t\)</span>-value, we need to do <code>1 - pt()</code> to get the area to the right:</p>
-<div class="sourceCode" id="cb1439"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1439-1"><a href="correlation.html#cb1439-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">-</span> <span class="fu">pt</span>(tval, <span class="at">df=</span>n<span class="dv">-2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb1441"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1441-1"><a href="correlation.html#cb1441-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">-</span> <span class="fu">pt</span>(tval, <span class="at">df=</span>n<span class="dv">-2</span>)</span></code></pre></div>
 <pre><code>## [1] 0.03670244</code></pre>
 <p>Therefore, our p-value here is <span class="math inline">\(p=0.04\)</span>. But, be careful. This is only the p-value for a one-tailed test. If we are conducting a two-tailed significance test, then we need to account for samples that are as extremely negative as well as extremely positive as our observed value. We must double the p-value to account for the area under both tails.</p>
-<div class="sourceCode" id="cb1441"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1441-1"><a href="correlation.html#cb1441-1" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span> <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">-</span> <span class="fu">pt</span>(tval, <span class="at">df=</span>n<span class="dv">-2</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb1443"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1443-1"><a href="correlation.html#cb1443-1" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span> <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">-</span> <span class="fu">pt</span>(tval, <span class="at">df=</span>n<span class="dv">-2</span>))</span></code></pre></div>
 <pre><code>## [1] 0.07340487</code></pre>
 <p>Our p-value is <span class="math inline">\(p=0.073\)</span> for a two-tailed test.</p>
 <p>Below is a sample of data that actually has a correlation of <span class="math inline">\(r=0.42\)</span> and a sample size of 19.</p>
-<div class="sourceCode" id="cb1443"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1443-1"><a href="correlation.html#cb1443-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="sc">-</span><span class="fl">0.73</span>, <span class="fl">0.89</span>, <span class="fl">1.36</span>, <span class="sc">-</span><span class="fl">1.30</span>, <span class="fl">1.07</span>,  <span class="fl">0.76</span>, <span class="sc">-</span><span class="fl">1.32</span>, <span class="sc">-</span><span class="fl">1.31</span>,  <span class="fl">0.46</span>,  <span class="fl">2.09</span>,  <span class="fl">0.36</span>, <span class="sc">-</span><span class="fl">0.70</span>, <span class="sc">-</span><span class="fl">1.34</span>, <span class="sc">-</span><span class="fl">1.99</span>, <span class="sc">-</span><span class="fl">0.39</span>, <span class="sc">-</span><span class="fl">0.51</span>, <span class="sc">-</span><span class="fl">0.92</span>,  <span class="fl">1.37</span>,  <span class="fl">2.31</span>)</span>
-<span id="cb1443-2"><a href="correlation.html#cb1443-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1443-3"><a href="correlation.html#cb1443-3" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span><span class="fu">c</span>(<span class="fl">0.69</span>, <span class="fl">0.29</span>, <span class="sc">-</span><span class="fl">0.52</span>, <span class="sc">-</span><span class="fl">0.05</span>, <span class="sc">-</span><span class="fl">1.08</span>,  <span class="fl">0.37</span>, <span class="sc">-</span><span class="fl">0.31</span>, <span class="sc">-</span><span class="fl">0.33</span>,  <span class="fl">0.76</span>,  <span class="fl">1.37</span>,  <span class="fl">0.91</span>,  <span class="fl">0.19</span>,  <span class="fl">0.10</span>, <span class="sc">-</span><span class="fl">2.00</span>, <span class="sc">-</span><span class="fl">1.72</span>, <span class="fl">0.53</span>, <span class="sc">-</span><span class="fl">0.52</span>, <span class="sc">-</span><span class="fl">0.20</span>,  <span class="fl">0.63</span>)</span>
-<span id="cb1443-4"><a href="correlation.html#cb1443-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1443-5"><a href="correlation.html#cb1443-5" aria-hidden="true" tabindex="-1"></a>dfxy <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x=</span>x, <span class="at">y=</span>y)</span>
-<span id="cb1443-6"><a href="correlation.html#cb1443-6" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(dfxy, <span class="fu">aes</span>(<span class="at">x=</span>x, <span class="at">y=</span>y)) <span class="sc">+</span></span>
-<span id="cb1443-7"><a href="correlation.html#cb1443-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size=</span><span class="dv">2</span>, <span class="at">color =</span> <span class="st">&quot;#123abc&quot;</span>, <span class="at">alpha=</span>.<span class="dv">7</span>)<span class="sc">+</span></span>
-<span id="cb1443-8"><a href="correlation.html#cb1443-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_smooth</span>(<span class="at">method=</span><span class="st">&quot;lm&quot;</span>, <span class="at">se=</span>F) <span class="sc">+</span></span>
-<span id="cb1443-9"><a href="correlation.html#cb1443-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>()</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-595-1.png" width="672" />
+<div class="sourceCode" id="cb1445"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1445-1"><a href="correlation.html#cb1445-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="sc">-</span><span class="fl">0.73</span>, <span class="fl">0.89</span>, <span class="fl">1.36</span>, <span class="sc">-</span><span class="fl">1.30</span>, <span class="fl">1.07</span>,  <span class="fl">0.76</span>, <span class="sc">-</span><span class="fl">1.32</span>, <span class="sc">-</span><span class="fl">1.31</span>,  <span class="fl">0.46</span>,  <span class="fl">2.09</span>,  <span class="fl">0.36</span>, <span class="sc">-</span><span class="fl">0.70</span>, <span class="sc">-</span><span class="fl">1.34</span>, <span class="sc">-</span><span class="fl">1.99</span>, <span class="sc">-</span><span class="fl">0.39</span>, <span class="sc">-</span><span class="fl">0.51</span>, <span class="sc">-</span><span class="fl">0.92</span>,  <span class="fl">1.37</span>,  <span class="fl">2.31</span>)</span>
+<span id="cb1445-2"><a href="correlation.html#cb1445-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1445-3"><a href="correlation.html#cb1445-3" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span><span class="fu">c</span>(<span class="fl">0.69</span>, <span class="fl">0.29</span>, <span class="sc">-</span><span class="fl">0.52</span>, <span class="sc">-</span><span class="fl">0.05</span>, <span class="sc">-</span><span class="fl">1.08</span>,  <span class="fl">0.37</span>, <span class="sc">-</span><span class="fl">0.31</span>, <span class="sc">-</span><span class="fl">0.33</span>,  <span class="fl">0.76</span>,  <span class="fl">1.37</span>,  <span class="fl">0.91</span>,  <span class="fl">0.19</span>,  <span class="fl">0.10</span>, <span class="sc">-</span><span class="fl">2.00</span>, <span class="sc">-</span><span class="fl">1.72</span>, <span class="fl">0.53</span>, <span class="sc">-</span><span class="fl">0.52</span>, <span class="sc">-</span><span class="fl">0.20</span>,  <span class="fl">0.63</span>)</span>
+<span id="cb1445-4"><a href="correlation.html#cb1445-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1445-5"><a href="correlation.html#cb1445-5" aria-hidden="true" tabindex="-1"></a>dfxy <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x=</span>x, <span class="at">y=</span>y)</span>
+<span id="cb1445-6"><a href="correlation.html#cb1445-6" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(dfxy, <span class="fu">aes</span>(<span class="at">x=</span>x, <span class="at">y=</span>y)) <span class="sc">+</span></span>
+<span id="cb1445-7"><a href="correlation.html#cb1445-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size=</span><span class="dv">2</span>, <span class="at">color =</span> <span class="st">&quot;#123abc&quot;</span>, <span class="at">alpha=</span>.<span class="dv">7</span>)<span class="sc">+</span></span>
+<span id="cb1445-8"><a href="correlation.html#cb1445-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_smooth</span>(<span class="at">method=</span><span class="st">&quot;lm&quot;</span>, <span class="at">se=</span>F) <span class="sc">+</span></span>
+<span id="cb1445-9"><a href="correlation.html#cb1445-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>()</span></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-596-1.png" width="672" />
 <br></p>
 <p>Let’s look at the output if we conduct a two-tailed significance test on our sample <span class="math inline">\(r\)</span>:</p>
-<div class="sourceCode" id="cb1444"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1444-1"><a href="correlation.html#cb1444-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor.test</span>(x,y)</span></code></pre></div>
+<div class="sourceCode" id="cb1446"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1446-1"><a href="correlation.html#cb1446-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor.test</span>(x,y)</span></code></pre></div>
 <pre><code>## 
 ##  Pearson&#39;s product-moment correlation
 ## 
@@ -716,7 +716,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><br></p>
 <p>We get our correlation of <span class="math inline">\(r=0.42\)</span>, degrees of freedom = 17, and observed <span class="math inline">\(t\)</span>-value of <span class="math inline">\(t=1.91\)</span>. We also see the p-value of <span class="math inline">\(p=0.07\)</span>.</p>
 <p>If we were to do a one-tailed test (assuming we had an <em>a priori</em> prediction as to the direction of the correlation):</p>
-<div class="sourceCode" id="cb1446"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1446-1"><a href="correlation.html#cb1446-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor.test</span>(x,y, <span class="at">alternative =</span> <span class="st">&quot;greater&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb1448"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1448-1"><a href="correlation.html#cb1448-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor.test</span>(x,y, <span class="at">alternative =</span> <span class="st">&quot;greater&quot;</span>)</span></code></pre></div>
 <pre><code>## 
 ##  Pearson&#39;s product-moment correlation
 ## 
@@ -739,25 +739,25 @@ Now we see that we get the same <span class="math inline">\(t\)</span>- and p-va
 <p>The Pearson Correlation Coefficient requires your data to be approximately normally distributed. To do this we have various options how to test for normality.</p>
 <p>Firstly, we could do a Shapiro-Wilk test, which formally determines whether our data are normal. This is done using <code>shapiro.test()</code>, where we assume our data are from a normal population if the resulting p-value is above 0.05. If the p-value is below 0.05 then we have evidence to reject that our data come from a normal population.</p>
 <p>With our data above, this would look like this when running the test on each variable:</p>
-<div class="sourceCode" id="cb1448"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1448-1"><a href="correlation.html#cb1448-1" aria-hidden="true" tabindex="-1"></a><span class="fu">shapiro.test</span>(jayM<span class="sc">$</span>Mass)  <span class="co"># P &gt; 0.05, therefore cannot reject null that data is not normal</span></span></code></pre></div>
+<div class="sourceCode" id="cb1450"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1450-1"><a href="correlation.html#cb1450-1" aria-hidden="true" tabindex="-1"></a><span class="fu">shapiro.test</span>(jayM<span class="sc">$</span>Mass)  <span class="co"># P &gt; 0.05, therefore cannot reject null that data is not normal</span></span></code></pre></div>
 <pre><code>## 
 ##  Shapiro-Wilk normality test
 ## 
 ## data:  jayM$Mass
 ## W = 0.97222, p-value = 0.1647</code></pre>
-<div class="sourceCode" id="cb1450"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1450-1"><a href="correlation.html#cb1450-1" aria-hidden="true" tabindex="-1"></a><span class="fu">shapiro.test</span>(jayM<span class="sc">$</span>Head)  <span class="co"># P &gt; 0.05, therefore cannot reject null that data is not normal</span></span></code></pre></div>
+<div class="sourceCode" id="cb1452"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1452-1"><a href="correlation.html#cb1452-1" aria-hidden="true" tabindex="-1"></a><span class="fu">shapiro.test</span>(jayM<span class="sc">$</span>Head)  <span class="co"># P &gt; 0.05, therefore cannot reject null that data is not normal</span></span></code></pre></div>
 <pre><code>## 
 ##  Shapiro-Wilk normality test
 ## 
 ## data:  jayM$Head
 ## W = 0.96521, p-value = 0.07189</code></pre>
 <p>We can also make a QQ-plot for each variable. Essentially what we require from this plot is for the majority of our data to fall on the straight line - especially the datapoints in the middle. Some deviation at the tails is ok. This plot orders our data and plots the observed data against values on the x-axis that we would expect to get if our data was truly from a normal population.</p>
-<div class="sourceCode" id="cb1452"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1452-1"><a href="correlation.html#cb1452-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qqnorm</span>(jayM<span class="sc">$</span>Mass)</span>
-<span id="cb1452-2"><a href="correlation.html#cb1452-2" aria-hidden="true" tabindex="-1"></a><span class="fu">qqline</span>(jayM<span class="sc">$</span>Mass, <span class="at">col =</span> <span class="st">&quot;steelblue&quot;</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-599-1.png" width="672" /></p>
-<div class="sourceCode" id="cb1453"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1453-1"><a href="correlation.html#cb1453-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qqnorm</span>(jayM<span class="sc">$</span>Head)</span>
-<span id="cb1453-2"><a href="correlation.html#cb1453-2" aria-hidden="true" tabindex="-1"></a><span class="fu">qqline</span>(jayM<span class="sc">$</span>Head, <span class="at">col =</span> <span class="st">&quot;steelblue&quot;</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb1454"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1454-1"><a href="correlation.html#cb1454-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qqnorm</span>(jayM<span class="sc">$</span>Mass)</span>
+<span id="cb1454-2"><a href="correlation.html#cb1454-2" aria-hidden="true" tabindex="-1"></a><span class="fu">qqline</span>(jayM<span class="sc">$</span>Mass, <span class="at">col =</span> <span class="st">&quot;steelblue&quot;</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span></code></pre></div>
 <p><img src="bookdownproj_files/figure-html/unnamed-chunk-600-1.png" width="672" /></p>
+<div class="sourceCode" id="cb1455"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1455-1"><a href="correlation.html#cb1455-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qqnorm</span>(jayM<span class="sc">$</span>Head)</span>
+<span id="cb1455-2"><a href="correlation.html#cb1455-2" aria-hidden="true" tabindex="-1"></a><span class="fu">qqline</span>(jayM<span class="sc">$</span>Head, <span class="at">col =</span> <span class="st">&quot;steelblue&quot;</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-601-1.png" width="672" /></p>
 <p>Both of these QQ plots are ok, and indicate normality, as does our Shapiro-Wilk tests. Therefore we would be ok to use a Pearson Correlation test with these data.</p>
 <p>What should you do though if either of your continuous variables are not approximately normally distributed? In that case, there are other correlation coefficients and associated significance tests that you could run instead. We describe these in more detail in Section <a href="correlation.html#non-parametric-correlations">12.7</a>.</p>
 <p><br></p>
@@ -768,8 +768,8 @@ Now we see that we get the same <span class="math inline">\(t\)</span>- and p-va
 <p>The main thing to realize is that our sample of data that we calculate our observed correlation coefficient from is technically just one sample that we could have got from a population. We could have picked a slightly different sample, and got a slightly different correlation. Let’s work through this using an example.</p>
 <p>Say we have a population of 25,000 subjects (datapoints) and the true population correlation coefficient is <span class="math inline">\(\rho=0.75\)</span> (When we’re dealing with a population we use <span class="math inline">\(\rho\)</span> for the Pearson’s correlation coefficient rather than <span class="math inline">\(r\)</span>.).</p>
 <p>This is our population. We have 25,000 rows of <code>x</code> and <code>y</code> data:</p>
-<div class="sourceCode" id="cb1454"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1454-1"><a href="correlation.html#cb1454-1" aria-hidden="true" tabindex="-1"></a>dfr <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;data/popcor.csv&quot;</span>)</span>
-<span id="cb1454-2"><a href="correlation.html#cb1454-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(dfr)</span></code></pre></div>
+<div class="sourceCode" id="cb1456"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1456-1"><a href="correlation.html#cb1456-1" aria-hidden="true" tabindex="-1"></a>dfr <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;data/popcor.csv&quot;</span>)</span>
+<span id="cb1456-2"><a href="correlation.html#cb1456-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(dfr)</span></code></pre></div>
 <pre><code>## # A tibble: 6 x 2
 ##       x     y
 ##   &lt;dbl&gt; &lt;dbl&gt;
@@ -779,7 +779,7 @@ Now we see that we get the same <span class="math inline">\(t\)</span>- and p-va
 ## 4  7.29  6.30
 ## 5  5.70  4.58
 ## 6  6.72  5.52</code></pre>
-<div class="sourceCode" id="cb1456"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1456-1"><a href="correlation.html#cb1456-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tail</span>(dfr)</span></code></pre></div>
+<div class="sourceCode" id="cb1458"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1458-1"><a href="correlation.html#cb1458-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tail</span>(dfr)</span></code></pre></div>
 <pre><code>## # A tibble: 6 x 2
 ##       x     y
 ##   &lt;dbl&gt; &lt;dbl&gt;
@@ -789,24 +789,24 @@ Now we see that we get the same <span class="math inline">\(t\)</span>- and p-va
 ## 4  7.00  6.27
 ## 5  8.60  8.18
 ## 6  3.84  4.12</code></pre>
-<div class="sourceCode" id="cb1458"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1458-1"><a href="correlation.html#cb1458-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(dfr)</span></code></pre></div>
+<div class="sourceCode" id="cb1460"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1460-1"><a href="correlation.html#cb1460-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(dfr)</span></code></pre></div>
 <pre><code>## [1] 25000</code></pre>
 <p>We could plot this to examine the population data:</p>
-<div class="sourceCode" id="cb1460"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1460-1"><a href="correlation.html#cb1460-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(dfr, <span class="fu">aes</span>(<span class="at">x=</span>x,<span class="at">y=</span>y))<span class="sc">+</span></span>
-<span id="cb1460-2"><a href="correlation.html#cb1460-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">alpha=</span>.<span class="dv">05</span>) <span class="sc">+</span></span>
-<span id="cb1460-3"><a href="correlation.html#cb1460-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>() <span class="sc">+</span></span>
-<span id="cb1460-4"><a href="correlation.html#cb1460-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_smooth</span>(<span class="at">method=</span><span class="st">&#39;lm&#39;</span>,<span class="at">se=</span>F) <span class="sc">+</span></span>
-<span id="cb1460-5"><a href="correlation.html#cb1460-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;Population of 25,000  r=0.75&quot;</span>)</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-602-1.png" width="672" /></p>
+<div class="sourceCode" id="cb1462"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1462-1"><a href="correlation.html#cb1462-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(dfr, <span class="fu">aes</span>(<span class="at">x=</span>x,<span class="at">y=</span>y))<span class="sc">+</span></span>
+<span id="cb1462-2"><a href="correlation.html#cb1462-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">alpha=</span>.<span class="dv">05</span>) <span class="sc">+</span></span>
+<span id="cb1462-3"><a href="correlation.html#cb1462-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>() <span class="sc">+</span></span>
+<span id="cb1462-4"><a href="correlation.html#cb1462-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_smooth</span>(<span class="at">method=</span><span class="st">&#39;lm&#39;</span>,<span class="at">se=</span>F) <span class="sc">+</span></span>
+<span id="cb1462-5"><a href="correlation.html#cb1462-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;Population of 25,000  r=0.75&quot;</span>)</span></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-603-1.png" width="672" /></p>
 <p>We can check the correlation for the population and we find that <span class="math inline">\(\rho=0.75\)</span>.</p>
-<div class="sourceCode" id="cb1461"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1461-1"><a href="correlation.html#cb1461-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(dfr<span class="sc">$</span>x, dfr<span class="sc">$</span>y)</span></code></pre></div>
+<div class="sourceCode" id="cb1463"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1463-1"><a href="correlation.html#cb1463-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(dfr<span class="sc">$</span>x, dfr<span class="sc">$</span>y)</span></code></pre></div>
 <pre><code>## [1] 0.75</code></pre>
 <p>If we were interested in trying to find the correlation between <code>x</code> and <code>y</code> but were unable to measure all 25,000 individuals in the population, we might pick one sample to test. Imagine we pick a sample size of <span class="math inline">\(n=15\)</span>. Let’s pick 15 datapoints at random from our population and find out the correlation coefficient <span class="math inline">\(r\)</span> of this sample:</p>
-<div class="sourceCode" id="cb1463"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1463-1"><a href="correlation.html#cb1463-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1</span>) <span class="co"># so we get the same results </span></span>
-<span id="cb1463-2"><a href="correlation.html#cb1463-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1463-3"><a href="correlation.html#cb1463-3" aria-hidden="true" tabindex="-1"></a><span class="co"># this code selects 15 rows at random</span></span>
-<span id="cb1463-4"><a href="correlation.html#cb1463-4" aria-hidden="true" tabindex="-1"></a>samp1 <span class="ot">&lt;-</span> dfr[<span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(dfr),<span class="dv">15</span>, T),]</span>
-<span id="cb1463-5"><a href="correlation.html#cb1463-5" aria-hidden="true" tabindex="-1"></a>samp1</span></code></pre></div>
+<div class="sourceCode" id="cb1465"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1465-1"><a href="correlation.html#cb1465-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1</span>) <span class="co"># so we get the same results </span></span>
+<span id="cb1465-2"><a href="correlation.html#cb1465-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1465-3"><a href="correlation.html#cb1465-3" aria-hidden="true" tabindex="-1"></a><span class="co"># this code selects 15 rows at random</span></span>
+<span id="cb1465-4"><a href="correlation.html#cb1465-4" aria-hidden="true" tabindex="-1"></a>samp1 <span class="ot">&lt;-</span> dfr[<span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(dfr),<span class="dv">15</span>, T),]</span>
+<span id="cb1465-5"><a href="correlation.html#cb1465-5" aria-hidden="true" tabindex="-1"></a>samp1</span></code></pre></div>
 <pre><code>## # A tibble: 15 x 2
 ##        x     y
 ##    &lt;dbl&gt; &lt;dbl&gt;
@@ -826,38 +826,38 @@ Now we see that we get the same <span class="math inline">\(t\)</span>- and p-va
 ## 14  6.92  7.26
 ## 15  5.38  4.70</code></pre>
 <p>We can make a quick plot of our sample of 15, and calculate the sample correlation:</p>
-<div class="sourceCode" id="cb1465"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1465-1"><a href="correlation.html#cb1465-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(samp1, <span class="fu">aes</span>(<span class="at">x=</span>x, <span class="at">y=</span>y)) <span class="sc">+</span></span>
-<span id="cb1465-2"><a href="correlation.html#cb1465-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size=</span><span class="dv">2</span>) <span class="sc">+</span></span>
-<span id="cb1465-3"><a href="correlation.html#cb1465-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>() <span class="sc">+</span></span>
-<span id="cb1465-4"><a href="correlation.html#cb1465-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_smooth</span>(<span class="at">method=</span><span class="st">&#39;lm&#39;</span>,<span class="at">se=</span>F)</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-605-1.png" width="672" /></p>
-<div class="sourceCode" id="cb1466"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1466-1"><a href="correlation.html#cb1466-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(samp1<span class="sc">$</span>x, samp1<span class="sc">$</span>y)</span></code></pre></div>
+<div class="sourceCode" id="cb1467"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1467-1"><a href="correlation.html#cb1467-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(samp1, <span class="fu">aes</span>(<span class="at">x=</span>x, <span class="at">y=</span>y)) <span class="sc">+</span></span>
+<span id="cb1467-2"><a href="correlation.html#cb1467-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size=</span><span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb1467-3"><a href="correlation.html#cb1467-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>() <span class="sc">+</span></span>
+<span id="cb1467-4"><a href="correlation.html#cb1467-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_smooth</span>(<span class="at">method=</span><span class="st">&#39;lm&#39;</span>,<span class="at">se=</span>F)</span></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-606-1.png" width="672" /></p>
+<div class="sourceCode" id="cb1468"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1468-1"><a href="correlation.html#cb1468-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(samp1<span class="sc">$</span>x, samp1<span class="sc">$</span>y)</span></code></pre></div>
 <pre><code>## [1] 0.5706988</code></pre>
 <p>In our sample we get <span class="math inline">\(r=0.80\)</span> which is a little bit higher than our population correlation. What if we take a few more samples of size 15? What would we get for those sample correlations? Let’s do it:</p>
-<div class="sourceCode" id="cb1468"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1468-1"><a href="correlation.html#cb1468-1" aria-hidden="true" tabindex="-1"></a>samp2 <span class="ot">&lt;-</span> dfr[<span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(dfr),<span class="dv">15</span>, T),]</span>
-<span id="cb1468-2"><a href="correlation.html#cb1468-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(samp2<span class="sc">$</span>x, samp2<span class="sc">$</span>y)</span></code></pre></div>
+<div class="sourceCode" id="cb1470"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1470-1"><a href="correlation.html#cb1470-1" aria-hidden="true" tabindex="-1"></a>samp2 <span class="ot">&lt;-</span> dfr[<span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(dfr),<span class="dv">15</span>, T),]</span>
+<span id="cb1470-2"><a href="correlation.html#cb1470-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(samp2<span class="sc">$</span>x, samp2<span class="sc">$</span>y)</span></code></pre></div>
 <pre><code>## [1] 0.732974</code></pre>
-<div class="sourceCode" id="cb1470"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1470-1"><a href="correlation.html#cb1470-1" aria-hidden="true" tabindex="-1"></a>samp3 <span class="ot">&lt;-</span> dfr[<span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(dfr),<span class="dv">15</span>, T),]</span>
-<span id="cb1470-2"><a href="correlation.html#cb1470-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(samp3<span class="sc">$</span>x, samp3<span class="sc">$</span>y)</span></code></pre></div>
+<div class="sourceCode" id="cb1472"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1472-1"><a href="correlation.html#cb1472-1" aria-hidden="true" tabindex="-1"></a>samp3 <span class="ot">&lt;-</span> dfr[<span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(dfr),<span class="dv">15</span>, T),]</span>
+<span id="cb1472-2"><a href="correlation.html#cb1472-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(samp3<span class="sc">$</span>x, samp3<span class="sc">$</span>y)</span></code></pre></div>
 <pre><code>## [1] 0.6396087</code></pre>
-<div class="sourceCode" id="cb1472"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1472-1"><a href="correlation.html#cb1472-1" aria-hidden="true" tabindex="-1"></a>samp4 <span class="ot">&lt;-</span> dfr[<span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(dfr),<span class="dv">15</span>, T),]</span>
-<span id="cb1472-2"><a href="correlation.html#cb1472-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(samp4<span class="sc">$</span>x, samp4<span class="sc">$</span>y)</span></code></pre></div>
+<div class="sourceCode" id="cb1474"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1474-1"><a href="correlation.html#cb1474-1" aria-hidden="true" tabindex="-1"></a>samp4 <span class="ot">&lt;-</span> dfr[<span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(dfr),<span class="dv">15</span>, T),]</span>
+<span id="cb1474-2"><a href="correlation.html#cb1474-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(samp4<span class="sc">$</span>x, samp4<span class="sc">$</span>y)</span></code></pre></div>
 <pre><code>## [1] 0.7624823</code></pre>
-<div class="sourceCode" id="cb1474"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1474-1"><a href="correlation.html#cb1474-1" aria-hidden="true" tabindex="-1"></a>samp5 <span class="ot">&lt;-</span> dfr[<span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(dfr),<span class="dv">15</span>, T),]</span>
-<span id="cb1474-2"><a href="correlation.html#cb1474-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(samp5<span class="sc">$</span>x, samp5<span class="sc">$</span>y)</span></code></pre></div>
+<div class="sourceCode" id="cb1476"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1476-1"><a href="correlation.html#cb1476-1" aria-hidden="true" tabindex="-1"></a>samp5 <span class="ot">&lt;-</span> dfr[<span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(dfr),<span class="dv">15</span>, T),]</span>
+<span id="cb1476-2"><a href="correlation.html#cb1476-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(samp5<span class="sc">$</span>x, samp5<span class="sc">$</span>y)</span></code></pre></div>
 <pre><code>## [1] 0.4712707</code></pre>
 <p>The next three samples have correlations that are also higher than the population correlation. The fifth sample we collected is much lower with the sample correlation being <span class="math inline">\(r=0.55\)</span>. As you might have worked out by now, if we keep doing this over and over again (thousands of times) we would end up with a <strong>sampling distribution of correlation coefficients</strong>. Let’s do that:</p>
-<div class="sourceCode" id="cb1476"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1476-1"><a href="correlation.html#cb1476-1" aria-hidden="true" tabindex="-1"></a><span class="co">#this code is to get 50,000 correlation coefficients from samples of n=15</span></span>
-<span id="cb1476-2"><a href="correlation.html#cb1476-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1476-3"><a href="correlation.html#cb1476-3" aria-hidden="true" tabindex="-1"></a>results <span class="ot">&lt;-</span> <span class="fu">vector</span>(<span class="st">&#39;list&#39;</span>,<span class="dv">50000</span>)</span>
-<span id="cb1476-4"><a href="correlation.html#cb1476-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">50000</span>){</span>
-<span id="cb1476-5"><a href="correlation.html#cb1476-5" aria-hidden="true" tabindex="-1"></a>samp <span class="ot">&lt;-</span> dfr[<span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(dfr),<span class="dv">15</span>, T),]</span>
-<span id="cb1476-6"><a href="correlation.html#cb1476-6" aria-hidden="true" tabindex="-1"></a>results[[i]] <span class="ot">&lt;-</span> <span class="fu">cor</span>(samp<span class="sc">$</span>x, samp<span class="sc">$</span>y)</span>
-<span id="cb1476-7"><a href="correlation.html#cb1476-7" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb1476-8"><a href="correlation.html#cb1476-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1476-9"><a href="correlation.html#cb1476-9" aria-hidden="true" tabindex="-1"></a>dfr.results <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">r =</span> <span class="fu">unlist</span>(results))</span>
-<span id="cb1476-10"><a href="correlation.html#cb1476-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1476-11"><a href="correlation.html#cb1476-11" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(dfr.results)</span></code></pre></div>
+<div class="sourceCode" id="cb1478"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1478-1"><a href="correlation.html#cb1478-1" aria-hidden="true" tabindex="-1"></a><span class="co">#this code is to get 50,000 correlation coefficients from samples of n=15</span></span>
+<span id="cb1478-2"><a href="correlation.html#cb1478-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1478-3"><a href="correlation.html#cb1478-3" aria-hidden="true" tabindex="-1"></a>results <span class="ot">&lt;-</span> <span class="fu">vector</span>(<span class="st">&#39;list&#39;</span>,<span class="dv">50000</span>)</span>
+<span id="cb1478-4"><a href="correlation.html#cb1478-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">50000</span>){</span>
+<span id="cb1478-5"><a href="correlation.html#cb1478-5" aria-hidden="true" tabindex="-1"></a>samp <span class="ot">&lt;-</span> dfr[<span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(dfr),<span class="dv">15</span>, T),]</span>
+<span id="cb1478-6"><a href="correlation.html#cb1478-6" aria-hidden="true" tabindex="-1"></a>results[[i]] <span class="ot">&lt;-</span> <span class="fu">cor</span>(samp<span class="sc">$</span>x, samp<span class="sc">$</span>y)</span>
+<span id="cb1478-7"><a href="correlation.html#cb1478-7" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb1478-8"><a href="correlation.html#cb1478-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1478-9"><a href="correlation.html#cb1478-9" aria-hidden="true" tabindex="-1"></a>dfr.results <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">r =</span> <span class="fu">unlist</span>(results))</span>
+<span id="cb1478-10"><a href="correlation.html#cb1478-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1478-11"><a href="correlation.html#cb1478-11" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(dfr.results)</span></code></pre></div>
 <pre><code>##           r
 ## 1 0.7350283
 ## 2 0.8708844
@@ -866,30 +866,30 @@ Now we see that we get the same <span class="math inline">\(t\)</span>- and p-va
 ## 5 0.7408920
 ## 6 0.7744925</code></pre>
 <p>Because we now have a sampling distribution of correlation coefficients, we can plot this in a histogram.</p>
-<div class="sourceCode" id="cb1478"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1478-1"><a href="correlation.html#cb1478-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(dfr.results, <span class="fu">aes</span>(<span class="at">x=</span>r)) <span class="sc">+</span></span>
-<span id="cb1478-2"><a href="correlation.html#cb1478-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="fu">aes</span>(<span class="at">y =</span> ..density..), <span class="at">color =</span> <span class="st">&quot;black&quot;</span>, <span class="at">fill =</span> <span class="st">&quot;purple&quot;</span>, <span class="at">alpha=</span>.<span class="dv">4</span>, <span class="at">binwidth =</span> .<span class="dv">01</span>) <span class="sc">+</span> </span>
-<span id="cb1478-3"><a href="correlation.html#cb1478-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density</span>(<span class="at">alpha =</span> <span class="fl">0.7</span>, <span class="at">fill =</span> <span class="st">&quot;mistyrose&quot;</span>) <span class="sc">+</span> </span>
-<span id="cb1478-4"><a href="correlation.html#cb1478-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>() <span class="sc">+</span></span>
-<span id="cb1478-5"><a href="correlation.html#cb1478-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;Sample correlation r&quot;</span>) <span class="sc">+</span></span>
-<span id="cb1478-6"><a href="correlation.html#cb1478-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;Sampling Distribution of Correlation Coefficients&quot;</span>)<span class="sc">+</span></span>
-<span id="cb1478-7"><a href="correlation.html#cb1478-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept=</span><span class="fl">0.75</span>, <span class="at">lty=</span><span class="dv">1</span>, <span class="at">lwd=</span><span class="dv">1</span>, <span class="at">color=</span><span class="st">&quot;red&quot;</span>)</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-608-1.png" width="672" /></p>
+<div class="sourceCode" id="cb1480"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1480-1"><a href="correlation.html#cb1480-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(dfr.results, <span class="fu">aes</span>(<span class="at">x=</span>r)) <span class="sc">+</span></span>
+<span id="cb1480-2"><a href="correlation.html#cb1480-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="fu">aes</span>(<span class="at">y =</span> ..density..), <span class="at">color =</span> <span class="st">&quot;black&quot;</span>, <span class="at">fill =</span> <span class="st">&quot;purple&quot;</span>, <span class="at">alpha=</span>.<span class="dv">4</span>, <span class="at">binwidth =</span> .<span class="dv">01</span>) <span class="sc">+</span> </span>
+<span id="cb1480-3"><a href="correlation.html#cb1480-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density</span>(<span class="at">alpha =</span> <span class="fl">0.7</span>, <span class="at">fill =</span> <span class="st">&quot;mistyrose&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb1480-4"><a href="correlation.html#cb1480-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>() <span class="sc">+</span></span>
+<span id="cb1480-5"><a href="correlation.html#cb1480-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;Sample correlation r&quot;</span>) <span class="sc">+</span></span>
+<span id="cb1480-6"><a href="correlation.html#cb1480-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;Sampling Distribution of Correlation Coefficients&quot;</span>)<span class="sc">+</span></span>
+<span id="cb1480-7"><a href="correlation.html#cb1480-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept=</span><span class="fl">0.75</span>, <span class="at">lty=</span><span class="dv">1</span>, <span class="at">lwd=</span><span class="dv">1</span>, <span class="at">color=</span><span class="st">&quot;red&quot;</span>)</span></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-609-1.png" width="672" /></p>
 <p>What is the first thing that you notice about this sampling distribution? Hopefully it is that it is <em>not symmetrical</em>. It is highly skewed. This is because correlation coefficients are bounded between -1 and +1. We do not get an approximately normally distributed sampling distribution (with the one exception being when the population correlation <span class="math inline">\(\rho=0\)</span>. The red line represents our original population coefficient of <span class="math inline">\(\rho=0.75\)</span>.</p>
 <p>There is however a trick that we can employ to make this sampling distribution approximately normal. We can do something called <strong>Fisher Transform</strong> our sample correlations in the sampling distribution. So for every value of <span class="math inline">\(r\)</span> in our sampling distribution, we can apply the following formula:</p>
 <p><span class="math inline">\(\Large z&#39; = 0.5 \times \log(\frac{1 + r}{1 - r})\)</span></p>
 <p><span class="math inline">\(z&#39;\)</span> is referred to as the Fisher Transformed <span class="math inline">\(r\)</span> value. So, if we had a sample correlation of <span class="math inline">\(r=0.56\)</span>, that would equate to a <span class="math inline">\(z&#39;\)</span> value of <span class="math inline">\(z&#39;=0.63\)</span>:</p>
-<div class="sourceCode" id="cb1479"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1479-1"><a href="correlation.html#cb1479-1" aria-hidden="true" tabindex="-1"></a><span class="fl">0.5</span> <span class="sc">*</span> <span class="fu">log</span>( (<span class="dv">1</span><span class="fl">+0.56</span>) <span class="sc">/</span> (<span class="dv">1</span><span class="fl">-0.56</span>) )</span></code></pre></div>
+<div class="sourceCode" id="cb1481"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1481-1"><a href="correlation.html#cb1481-1" aria-hidden="true" tabindex="-1"></a><span class="fl">0.5</span> <span class="sc">*</span> <span class="fu">log</span>( (<span class="dv">1</span><span class="fl">+0.56</span>) <span class="sc">/</span> (<span class="dv">1</span><span class="fl">-0.56</span>) )</span></code></pre></div>
 <pre><code>## [1] 0.6328332</code></pre>
 <p>Alternatively, a correlation of <span class="math inline">\(r=0.75\)</span> would have a Fisher transformed score of <span class="math inline">\(z&#39;=0.97\)</span>:</p>
-<div class="sourceCode" id="cb1481"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1481-1"><a href="correlation.html#cb1481-1" aria-hidden="true" tabindex="-1"></a><span class="fl">0.5</span> <span class="sc">*</span> <span class="fu">log</span>( (<span class="dv">1</span><span class="fl">+0.75</span>) <span class="sc">/</span> (<span class="dv">1</span><span class="fl">-0.75</span>) )</span></code></pre></div>
+<div class="sourceCode" id="cb1483"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1483-1"><a href="correlation.html#cb1483-1" aria-hidden="true" tabindex="-1"></a><span class="fl">0.5</span> <span class="sc">*</span> <span class="fu">log</span>( (<span class="dv">1</span><span class="fl">+0.75</span>) <span class="sc">/</span> (<span class="dv">1</span><span class="fl">-0.75</span>) )</span></code></pre></div>
 <pre><code>## [1] 0.9729551</code></pre>
 <p>Notably, a correlation of <span class="math inline">\(r=0.0\)</span> has a Fisher transformed score of <span class="math inline">\(z&#39;=0.00\)</span>:</p>
-<div class="sourceCode" id="cb1483"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1483-1"><a href="correlation.html#cb1483-1" aria-hidden="true" tabindex="-1"></a><span class="fl">0.5</span> <span class="sc">*</span> <span class="fu">log</span>( (<span class="dv">1</span><span class="sc">+</span><span class="dv">0</span>) <span class="sc">/</span> (<span class="dv">1-0</span>) )</span></code></pre></div>
+<div class="sourceCode" id="cb1485"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1485-1"><a href="correlation.html#cb1485-1" aria-hidden="true" tabindex="-1"></a><span class="fl">0.5</span> <span class="sc">*</span> <span class="fu">log</span>( (<span class="dv">1</span><span class="sc">+</span><span class="dv">0</span>) <span class="sc">/</span> (<span class="dv">1-0</span>) )</span></code></pre></div>
 <pre><code>## [1] 0</code></pre>
 <p>If we apply this formula to all the <span class="math inline">\(r\)</span> values in our sampling distribution and replot the distribution, it now looks like this:</p>
-<div class="sourceCode" id="cb1485"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1485-1"><a href="correlation.html#cb1485-1" aria-hidden="true" tabindex="-1"></a><span class="co">#put Fisher transformed scores into a column called &#39;zt&#39;</span></span>
-<span id="cb1485-2"><a href="correlation.html#cb1485-2" aria-hidden="true" tabindex="-1"></a>dfr.results<span class="sc">$</span>zt <span class="ot">&lt;-</span>  <span class="fl">0.5</span> <span class="sc">*</span> <span class="fu">log</span>( (<span class="dv">1</span><span class="sc">+</span>dfr.results<span class="sc">$</span>r) <span class="sc">/</span> (<span class="dv">1</span><span class="sc">-</span>dfr.results<span class="sc">$</span>r) )</span>
-<span id="cb1485-3"><a href="correlation.html#cb1485-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(dfr.results)</span></code></pre></div>
+<div class="sourceCode" id="cb1487"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1487-1"><a href="correlation.html#cb1487-1" aria-hidden="true" tabindex="-1"></a><span class="co">#put Fisher transformed scores into a column called &#39;zt&#39;</span></span>
+<span id="cb1487-2"><a href="correlation.html#cb1487-2" aria-hidden="true" tabindex="-1"></a>dfr.results<span class="sc">$</span>zt <span class="ot">&lt;-</span>  <span class="fl">0.5</span> <span class="sc">*</span> <span class="fu">log</span>( (<span class="dv">1</span><span class="sc">+</span>dfr.results<span class="sc">$</span>r) <span class="sc">/</span> (<span class="dv">1</span><span class="sc">-</span>dfr.results<span class="sc">$</span>r) )</span>
+<span id="cb1487-3"><a href="correlation.html#cb1487-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(dfr.results)</span></code></pre></div>
 <pre><code>##           r        zt
 ## 1 0.7350283 0.9395780
 ## 2 0.8708844 1.3367291
@@ -897,28 +897,28 @@ Now we see that we get the same <span class="math inline">\(t\)</span>- and p-va
 ## 4 0.7909757 1.0740326
 ## 5 0.7408920 0.9524541
 ## 6 0.7744925 1.0314583</code></pre>
-<div class="sourceCode" id="cb1487"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1487-1"><a href="correlation.html#cb1487-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(dfr.results, <span class="fu">aes</span>(<span class="at">x=</span>zt)) <span class="sc">+</span></span>
-<span id="cb1487-2"><a href="correlation.html#cb1487-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="fu">aes</span>(<span class="at">y =</span> ..density..), <span class="at">color =</span> <span class="st">&quot;black&quot;</span>, <span class="at">fill =</span> <span class="st">&quot;purple&quot;</span>, <span class="at">alpha=</span>.<span class="dv">4</span>, <span class="at">binwidth =</span> .<span class="dv">05</span>) <span class="sc">+</span> </span>
-<span id="cb1487-3"><a href="correlation.html#cb1487-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density</span>(<span class="at">alpha =</span> <span class="fl">0.7</span>, <span class="at">fill =</span> <span class="st">&quot;mistyrose&quot;</span>) <span class="sc">+</span> </span>
-<span id="cb1487-4"><a href="correlation.html#cb1487-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>() <span class="sc">+</span></span>
-<span id="cb1487-5"><a href="correlation.html#cb1487-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;Fisher Transformed z&#39;&quot;</span>) <span class="sc">+</span></span>
-<span id="cb1487-6"><a href="correlation.html#cb1487-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;Sampling Distribution of Correlation Coefficients&quot;</span>)<span class="sc">+</span></span>
-<span id="cb1487-7"><a href="correlation.html#cb1487-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept=</span><span class="fl">0.97</span>, <span class="at">lty=</span><span class="dv">1</span>, <span class="at">lwd=</span><span class="dv">1</span>, <span class="at">color=</span><span class="st">&quot;red&quot;</span>)</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-613-1.png" width="672" /></p>
+<div class="sourceCode" id="cb1489"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1489-1"><a href="correlation.html#cb1489-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(dfr.results, <span class="fu">aes</span>(<span class="at">x=</span>zt)) <span class="sc">+</span></span>
+<span id="cb1489-2"><a href="correlation.html#cb1489-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="fu">aes</span>(<span class="at">y =</span> ..density..), <span class="at">color =</span> <span class="st">&quot;black&quot;</span>, <span class="at">fill =</span> <span class="st">&quot;purple&quot;</span>, <span class="at">alpha=</span>.<span class="dv">4</span>, <span class="at">binwidth =</span> .<span class="dv">05</span>) <span class="sc">+</span> </span>
+<span id="cb1489-3"><a href="correlation.html#cb1489-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density</span>(<span class="at">alpha =</span> <span class="fl">0.7</span>, <span class="at">fill =</span> <span class="st">&quot;mistyrose&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb1489-4"><a href="correlation.html#cb1489-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>() <span class="sc">+</span></span>
+<span id="cb1489-5"><a href="correlation.html#cb1489-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;Fisher Transformed z&#39;&quot;</span>) <span class="sc">+</span></span>
+<span id="cb1489-6"><a href="correlation.html#cb1489-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;Sampling Distribution of Correlation Coefficients&quot;</span>)<span class="sc">+</span></span>
+<span id="cb1489-7"><a href="correlation.html#cb1489-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept=</span><span class="fl">0.97</span>, <span class="at">lty=</span><span class="dv">1</span>, <span class="at">lwd=</span><span class="dv">1</span>, <span class="at">color=</span><span class="st">&quot;red&quot;</span>)</span></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-614-1.png" width="672" /></p>
 <p>This distribution is approximately symmetrical. The red line here represents the population correlation coefficient of <span class="math inline">\(r=0.75\)</span> which is <span class="math inline">\(z&#39;=0.97\)</span>. This is the approximate mean of the distribution.</p>
 <p>The standard deviation of this transformed sampling distribution can be calculated by this formula:</p>
 <p><span class="math inline">\(\Large se = \sqrt{\frac{1}{n-3}}\)</span></p>
 <p>So, because we have a sample size of <span class="math inline">\(n=15\)</span> the standard deviation of this sampling distribution is <span class="math inline">\(se = 0.289\)</span>:</p>
-<div class="sourceCode" id="cb1488"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1488-1"><a href="correlation.html#cb1488-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sqrt</span>(<span class="dv">1</span><span class="sc">/</span><span class="dv">12</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb1490"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1490-1"><a href="correlation.html#cb1490-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sqrt</span>(<span class="dv">1</span><span class="sc">/</span><span class="dv">12</span>)</span></code></pre></div>
 <pre><code>## [1] 0.2886751</code></pre>
 <p>Now we have an approximately normal sampling distribution with a standard deviation, we can start to do similar things to what we did with other sampling distributions such as calculate confidence intervals.</p>
 <p>Let’s calculate a confidence interval around a sample of <span class="math inline">\(r=0.56\)</span>. What we assume is that the Fisher transformed score of <span class="math inline">\(r=0.56\)</span> is the mean of the sampling distribution. Therefore we assume that <span class="math inline">\(z&#39; = 0.63\)</span> is the mean of the sampling distribution. Because we want to have 95% of the distribution inside the confidence interval, then we want to know which values are 1.96 standard deviations away from the mean. This is because we’re assuming the transformed sampling distribution to be approximately normal, and in a standard normal curve 95% of the data is <span class="math inline">\(\pm 1.96\)</span> standard deviations of the mean (see section <a href="two-sample-inferential-statistics.html#sampling-distribution-of-the-difference-in-sample-means">11.2</a>.</p>
 <p>The formula is:</p>
 <p><span class="math inline">\(CI_{95\%} = z&#39; + (1.96 \times se)\)</span></p>
 <p>In our example, 1.96 standard deviations away from the mean is:</p>
-<div class="sourceCode" id="cb1490"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1490-1"><a href="correlation.html#cb1490-1" aria-hidden="true" tabindex="-1"></a><span class="fl">0.63</span> <span class="sc">+</span> (<span class="fl">1.96</span> <span class="sc">*</span> <span class="fl">0.289</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb1492"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1492-1"><a href="correlation.html#cb1492-1" aria-hidden="true" tabindex="-1"></a><span class="fl">0.63</span> <span class="sc">+</span> (<span class="fl">1.96</span> <span class="sc">*</span> <span class="fl">0.289</span>)</span></code></pre></div>
 <pre><code>## [1] 1.19644</code></pre>
-<div class="sourceCode" id="cb1492"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1492-1"><a href="correlation.html#cb1492-1" aria-hidden="true" tabindex="-1"></a><span class="fl">0.63</span> <span class="sc">-</span> (<span class="fl">1.96</span> <span class="sc">*</span> <span class="fl">0.289</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb1494"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1494-1"><a href="correlation.html#cb1494-1" aria-hidden="true" tabindex="-1"></a><span class="fl">0.63</span> <span class="sc">-</span> (<span class="fl">1.96</span> <span class="sc">*</span> <span class="fl">0.289</span>)</span></code></pre></div>
 <pre><code>## [1] 0.06356</code></pre>
 <p>We can visualize this as follows:</p>
 <p><img src="img/r2.png" /></p>
@@ -928,34 +928,34 @@ rho=0.75$ which equates to <span class="math inline">\(z&#39;=0.97\)</span> is i
 <p>Although we can directly determine if a population correlation of <span class="math inline">\(\rho=0\)</span> is within our confidence interval or not, leaving the confidence interval in Fisher transformed <span class="math inline">\(z&#39;\)</span> values isn’t that interpretable. Therefore, you can transform <span class="math inline">\(z&#39;\)</span> values back to <span class="math inline">\(r\)</span> values using the following formula:</p>
 <p><span class="math inline">\(\Large r = \frac{\exp(2z&#39;)-1}{1 + \exp(2z&#39;)}\)</span></p>
 <p>So for each bit of our confidence interval, transforming the <span class="math inline">\(z&#39;\)</span> values back to <span class="math inline">\(r\)</span> values we get the following:</p>
-<div class="sourceCode" id="cb1494"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1494-1"><a href="correlation.html#cb1494-1" aria-hidden="true" tabindex="-1"></a>(<span class="fu">exp</span>(<span class="dv">2</span> <span class="sc">*</span> <span class="fl">0.63</span>) <span class="sc">-</span> <span class="dv">1</span>) <span class="sc">/</span> ( <span class="dv">1</span> <span class="sc">+</span> <span class="fu">exp</span>(<span class="dv">2</span> <span class="sc">*</span> <span class="fl">0.63</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb1496"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1496-1"><a href="correlation.html#cb1496-1" aria-hidden="true" tabindex="-1"></a>(<span class="fu">exp</span>(<span class="dv">2</span> <span class="sc">*</span> <span class="fl">0.63</span>) <span class="sc">-</span> <span class="dv">1</span>) <span class="sc">/</span> ( <span class="dv">1</span> <span class="sc">+</span> <span class="fu">exp</span>(<span class="dv">2</span> <span class="sc">*</span> <span class="fl">0.63</span>))</span></code></pre></div>
 <pre><code>## [1] 0.5580522</code></pre>
-<div class="sourceCode" id="cb1496"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1496-1"><a href="correlation.html#cb1496-1" aria-hidden="true" tabindex="-1"></a>(<span class="fu">exp</span>(<span class="dv">2</span> <span class="sc">*</span> <span class="fl">0.06</span>) <span class="sc">-</span> <span class="dv">1</span>) <span class="sc">/</span> ( <span class="dv">1</span> <span class="sc">+</span> <span class="fu">exp</span>(<span class="dv">2</span> <span class="sc">*</span> <span class="fl">0.06</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb1498"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1498-1"><a href="correlation.html#cb1498-1" aria-hidden="true" tabindex="-1"></a>(<span class="fu">exp</span>(<span class="dv">2</span> <span class="sc">*</span> <span class="fl">0.06</span>) <span class="sc">-</span> <span class="dv">1</span>) <span class="sc">/</span> ( <span class="dv">1</span> <span class="sc">+</span> <span class="fu">exp</span>(<span class="dv">2</span> <span class="sc">*</span> <span class="fl">0.06</span>))</span></code></pre></div>
 <pre><code>## [1] 0.0599281</code></pre>
-<div class="sourceCode" id="cb1498"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1498-1"><a href="correlation.html#cb1498-1" aria-hidden="true" tabindex="-1"></a>(<span class="fu">exp</span>(<span class="dv">2</span> <span class="sc">*</span> <span class="fl">1.20</span>) <span class="sc">-</span> <span class="dv">1</span>) <span class="sc">/</span> ( <span class="dv">1</span> <span class="sc">+</span> <span class="fu">exp</span>(<span class="dv">2</span> <span class="sc">*</span> <span class="fl">1.20</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb1500"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1500-1"><a href="correlation.html#cb1500-1" aria-hidden="true" tabindex="-1"></a>(<span class="fu">exp</span>(<span class="dv">2</span> <span class="sc">*</span> <span class="fl">1.20</span>) <span class="sc">-</span> <span class="dv">1</span>) <span class="sc">/</span> ( <span class="dv">1</span> <span class="sc">+</span> <span class="fu">exp</span>(<span class="dv">2</span> <span class="sc">*</span> <span class="fl">1.20</span>))</span></code></pre></div>
 <pre><code>## [1] 0.8336546</code></pre>
 <p>Our 95% confidence interval in terms of <span class="math inline">\(r\)</span> is therefore <span class="math inline">\(r = 0.56[0.06, 0.83]\)</span> which is very wide! but doesn’t include <span class="math inline">\(r=0\)</span>. If we were to increase our sample size then our confidence intervals would get tighter - and our individual estimate of the correlation coefficient would get close to the true population correlation coefficient <span class="math inline">\(\rho\)</span>.</p>
 <p><br></p>
 <p><strong>Correlation Confidence Interval Example</strong></p>
 <p>Because the above is a little bit tricky, let’s look at a second example. In a study, researchers found a correlation of <span class="math inline">\(r= -0.654\)</span> based on 34 observations. What is the 95% confidence interval of this correlation ?</p>
 <p>First, convert the <span class="math inline">\(r\)</span> value to a Fisher Transformed <span class="math inline">\(z&#39;\)</span> value and assume that is the mean of the symmetrical sampling distribution, and we get <span class="math inline">\(z&#39; = -0.78\)</span>:</p>
-<div class="sourceCode" id="cb1500"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1500-1"><a href="correlation.html#cb1500-1" aria-hidden="true" tabindex="-1"></a><span class="fl">0.5</span> <span class="sc">*</span> <span class="fu">log</span>( (<span class="dv">1</span> <span class="sc">+</span> <span class="sc">-</span><span class="fl">0.654</span>) <span class="sc">/</span> (<span class="dv">1</span> <span class="sc">-</span> <span class="sc">-</span><span class="fl">0.654</span>) )</span></code></pre></div>
+<div class="sourceCode" id="cb1502"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1502-1"><a href="correlation.html#cb1502-1" aria-hidden="true" tabindex="-1"></a><span class="fl">0.5</span> <span class="sc">*</span> <span class="fu">log</span>( (<span class="dv">1</span> <span class="sc">+</span> <span class="sc">-</span><span class="fl">0.654</span>) <span class="sc">/</span> (<span class="dv">1</span> <span class="sc">-</span> <span class="sc">-</span><span class="fl">0.654</span>) )</span></code></pre></div>
 <pre><code>## [1] -0.7822566</code></pre>
 <p>Second, we know the standard deviation of this symmetrical sampling distribution is equal to <span class="math inline">\(se = \sqrt{\frac{1}{n-3}}\)</span>, so it’s equal to 0.1796:</p>
-<div class="sourceCode" id="cb1502"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1502-1"><a href="correlation.html#cb1502-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sqrt</span>(<span class="dv">1</span> <span class="sc">/</span> <span class="dv">31</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb1504"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1504-1"><a href="correlation.html#cb1504-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sqrt</span>(<span class="dv">1</span> <span class="sc">/</span> <span class="dv">31</span>)</span></code></pre></div>
 <pre><code>## [1] 0.1796053</code></pre>
 <p>Third, we want to know the values of <span class="math inline">\(z&#39;\)</span> that are 1.96 times the sampling distribution standard deviation from the mean, to get the lower and upper bounds of our confidence intervals:</p>
-<div class="sourceCode" id="cb1504"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1504-1"><a href="correlation.html#cb1504-1" aria-hidden="true" tabindex="-1"></a> <span class="sc">-</span><span class="fl">0.7822566</span> <span class="sc">+</span> (<span class="fl">1.96</span> <span class="sc">*</span> <span class="fl">0.1796053</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb1506"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1506-1"><a href="correlation.html#cb1506-1" aria-hidden="true" tabindex="-1"></a> <span class="sc">-</span><span class="fl">0.7822566</span> <span class="sc">+</span> (<span class="fl">1.96</span> <span class="sc">*</span> <span class="fl">0.1796053</span>)</span></code></pre></div>
 <pre><code>## [1] -0.4302302</code></pre>
-<div class="sourceCode" id="cb1506"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1506-1"><a href="correlation.html#cb1506-1" aria-hidden="true" tabindex="-1"></a> <span class="sc">-</span><span class="fl">0.7822566</span> <span class="sc">-</span> (<span class="fl">1.96</span> <span class="sc">*</span> <span class="fl">0.1796053</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb1508"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1508-1"><a href="correlation.html#cb1508-1" aria-hidden="true" tabindex="-1"></a> <span class="sc">-</span><span class="fl">0.7822566</span> <span class="sc">-</span> (<span class="fl">1.96</span> <span class="sc">*</span> <span class="fl">0.1796053</span>)</span></code></pre></div>
 <pre><code>## [1] -1.134283</code></pre>
 <p>In terms of Fisher transformed values, our 95% confidence interval is therefore <span class="math inline">\(z&#39; = -0.78[-1.13, -0.43]\)</span>. Notice that 0 is not inside the confidence interval, suggesting that the population correlation coefficient is not equal to 0.</p>
 <p>We can also convert all of these back to <span class="math inline">\(r\)</span> values:</p>
-<div class="sourceCode" id="cb1508"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1508-1"><a href="correlation.html#cb1508-1" aria-hidden="true" tabindex="-1"></a>(<span class="fu">exp</span>(<span class="dv">2</span> <span class="sc">*</span> <span class="sc">-</span><span class="fl">0.78</span>) <span class="sc">-</span> <span class="dv">1</span>) <span class="sc">/</span> ( <span class="dv">1</span> <span class="sc">+</span> <span class="fu">exp</span>(<span class="dv">2</span> <span class="sc">*</span> <span class="sc">-</span><span class="fl">0.78</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb1510"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1510-1"><a href="correlation.html#cb1510-1" aria-hidden="true" tabindex="-1"></a>(<span class="fu">exp</span>(<span class="dv">2</span> <span class="sc">*</span> <span class="sc">-</span><span class="fl">0.78</span>) <span class="sc">-</span> <span class="dv">1</span>) <span class="sc">/</span> ( <span class="dv">1</span> <span class="sc">+</span> <span class="fu">exp</span>(<span class="dv">2</span> <span class="sc">*</span> <span class="sc">-</span><span class="fl">0.78</span>))</span></code></pre></div>
 <pre><code>## [1] -0.6527067</code></pre>
-<div class="sourceCode" id="cb1510"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1510-1"><a href="correlation.html#cb1510-1" aria-hidden="true" tabindex="-1"></a>(<span class="fu">exp</span>(<span class="dv">2</span> <span class="sc">*</span> <span class="sc">-</span><span class="fl">1.13</span>) <span class="sc">-</span> <span class="dv">1</span>) <span class="sc">/</span> ( <span class="dv">1</span> <span class="sc">+</span> <span class="fu">exp</span>(<span class="dv">2</span> <span class="sc">*</span> <span class="sc">-</span><span class="fl">1.13</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb1512"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1512-1"><a href="correlation.html#cb1512-1" aria-hidden="true" tabindex="-1"></a>(<span class="fu">exp</span>(<span class="dv">2</span> <span class="sc">*</span> <span class="sc">-</span><span class="fl">1.13</span>) <span class="sc">-</span> <span class="dv">1</span>) <span class="sc">/</span> ( <span class="dv">1</span> <span class="sc">+</span> <span class="fu">exp</span>(<span class="dv">2</span> <span class="sc">*</span> <span class="sc">-</span><span class="fl">1.13</span>))</span></code></pre></div>
 <pre><code>## [1] -0.8110193</code></pre>
-<div class="sourceCode" id="cb1512"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1512-1"><a href="correlation.html#cb1512-1" aria-hidden="true" tabindex="-1"></a>(<span class="fu">exp</span>(<span class="dv">2</span> <span class="sc">*</span> <span class="sc">-</span><span class="fl">0.43</span>) <span class="sc">-</span> <span class="dv">1</span>) <span class="sc">/</span> ( <span class="dv">1</span> <span class="sc">+</span> <span class="fu">exp</span>(<span class="dv">2</span> <span class="sc">*</span> <span class="sc">-</span><span class="fl">0.43</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb1514"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1514-1"><a href="correlation.html#cb1514-1" aria-hidden="true" tabindex="-1"></a>(<span class="fu">exp</span>(<span class="dv">2</span> <span class="sc">*</span> <span class="sc">-</span><span class="fl">0.43</span>) <span class="sc">-</span> <span class="dv">1</span>) <span class="sc">/</span> ( <span class="dv">1</span> <span class="sc">+</span> <span class="fu">exp</span>(<span class="dv">2</span> <span class="sc">*</span> <span class="sc">-</span><span class="fl">0.43</span>))</span></code></pre></div>
 <pre><code>## [1] -0.4053213</code></pre>
 <p>So our 95% Confidence interval is <span class="math inline">\(r = -0.65[-0.41, -0.81]\)</span>. Notice with the larger sample size, we get a much tighter confidence interval.</p>
 <p><br></p>
@@ -967,12 +967,12 @@ rho=0.75$ which equates to <span class="math inline">\(z&#39;=0.97\)</span> is i
 <p><span class="math inline">\(\Large r_{xy.z} = \frac{r_{xy} - (r_{xz}\times r_{yz}) } {\sqrt{1-r_{xz}^2} \times \sqrt{1-r_{yz}^2}}\)</span></p>
 <p>In reality though, it’s pretty easy to plug the correct values for <span class="math inline">\(r\)</span> or <span class="math inline">\(r^2\)</span> into this formula and get the result required.</p>
 <p>Let’s use an example. In these data we have 50 participants who logged the number of hours that they engaged in a task. We also have a column that shows their score in that task, and a column that records how tired they were. Higher tiredness scores means that they were more tired. (We’ve changed this from the column name in the original video to make it clear!)</p>
-<div class="sourceCode" id="cb1514"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1514-1"><a href="correlation.html#cb1514-1" aria-hidden="true" tabindex="-1"></a>gs <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;data/gamescore.csv&quot;</span>)</span>
-<span id="cb1514-2"><a href="correlation.html#cb1514-2" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(gs)[<span class="dv">4</span>]<span class="ot">&lt;-</span><span class="st">&quot;tiredness&quot;</span> <span class="co"># change this column name to make it more clear</span></span>
-<span id="cb1514-3"><a href="correlation.html#cb1514-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1514-4"><a href="correlation.html#cb1514-4" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(gs)</span></code></pre></div>
+<div class="sourceCode" id="cb1516"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1516-1"><a href="correlation.html#cb1516-1" aria-hidden="true" tabindex="-1"></a>gs <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;data/gamescore.csv&quot;</span>)</span>
+<span id="cb1516-2"><a href="correlation.html#cb1516-2" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(gs)[<span class="dv">4</span>]<span class="ot">&lt;-</span><span class="st">&quot;tiredness&quot;</span> <span class="co"># change this column name to make it more clear</span></span>
+<span id="cb1516-3"><a href="correlation.html#cb1516-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1516-4"><a href="correlation.html#cb1516-4" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(gs)</span></code></pre></div>
 <pre><code>## [1] 50</code></pre>
-<div class="sourceCode" id="cb1516"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1516-1"><a href="correlation.html#cb1516-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(gs)</span></code></pre></div>
+<div class="sourceCode" id="cb1518"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1518-1"><a href="correlation.html#cb1518-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(gs)</span></code></pre></div>
 <pre><code>## # A tibble: 6 x 4
 ##   name                 hours score tiredness
 ##   &lt;chr&gt;                &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt;
@@ -983,13 +983,13 @@ rho=0.75$ which equates to <span class="math inline">\(z&#39;=0.97\)</span> is i
 ## 5 Baray Perez, Daysi     3    81.2       7.7
 ## 6 Mcalister, Katherine   8.5 124.        7.2</code></pre>
 <p>Say we predicted that the more hours played would lead to a higher score in the task. We might make our scatterplot and then run a one-tailed Pearson’s correlation significance test:</p>
-<div class="sourceCode" id="cb1518"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1518-1"><a href="correlation.html#cb1518-1" aria-hidden="true" tabindex="-1"></a><span class="co"># scatterplot</span></span>
-<span id="cb1518-2"><a href="correlation.html#cb1518-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(gs, <span class="fu">aes</span>(<span class="at">x=</span>hours, <span class="at">y=</span>score)) <span class="sc">+</span> </span>
-<span id="cb1518-3"><a href="correlation.html#cb1518-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">color=</span><span class="st">&quot;navy&quot;</span>) <span class="sc">+</span></span>
-<span id="cb1518-4"><a href="correlation.html#cb1518-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_smooth</span>(<span class="at">method=</span><span class="st">&quot;lm&quot;</span>,<span class="at">se=</span>F) <span class="sc">+</span></span>
-<span id="cb1518-5"><a href="correlation.html#cb1518-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>()</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-622-1.png" width="672" /></p>
-<div class="sourceCode" id="cb1519"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1519-1"><a href="correlation.html#cb1519-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor.test</span>(gs<span class="sc">$</span>hours, gs<span class="sc">$</span>score, <span class="at">alternative =</span> <span class="st">&quot;greater&quot;</span>)  <span class="co"># p=0.049</span></span></code></pre></div>
+<div class="sourceCode" id="cb1520"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1520-1"><a href="correlation.html#cb1520-1" aria-hidden="true" tabindex="-1"></a><span class="co"># scatterplot</span></span>
+<span id="cb1520-2"><a href="correlation.html#cb1520-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(gs, <span class="fu">aes</span>(<span class="at">x=</span>hours, <span class="at">y=</span>score)) <span class="sc">+</span> </span>
+<span id="cb1520-3"><a href="correlation.html#cb1520-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">color=</span><span class="st">&quot;navy&quot;</span>) <span class="sc">+</span></span>
+<span id="cb1520-4"><a href="correlation.html#cb1520-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_smooth</span>(<span class="at">method=</span><span class="st">&quot;lm&quot;</span>,<span class="at">se=</span>F) <span class="sc">+</span></span>
+<span id="cb1520-5"><a href="correlation.html#cb1520-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>()</span></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-623-1.png" width="672" /></p>
+<div class="sourceCode" id="cb1521"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1521-1"><a href="correlation.html#cb1521-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor.test</span>(gs<span class="sc">$</span>hours, gs<span class="sc">$</span>score, <span class="at">alternative =</span> <span class="st">&quot;greater&quot;</span>)  <span class="co"># p=0.049</span></span></code></pre></div>
 <pre><code>## 
 ##  Pearson&#39;s product-moment correlation
 ## 
@@ -1005,29 +1005,29 @@ rho=0.75$ which equates to <span class="math inline">\(z&#39;=0.97\)</span> is i
 <p>What if we considered each of these variables’ relationship with <code>tiredness</code> ?</p>
 <p><img src="img/partial.png" /></p>
 <p>We can calculate the Pearson correlation for <code>tiredness</code> against <code>score</code> and for <code>hours</code> against <code>tiredness</code>, in addition to our original correlation of <code>hours</code> against <code>score</code>.</p>
-<div class="sourceCode" id="cb1521"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1521-1"><a href="correlation.html#cb1521-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(gs<span class="sc">$</span>hours, gs<span class="sc">$</span>score)  <span class="co"># r = 0.24</span></span></code></pre></div>
+<div class="sourceCode" id="cb1523"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1523-1"><a href="correlation.html#cb1523-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(gs<span class="sc">$</span>hours, gs<span class="sc">$</span>score)  <span class="co"># r = 0.24</span></span></code></pre></div>
 <pre><code>## [1] 0.2368152</code></pre>
-<div class="sourceCode" id="cb1523"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1523-1"><a href="correlation.html#cb1523-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(gs<span class="sc">$</span>tiredness, gs<span class="sc">$</span>score) <span class="co"># r = -0.21</span></span></code></pre></div>
+<div class="sourceCode" id="cb1525"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1525-1"><a href="correlation.html#cb1525-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(gs<span class="sc">$</span>tiredness, gs<span class="sc">$</span>score) <span class="co"># r = -0.21</span></span></code></pre></div>
 <pre><code>## [1] -0.2099467</code></pre>
-<div class="sourceCode" id="cb1525"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1525-1"><a href="correlation.html#cb1525-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(gs<span class="sc">$</span>hours, gs<span class="sc">$</span>tiredness) <span class="co"># r = -0.29</span></span></code></pre></div>
+<div class="sourceCode" id="cb1527"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1527-1"><a href="correlation.html#cb1527-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(gs<span class="sc">$</span>hours, gs<span class="sc">$</span>tiredness) <span class="co"># r = -0.29</span></span></code></pre></div>
 <pre><code>## [1] -0.2867374</code></pre>
 <p>As you can see, tiredness is negatively correlated with score, meaning individuals who report themselves as more tired scored lower in the task. Hours was also negatively correlated with tiredness, meaning individuals who were more tired spent fewer hours on the task.</p>
 <p>It’s therefore possible that an individual’s tiredness could affect both the number of hours that an individual engages in the task, as well as their overall performance. These relationships may affect the overall observed relationship between <code>hours</code> and <code>score</code>.</p>
 <p>If we were to do this in R, we’d use the <code>pcor.test()</code> function from the <code>ppcor</code> package. We just need to tell it what our original <code>X</code> and <code>Y</code> are as well as our third variable <code>Z</code>.</p>
-<div class="sourceCode" id="cb1527"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1527-1"><a href="correlation.html#cb1527-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ppcor)</span>
-<span id="cb1527-2"><a href="correlation.html#cb1527-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1527-3"><a href="correlation.html#cb1527-3" aria-hidden="true" tabindex="-1"></a><span class="fu">pcor.test</span>(<span class="at">x=</span>gs<span class="sc">$</span>hours, <span class="at">y=</span>gs<span class="sc">$</span>score, <span class="at">z=</span>gs<span class="sc">$</span>tiredness)</span></code></pre></div>
+<div class="sourceCode" id="cb1529"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1529-1"><a href="correlation.html#cb1529-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ppcor)</span>
+<span id="cb1529-2"><a href="correlation.html#cb1529-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1529-3"><a href="correlation.html#cb1529-3" aria-hidden="true" tabindex="-1"></a><span class="fu">pcor.test</span>(<span class="at">x=</span>gs<span class="sc">$</span>hours, <span class="at">y=</span>gs<span class="sc">$</span>score, <span class="at">z=</span>gs<span class="sc">$</span>tiredness)</span></code></pre></div>
 <pre><code>##    estimate   p.value statistic  n gp  Method
 ## 1 0.1885594 0.1944534  1.316311 50  1 pearson</code></pre>
 <p>This output tells us that the adjust correlation, i.e. the <code>partial correlation</code> for <span class="math inline">\(r_{xy}\)</span> is 0.19. There is a p-value associated with that correlation of <code>p=0.194</code> which indicates that the correlation is no longer significant. This means that the relationship between test score and hours is no longer significant after you take into account that they are both related to tiredness.</p>
 <p>We can also look at this ‘by hand’ using the formula above:</p>
-<div class="sourceCode" id="cb1529"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1529-1"><a href="correlation.html#cb1529-1" aria-hidden="true" tabindex="-1"></a>r.xy <span class="ot">&lt;-</span> <span class="fu">cor</span>(gs<span class="sc">$</span>hours, gs<span class="sc">$</span>score)  <span class="co"># r = 0.24</span></span>
-<span id="cb1529-2"><a href="correlation.html#cb1529-2" aria-hidden="true" tabindex="-1"></a>r.xz <span class="ot">&lt;-</span> <span class="fu">cor</span>(gs<span class="sc">$</span>tiredness, gs<span class="sc">$</span>score) <span class="co"># r = -0.21</span></span>
-<span id="cb1529-3"><a href="correlation.html#cb1529-3" aria-hidden="true" tabindex="-1"></a>r.yz <span class="ot">&lt;-</span> <span class="fu">cor</span>(gs<span class="sc">$</span>hours, gs<span class="sc">$</span>tiredness) <span class="co"># r = -0.29</span></span></code></pre></div>
-<div class="sourceCode" id="cb1530"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1530-1"><a href="correlation.html#cb1530-1" aria-hidden="true" tabindex="-1"></a>numerator <span class="ot">&lt;-</span> r.xy <span class="sc">-</span> (r.xz <span class="sc">*</span> r.yz)</span>
-<span id="cb1530-2"><a href="correlation.html#cb1530-2" aria-hidden="true" tabindex="-1"></a>denominator <span class="ot">&lt;-</span> (<span class="fu">sqrt</span>(<span class="dv">1</span> <span class="sc">-</span> r.xz<span class="sc">^</span><span class="dv">2</span>) <span class="sc">*</span> (<span class="fu">sqrt</span>(<span class="dv">1</span>  <span class="sc">-</span> r.yz<span class="sc">^</span><span class="dv">2</span>)) )</span>
-<span id="cb1530-3"><a href="correlation.html#cb1530-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1530-4"><a href="correlation.html#cb1530-4" aria-hidden="true" tabindex="-1"></a>numerator<span class="sc">/</span>denominator</span></code></pre></div>
+<div class="sourceCode" id="cb1531"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1531-1"><a href="correlation.html#cb1531-1" aria-hidden="true" tabindex="-1"></a>r.xy <span class="ot">&lt;-</span> <span class="fu">cor</span>(gs<span class="sc">$</span>hours, gs<span class="sc">$</span>score)  <span class="co"># r = 0.24</span></span>
+<span id="cb1531-2"><a href="correlation.html#cb1531-2" aria-hidden="true" tabindex="-1"></a>r.xz <span class="ot">&lt;-</span> <span class="fu">cor</span>(gs<span class="sc">$</span>tiredness, gs<span class="sc">$</span>score) <span class="co"># r = -0.21</span></span>
+<span id="cb1531-3"><a href="correlation.html#cb1531-3" aria-hidden="true" tabindex="-1"></a>r.yz <span class="ot">&lt;-</span> <span class="fu">cor</span>(gs<span class="sc">$</span>hours, gs<span class="sc">$</span>tiredness) <span class="co"># r = -0.29</span></span></code></pre></div>
+<div class="sourceCode" id="cb1532"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1532-1"><a href="correlation.html#cb1532-1" aria-hidden="true" tabindex="-1"></a>numerator <span class="ot">&lt;-</span> r.xy <span class="sc">-</span> (r.xz <span class="sc">*</span> r.yz)</span>
+<span id="cb1532-2"><a href="correlation.html#cb1532-2" aria-hidden="true" tabindex="-1"></a>denominator <span class="ot">&lt;-</span> (<span class="fu">sqrt</span>(<span class="dv">1</span> <span class="sc">-</span> r.xz<span class="sc">^</span><span class="dv">2</span>) <span class="sc">*</span> (<span class="fu">sqrt</span>(<span class="dv">1</span>  <span class="sc">-</span> r.yz<span class="sc">^</span><span class="dv">2</span>)) )</span>
+<span id="cb1532-3"><a href="correlation.html#cb1532-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1532-4"><a href="correlation.html#cb1532-4" aria-hidden="true" tabindex="-1"></a>numerator<span class="sc">/</span>denominator</span></code></pre></div>
 <pre><code>## [1] 0.1885594</code></pre>
 <p>We get the same result!</p>
 <p><br></p>
@@ -1036,11 +1036,11 @@ rho=0.75$ which equates to <span class="math inline">\(z&#39;=0.97\)</span> is i
 <h2><span class="header-section-number">12.7</span> Non-parametric Correlations</h2>
 <p>When at least on of our variables are not normal, then we need to consider alternative approaches to the Pearson correlation for assessing correlations.</p>
 <p>Let’s take this example, where we are interested in seeing if there’s an association between saturated fat and cholesterol levels across a bunch of different cheeses:</p>
-<div class="sourceCode" id="cb1532"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1532-1"><a href="correlation.html#cb1532-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb1532-2"><a href="correlation.html#cb1532-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1532-3"><a href="correlation.html#cb1532-3" aria-hidden="true" tabindex="-1"></a>cheese <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;data/cheese.csv&quot;</span>)</span>
-<span id="cb1532-4"><a href="correlation.html#cb1532-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1532-5"><a href="correlation.html#cb1532-5" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(cheese)</span></code></pre></div>
+<div class="sourceCode" id="cb1534"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1534-1"><a href="correlation.html#cb1534-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1534-2"><a href="correlation.html#cb1534-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1534-3"><a href="correlation.html#cb1534-3" aria-hidden="true" tabindex="-1"></a>cheese <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;data/cheese.csv&quot;</span>)</span>
+<span id="cb1534-4"><a href="correlation.html#cb1534-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1534-5"><a href="correlation.html#cb1534-5" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(cheese)</span></code></pre></div>
 <pre><code>## # A tibble: 6 x 9
 ##   type      sat_fat polysat_fat monosat_fat protein  carb  chol fiber  kcal
 ##   &lt;chr&gt;       &lt;dbl&gt;       &lt;dbl&gt;       &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
@@ -1050,44 +1050,44 @@ rho=0.75$ which equates to <span class="math inline">\(z&#39;=0.97\)</span> is i
 ## 4 camembert    15.3       0.724        7.02    19.8  0.46    72     0   300
 ## 5 caraway      18.6       0.83         8.28    25.2  3.06    93     0   376
 ## 6 cheddar      21.1       0.942        9.39    24.9  1.28   105     0   403</code></pre>
-<div class="sourceCode" id="cb1534"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1534-1"><a href="correlation.html#cb1534-1" aria-hidden="true" tabindex="-1"></a><span class="co"># let&#39;s make a scatterplot of saturated fat against cholesterol</span></span>
-<span id="cb1534-2"><a href="correlation.html#cb1534-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(cheese, <span class="fu">aes</span>(<span class="at">x =</span> sat_fat, <span class="at">y =</span> chol)) <span class="sc">+</span> <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb1534-3"><a href="correlation.html#cb1534-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_smooth</span>(<span class="at">method=</span><span class="st">&quot;lm&quot;</span>,<span class="at">se=</span>F)</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-627-1.png" width="672" /></p>
+<div class="sourceCode" id="cb1536"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1536-1"><a href="correlation.html#cb1536-1" aria-hidden="true" tabindex="-1"></a><span class="co"># let&#39;s make a scatterplot of saturated fat against cholesterol</span></span>
+<span id="cb1536-2"><a href="correlation.html#cb1536-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(cheese, <span class="fu">aes</span>(<span class="at">x =</span> sat_fat, <span class="at">y =</span> chol)) <span class="sc">+</span> <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb1536-3"><a href="correlation.html#cb1536-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_smooth</span>(<span class="at">method=</span><span class="st">&quot;lm&quot;</span>,<span class="at">se=</span>F)</span></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-628-1.png" width="672" /></p>
 <p>It looks like there is a pretty obvious relationship, but let’s check the normality of each variable before progressing. Firstly the Shapiro-Wilk tests suggest that our data do not come from a normal distribution:</p>
-<div class="sourceCode" id="cb1535"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1535-1"><a href="correlation.html#cb1535-1" aria-hidden="true" tabindex="-1"></a><span class="fu">shapiro.test</span>(cheese<span class="sc">$</span>sat_fat)  <span class="co"># P &lt; 0.05, therefore data may not be normal</span></span></code></pre></div>
+<div class="sourceCode" id="cb1537"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1537-1"><a href="correlation.html#cb1537-1" aria-hidden="true" tabindex="-1"></a><span class="fu">shapiro.test</span>(cheese<span class="sc">$</span>sat_fat)  <span class="co"># P &lt; 0.05, therefore data may not be normal</span></span></code></pre></div>
 <pre><code>## 
 ##  Shapiro-Wilk normality test
 ## 
 ## data:  cheese$sat_fat
 ## W = 0.85494, p-value = 6.28e-07</code></pre>
-<div class="sourceCode" id="cb1537"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1537-1"><a href="correlation.html#cb1537-1" aria-hidden="true" tabindex="-1"></a><span class="fu">shapiro.test</span>(cheese<span class="sc">$</span>chol)  <span class="co"># P &lt; 0.05,  therefore data may not be normal</span></span></code></pre></div>
+<div class="sourceCode" id="cb1539"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1539-1"><a href="correlation.html#cb1539-1" aria-hidden="true" tabindex="-1"></a><span class="fu">shapiro.test</span>(cheese<span class="sc">$</span>chol)  <span class="co"># P &lt; 0.05,  therefore data may not be normal</span></span></code></pre></div>
 <pre><code>## 
 ##  Shapiro-Wilk normality test
 ## 
 ## data:  cheese$chol
 ## W = 0.90099, p-value = 2.985e-05</code></pre>
 <p>Secondly, we have quite dramatic deviation from the straight line of our datapoints in our QQ plots. This indicates that our data are likely skewed.</p>
-<div class="sourceCode" id="cb1539"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1539-1"><a href="correlation.html#cb1539-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qqnorm</span>(cheese<span class="sc">$</span>sat_fat)</span>
-<span id="cb1539-2"><a href="correlation.html#cb1539-2" aria-hidden="true" tabindex="-1"></a><span class="fu">qqline</span>(cheese<span class="sc">$</span>sat_fat, <span class="at">col =</span> <span class="st">&quot;steelblue&quot;</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-629-1.png" width="672" /></p>
-<div class="sourceCode" id="cb1540"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1540-1"><a href="correlation.html#cb1540-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qqnorm</span>(cheese<span class="sc">$</span>chol)</span>
-<span id="cb1540-2"><a href="correlation.html#cb1540-2" aria-hidden="true" tabindex="-1"></a><span class="fu">qqline</span>(cheese<span class="sc">$</span>chol, <span class="at">col =</span> <span class="st">&quot;steelblue&quot;</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-629-2.png" width="672" /></p>
-<p>We could be thorough and check this by plotting histograms of our data:</p>
-<div class="sourceCode" id="cb1541"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1541-1"><a href="correlation.html#cb1541-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gridExtra)</span>
-<span id="cb1541-2"><a href="correlation.html#cb1541-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1541-3"><a href="correlation.html#cb1541-3" aria-hidden="true" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(cheese, <span class="fu">aes</span>(<span class="at">x=</span>sat_fat)) <span class="sc">+</span> <span class="fu">geom_histogram</span>(<span class="at">color=</span><span class="st">&quot;black&quot;</span>, <span class="at">fill=</span><span class="st">&quot;lightseagreen&quot;</span>)</span>
-<span id="cb1541-4"><a href="correlation.html#cb1541-4" aria-hidden="true" tabindex="-1"></a>p2 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(cheese, <span class="fu">aes</span>(<span class="at">x=</span>chol)) <span class="sc">+</span> <span class="fu">geom_histogram</span>(<span class="at">color=</span><span class="st">&quot;black&quot;</span>, <span class="at">fill=</span><span class="st">&quot;lightseagreen&quot;</span>)</span>
-<span id="cb1541-5"><a href="correlation.html#cb1541-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1541-6"><a href="correlation.html#cb1541-6" aria-hidden="true" tabindex="-1"></a><span class="fu">grid.arrange</span>(p1,p2,<span class="at">nrow=</span><span class="dv">1</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb1541"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1541-1"><a href="correlation.html#cb1541-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qqnorm</span>(cheese<span class="sc">$</span>sat_fat)</span>
+<span id="cb1541-2"><a href="correlation.html#cb1541-2" aria-hidden="true" tabindex="-1"></a><span class="fu">qqline</span>(cheese<span class="sc">$</span>sat_fat, <span class="at">col =</span> <span class="st">&quot;steelblue&quot;</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span></code></pre></div>
 <p><img src="bookdownproj_files/figure-html/unnamed-chunk-630-1.png" width="672" /></p>
+<div class="sourceCode" id="cb1542"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1542-1"><a href="correlation.html#cb1542-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qqnorm</span>(cheese<span class="sc">$</span>chol)</span>
+<span id="cb1542-2"><a href="correlation.html#cb1542-2" aria-hidden="true" tabindex="-1"></a><span class="fu">qqline</span>(cheese<span class="sc">$</span>chol, <span class="at">col =</span> <span class="st">&quot;steelblue&quot;</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-630-2.png" width="672" /></p>
+<p>We could be thorough and check this by plotting histograms of our data:</p>
+<div class="sourceCode" id="cb1543"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1543-1"><a href="correlation.html#cb1543-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gridExtra)</span>
+<span id="cb1543-2"><a href="correlation.html#cb1543-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1543-3"><a href="correlation.html#cb1543-3" aria-hidden="true" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(cheese, <span class="fu">aes</span>(<span class="at">x=</span>sat_fat)) <span class="sc">+</span> <span class="fu">geom_histogram</span>(<span class="at">color=</span><span class="st">&quot;black&quot;</span>, <span class="at">fill=</span><span class="st">&quot;lightseagreen&quot;</span>)</span>
+<span id="cb1543-4"><a href="correlation.html#cb1543-4" aria-hidden="true" tabindex="-1"></a>p2 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(cheese, <span class="fu">aes</span>(<span class="at">x=</span>chol)) <span class="sc">+</span> <span class="fu">geom_histogram</span>(<span class="at">color=</span><span class="st">&quot;black&quot;</span>, <span class="at">fill=</span><span class="st">&quot;lightseagreen&quot;</span>)</span>
+<span id="cb1543-5"><a href="correlation.html#cb1543-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1543-6"><a href="correlation.html#cb1543-6" aria-hidden="true" tabindex="-1"></a><span class="fu">grid.arrange</span>(p1,p2,<span class="at">nrow=</span><span class="dv">1</span>)</span></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-631-1.png" width="672" /></p>
 <p>Because our data do not appear to be normal, we cannot do a Pearson correlation coefficient. We should instead use a non-parametric correlation method. There are several of these to choose from. We don’t plan to go into the details here of how these methods determine their correlation coefficients or conduct significance test. In brief, these methods generally rank order the datapoints along the <code>x</code> and <code>y</code> axes and then determine how ordered these ranks are with respect to each other.</p>
 <p>Probably the most commonly used non-parametric correlation test is called the Spearman Rank Correlation test.</p>
 <p>To run this, we can use <code>cor()</code> to get the correlation or <code>cor.test()</code> to run the significance test in the same way we did the Pearson test. However, the difference here is that we specify <code>method="spearman"</code> at the end.</p>
-<div class="sourceCode" id="cb1542"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1542-1"><a href="correlation.html#cb1542-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(cheese<span class="sc">$</span>sat_fat, cheese<span class="sc">$</span>chol, <span class="at">method =</span> <span class="st">&quot;spearman&quot;</span>)      </span></code></pre></div>
+<div class="sourceCode" id="cb1544"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1544-1"><a href="correlation.html#cb1544-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(cheese<span class="sc">$</span>sat_fat, cheese<span class="sc">$</span>chol, <span class="at">method =</span> <span class="st">&quot;spearman&quot;</span>)      </span></code></pre></div>
 <pre><code>## [1] 0.8677042</code></pre>
-<div class="sourceCode" id="cb1544"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1544-1"><a href="correlation.html#cb1544-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor.test</span>(cheese<span class="sc">$</span>sat_fat, cheese<span class="sc">$</span>chol, <span class="at">method =</span> <span class="st">&quot;spearman&quot;</span>) </span></code></pre></div>
+<div class="sourceCode" id="cb1546"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1546-1"><a href="correlation.html#cb1546-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor.test</span>(cheese<span class="sc">$</span>sat_fat, cheese<span class="sc">$</span>chol, <span class="at">method =</span> <span class="st">&quot;spearman&quot;</span>) </span></code></pre></div>
 <pre><code>## 
 ##  Spearman&#39;s rank correlation rho
 ## 
@@ -1100,7 +1100,7 @@ rho=0.75$ which equates to <span class="math inline">\(z&#39;=0.97\)</span> is i
 <p>The correlation coefficient here is 0.87 and is termed <code>rho</code> instead of <code>r</code>. With the significance test, you get a test-statistic <code>S</code> which relates to how well ordered the ranked data are. Also provided is a p-value. As with the Pearson, the default is a 2-tailed test, testing whether the observed correlation could have come from a population with a correlation of 0. If the p-value is below 0.05 (using alpha = 0.05 as our criterion), then that is reasonable evidence that there is a significant correlation.</p>
 <p>You may also notice with Spearman Rank correlations that you are forever getting warnings about computing p-values with ties. Don’t worry at all about this - although this is an issue with the test and how it calculates the p-value, it isn’t of any real practical concern.</p>
 <p>If you were interested in conducting a one-tailed correlation test, you could do that in the same way as you did for the Pearson. For instance, if you predicted that cholesterol and saturated fat would have a positive correlation, you could do the following to do a one-tailed test:</p>
-<div class="sourceCode" id="cb1546"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1546-1"><a href="correlation.html#cb1546-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor.test</span>(cheese<span class="sc">$</span>sat_fat, cheese<span class="sc">$</span>chol, <span class="at">method =</span> <span class="st">&quot;spearman&quot;</span>, <span class="at">alternative =</span> <span class="st">&quot;greater&quot;</span>) </span></code></pre></div>
+<div class="sourceCode" id="cb1548"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1548-1"><a href="correlation.html#cb1548-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor.test</span>(cheese<span class="sc">$</span>sat_fat, cheese<span class="sc">$</span>chol, <span class="at">method =</span> <span class="st">&quot;spearman&quot;</span>, <span class="at">alternative =</span> <span class="st">&quot;greater&quot;</span>) </span></code></pre></div>
 <pre><code>## 
 ##  Spearman&#39;s rank correlation rho
 ## 
@@ -1112,7 +1112,7 @@ rho=0.75$ which equates to <span class="math inline">\(z&#39;=0.97\)</span> is i
 ## 0.8677042</code></pre>
 <p>You may also notice that the output of the Spearman Rank test does not give confidence intervals for the value of rho. This is unfortunate and is one of the drawbacks of doing a non-parametric correlation.</p>
 <p>Finally, there are several other types of non-parametric correlations you could choose from if you didn’t want to do a Spearman Rank correlation. We personally recommend using a method called <code>Kendalls Tau B</code> correlation, which can be done like this:</p>
-<div class="sourceCode" id="cb1548"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1548-1"><a href="correlation.html#cb1548-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor.test</span>(cheese<span class="sc">$</span>sat_fat, cheese<span class="sc">$</span>chol, <span class="at">method =</span> <span class="st">&quot;kendall&quot;</span>) </span></code></pre></div>
+<div class="sourceCode" id="cb1550"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1550-1"><a href="correlation.html#cb1550-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor.test</span>(cheese<span class="sc">$</span>sat_fat, cheese<span class="sc">$</span>chol, <span class="at">method =</span> <span class="st">&quot;kendall&quot;</span>) </span></code></pre></div>
 <pre><code>## 
 ##  Kendall&#39;s rank correlation tau
 ## 
@@ -1128,9 +1128,9 @@ rho=0.75$ which equates to <span class="math inline">\(z&#39;=0.97\)</span> is i
 <p>If at least one of your variables of your data are rank (ordinal) data, then you should use non-parametric correlations.</p>
 <p>In the following example, the data show the dominance rank, age, body size and testosterone levels for a group of 18 animals. Lower numbers of the ranks, indicate a higher ranking animal. An animal with rank 1 means that it is the most dominant individual.</p>
 <p>Perhaps with such data you may be interested in seeing if there was an association between dominance rank and testosterone levels. Because your dominance rank measure is ordinal (a rank), then you should pick a non-parametric correlation.</p>
-<div class="sourceCode" id="cb1550"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1550-1"><a href="correlation.html#cb1550-1" aria-hidden="true" tabindex="-1"></a>test <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;data/testosterone.csv&quot;</span>)</span>
-<span id="cb1550-2"><a href="correlation.html#cb1550-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1550-3"><a href="correlation.html#cb1550-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(test)</span></code></pre></div>
+<div class="sourceCode" id="cb1552"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1552-1"><a href="correlation.html#cb1552-1" aria-hidden="true" tabindex="-1"></a>test <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;data/testosterone.csv&quot;</span>)</span>
+<span id="cb1552-2"><a href="correlation.html#cb1552-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1552-3"><a href="correlation.html#cb1552-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(test)</span></code></pre></div>
 <pre><code>## # A tibble: 6 x 4
 ##   drank   age  size testosterone
 ##   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;        &lt;dbl&gt;
@@ -1140,16 +1140,16 @@ rho=0.75$ which equates to <span class="math inline">\(z&#39;=0.97\)</span> is i
 ## 4     1  11.5   201          6.4
 ## 5    12   3.5   125          1.8
 ## 6     4  10     166          4.3</code></pre>
-<div class="sourceCode" id="cb1552"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1552-1"><a href="correlation.html#cb1552-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(test, <span class="fu">aes</span>(<span class="at">x =</span> drank, <span class="at">y =</span> testosterone)) <span class="sc">+</span> </span>
-<span id="cb1552-2"><a href="correlation.html#cb1552-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb1552-3"><a href="correlation.html#cb1552-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>, <span class="at">se=</span>F) <span class="sc">+</span></span>
-<span id="cb1552-4"><a href="correlation.html#cb1552-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;Dominance Rank&quot;</span>) <span class="sc">+</span></span>
-<span id="cb1552-5"><a href="correlation.html#cb1552-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&quot;Testosterone Level&quot;</span>) </span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-634-1.png" width="672" /></p>
-<div class="sourceCode" id="cb1553"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1553-1"><a href="correlation.html#cb1553-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(test<span class="sc">$</span>drank, test<span class="sc">$</span>testosterone, <span class="at">method =</span> <span class="st">&quot;spearman&quot;</span>) <span class="co"># rho = -0.91</span></span></code></pre></div>
+<div class="sourceCode" id="cb1554"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1554-1"><a href="correlation.html#cb1554-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(test, <span class="fu">aes</span>(<span class="at">x =</span> drank, <span class="at">y =</span> testosterone)) <span class="sc">+</span> </span>
+<span id="cb1554-2"><a href="correlation.html#cb1554-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb1554-3"><a href="correlation.html#cb1554-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>, <span class="at">se=</span>F) <span class="sc">+</span></span>
+<span id="cb1554-4"><a href="correlation.html#cb1554-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;Dominance Rank&quot;</span>) <span class="sc">+</span></span>
+<span id="cb1554-5"><a href="correlation.html#cb1554-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&quot;Testosterone Level&quot;</span>) </span></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-635-1.png" width="672" /></p>
+<div class="sourceCode" id="cb1555"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1555-1"><a href="correlation.html#cb1555-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(test<span class="sc">$</span>drank, test<span class="sc">$</span>testosterone, <span class="at">method =</span> <span class="st">&quot;spearman&quot;</span>) <span class="co"># rho = -0.91</span></span></code></pre></div>
 <pre><code>## [1] -0.9083378</code></pre>
 <p>If you had the <em>a priori</em> prediction, that more dominant animals would have higher testosterone, then you could do a one-tailed test. This would mean that you expect there to be a negative correlation - as the rank number gets higher, the levels of testosterone would fall. In this case, you’d use <code>alternative = "less"</code>.</p>
-<div class="sourceCode" id="cb1555"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1555-1"><a href="correlation.html#cb1555-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor.test</span>(test<span class="sc">$</span>drank, test<span class="sc">$</span>testosterone, <span class="at">method =</span> <span class="st">&quot;spearman&quot;</span>, <span class="at">alternative =</span> <span class="st">&quot;less&quot;</span>) <span class="co"># 1- tailed</span></span></code></pre></div>
+<div class="sourceCode" id="cb1557"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1557-1"><a href="correlation.html#cb1557-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor.test</span>(test<span class="sc">$</span>drank, test<span class="sc">$</span>testosterone, <span class="at">method =</span> <span class="st">&quot;spearman&quot;</span>, <span class="at">alternative =</span> <span class="st">&quot;less&quot;</span>) <span class="co"># 1- tailed</span></span></code></pre></div>
 <pre><code>## 
 ##  Spearman&#39;s rank correlation rho
 ## 
@@ -1164,11 +1164,11 @@ rho=0.75$ which equates to <span class="math inline">\(z&#39;=0.97\)</span> is i
 <p>If you look back to section <a href="correlation.html#partial-correlations">12.6</a> calculate the partial correlation for a Pearson correlation. We also used the function <code>pcor.test()</code> from the <code>ppcor</code> package to do this for us. We can actually use the same formula or function to do partial correlations for non-parametric correlations.</p>
 <p>For example, let’s examine the Spearman correlations between anxiety, exam score and revision.</p>
 <p>These are the data:</p>
-<div class="sourceCode" id="cb1557"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1557-1"><a href="correlation.html#cb1557-1" aria-hidden="true" tabindex="-1"></a>exams <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;data/exams1.csv&quot;</span>)</span>
-<span id="cb1557-2"><a href="correlation.html#cb1557-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1557-3"><a href="correlation.html#cb1557-3" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(exams)</span></code></pre></div>
+<div class="sourceCode" id="cb1559"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1559-1"><a href="correlation.html#cb1559-1" aria-hidden="true" tabindex="-1"></a>exams <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;data/exams1.csv&quot;</span>)</span>
+<span id="cb1559-2"><a href="correlation.html#cb1559-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1559-3"><a href="correlation.html#cb1559-3" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(exams)</span></code></pre></div>
 <pre><code>## [1] 102</code></pre>
-<div class="sourceCode" id="cb1559"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1559-1"><a href="correlation.html#cb1559-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(exams)</span></code></pre></div>
+<div class="sourceCode" id="cb1561"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1561-1"><a href="correlation.html#cb1561-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(exams)</span></code></pre></div>
 <pre><code>## # A tibble: 6 x 5
 ##    code revise  exam anxiety gender
 ##   &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt; 
@@ -1179,22 +1179,22 @@ rho=0.75$ which equates to <span class="math inline">\(z&#39;=0.97\)</span> is i
 ## 5     5      4    40    89.5 Male  
 ## 6     6     22    70    60.5 Female</code></pre>
 <p>Using the Shapiro-Wilk test we note that our data are not approximately normal:</p>
-<div class="sourceCode" id="cb1561"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1561-1"><a href="correlation.html#cb1561-1" aria-hidden="true" tabindex="-1"></a><span class="co"># note these data are not approximately normal:</span></span>
-<span id="cb1561-2"><a href="correlation.html#cb1561-2" aria-hidden="true" tabindex="-1"></a><span class="co"># all p&lt;0.05, therefore reject null that they are approximately normal</span></span>
-<span id="cb1561-3"><a href="correlation.html#cb1561-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1561-4"><a href="correlation.html#cb1561-4" aria-hidden="true" tabindex="-1"></a><span class="fu">shapiro.test</span>(exams<span class="sc">$</span>revise)</span></code></pre></div>
+<div class="sourceCode" id="cb1563"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1563-1"><a href="correlation.html#cb1563-1" aria-hidden="true" tabindex="-1"></a><span class="co"># note these data are not approximately normal:</span></span>
+<span id="cb1563-2"><a href="correlation.html#cb1563-2" aria-hidden="true" tabindex="-1"></a><span class="co"># all p&lt;0.05, therefore reject null that they are approximately normal</span></span>
+<span id="cb1563-3"><a href="correlation.html#cb1563-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1563-4"><a href="correlation.html#cb1563-4" aria-hidden="true" tabindex="-1"></a><span class="fu">shapiro.test</span>(exams<span class="sc">$</span>revise)</span></code></pre></div>
 <pre><code>## 
 ##  Shapiro-Wilk normality test
 ## 
 ## data:  exams$revise
 ## W = 0.81608, p-value = 6.088e-10</code></pre>
-<div class="sourceCode" id="cb1563"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1563-1"><a href="correlation.html#cb1563-1" aria-hidden="true" tabindex="-1"></a><span class="fu">shapiro.test</span>(exams<span class="sc">$</span>exam)</span></code></pre></div>
+<div class="sourceCode" id="cb1565"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1565-1"><a href="correlation.html#cb1565-1" aria-hidden="true" tabindex="-1"></a><span class="fu">shapiro.test</span>(exams<span class="sc">$</span>exam)</span></code></pre></div>
 <pre><code>## 
 ##  Shapiro-Wilk normality test
 ## 
 ## data:  exams$exam
 ## W = 0.95595, p-value = 0.001841</code></pre>
-<div class="sourceCode" id="cb1565"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1565-1"><a href="correlation.html#cb1565-1" aria-hidden="true" tabindex="-1"></a><span class="fu">shapiro.test</span>(exams<span class="sc">$</span>anxiety)</span></code></pre></div>
+<div class="sourceCode" id="cb1567"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1567-1"><a href="correlation.html#cb1567-1" aria-hidden="true" tabindex="-1"></a><span class="fu">shapiro.test</span>(exams<span class="sc">$</span>anxiety)</span></code></pre></div>
 <pre><code>## 
 ##  Shapiro-Wilk normality test
 ## 
@@ -1202,14 +1202,14 @@ rho=0.75$ which equates to <span class="math inline">\(z&#39;=0.97\)</span> is i
 ## W = 0.85646, p-value = 1.624e-08</code></pre>
 <p>We can investigate the individual correlations by plotting the scatterplots and calculating the Spearman correlations:</p>
 <p><img src="img/partial1.png" /></p>
-<div class="sourceCode" id="cb1567"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1567-1"><a href="correlation.html#cb1567-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(exams<span class="sc">$</span>revise, exams<span class="sc">$</span>exam, <span class="at">method =</span> <span class="st">&quot;spearman&quot;</span>)  </span></code></pre></div>
+<div class="sourceCode" id="cb1569"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1569-1"><a href="correlation.html#cb1569-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(exams<span class="sc">$</span>revise, exams<span class="sc">$</span>exam, <span class="at">method =</span> <span class="st">&quot;spearman&quot;</span>)  </span></code></pre></div>
 <pre><code>## [1] 0.3330192</code></pre>
-<div class="sourceCode" id="cb1569"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1569-1"><a href="correlation.html#cb1569-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(exams<span class="sc">$</span>revise, exams<span class="sc">$</span>anxiety, <span class="at">method =</span> <span class="st">&quot;spearman&quot;</span>) </span></code></pre></div>
+<div class="sourceCode" id="cb1571"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1571-1"><a href="correlation.html#cb1571-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(exams<span class="sc">$</span>revise, exams<span class="sc">$</span>anxiety, <span class="at">method =</span> <span class="st">&quot;spearman&quot;</span>) </span></code></pre></div>
 <pre><code>## [1] -0.6107712</code></pre>
-<div class="sourceCode" id="cb1571"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1571-1"><a href="correlation.html#cb1571-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(exams<span class="sc">$</span>anxiety, exams<span class="sc">$</span>exam, <span class="at">method=</span> <span class="st">&quot;spearman&quot;</span>) </span></code></pre></div>
+<div class="sourceCode" id="cb1573"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1573-1"><a href="correlation.html#cb1573-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(exams<span class="sc">$</span>anxiety, exams<span class="sc">$</span>exam, <span class="at">method=</span> <span class="st">&quot;spearman&quot;</span>) </span></code></pre></div>
 <pre><code>## [1] -0.3887703</code></pre>
 <p>If we were interested in the correlation between revision time and exam performance controlling for anxiety, we would need to do a partial correlation. We can just use the <code>ppcor.test()</code> function:</p>
-<div class="sourceCode" id="cb1573"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1573-1"><a href="correlation.html#cb1573-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pcor.test</span>(<span class="at">x=</span>exams<span class="sc">$</span>revise, <span class="at">y=</span>exams<span class="sc">$</span>exam, <span class="at">z=</span>exams<span class="sc">$</span>anxiety, <span class="at">method =</span> <span class="st">&quot;spearman&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb1575"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1575-1"><a href="correlation.html#cb1575-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pcor.test</span>(<span class="at">x=</span>exams<span class="sc">$</span>revise, <span class="at">y=</span>exams<span class="sc">$</span>exam, <span class="at">z=</span>exams<span class="sc">$</span>anxiety, <span class="at">method =</span> <span class="st">&quot;spearman&quot;</span>)</span></code></pre></div>
 <pre><code>##    estimate   p.value statistic   n gp   Method
 ## 1 0.1310034 0.1916154  1.314798 102  1 spearman</code></pre>
 <p>Again, we see that the relationship between these two variables is reduced considerably to <span class="math inline">\(\rho=0.13\)</span> when we control for each of their relationships with anxiety.</p>
@@ -1220,11 +1220,11 @@ rho=0.75$ which equates to <span class="math inline">\(z&#39;=0.97\)</span> is i
 <p>Throughout the entirety of this chapter we’ve been discussing various correlation measures between two continuous variables. This little subsection is here just to point out that you can in fact also measure the correlation between a categorical variable and a continuous variable.</p>
 <p>In the following dataset, we have data on the number of hours that various cats spend away from their house over a one week period. They are tracked via cool GPS collars, and these data make pretty pictures of how far they traveled from their homes.</p>
 <p><img src="img/pbs.png" /></p>
-<div class="sourceCode" id="cb1575"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1575-1"><a href="correlation.html#cb1575-1" aria-hidden="true" tabindex="-1"></a>cats <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;data/cats.csv&quot;</span>)  </span>
-<span id="cb1575-2"><a href="correlation.html#cb1575-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1575-3"><a href="correlation.html#cb1575-3" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(cats)</span></code></pre></div>
+<div class="sourceCode" id="cb1577"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1577-1"><a href="correlation.html#cb1577-1" aria-hidden="true" tabindex="-1"></a>cats <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;data/cats.csv&quot;</span>)  </span>
+<span id="cb1577-2"><a href="correlation.html#cb1577-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1577-3"><a href="correlation.html#cb1577-3" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(cats)</span></code></pre></div>
 <pre><code>## [1] 60</code></pre>
-<div class="sourceCode" id="cb1577"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1577-1"><a href="correlation.html#cb1577-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(cats)</span></code></pre></div>
+<div class="sourceCode" id="cb1579"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1579-1"><a href="correlation.html#cb1579-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(cats)</span></code></pre></div>
 <pre><code>## # A tibble: 6 x 3
 ##    time sex     sex1
 ##   &lt;dbl&gt; &lt;chr&gt;  &lt;dbl&gt;
@@ -1235,16 +1235,16 @@ rho=0.75$ which equates to <span class="math inline">\(z&#39;=0.97\)</span> is i
 ## 5    34 male       1
 ## 6    46 female     0</code></pre>
 <p>The data have a <code>time</code> column that is the number of hours away from home. A <code>sex</code> column which is the sex of the cat, and a <code>sex1</code> column which is the sex of the cat coded as a number. This final column exists to help us make the dotplot below and to help run a correlation:</p>
-<div class="sourceCode" id="cb1579"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1579-1"><a href="correlation.html#cb1579-1" aria-hidden="true" tabindex="-1"></a><span class="co"># dot plot</span></span>
-<span id="cb1579-2"><a href="correlation.html#cb1579-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(cats, <span class="fu">aes</span>(sex1,time)) <span class="sc">+</span> </span>
-<span id="cb1579-3"><a href="correlation.html#cb1579-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_jitter</span>(<span class="at">width =</span> .<span class="dv">05</span>) <span class="sc">+</span></span>
-<span id="cb1579-4"><a href="correlation.html#cb1579-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>), <span class="at">labels=</span><span class="fu">c</span>(<span class="st">&quot;female&quot;</span>, <span class="st">&quot;male&quot;</span>))<span class="sc">+</span></span>
-<span id="cb1579-5"><a href="correlation.html#cb1579-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_smooth</span>(<span class="at">method=</span><span class="st">&#39;lm&#39;</span>,<span class="at">se=</span>F) <span class="sc">+</span></span>
-<span id="cb1579-6"><a href="correlation.html#cb1579-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>()</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-641-1.png" width="672" /></p>
+<div class="sourceCode" id="cb1581"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1581-1"><a href="correlation.html#cb1581-1" aria-hidden="true" tabindex="-1"></a><span class="co"># dot plot</span></span>
+<span id="cb1581-2"><a href="correlation.html#cb1581-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(cats, <span class="fu">aes</span>(sex1,time)) <span class="sc">+</span> </span>
+<span id="cb1581-3"><a href="correlation.html#cb1581-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_jitter</span>(<span class="at">width =</span> .<span class="dv">05</span>) <span class="sc">+</span></span>
+<span id="cb1581-4"><a href="correlation.html#cb1581-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>), <span class="at">labels=</span><span class="fu">c</span>(<span class="st">&quot;female&quot;</span>, <span class="st">&quot;male&quot;</span>))<span class="sc">+</span></span>
+<span id="cb1581-5"><a href="correlation.html#cb1581-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_smooth</span>(<span class="at">method=</span><span class="st">&#39;lm&#39;</span>,<span class="at">se=</span>F) <span class="sc">+</span></span>
+<span id="cb1581-6"><a href="correlation.html#cb1581-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>()</span></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-642-1.png" width="672" /></p>
 <p>What we have in this plot are individual points representing each cat. The points are jittered to make overlapping datapoints more readable. We have also put a trendline through the data. How was this achieved? Essentially, all the females are given the value 0, and all the males are given the value 1. We then run a Pearson’s correlation using the <code>X</code> values to be 0 or 1, and the <code>Y</code> values to be the <code>time</code> measurement.</p>
 <p>Doing this, we can simply run a Pearson’s correlation test using <code>cor.test()</code>:</p>
-<div class="sourceCode" id="cb1580"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1580-1"><a href="correlation.html#cb1580-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor.test</span>(cats<span class="sc">$</span>sex1, cats<span class="sc">$</span>time)</span></code></pre></div>
+<div class="sourceCode" id="cb1582"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1582-1"><a href="correlation.html#cb1582-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor.test</span>(cats<span class="sc">$</span>sex1, cats<span class="sc">$</span>time)</span></code></pre></div>
 <pre><code>## 
 ##  Pearson&#39;s product-moment correlation
 ## 
@@ -1258,23 +1258,23 @@ rho=0.75$ which equates to <span class="math inline">\(z&#39;=0.97\)</span> is i
 ## 0.3784542</code></pre>
 <p>These results suggests that there is a positive relationship between cat sex and time spent away from home, with male cats spending more time away than female cats.</p>
 <p>Looking at the dotplot again, it looks like the female data are possibly bimodal. As the data are in long format, we can filter out the male and female data:</p>
-<div class="sourceCode" id="cb1582"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1582-1"><a href="correlation.html#cb1582-1" aria-hidden="true" tabindex="-1"></a>catsF_time <span class="ot">&lt;-</span> cats <span class="sc">%&gt;%</span> <span class="fu">filter</span>(sex<span class="sc">==</span><span class="st">&quot;female&quot;</span>) <span class="sc">%&gt;%</span> .<span class="sc">$</span>time</span>
-<span id="cb1582-2"><a href="correlation.html#cb1582-2" aria-hidden="true" tabindex="-1"></a>catsM_time <span class="ot">&lt;-</span> cats <span class="sc">%&gt;%</span> <span class="fu">filter</span>(sex<span class="sc">==</span><span class="st">&quot;male&quot;</span>) <span class="sc">%&gt;%</span> .<span class="sc">$</span>time</span>
-<span id="cb1582-3"><a href="correlation.html#cb1582-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1582-4"><a href="correlation.html#cb1582-4" aria-hidden="true" tabindex="-1"></a><span class="fu">shapiro.test</span>(catsF_time)</span></code></pre></div>
+<div class="sourceCode" id="cb1584"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1584-1"><a href="correlation.html#cb1584-1" aria-hidden="true" tabindex="-1"></a>catsF_time <span class="ot">&lt;-</span> cats <span class="sc">%&gt;%</span> <span class="fu">filter</span>(sex<span class="sc">==</span><span class="st">&quot;female&quot;</span>) <span class="sc">%&gt;%</span> .<span class="sc">$</span>time</span>
+<span id="cb1584-2"><a href="correlation.html#cb1584-2" aria-hidden="true" tabindex="-1"></a>catsM_time <span class="ot">&lt;-</span> cats <span class="sc">%&gt;%</span> <span class="fu">filter</span>(sex<span class="sc">==</span><span class="st">&quot;male&quot;</span>) <span class="sc">%&gt;%</span> .<span class="sc">$</span>time</span>
+<span id="cb1584-3"><a href="correlation.html#cb1584-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1584-4"><a href="correlation.html#cb1584-4" aria-hidden="true" tabindex="-1"></a><span class="fu">shapiro.test</span>(catsF_time)</span></code></pre></div>
 <pre><code>## 
 ##  Shapiro-Wilk normality test
 ## 
 ## data:  catsF_time
 ## W = 0.81663, p-value = 8.505e-05</code></pre>
-<div class="sourceCode" id="cb1584"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1584-1"><a href="correlation.html#cb1584-1" aria-hidden="true" tabindex="-1"></a><span class="fu">shapiro.test</span>(catsM_time)</span></code></pre></div>
+<div class="sourceCode" id="cb1586"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1586-1"><a href="correlation.html#cb1586-1" aria-hidden="true" tabindex="-1"></a><span class="fu">shapiro.test</span>(catsM_time)</span></code></pre></div>
 <pre><code>## 
 ##  Shapiro-Wilk normality test
 ## 
 ## data:  catsM_time
 ## W = 0.97521, p-value = 0.7246</code></pre>
 <p>Clearly our suspicions about the female data are true, they do not appear to come from an approximately normal distribution. In that case, we could run a point-biserial Spearman correlation. This is just the same procedure, but instead we apply the Spearman test:</p>
-<div class="sourceCode" id="cb1586"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1586-1"><a href="correlation.html#cb1586-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor.test</span>(cats<span class="sc">$</span>time, cats<span class="sc">$</span>sex1, <span class="at">method=</span><span class="st">&quot;spearman&quot;</span>) </span></code></pre></div>
+<div class="sourceCode" id="cb1588"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1588-1"><a href="correlation.html#cb1588-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor.test</span>(cats<span class="sc">$</span>time, cats<span class="sc">$</span>sex1, <span class="at">method=</span><span class="st">&quot;spearman&quot;</span>) </span></code></pre></div>
 <pre><code>## 
 ##  Spearman&#39;s rank correlation rho
 ## 

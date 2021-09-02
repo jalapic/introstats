@@ -24,7 +24,7 @@
 <meta name="author" content="James P. Curley &amp; Tyler M. Milewski" />
 
 
-<meta name="date" content="2021-09-01" />
+<meta name="date" content="2021-09-02" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -455,17 +455,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">6.3</span> Central Tendency</h2>
 <p>The first class of descriptives we will explore are measures of central tendency. These can be thought of as values that describe what is the most common, most typical or most average value in a distribution. Also, here we are using the term <strong>distribution</strong> to refer to a group of numbers or our data.</p>
 <p>We’ll use the following dataset as an example. Let’s imagine that this is a sample of data:</p>
-<div class="sourceCode" id="cb540"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb540-1"><a href="descriptives.html#cb540-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">14</span>, <span class="dv">12</span>, <span class="dv">5</span>, <span class="dv">3</span>, <span class="dv">6</span>, <span class="dv">11</span>, <span class="dv">15</span>, <span class="dv">9</span>, <span class="dv">5</span>, <span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">7</span>, <span class="dv">5</span>, <span class="dv">3</span>, <span class="dv">8</span>, <span class="dv">11</span>)</span>
-<span id="cb540-2"><a href="descriptives.html#cb540-2" aria-hidden="true" tabindex="-1"></a>x</span></code></pre></div>
+<div class="sourceCode" id="cb542"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb542-1"><a href="descriptives.html#cb542-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">14</span>, <span class="dv">12</span>, <span class="dv">5</span>, <span class="dv">3</span>, <span class="dv">6</span>, <span class="dv">11</span>, <span class="dv">15</span>, <span class="dv">9</span>, <span class="dv">5</span>, <span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">7</span>, <span class="dv">5</span>, <span class="dv">3</span>, <span class="dv">8</span>, <span class="dv">11</span>)</span>
+<span id="cb542-2"><a href="descriptives.html#cb542-2" aria-hidden="true" tabindex="-1"></a>x</span></code></pre></div>
 <pre><code>##  [1]  1 14 12  5  3  6 11 15  9  5  4  2  7  5  3  8 11</code></pre>
 <p>We can calculate the sample size using <code>length()</code>:</p>
-<div class="sourceCode" id="cb542"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb542-1"><a href="descriptives.html#cb542-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(x)</span></code></pre></div>
+<div class="sourceCode" id="cb544"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb544-1"><a href="descriptives.html#cb544-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(x)</span></code></pre></div>
 <pre><code>## [1] 17</code></pre>
 <p>We can see that the sample size is <span class="math inline">\(n=17\)</span>.</p>
 <div id="mode" class="section level3" number="6.3.1">
 <h3><span class="header-section-number">6.3.1</span> Mode</h3>
 <p>The <strong>mode</strong> or <strong>modal value</strong> of a distribution is the most frequent or most common value in a distribution. The number that appears the most times in our sample of data above is <code>5</code>. The mode is therefore 5. In our example, it’s possible to manually check all the values, but a quicker way to summarize the frequency count of each value in a vector in R is to use <code>table()</code> like this:</p>
-<div class="sourceCode" id="cb544"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb544-1"><a href="descriptives.html#cb544-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(x)</span></code></pre></div>
+<div class="sourceCode" id="cb546"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb546-1"><a href="descriptives.html#cb546-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(x)</span></code></pre></div>
 <pre><code>## x
 ##  1  2  3  4  5  6  7  8  9 11 12 14 15 
 ##  1  1  2  1  3  1  1  1  1  2  1  1  1</code></pre>
@@ -481,13 +481,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>To do this by hand, we would first order the data, and then work from the outside to the inside of the distribution, crossing off one from each end at a time. The image below shows how we’re doing that using different colors to show the crossing out:</p>
 <p><img src="img/des2.png" /></p>
 <p>In R, we have a quick shortcut for calculating the median, and it’s to use the function called <code>median()</code>:</p>
-<div class="sourceCode" id="cb546"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb546-1"><a href="descriptives.html#cb546-1" aria-hidden="true" tabindex="-1"></a><span class="fu">median</span>(x)</span></code></pre></div>
+<div class="sourceCode" id="cb548"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb548-1"><a href="descriptives.html#cb548-1" aria-hidden="true" tabindex="-1"></a><span class="fu">median</span>(x)</span></code></pre></div>
 <pre><code>## [1] 6</code></pre>
 <p>If we have an even number of values in our distribution, then we take the average of the middle two values. For example, look at the image below. It has 12 numbers in the distribution, so we take the average of the 6th and 7th number:</p>
 <p><img src="img/des3.png" /></p>
 <p>Once we’ve crossed out each number going from outside to in, we’re left with the 6th and 7th numbers being 10 and 15. The average of these numbers is 12.5, so the median is 12.5. We can see that with <code>median()</code>:</p>
-<div class="sourceCode" id="cb548"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb548-1"><a href="descriptives.html#cb548-1" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">5</span>,<span class="dv">7</span>,<span class="dv">7</span>,<span class="dv">9</span>,<span class="dv">9</span>,<span class="dv">10</span>,<span class="dv">15</span>,<span class="dv">16</span>,<span class="dv">16</span>,<span class="dv">21</span>,<span class="dv">21</span>,<span class="dv">22</span>)</span>
-<span id="cb548-2"><a href="descriptives.html#cb548-2" aria-hidden="true" tabindex="-1"></a><span class="fu">median</span>(y)</span></code></pre></div>
+<div class="sourceCode" id="cb550"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb550-1"><a href="descriptives.html#cb550-1" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">5</span>,<span class="dv">7</span>,<span class="dv">7</span>,<span class="dv">9</span>,<span class="dv">9</span>,<span class="dv">10</span>,<span class="dv">15</span>,<span class="dv">16</span>,<span class="dv">16</span>,<span class="dv">21</span>,<span class="dv">21</span>,<span class="dv">22</span>)</span>
+<span id="cb550-2"><a href="descriptives.html#cb550-2" aria-hidden="true" tabindex="-1"></a><span class="fu">median</span>(y)</span></code></pre></div>
 <pre><code>## [1] 12.5</code></pre>
 </div>
 <div id="mean" class="section level3" number="6.3.3">
@@ -498,15 +498,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><span class="math inline">\(\mu = \frac{\Sigma{x}}{N}\)</span></p>
 <p>Notice that we use <span class="math inline">\(\overline{x}\)</span> to denote the mean of a sample, and <span class="math inline">\(\mu\)</span> to denote the mean of a population. Despite these notation differences, the formula is essentially exactly the same.</p>
 <p>Let’s calculate the arithmetic mean of our distribution <code>x</code>:</p>
-<div class="sourceCode" id="cb550"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb550-1"><a href="descriptives.html#cb550-1" aria-hidden="true" tabindex="-1"></a>sum_of_x <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">+</span> <span class="dv">14</span> <span class="sc">+</span> <span class="dv">12</span> <span class="sc">+</span> <span class="dv">5</span> <span class="sc">+</span> <span class="dv">3</span> <span class="sc">+</span> <span class="dv">6</span> <span class="sc">+</span> <span class="dv">11</span> <span class="sc">+</span> <span class="dv">15</span> <span class="sc">+</span> <span class="dv">9</span> <span class="sc">+</span> <span class="dv">5</span> <span class="sc">+</span> <span class="dv">4</span> <span class="sc">+</span> <span class="dv">2</span> <span class="sc">+</span> <span class="dv">7</span> <span class="sc">+</span> <span class="dv">5</span> <span class="sc">+</span> <span class="dv">3</span> <span class="sc">+</span> <span class="dv">8</span> <span class="sc">+</span> <span class="dv">11</span></span>
-<span id="cb550-2"><a href="descriptives.html#cb550-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb550-3"><a href="descriptives.html#cb550-3" aria-hidden="true" tabindex="-1"></a>sum_of_x</span></code></pre></div>
+<div class="sourceCode" id="cb552"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb552-1"><a href="descriptives.html#cb552-1" aria-hidden="true" tabindex="-1"></a>sum_of_x <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">+</span> <span class="dv">14</span> <span class="sc">+</span> <span class="dv">12</span> <span class="sc">+</span> <span class="dv">5</span> <span class="sc">+</span> <span class="dv">3</span> <span class="sc">+</span> <span class="dv">6</span> <span class="sc">+</span> <span class="dv">11</span> <span class="sc">+</span> <span class="dv">15</span> <span class="sc">+</span> <span class="dv">9</span> <span class="sc">+</span> <span class="dv">5</span> <span class="sc">+</span> <span class="dv">4</span> <span class="sc">+</span> <span class="dv">2</span> <span class="sc">+</span> <span class="dv">7</span> <span class="sc">+</span> <span class="dv">5</span> <span class="sc">+</span> <span class="dv">3</span> <span class="sc">+</span> <span class="dv">8</span> <span class="sc">+</span> <span class="dv">11</span></span>
+<span id="cb552-2"><a href="descriptives.html#cb552-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb552-3"><a href="descriptives.html#cb552-3" aria-hidden="true" tabindex="-1"></a>sum_of_x</span></code></pre></div>
 <pre><code>## [1] 121</code></pre>
 <p>So, here <span class="math inline">\(\Sigma{x}=121\)</span>. That makes the mean:</p>
-<div class="sourceCode" id="cb552"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb552-1"><a href="descriptives.html#cb552-1" aria-hidden="true" tabindex="-1"></a>sum_of_x <span class="sc">/</span> <span class="dv">17</span></span></code></pre></div>
+<div class="sourceCode" id="cb554"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb554-1"><a href="descriptives.html#cb554-1" aria-hidden="true" tabindex="-1"></a>sum_of_x <span class="sc">/</span> <span class="dv">17</span></span></code></pre></div>
 <pre><code>## [1] 7.117647</code></pre>
 <p>This makes the mean <span class="math inline">\(\overline{x}=7.12\)</span>. The shortcut way of doing this in R, is to use the function <code>mean()</code>:</p>
-<div class="sourceCode" id="cb554"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb554-1"><a href="descriptives.html#cb554-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(x)</span></code></pre></div>
+<div class="sourceCode" id="cb556"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb556-1"><a href="descriptives.html#cb556-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(x)</span></code></pre></div>
 <pre><code>## [1] 7.117647</code></pre>
 <p>We’ll talk more about the pros and cons of the mean and median in future chapters.</p>
 </div>
@@ -521,11 +521,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>The problem with range as a measure can be illustrated by just adjusting our data distribution slightly. Say, instead of having a datapoint at 15, we had a value at 25. Now the range is 24 instead of 14. This suggests that the data is much more spread out, but in reality it is just one datapoint that is forcing the range to be much higher - the rest of the data is no more clumped or spread out. This is the major drawback of the range - it can be easily influenced by outliers - as illustrated below.</p>
 <p><img src="img/des5.png" /></p>
 <p>In R, we can calculate the minimum, maximum and range of a distribution using the functions <code>min()</code>, <code>max()</code> and <code>range()</code>. Although <code>range()</code> just gives us the minimum and maximum values, we have to do the rest:</p>
-<div class="sourceCode" id="cb556"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb556-1"><a href="descriptives.html#cb556-1" aria-hidden="true" tabindex="-1"></a><span class="fu">min</span>(x)</span></code></pre></div>
+<div class="sourceCode" id="cb558"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb558-1"><a href="descriptives.html#cb558-1" aria-hidden="true" tabindex="-1"></a><span class="fu">min</span>(x)</span></code></pre></div>
 <pre><code>## [1] 1</code></pre>
-<div class="sourceCode" id="cb558"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb558-1"><a href="descriptives.html#cb558-1" aria-hidden="true" tabindex="-1"></a><span class="fu">max</span>(x)</span></code></pre></div>
+<div class="sourceCode" id="cb560"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb560-1"><a href="descriptives.html#cb560-1" aria-hidden="true" tabindex="-1"></a><span class="fu">max</span>(x)</span></code></pre></div>
 <pre><code>## [1] 15</code></pre>
-<div class="sourceCode" id="cb560"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb560-1"><a href="descriptives.html#cb560-1" aria-hidden="true" tabindex="-1"></a><span class="fu">range</span>(x)</span></code></pre></div>
+<div class="sourceCode" id="cb562"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb562-1"><a href="descriptives.html#cb562-1" aria-hidden="true" tabindex="-1"></a><span class="fu">range</span>(x)</span></code></pre></div>
 <pre><code>## [1]  1 15</code></pre>
 </div>
 <div id="interquartile-range" class="section level3" number="6.4.2">
@@ -538,23 +538,23 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>With this distribution, we calculated the median to be 12.5 as the numbers 10 and 15th were the middle two values. Because of this, we include 10 in the bottom half and 15 in the top half. When we work out to in on each of these halves, we find that the median of the bottom half is 8 (the average of 7 and 9) and the median of the upper half is 18.5 (the average of 16 and 21). Therefore, the lower quartile is 8 and the upper quartile is 18.5, making the IQR equal to <span class="math inline">\(18.5-8=10.5\)</span>.</p>
 <p>The above explanation of how to calculate the IQR is actually just one way of trying to estimate the “middle 50%” of the data. With this way of doing it, the lower quartile represents the 25% percentile of the data (25% of values being lower than it and 75% of values being higher). The upper quartile represents the 75% percentile of the data (75% of values being lower than it and 25% being higher).</p>
 <p>Unfortunately, there are several ways of calculating the lower and upper quartiles and estimating where these 25% and 75% percentiles are. When we calculate them in R, the default method it uses is actually different to our ‘by hand’ method. To calculate quartiles, we use the function <code>quantile()</code> (note - not quartile!) but we have to put a second argument to say if we want the lower quartile or upper quartile.</p>
-<div class="sourceCode" id="cb562"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb562-1"><a href="descriptives.html#cb562-1" aria-hidden="true" tabindex="-1"></a><span class="fu">quantile</span>(x, <span class="fl">0.25</span>) <span class="co">#0.25 means lower quartile</span></span></code></pre></div>
+<div class="sourceCode" id="cb564"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb564-1"><a href="descriptives.html#cb564-1" aria-hidden="true" tabindex="-1"></a><span class="fu">quantile</span>(x, <span class="fl">0.25</span>) <span class="co">#0.25 means lower quartile</span></span></code></pre></div>
 <pre><code>## 25% 
 ##   4</code></pre>
-<div class="sourceCode" id="cb564"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb564-1"><a href="descriptives.html#cb564-1" aria-hidden="true" tabindex="-1"></a><span class="fu">quantile</span>(x, <span class="fl">0.75</span>) <span class="co">#0.75 means upper quartile</span></span></code></pre></div>
+<div class="sourceCode" id="cb566"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb566-1"><a href="descriptives.html#cb566-1" aria-hidden="true" tabindex="-1"></a><span class="fu">quantile</span>(x, <span class="fl">0.75</span>) <span class="co">#0.75 means upper quartile</span></span></code></pre></div>
 <pre><code>## 75% 
 ##  11</code></pre>
 <p>You can see these values are slightly different to our ‘by hand’ method. The upper quartile of <code>x</code> agrees with our method being 11. By hand we got the lower quartile to be 3.5, but R gives it as 4. This would make the IQR equal to <span class="math inline">\(11-4 =7\)</span>. The quick way of getting that in R is to use <code>IQR()</code>:</p>
-<div class="sourceCode" id="cb566"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb566-1"><a href="descriptives.html#cb566-1" aria-hidden="true" tabindex="-1"></a><span class="fu">IQR</span>(x)</span></code></pre></div>
+<div class="sourceCode" id="cb568"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb568-1"><a href="descriptives.html#cb568-1" aria-hidden="true" tabindex="-1"></a><span class="fu">IQR</span>(x)</span></code></pre></div>
 <pre><code>## [1] 7</code></pre>
 <p>We recommend using the R functions to calculate quartiles and interquartile ranges - it is a slightly stronger method than our by-hand method. You can actually do the by-hand method in R by adding <code>type=6</code> to the functions. There are actually nine different ways of calculating these in R - which is ridiculous!</p>
-<div class="sourceCode" id="cb568"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb568-1"><a href="descriptives.html#cb568-1" aria-hidden="true" tabindex="-1"></a><span class="fu">quantile</span>(x, <span class="fl">0.25</span>, <span class="at">type =</span> <span class="dv">6</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb570"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb570-1"><a href="descriptives.html#cb570-1" aria-hidden="true" tabindex="-1"></a><span class="fu">quantile</span>(x, <span class="fl">0.25</span>, <span class="at">type =</span> <span class="dv">6</span>)</span></code></pre></div>
 <pre><code>## 25% 
 ## 3.5</code></pre>
-<div class="sourceCode" id="cb570"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb570-1"><a href="descriptives.html#cb570-1" aria-hidden="true" tabindex="-1"></a><span class="fu">quantile</span>(x, <span class="fl">0.75</span>, <span class="at">type =</span> <span class="dv">6</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb572"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb572-1"><a href="descriptives.html#cb572-1" aria-hidden="true" tabindex="-1"></a><span class="fu">quantile</span>(x, <span class="fl">0.75</span>, <span class="at">type =</span> <span class="dv">6</span>)</span></code></pre></div>
 <pre><code>## 75% 
 ##  11</code></pre>
-<div class="sourceCode" id="cb572"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb572-1"><a href="descriptives.html#cb572-1" aria-hidden="true" tabindex="-1"></a><span class="fu">IQR</span>(x, <span class="at">type =</span> <span class="dv">6</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb574"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb574-1"><a href="descriptives.html#cb574-1" aria-hidden="true" tabindex="-1"></a><span class="fu">IQR</span>(x, <span class="at">type =</span> <span class="dv">6</span>)</span></code></pre></div>
 <pre><code>## [1] 7.5</code></pre>
 </div>
 <div id="average-deviation" class="section level3" number="6.4.3">
@@ -563,41 +563,41 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Look at the two distributions below. Both of them have means of 10. The top distribution (A) however is much more clumped than the bottom distribution (B) which is more spread out.</p>
 <p><img src="img/des8.png" /></p>
 <p>Let’s look at these in more detail. We’ll start with distribution A. We can calculate the difference of each datapoint from the mean (10) like this:</p>
-<div class="sourceCode" id="cb574"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb574-1"><a href="descriptives.html#cb574-1" aria-hidden="true" tabindex="-1"></a>A <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">5</span>,<span class="dv">8</span>,<span class="dv">8</span>,<span class="dv">9</span>,<span class="dv">9</span>,<span class="dv">10</span>,<span class="dv">10</span>,<span class="dv">11</span>,<span class="dv">12</span>,<span class="dv">12</span>,<span class="dv">12</span>,<span class="dv">14</span>)</span>
-<span id="cb574-2"><a href="descriptives.html#cb574-2" aria-hidden="true" tabindex="-1"></a>A <span class="sc">-</span> <span class="fu">mean</span>(A)</span></code></pre></div>
+<div class="sourceCode" id="cb576"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb576-1"><a href="descriptives.html#cb576-1" aria-hidden="true" tabindex="-1"></a>A <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">5</span>,<span class="dv">8</span>,<span class="dv">8</span>,<span class="dv">9</span>,<span class="dv">9</span>,<span class="dv">10</span>,<span class="dv">10</span>,<span class="dv">11</span>,<span class="dv">12</span>,<span class="dv">12</span>,<span class="dv">12</span>,<span class="dv">14</span>)</span>
+<span id="cb576-2"><a href="descriptives.html#cb576-2" aria-hidden="true" tabindex="-1"></a>A <span class="sc">-</span> <span class="fu">mean</span>(A)</span></code></pre></div>
 <pre><code>##  [1] -5 -2 -2 -1 -1  0  0  1  2  2  2  4</code></pre>
 <p>If we add up all of those differences from the mean, then they will equal 0. We can show this like this:</p>
-<div class="sourceCode" id="cb576"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb576-1"><a href="descriptives.html#cb576-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(A <span class="sc">-</span> <span class="fu">mean</span>(A))</span></code></pre></div>
+<div class="sourceCode" id="cb578"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb578-1"><a href="descriptives.html#cb578-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(A <span class="sc">-</span> <span class="fu">mean</span>(A))</span></code></pre></div>
 <pre><code>## [1] 0</code></pre>
 <p>A way to count up all the differences from the mean and to make sure that they count is to make each number positive regardless of its sign. We can do this using <code>abs()</code> in R:</p>
-<div class="sourceCode" id="cb578"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb578-1"><a href="descriptives.html#cb578-1" aria-hidden="true" tabindex="-1"></a><span class="fu">abs</span>(A <span class="sc">-</span> <span class="fu">mean</span>(A))</span></code></pre></div>
+<div class="sourceCode" id="cb580"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb580-1"><a href="descriptives.html#cb580-1" aria-hidden="true" tabindex="-1"></a><span class="fu">abs</span>(A <span class="sc">-</span> <span class="fu">mean</span>(A))</span></code></pre></div>
 <pre><code>##  [1] 5 2 2 1 1 0 0 1 2 2 2 4</code></pre>
 <p>When we sum all of these values up, we get the total of all the differences from the mean of each datapoint:</p>
-<div class="sourceCode" id="cb580"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb580-1"><a href="descriptives.html#cb580-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">abs</span>(A <span class="sc">-</span> <span class="fu">mean</span>(A)))</span></code></pre></div>
+<div class="sourceCode" id="cb582"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb582-1"><a href="descriptives.html#cb582-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">abs</span>(A <span class="sc">-</span> <span class="fu">mean</span>(A)))</span></code></pre></div>
 <pre><code>## [1] 22</code></pre>
 <p>We see that this total is 22. In formula notation, we find that <span class="math inline">\(\Sigma|(x - \overline{\mu})|\)</span>. Here <span class="math inline">\(x\)</span> represents each datapoint. <span class="math inline">\(\overline{\mu}\)</span> represents the population mean. <span class="math inline">\(| |\)</span> represents ‘take the absolute values of’, and <span class="math inline">\(\Sigma\)</span> means “sum up”.</p>
 <p>To get the “average deviation” we simply divide our sum of difference scores by the number of datapoints, which is 12 in this case. The formula for average deviation is:</p>
 <p><span class="math inline">\(AD = \frac{\Sigma|(x - \overline{\mu})|}{N}\)</span></p>
-<div class="sourceCode" id="cb582"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb582-1"><a href="descriptives.html#cb582-1" aria-hidden="true" tabindex="-1"></a><span class="dv">22</span><span class="sc">/</span><span class="dv">12</span></span></code></pre></div>
+<div class="sourceCode" id="cb584"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb584-1"><a href="descriptives.html#cb584-1" aria-hidden="true" tabindex="-1"></a><span class="dv">22</span><span class="sc">/</span><span class="dv">12</span></span></code></pre></div>
 <pre><code>## [1] 1.833333</code></pre>
 <p>Our average deviation is therefore 1.83. This can be interpreted as each datapoint being on average 1.83 units away from the mean of 10.</p>
 <p>Another way to have got the <span class="math inline">\(N\)</span> would have been to use <code>length()</code> which counts the number of datapoints:</p>
-<div class="sourceCode" id="cb584"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb584-1"><a href="descriptives.html#cb584-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">abs</span>(A <span class="sc">-</span> <span class="fu">mean</span>(A))) <span class="sc">/</span> <span class="fu">length</span>(A)</span></code></pre></div>
+<div class="sourceCode" id="cb586"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb586-1"><a href="descriptives.html#cb586-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">abs</span>(A <span class="sc">-</span> <span class="fu">mean</span>(A))) <span class="sc">/</span> <span class="fu">length</span>(A)</span></code></pre></div>
 <pre><code>## [1] 1.833333</code></pre>
 <p>We could do the same for distribution B. Calculate the sum of all the difference scores, and then divide by the <span class="math inline">\(N\)</span>:</p>
-<div class="sourceCode" id="cb586"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb586-1"><a href="descriptives.html#cb586-1" aria-hidden="true" tabindex="-1"></a>B <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">6</span>,<span class="dv">8</span>,<span class="dv">10</span>,<span class="dv">11</span>,<span class="dv">12</span>,<span class="dv">13</span>,<span class="dv">15</span>,<span class="dv">17</span>,<span class="dv">19</span>)</span>
-<span id="cb586-2"><a href="descriptives.html#cb586-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb586-3"><a href="descriptives.html#cb586-3" aria-hidden="true" tabindex="-1"></a><span class="co">#difference scores</span></span>
-<span id="cb586-4"><a href="descriptives.html#cb586-4" aria-hidden="true" tabindex="-1"></a>B <span class="sc">-</span> <span class="fu">mean</span>(B)</span></code></pre></div>
+<div class="sourceCode" id="cb588"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb588-1"><a href="descriptives.html#cb588-1" aria-hidden="true" tabindex="-1"></a>B <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">6</span>,<span class="dv">8</span>,<span class="dv">10</span>,<span class="dv">11</span>,<span class="dv">12</span>,<span class="dv">13</span>,<span class="dv">15</span>,<span class="dv">17</span>,<span class="dv">19</span>)</span>
+<span id="cb588-2"><a href="descriptives.html#cb588-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb588-3"><a href="descriptives.html#cb588-3" aria-hidden="true" tabindex="-1"></a><span class="co">#difference scores</span></span>
+<span id="cb588-4"><a href="descriptives.html#cb588-4" aria-hidden="true" tabindex="-1"></a>B <span class="sc">-</span> <span class="fu">mean</span>(B)</span></code></pre></div>
 <pre><code>##  [1] -8 -7 -6 -4 -2  0  1  2  3  5  7  9</code></pre>
-<div class="sourceCode" id="cb588"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb588-1"><a href="descriptives.html#cb588-1" aria-hidden="true" tabindex="-1"></a><span class="co"># absolute difference scores</span></span>
-<span id="cb588-2"><a href="descriptives.html#cb588-2" aria-hidden="true" tabindex="-1"></a><span class="fu">abs</span>(B <span class="sc">-</span> <span class="fu">mean</span>(B))</span></code></pre></div>
+<div class="sourceCode" id="cb590"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb590-1"><a href="descriptives.html#cb590-1" aria-hidden="true" tabindex="-1"></a><span class="co"># absolute difference scores</span></span>
+<span id="cb590-2"><a href="descriptives.html#cb590-2" aria-hidden="true" tabindex="-1"></a><span class="fu">abs</span>(B <span class="sc">-</span> <span class="fu">mean</span>(B))</span></code></pre></div>
 <pre><code>##  [1] 8 7 6 4 2 0 1 2 3 5 7 9</code></pre>
-<div class="sourceCode" id="cb590"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb590-1"><a href="descriptives.html#cb590-1" aria-hidden="true" tabindex="-1"></a><span class="co"># sum of absolute difference scores</span></span>
-<span id="cb590-2"><a href="descriptives.html#cb590-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">abs</span>(B <span class="sc">-</span> <span class="fu">mean</span>(B)))</span></code></pre></div>
+<div class="sourceCode" id="cb592"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb592-1"><a href="descriptives.html#cb592-1" aria-hidden="true" tabindex="-1"></a><span class="co"># sum of absolute difference scores</span></span>
+<span id="cb592-2"><a href="descriptives.html#cb592-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">abs</span>(B <span class="sc">-</span> <span class="fu">mean</span>(B)))</span></code></pre></div>
 <pre><code>## [1] 54</code></pre>
-<div class="sourceCode" id="cb592"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb592-1"><a href="descriptives.html#cb592-1" aria-hidden="true" tabindex="-1"></a><span class="co"># average deviation</span></span>
-<span id="cb592-2"><a href="descriptives.html#cb592-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">abs</span>(B <span class="sc">-</span> <span class="fu">mean</span>(B))) <span class="sc">/</span> <span class="fu">length</span>(B)</span></code></pre></div>
+<div class="sourceCode" id="cb594"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb594-1"><a href="descriptives.html#cb594-1" aria-hidden="true" tabindex="-1"></a><span class="co"># average deviation</span></span>
+<span id="cb594-2"><a href="descriptives.html#cb594-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">abs</span>(B <span class="sc">-</span> <span class="fu">mean</span>(B))) <span class="sc">/</span> <span class="fu">length</span>(B)</span></code></pre></div>
 <pre><code>## [1] 4.5</code></pre>
 <p>Here, the total sum of differences from the mean is 54. The average deviation is 4.5. This value being higher than 1.83, shows that distribution B is more spread out than distribution A, which makes sense just looking at the dotplots of the data.</p>
 </div>
@@ -606,42 +606,42 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>An alternative, and much more common method of calculating the ‘deviation’ from the mean of the average datapoint is the standard deviation. This is very similar to the absolute deviation, but the method of making the difference scores positive is different. In average deviation, we just ignore the sign of the difference scores and we make everything positive (this is called taking the absolute value). In standard deviation the method used to make these difference scores positive is to square them.</p>
 <p>Let’s look at how this one works for our two distributions. We’ll start with distribution A again.</p>
 <p>First step, is again to get the difference scores, by taking each datapoint away from the mean of the distribution:</p>
-<div class="sourceCode" id="cb594"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb594-1"><a href="descriptives.html#cb594-1" aria-hidden="true" tabindex="-1"></a>A <span class="sc">-</span> <span class="fu">mean</span>(A)</span></code></pre></div>
+<div class="sourceCode" id="cb596"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb596-1"><a href="descriptives.html#cb596-1" aria-hidden="true" tabindex="-1"></a>A <span class="sc">-</span> <span class="fu">mean</span>(A)</span></code></pre></div>
 <pre><code>##  [1] -5 -2 -2 -1 -1  0  0  1  2  2  2  4</code></pre>
 <p>Next, we square these difference scores to get positive values:</p>
-<div class="sourceCode" id="cb596"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb596-1"><a href="descriptives.html#cb596-1" aria-hidden="true" tabindex="-1"></a>(A <span class="sc">-</span> <span class="fu">mean</span>(A))<span class="sc">^</span><span class="dv">2</span></span></code></pre></div>
+<div class="sourceCode" id="cb598"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb598-1"><a href="descriptives.html#cb598-1" aria-hidden="true" tabindex="-1"></a>(A <span class="sc">-</span> <span class="fu">mean</span>(A))<span class="sc">^</span><span class="dv">2</span></span></code></pre></div>
 <pre><code>##  [1] 25  4  4  1  1  0  0  1  4  4  4 16</code></pre>
 <p>Notice that the datapoints that are furthest from the mean get proportionally larger than values that are close to the mean. Squaring has this effect.</p>
 <p>We need to sum these “squared differences” to get a measure of how much deviation there is in total - this figure can also be called the <strong>Sum of Squares</strong> or <strong>Sum of Squared Differences</strong>:</p>
-<div class="sourceCode" id="cb598"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb598-1"><a href="descriptives.html#cb598-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>((A <span class="sc">-</span> <span class="fu">mean</span>(A))<span class="sc">^</span><span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb600"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb600-1"><a href="descriptives.html#cb600-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>((A <span class="sc">-</span> <span class="fu">mean</span>(A))<span class="sc">^</span><span class="dv">2</span>)</span></code></pre></div>
 <pre><code>## [1] 64</code></pre>
 <p>The total of the squared differences is 64. The notation for this is:</p>
 <p><span class="math inline">\(\Sigma(x-\mu)^2\)</span></p>
 <p>To get a sense of the average squared difference, we then divide the total of the squared differences by our <span class="math inline">\(N\)</span>:</p>
-<div class="sourceCode" id="cb600"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb600-1"><a href="descriptives.html#cb600-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>((A <span class="sc">-</span> <span class="fu">mean</span>(A))<span class="sc">^</span><span class="dv">2</span>) <span class="sc">/</span> <span class="dv">12</span></span></code></pre></div>
+<div class="sourceCode" id="cb602"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb602-1"><a href="descriptives.html#cb602-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>((A <span class="sc">-</span> <span class="fu">mean</span>(A))<span class="sc">^</span><span class="dv">2</span>) <span class="sc">/</span> <span class="dv">12</span></span></code></pre></div>
 <pre><code>## [1] 5.333333</code></pre>
 <p>The average squared difference is 5.33. The notation for this is <span class="math inline">\(\frac{\Sigma(x-\mu)^2}{N}\)</span>.</p>
 <p>This is a useful measure of deviation, but unfortunately it is still in the units of “squared differences”. To get it back to the original units of the distribution we just square root it and we call this the “standard deviation”:</p>
-<div class="sourceCode" id="cb602"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb602-1"><a href="descriptives.html#cb602-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sqrt</span>(<span class="fl">5.333333</span>) </span></code></pre></div>
+<div class="sourceCode" id="cb604"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb604-1"><a href="descriptives.html#cb604-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sqrt</span>(<span class="fl">5.333333</span>) </span></code></pre></div>
 <pre><code>## [1] 2.309401</code></pre>
 <p>The standard deviation <span class="math inline">\(\sigma=2.309\)</span>. The notation for this is:</p>
 <p><span class="math inline">\(\sigma = \sqrt{\frac{\Sigma(x-\mu)^2}{N}}\)</span></p>
 <p>We are using <span class="math inline">\(\sigma\)</span> to represent the <strong>population standard deviation</strong>.</p>
 <p>We can do the same thing for our population B. Let’s calculate the difference scores, then square them, then add them up, then divide by <span class="math inline">\(N\)</span>, and finally square root:</p>
-<div class="sourceCode" id="cb604"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb604-1"><a href="descriptives.html#cb604-1" aria-hidden="true" tabindex="-1"></a><span class="co"># difference scores</span></span>
-<span id="cb604-2"><a href="descriptives.html#cb604-2" aria-hidden="true" tabindex="-1"></a>B <span class="sc">-</span> <span class="fu">mean</span>(B)</span></code></pre></div>
+<div class="sourceCode" id="cb606"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb606-1"><a href="descriptives.html#cb606-1" aria-hidden="true" tabindex="-1"></a><span class="co"># difference scores</span></span>
+<span id="cb606-2"><a href="descriptives.html#cb606-2" aria-hidden="true" tabindex="-1"></a>B <span class="sc">-</span> <span class="fu">mean</span>(B)</span></code></pre></div>
 <pre><code>##  [1] -8 -7 -6 -4 -2  0  1  2  3  5  7  9</code></pre>
-<div class="sourceCode" id="cb606"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb606-1"><a href="descriptives.html#cb606-1" aria-hidden="true" tabindex="-1"></a><span class="co"># squared difference scores</span></span>
-<span id="cb606-2"><a href="descriptives.html#cb606-2" aria-hidden="true" tabindex="-1"></a>(B <span class="sc">-</span> <span class="fu">mean</span>(B))<span class="sc">^</span><span class="dv">2</span></span></code></pre></div>
+<div class="sourceCode" id="cb608"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb608-1"><a href="descriptives.html#cb608-1" aria-hidden="true" tabindex="-1"></a><span class="co"># squared difference scores</span></span>
+<span id="cb608-2"><a href="descriptives.html#cb608-2" aria-hidden="true" tabindex="-1"></a>(B <span class="sc">-</span> <span class="fu">mean</span>(B))<span class="sc">^</span><span class="dv">2</span></span></code></pre></div>
 <pre><code>##  [1] 64 49 36 16  4  0  1  4  9 25 49 81</code></pre>
-<div class="sourceCode" id="cb608"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb608-1"><a href="descriptives.html#cb608-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Sum of squared differences</span></span>
-<span id="cb608-2"><a href="descriptives.html#cb608-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>((B <span class="sc">-</span> <span class="fu">mean</span>(B))<span class="sc">^</span><span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb610"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb610-1"><a href="descriptives.html#cb610-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Sum of squared differences</span></span>
+<span id="cb610-2"><a href="descriptives.html#cb610-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>((B <span class="sc">-</span> <span class="fu">mean</span>(B))<span class="sc">^</span><span class="dv">2</span>)</span></code></pre></div>
 <pre><code>## [1] 338</code></pre>
-<div class="sourceCode" id="cb610"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb610-1"><a href="descriptives.html#cb610-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Average squared difference</span></span>
-<span id="cb610-2"><a href="descriptives.html#cb610-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>((B <span class="sc">-</span> <span class="fu">mean</span>(B))<span class="sc">^</span><span class="dv">2</span>) <span class="sc">/</span> <span class="dv">12</span></span></code></pre></div>
+<div class="sourceCode" id="cb612"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb612-1"><a href="descriptives.html#cb612-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Average squared difference</span></span>
+<span id="cb612-2"><a href="descriptives.html#cb612-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>((B <span class="sc">-</span> <span class="fu">mean</span>(B))<span class="sc">^</span><span class="dv">2</span>) <span class="sc">/</span> <span class="dv">12</span></span></code></pre></div>
 <pre><code>## [1] 28.16667</code></pre>
-<div class="sourceCode" id="cb612"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb612-1"><a href="descriptives.html#cb612-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Standard Deviation</span></span>
-<span id="cb612-2"><a href="descriptives.html#cb612-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sqrt</span>(<span class="fu">sum</span>((B <span class="sc">-</span> <span class="fu">mean</span>(B))<span class="sc">^</span><span class="dv">2</span>) <span class="sc">/</span> <span class="dv">12</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb614"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb614-1"><a href="descriptives.html#cb614-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Standard Deviation</span></span>
+<span id="cb614-2"><a href="descriptives.html#cb614-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sqrt</span>(<span class="fu">sum</span>((B <span class="sc">-</span> <span class="fu">mean</span>(B))<span class="sc">^</span><span class="dv">2</span>) <span class="sc">/</span> <span class="dv">12</span>)</span></code></pre></div>
 <pre><code>## [1] 5.307228</code></pre>
 <p>The population standard deviation <span class="math inline">\(\sigma\)</span> for population B is 5.31. Again, as this value is higher than 2.31 this suggests that population B is more spread out than population A, because its datapoints are on average further from the mean.</p>
 </div>
@@ -666,44 +666,44 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Notice two things. First, we use the notation <span class="math inline">\(s\)</span> to indicate a sample standard deviation. Second, instead of dividing by <span class="math inline">\(N\)</span> in the formula, we divide by <span class="math inline">\(n-1\)</span>.</p>
 <p>So, for our example data distribution of <code>A</code>, this is how we would calculate <span class="math inline">\(s\)</span>:</p>
 <p>First, we get the difference scores, by subtracting the mean of the distribution from each score:</p>
-<div class="sourceCode" id="cb614"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb614-1"><a href="descriptives.html#cb614-1" aria-hidden="true" tabindex="-1"></a><span class="co">#difference scores</span></span>
-<span id="cb614-2"><a href="descriptives.html#cb614-2" aria-hidden="true" tabindex="-1"></a>A <span class="sc">-</span> <span class="fu">mean</span>(A)</span></code></pre></div>
+<div class="sourceCode" id="cb616"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb616-1"><a href="descriptives.html#cb616-1" aria-hidden="true" tabindex="-1"></a><span class="co">#difference scores</span></span>
+<span id="cb616-2"><a href="descriptives.html#cb616-2" aria-hidden="true" tabindex="-1"></a>A <span class="sc">-</span> <span class="fu">mean</span>(A)</span></code></pre></div>
 <pre><code>##  [1] -5 -2 -2 -1 -1  0  0  1  2  2  2  4</code></pre>
 <p>Second, we square these difference scores to make them positive and to emphasize larger difference scores:</p>
-<div class="sourceCode" id="cb616"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb616-1"><a href="descriptives.html#cb616-1" aria-hidden="true" tabindex="-1"></a><span class="co">#square the difference scores</span></span>
-<span id="cb616-2"><a href="descriptives.html#cb616-2" aria-hidden="true" tabindex="-1"></a>(A <span class="sc">-</span> <span class="fu">mean</span>(A))<span class="sc">^</span><span class="dv">2</span></span></code></pre></div>
+<div class="sourceCode" id="cb618"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb618-1"><a href="descriptives.html#cb618-1" aria-hidden="true" tabindex="-1"></a><span class="co">#square the difference scores</span></span>
+<span id="cb618-2"><a href="descriptives.html#cb618-2" aria-hidden="true" tabindex="-1"></a>(A <span class="sc">-</span> <span class="fu">mean</span>(A))<span class="sc">^</span><span class="dv">2</span></span></code></pre></div>
 <pre><code>##  [1] 25  4  4  1  1  0  0  1  4  4  4 16</code></pre>
 <p>Third, we sum up all the squared difference scores:</p>
-<div class="sourceCode" id="cb618"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb618-1"><a href="descriptives.html#cb618-1" aria-hidden="true" tabindex="-1"></a><span class="co">#sum the squared difference scores</span></span>
-<span id="cb618-2"><a href="descriptives.html#cb618-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>((A <span class="sc">-</span> <span class="fu">mean</span>(A))<span class="sc">^</span><span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb620"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb620-1"><a href="descriptives.html#cb620-1" aria-hidden="true" tabindex="-1"></a><span class="co">#sum the squared difference scores</span></span>
+<span id="cb620-2"><a href="descriptives.html#cb620-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>((A <span class="sc">-</span> <span class="fu">mean</span>(A))<span class="sc">^</span><span class="dv">2</span>)</span></code></pre></div>
 <pre><code>## [1] 64</code></pre>
 <p>Fourth, we divide this sum by <span class="math inline">\(n-1\)</span>, which technically gives us the variance:</p>
-<div class="sourceCode" id="cb620"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb620-1"><a href="descriptives.html#cb620-1" aria-hidden="true" tabindex="-1"></a><span class="co">#divide by n-1 to get the variance</span></span>
-<span id="cb620-2"><a href="descriptives.html#cb620-2" aria-hidden="true" tabindex="-1"></a><span class="co"># the &#39;n&#39; is 12 here</span></span>
-<span id="cb620-3"><a href="descriptives.html#cb620-3" aria-hidden="true" tabindex="-1"></a>(<span class="fu">sum</span>((A <span class="sc">-</span> <span class="fu">mean</span>(A))<span class="sc">^</span><span class="dv">2</span>))<span class="sc">/</span>(<span class="dv">12-1</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb622"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb622-1"><a href="descriptives.html#cb622-1" aria-hidden="true" tabindex="-1"></a><span class="co">#divide by n-1 to get the variance</span></span>
+<span id="cb622-2"><a href="descriptives.html#cb622-2" aria-hidden="true" tabindex="-1"></a><span class="co"># the &#39;n&#39; is 12 here</span></span>
+<span id="cb622-3"><a href="descriptives.html#cb622-3" aria-hidden="true" tabindex="-1"></a>(<span class="fu">sum</span>((A <span class="sc">-</span> <span class="fu">mean</span>(A))<span class="sc">^</span><span class="dv">2</span>))<span class="sc">/</span>(<span class="dv">12-1</span>)</span></code></pre></div>
 <pre><code>## [1] 5.818182</code></pre>
 <p>Finally, we square root this value to get the sample standard deviation - a measure of the typical deviation of each datapoint from the mean:</p>
-<div class="sourceCode" id="cb622"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb622-1"><a href="descriptives.html#cb622-1" aria-hidden="true" tabindex="-1"></a><span class="co">#square root to get the SD</span></span>
-<span id="cb622-2"><a href="descriptives.html#cb622-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sqrt</span>((<span class="fu">sum</span>((A <span class="sc">-</span> <span class="fu">mean</span>(A))<span class="sc">^</span><span class="dv">2</span>))<span class="sc">/</span>(<span class="dv">12-1</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb624"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb624-1"><a href="descriptives.html#cb624-1" aria-hidden="true" tabindex="-1"></a><span class="co">#square root to get the SD</span></span>
+<span id="cb624-2"><a href="descriptives.html#cb624-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sqrt</span>((<span class="fu">sum</span>((A <span class="sc">-</span> <span class="fu">mean</span>(A))<span class="sc">^</span><span class="dv">2</span>))<span class="sc">/</span>(<span class="dv">12-1</span>))</span></code></pre></div>
 <pre><code>## [1] 2.412091</code></pre>
 <p>Here we have manually calculated the sample standard deviation <span class="math inline">\(s=2.412\)</span>. Earlier in this chapter we calculated the population standard deviation of this same distribution to be <span class="math inline">\(\sigma=2.309\)</span>. Notice that the sample standard deviation <span class="math inline">\(s\)</span> is larger than the population standard deviation <span class="math inline">\(\sigma\)</span>. This is because <span class="math inline">\(n-1\)</span> will always be smaller than <span class="math inline">\(N\)</span>, inflating the final result.</p>
 <p>So far, we haven’t shown you the shortcut for calculating the standard deviation in R. It’s actually just the function <code>sd()</code>:</p>
-<div class="sourceCode" id="cb624"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb624-1"><a href="descriptives.html#cb624-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(A)</span></code></pre></div>
+<div class="sourceCode" id="cb626"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb626-1"><a href="descriptives.html#cb626-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(A)</span></code></pre></div>
 <pre><code>## [1] 2.412091</code></pre>
 <p>Hopefully you notice that the output of <code>sd()</code> is the sample standard deviation and not the population standard deviation.</p>
 <p>There is actually no built in function for calculating the population standard deviation <span class="math inline">\(\sigma\)</span> in R. The below code is a custom function to calculate it that we made. It’s called <code>pop.sd()</code>.</p>
-<div class="sourceCode" id="cb626"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb626-1"><a href="descriptives.html#cb626-1" aria-hidden="true" tabindex="-1"></a><span class="co"># this is a custom function to calculate</span></span>
-<span id="cb626-2"><a href="descriptives.html#cb626-2" aria-hidden="true" tabindex="-1"></a><span class="co"># the population standard deviation </span></span>
-<span id="cb626-3"><a href="descriptives.html#cb626-3" aria-hidden="true" tabindex="-1"></a> pop.sd <span class="ot">&lt;-</span> <span class="cf">function</span>(s) { </span>
-<span id="cb626-4"><a href="descriptives.html#cb626-4" aria-hidden="true" tabindex="-1"></a>   <span class="fu">sqrt</span>(<span class="fu">sum</span>((s <span class="sc">-</span> <span class="fu">mean</span>(s))<span class="sc">^</span><span class="dv">2</span>)<span class="sc">/</span><span class="fu">length</span>(s)) </span>
-<span id="cb626-5"><a href="descriptives.html#cb626-5" aria-hidden="true" tabindex="-1"></a> } </span></code></pre></div>
+<div class="sourceCode" id="cb628"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb628-1"><a href="descriptives.html#cb628-1" aria-hidden="true" tabindex="-1"></a><span class="co"># this is a custom function to calculate</span></span>
+<span id="cb628-2"><a href="descriptives.html#cb628-2" aria-hidden="true" tabindex="-1"></a><span class="co"># the population standard deviation </span></span>
+<span id="cb628-3"><a href="descriptives.html#cb628-3" aria-hidden="true" tabindex="-1"></a> pop.sd <span class="ot">&lt;-</span> <span class="cf">function</span>(s) { </span>
+<span id="cb628-4"><a href="descriptives.html#cb628-4" aria-hidden="true" tabindex="-1"></a>   <span class="fu">sqrt</span>(<span class="fu">sum</span>((s <span class="sc">-</span> <span class="fu">mean</span>(s))<span class="sc">^</span><span class="dv">2</span>)<span class="sc">/</span><span class="fu">length</span>(s)) </span>
+<span id="cb628-5"><a href="descriptives.html#cb628-5" aria-hidden="true" tabindex="-1"></a> } </span></code></pre></div>
 <p>When we look at the population standard deviation of A we can see that it matches what we worked out by hand earlier:</p>
-<div class="sourceCode" id="cb627"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb627-1"><a href="descriptives.html#cb627-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pop.sd</span>(A) </span></code></pre></div>
+<div class="sourceCode" id="cb629"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb629-1"><a href="descriptives.html#cb629-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pop.sd</span>(A) </span></code></pre></div>
 <pre><code>## [1] 2.309401</code></pre>
 <p>Let’s look at distribution B for its sample and population standard deviations:</p>
-<div class="sourceCode" id="cb629"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb629-1"><a href="descriptives.html#cb629-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(B)</span></code></pre></div>
+<div class="sourceCode" id="cb631"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb631-1"><a href="descriptives.html#cb631-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(B)</span></code></pre></div>
 <pre><code>## [1] 5.543219</code></pre>
-<div class="sourceCode" id="cb631"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb631-1"><a href="descriptives.html#cb631-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pop.sd</span>(B)</span></code></pre></div>
+<div class="sourceCode" id="cb633"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb633-1"><a href="descriptives.html#cb633-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pop.sd</span>(B)</span></code></pre></div>
 <pre><code>## [1] 5.307228</code></pre>
 <p>Again you can see that <span class="math inline">\(s=5.543\)</span> is greater than <span class="math inline">\(\sigma=5.307\)</span>. Both these values are higher than the standard deviations for distribution A, indicating that distribution B is more spread out and less clumped than distribution A.</p>
 </div>
@@ -721,61 +721,61 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Population mean:<br />
 <span class="math inline">\(\Large \mu = \frac{\Sigma{x}}{N}\)</span></p>
 <p>Let’s assume the following data distribution is our population, we’ll call it <code>pop</code>. The following code creates a population of 10000 numbers drawn from a random normal distribution (see section <a href="distributions.html#normal-distribution">7.0.3</a>) with a population mean of 8 and population standard deviation of 2. Because we’re randomly drawing numbers to make our population, the final population won’t have a mean and standard deviation that are precisely 8 and 2, but we can calculate what they turn out to be:</p>
-<div class="sourceCode" id="cb633"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb633-1"><a href="descriptives.html#cb633-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1</span>) <span class="co"># just so we all get the same results</span></span>
-<span id="cb633-2"><a href="descriptives.html#cb633-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb633-3"><a href="descriptives.html#cb633-3" aria-hidden="true" tabindex="-1"></a>pop <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">10000</span>, <span class="at">mean =</span> <span class="dv">8</span>, <span class="at">sd =</span> <span class="dv">2</span>) <span class="co">#100 random numbers with mean of 8, popSD of 2.</span></span></code></pre></div>
+<div class="sourceCode" id="cb635"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb635-1"><a href="descriptives.html#cb635-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1</span>) <span class="co"># just so we all get the same results</span></span>
+<span id="cb635-2"><a href="descriptives.html#cb635-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb635-3"><a href="descriptives.html#cb635-3" aria-hidden="true" tabindex="-1"></a>pop <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">10000</span>, <span class="at">mean =</span> <span class="dv">8</span>, <span class="at">sd =</span> <span class="dv">2</span>) <span class="co">#100 random numbers with mean of 8, popSD of 2.</span></span></code></pre></div>
 <p>We now have our population of size <span class="math inline">\(N=10000\)</span>. We can precisely calculate the population mean <span class="math inline">\(\mu\)</span> and population standard deviation <span class="math inline">\(\sigma\)</span> of our 10000 numbers using <code>mean()</code> and <code>pop.sd()</code>:</p>
-<div class="sourceCode" id="cb634"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb634-1"><a href="descriptives.html#cb634-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(pop)      </span></code></pre></div>
+<div class="sourceCode" id="cb636"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb636-1"><a href="descriptives.html#cb636-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(pop)      </span></code></pre></div>
 <pre><code>## [1] 7.986926</code></pre>
-<div class="sourceCode" id="cb636"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb636-1"><a href="descriptives.html#cb636-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pop.sd</span>(pop) </span></code></pre></div>
+<div class="sourceCode" id="cb638"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb638-1"><a href="descriptives.html#cb638-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pop.sd</span>(pop) </span></code></pre></div>
 <pre><code>## [1] 2.024612</code></pre>
 <p>So our population has a mean <span class="math inline">\(\mu=7.99\)</span> and population standard deviation <span class="math inline">\(\sigma=2.02\)</span>.</p>
 <p>Let’s now start taking samples. We’ll just choose samples of size <span class="math inline">\(n=10\)</span>. We can get samples using <code>sample()</code> in R. Let’s look at the sample mean of each sample:</p>
-<div class="sourceCode" id="cb638"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb638-1"><a href="descriptives.html#cb638-1" aria-hidden="true" tabindex="-1"></a><span class="co">#first sample</span></span>
-<span id="cb638-2"><a href="descriptives.html#cb638-2" aria-hidden="true" tabindex="-1"></a>samp1 <span class="ot">&lt;-</span> <span class="fu">sample</span>(pop, <span class="at">size =</span> <span class="dv">10</span>, <span class="at">replace =</span> T)</span>
-<span id="cb638-3"><a href="descriptives.html#cb638-3" aria-hidden="true" tabindex="-1"></a>samp1</span></code></pre></div>
+<div class="sourceCode" id="cb640"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb640-1"><a href="descriptives.html#cb640-1" aria-hidden="true" tabindex="-1"></a><span class="co">#first sample</span></span>
+<span id="cb640-2"><a href="descriptives.html#cb640-2" aria-hidden="true" tabindex="-1"></a>samp1 <span class="ot">&lt;-</span> <span class="fu">sample</span>(pop, <span class="at">size =</span> <span class="dv">10</span>, <span class="at">replace =</span> T)</span>
+<span id="cb640-3"><a href="descriptives.html#cb640-3" aria-hidden="true" tabindex="-1"></a>samp1</span></code></pre></div>
 <pre><code>##  [1]  3.722781  8.785220  6.045566 11.705993  7.297500  7.399121 11.976971
 ##  [8]  8.401657  6.306361  7.152555</code></pre>
-<div class="sourceCode" id="cb640"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb640-1"><a href="descriptives.html#cb640-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(samp1)</span></code></pre></div>
+<div class="sourceCode" id="cb642"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb642-1"><a href="descriptives.html#cb642-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(samp1)</span></code></pre></div>
 <pre><code>## [1] 7.879373</code></pre>
 <p>Here our sample mean <span class="math inline">\(\overline{x}=8.62\)</span> which is close-ish, but a fair bit above <span class="math inline">\(\mu=7.99\)</span>.</p>
 <p>Let’s do it again:</p>
-<div class="sourceCode" id="cb642"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb642-1"><a href="descriptives.html#cb642-1" aria-hidden="true" tabindex="-1"></a><span class="co">#second sample</span></span>
-<span id="cb642-2"><a href="descriptives.html#cb642-2" aria-hidden="true" tabindex="-1"></a>samp2 <span class="ot">&lt;-</span> <span class="fu">sample</span>(pop, <span class="at">size =</span> <span class="dv">10</span>, <span class="at">replace =</span> T)</span>
-<span id="cb642-3"><a href="descriptives.html#cb642-3" aria-hidden="true" tabindex="-1"></a>samp2</span></code></pre></div>
+<div class="sourceCode" id="cb644"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb644-1"><a href="descriptives.html#cb644-1" aria-hidden="true" tabindex="-1"></a><span class="co">#second sample</span></span>
+<span id="cb644-2"><a href="descriptives.html#cb644-2" aria-hidden="true" tabindex="-1"></a>samp2 <span class="ot">&lt;-</span> <span class="fu">sample</span>(pop, <span class="at">size =</span> <span class="dv">10</span>, <span class="at">replace =</span> T)</span>
+<span id="cb644-3"><a href="descriptives.html#cb644-3" aria-hidden="true" tabindex="-1"></a>samp2</span></code></pre></div>
 <pre><code>##  [1]  6.142884  7.614448  9.575279  9.072075  4.108463 10.599279  8.224608
 ##  [8]  6.735289  7.004465  7.791237</code></pre>
-<div class="sourceCode" id="cb644"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb644-1"><a href="descriptives.html#cb644-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(samp2)</span></code></pre></div>
+<div class="sourceCode" id="cb646"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb646-1"><a href="descriptives.html#cb646-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(samp2)</span></code></pre></div>
 <pre><code>## [1] 7.686803</code></pre>
 <p>Again our value of <span class="math inline">\(\overline{x}=8.10\)</span> is above <span class="math inline">\(\mu=7.99\)</span>, but this time much closer.</p>
 <p>Let’s do a third sample:</p>
-<div class="sourceCode" id="cb646"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb646-1"><a href="descriptives.html#cb646-1" aria-hidden="true" tabindex="-1"></a><span class="co">#third sample</span></span>
-<span id="cb646-2"><a href="descriptives.html#cb646-2" aria-hidden="true" tabindex="-1"></a>samp3 <span class="ot">&lt;-</span> <span class="fu">sample</span>(pop, <span class="at">size =</span> <span class="dv">10</span>, <span class="at">replace =</span> T)</span>
-<span id="cb646-3"><a href="descriptives.html#cb646-3" aria-hidden="true" tabindex="-1"></a>samp3</span></code></pre></div>
+<div class="sourceCode" id="cb648"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb648-1"><a href="descriptives.html#cb648-1" aria-hidden="true" tabindex="-1"></a><span class="co">#third sample</span></span>
+<span id="cb648-2"><a href="descriptives.html#cb648-2" aria-hidden="true" tabindex="-1"></a>samp3 <span class="ot">&lt;-</span> <span class="fu">sample</span>(pop, <span class="at">size =</span> <span class="dv">10</span>, <span class="at">replace =</span> T)</span>
+<span id="cb648-3"><a href="descriptives.html#cb648-3" aria-hidden="true" tabindex="-1"></a>samp3</span></code></pre></div>
 <pre><code>##  [1]  8.352818 12.802444 10.304643  6.061141  8.633719  8.028558  7.350359
 ##  [8]  5.904344  6.875784 11.512439</code></pre>
-<div class="sourceCode" id="cb648"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb648-1"><a href="descriptives.html#cb648-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(samp3)</span></code></pre></div>
+<div class="sourceCode" id="cb650"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb650-1"><a href="descriptives.html#cb650-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(samp3)</span></code></pre></div>
 <pre><code>## [1] 8.582625</code></pre>
 <p>This time our value of <span class="math inline">\(\overline{x}=7.86\)</span> is a bit below <span class="math inline">\(\mu=7.99\)</span>.</p>
 <p>What if we did this thousands and thousands of times? Would our sample mean be more often lower or higher than the population mean <span class="math inline">\(\mu=7.99\)</span>?</p>
 <p>This is what the code below is doing - it’s effectively grabbing a sample of size 10 and then calculating the sample mean, but it’s doing this 20,000 times. It’s storing all the sample means in an object called <code>results.means</code>.</p>
 <p>Note: you don’t need to know how this code works! though do reach out if you are interested.</p>
-<div class="sourceCode" id="cb650"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb650-1"><a href="descriptives.html#cb650-1" aria-hidden="true" tabindex="-1"></a>results.means<span class="ot">&lt;-</span> <span class="fu">vector</span>(<span class="st">&#39;list&#39;</span>,<span class="dv">20000</span>)</span>
-<span id="cb650-2"><a href="descriptives.html#cb650-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb650-3"><a href="descriptives.html#cb650-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">20000</span>){</span>
-<span id="cb650-4"><a href="descriptives.html#cb650-4" aria-hidden="true" tabindex="-1"></a>  samp <span class="ot">&lt;-</span> <span class="fu">sample</span>(pop, <span class="at">size =</span> <span class="dv">10</span>, <span class="at">replace =</span> T)</span>
-<span id="cb650-5"><a href="descriptives.html#cb650-5" aria-hidden="true" tabindex="-1"></a>  results.means[[i]] <span class="ot">&lt;-</span> <span class="fu">mean</span>(samp)</span>
-<span id="cb650-6"><a href="descriptives.html#cb650-6" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb652"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb652-1"><a href="descriptives.html#cb652-1" aria-hidden="true" tabindex="-1"></a>results.means<span class="ot">&lt;-</span> <span class="fu">vector</span>(<span class="st">&#39;list&#39;</span>,<span class="dv">20000</span>)</span>
+<span id="cb652-2"><a href="descriptives.html#cb652-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb652-3"><a href="descriptives.html#cb652-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">20000</span>){</span>
+<span id="cb652-4"><a href="descriptives.html#cb652-4" aria-hidden="true" tabindex="-1"></a>  samp <span class="ot">&lt;-</span> <span class="fu">sample</span>(pop, <span class="at">size =</span> <span class="dv">10</span>, <span class="at">replace =</span> T)</span>
+<span id="cb652-5"><a href="descriptives.html#cb652-5" aria-hidden="true" tabindex="-1"></a>  results.means[[i]] <span class="ot">&lt;-</span> <span class="fu">mean</span>(samp)</span>
+<span id="cb652-6"><a href="descriptives.html#cb652-6" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <p>Let’s look at 10 of these sample means we just collected:</p>
-<div class="sourceCode" id="cb651"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb651-1"><a href="descriptives.html#cb651-1" aria-hidden="true" tabindex="-1"></a><span class="fu">unlist</span>(results.means)[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>]</span></code></pre></div>
+<div class="sourceCode" id="cb653"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb653-1"><a href="descriptives.html#cb653-1" aria-hidden="true" tabindex="-1"></a><span class="fu">unlist</span>(results.means)[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>]</span></code></pre></div>
 <pre><code>##  [1] 7.457507 7.804544 8.099342 7.886644 7.642569 8.228794 8.581173 7.417380
 ##  [9] 7.098994 7.458659</code></pre>
 <p>Some are above and some are below <span class="math inline">\(\mu=7.99\)</span>.</p>
 <p>Let’s calculate the mean of all the 20,000 sample means:</p>
-<div class="sourceCode" id="cb653"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb653-1"><a href="descriptives.html#cb653-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(<span class="fu">unlist</span>(results.means))</span></code></pre></div>
+<div class="sourceCode" id="cb655"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb655-1"><a href="descriptives.html#cb655-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(<span class="fu">unlist</span>(results.means))</span></code></pre></div>
 <pre><code>## [1] 7.990952</code></pre>
 <p>It turns out that the average sample mean that we collect using the formula <span class="math inline">\(\Large \overline{x} = \frac{\Sigma{x}}{n}\)</span> is 7.99 which is the same as the population mean <span class="math inline">\(\mu\)</span>. What this means is that this formula is perfectly fine to use to <strong>estimate</strong> the population mean. It is what we call an <strong>unbiased estimator</strong>. Over the long run, it gives us a very good estimate of the population mean <span class="math inline">\(\mu\)</span>. Here is a histogram of our sample means from our 20,000 samples:</p>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-327-1.png" width="672" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-328-1.png" width="672" /></p>
 <p>The vertical solid black line represents <span class="math inline">\(\mu=7.99\)</span>. This histogram is centered on this value, showing that our sample mean formula is unbiased in estimating the population mean - overall, it isn’t under- or over-estimating the population mean.</p>
 <p>As a side note - what we just did in the exercise above was to calculate a <em>sampling distribution of sample means</em> - something we’ll discuss much more in section <a href="distributions.html#what-is-a-sampling-distribution">7.2</a>.</p>
 <p><br></p>
@@ -783,35 +783,35 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="sample-standard-deviation-as-an-unbiased-estimator" class="section level4" number="6.4.8.2">
 <h4><span class="header-section-number">6.4.8.2</span> Sample standard deviation as an unbiased estimator</h4>
 <p>Let’s do something similar with our two formulas for calculating standard deviation. We’ll take samples of size <span class="math inline">\(n=10\)</span> and use the sample standard deviation <span class="math inline">\(s\)</span> and the population standard deviation <span class="math inline">\(\sigma\)</span> formulas to estimate the true <span class="math inline">\(\sigma=2.02\)</span>.</p>
-<div class="sourceCode" id="cb655"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb655-1"><a href="descriptives.html#cb655-1" aria-hidden="true" tabindex="-1"></a><span class="co">#first sample</span></span>
-<span id="cb655-2"><a href="descriptives.html#cb655-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(samp1)</span></code></pre></div>
+<div class="sourceCode" id="cb657"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb657-1"><a href="descriptives.html#cb657-1" aria-hidden="true" tabindex="-1"></a><span class="co">#first sample</span></span>
+<span id="cb657-2"><a href="descriptives.html#cb657-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(samp1)</span></code></pre></div>
 <pre><code>## [1] 2.510835</code></pre>
-<div class="sourceCode" id="cb657"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb657-1"><a href="descriptives.html#cb657-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pop.sd</span>(samp1)</span></code></pre></div>
+<div class="sourceCode" id="cb659"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb659-1"><a href="descriptives.html#cb659-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pop.sd</span>(samp1)</span></code></pre></div>
 <pre><code>## [1] 2.381987</code></pre>
 <p>With the first sample, both estimates are lower than <span class="math inline">\(\sigma=2.02\)</span>, although the sample standard deviation is a bit closer to <span class="math inline">\(\sigma=2.02\)</span>.</p>
-<div class="sourceCode" id="cb659"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb659-1"><a href="descriptives.html#cb659-1" aria-hidden="true" tabindex="-1"></a><span class="co">#second sample</span></span>
-<span id="cb659-2"><a href="descriptives.html#cb659-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(samp2)</span></code></pre></div>
+<div class="sourceCode" id="cb661"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb661-1"><a href="descriptives.html#cb661-1" aria-hidden="true" tabindex="-1"></a><span class="co">#second sample</span></span>
+<span id="cb661-2"><a href="descriptives.html#cb661-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(samp2)</span></code></pre></div>
 <pre><code>## [1] 1.850897</code></pre>
-<div class="sourceCode" id="cb661"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb661-1"><a href="descriptives.html#cb661-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pop.sd</span>(samp2)</span></code></pre></div>
+<div class="sourceCode" id="cb663"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb663-1"><a href="descriptives.html#cb663-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pop.sd</span>(samp2)</span></code></pre></div>
 <pre><code>## [1] 1.755915</code></pre>
 <p>With the second sample of 10, both estimates are even lower than <span class="math inline">\(\sigma=2.02\)</span>. Again, the sample standard deviation formula produces a result that is closer to 2.02 than does the population deviation formula.</p>
 <p>What if we did this for 20,000 samples of size 10? We’ll save the estimates using the sample SD formula in the object <code>results.samp.sd</code> and the estimates using the population SD formula in <code>results.pop.sd</code>. Again, don’t worry about the code here - just focus on the output:</p>
-<div class="sourceCode" id="cb663"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb663-1"><a href="descriptives.html#cb663-1" aria-hidden="true" tabindex="-1"></a>results.samp.sd<span class="ot">&lt;-</span> <span class="fu">vector</span>(<span class="st">&#39;list&#39;</span>,<span class="dv">20000</span>)</span>
-<span id="cb663-2"><a href="descriptives.html#cb663-2" aria-hidden="true" tabindex="-1"></a>results.pop.sd<span class="ot">&lt;-</span> <span class="fu">vector</span>(<span class="st">&#39;list&#39;</span>,<span class="dv">20000</span>)</span>
-<span id="cb663-3"><a href="descriptives.html#cb663-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb663-4"><a href="descriptives.html#cb663-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">20000</span>){</span>
-<span id="cb663-5"><a href="descriptives.html#cb663-5" aria-hidden="true" tabindex="-1"></a>  samp <span class="ot">&lt;-</span> <span class="fu">sample</span>(pop, <span class="at">size =</span> <span class="dv">10</span>, <span class="at">replace =</span> T)</span>
-<span id="cb663-6"><a href="descriptives.html#cb663-6" aria-hidden="true" tabindex="-1"></a>  results.samp.sd[[i]] <span class="ot">&lt;-</span> <span class="fu">sd</span>(samp)</span>
-<span id="cb663-7"><a href="descriptives.html#cb663-7" aria-hidden="true" tabindex="-1"></a>  results.pop.sd[[i]] <span class="ot">&lt;-</span> <span class="fu">pop.sd</span>(samp)</span>
-<span id="cb663-8"><a href="descriptives.html#cb663-8" aria-hidden="true" tabindex="-1"></a>  }</span></code></pre></div>
+<div class="sourceCode" id="cb665"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb665-1"><a href="descriptives.html#cb665-1" aria-hidden="true" tabindex="-1"></a>results.samp.sd<span class="ot">&lt;-</span> <span class="fu">vector</span>(<span class="st">&#39;list&#39;</span>,<span class="dv">20000</span>)</span>
+<span id="cb665-2"><a href="descriptives.html#cb665-2" aria-hidden="true" tabindex="-1"></a>results.pop.sd<span class="ot">&lt;-</span> <span class="fu">vector</span>(<span class="st">&#39;list&#39;</span>,<span class="dv">20000</span>)</span>
+<span id="cb665-3"><a href="descriptives.html#cb665-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb665-4"><a href="descriptives.html#cb665-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">20000</span>){</span>
+<span id="cb665-5"><a href="descriptives.html#cb665-5" aria-hidden="true" tabindex="-1"></a>  samp <span class="ot">&lt;-</span> <span class="fu">sample</span>(pop, <span class="at">size =</span> <span class="dv">10</span>, <span class="at">replace =</span> T)</span>
+<span id="cb665-6"><a href="descriptives.html#cb665-6" aria-hidden="true" tabindex="-1"></a>  results.samp.sd[[i]] <span class="ot">&lt;-</span> <span class="fu">sd</span>(samp)</span>
+<span id="cb665-7"><a href="descriptives.html#cb665-7" aria-hidden="true" tabindex="-1"></a>  results.pop.sd[[i]] <span class="ot">&lt;-</span> <span class="fu">pop.sd</span>(samp)</span>
+<span id="cb665-8"><a href="descriptives.html#cb665-8" aria-hidden="true" tabindex="-1"></a>  }</span></code></pre></div>
 <p>We can work out the average estimate of the standard deviation across all 20,000 samples:</p>
-<div class="sourceCode" id="cb664"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb664-1"><a href="descriptives.html#cb664-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(<span class="fu">unlist</span>(results.samp.sd))</span></code></pre></div>
+<div class="sourceCode" id="cb666"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb666-1"><a href="descriptives.html#cb666-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(<span class="fu">unlist</span>(results.samp.sd))</span></code></pre></div>
 <pre><code>## [1] 1.967842</code></pre>
-<div class="sourceCode" id="cb666"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb666-1"><a href="descriptives.html#cb666-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(<span class="fu">unlist</span>(results.pop.sd))</span></code></pre></div>
+<div class="sourceCode" id="cb668"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb668-1"><a href="descriptives.html#cb668-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(<span class="fu">unlist</span>(results.pop.sd))</span></code></pre></div>
 <pre><code>## [1] 1.866859</code></pre>
 <p>So, over 20,000 samples both formulas actually overall underestimate the true population standard deviation of <span class="math inline">\(\sigma=2.02\)</span>, however, the sample standard deviation formula is closer with it’s average being 1.97 compared to the population standard deviation’s formula being at 1.87.</p>
 <p>We can graph this like this:</p>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-332-1.png" width="672" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-333-1.png" width="672" /></p>
 <p>This visualization shows us a few things. First, over all 20,000 samples, some of our estimates of the true standard deviation <span class="math inline">\(\sigma\)</span> are higher and some are lower regardless of which formula we use. However, when we use the population formula (dividing by <span class="math inline">\(N\)</span>), we have far more samples with estimates of the standard deviation <span class="math inline">\(\sigma\)</span> which are too low. The distribution is clearly not symmetrical. If we consider the right histogram, when we use the sample SD formula (dividing by <span class="math inline">\(n-1\)</span>), we correct this by and large. This histogram is closer to symmetrical, and we are not underestimating the true population standard deviation nearly as much. In this way, we called the sample standard deviation <span class="math inline">\(s\)</span> an <strong>unbiased estimator</strong>.</p>
 <p>If we were to take larger sample sizes, then our estimates of the population standard deviation <span class="math inline">\(\sigma\)</span>, would get better and better when using the sample standard deviation formula.</p>
 <p><br><br></p>
@@ -822,8 +822,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">6.5</span> Descriptive Statistics in R</h2>
 <p>The above sections interweaved some theory with how to get descriptive information using R. In this section we’ll summarize how to get descriptive summaries from real data in R.</p>
 <p>The dataset that we’ll use is a year’s worth of temperature data from Austin, TX.</p>
-<div class="sourceCode" id="cb668"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb668-1"><a href="descriptives.html#cb668-1" aria-hidden="true" tabindex="-1"></a>atx <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;data/austin_weather.csv&quot;</span>)</span>
-<span id="cb668-2"><a href="descriptives.html#cb668-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(atx) <span class="co"># first 6 rows</span></span></code></pre></div>
+<div class="sourceCode" id="cb670"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb670-1"><a href="descriptives.html#cb670-1" aria-hidden="true" tabindex="-1"></a>atx <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;data/austin_weather.csv&quot;</span>)</span>
+<span id="cb670-2"><a href="descriptives.html#cb670-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(atx) <span class="co"># first 6 rows</span></span></code></pre></div>
 <pre><code>## # A tibble: 6 x 4
 ##   month   day  year  temp
 ##   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
@@ -834,32 +834,32 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 5     1     5  2019  48.6
 ## 6     1     6  2019  48.8</code></pre>
 <p>The <code>temp</code> column shows the average temperature for that day of the year in 2019. Here is a histogram showing the distribution. It is often hot in Texas.</p>
-<div class="sourceCode" id="cb670"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb670-1"><a href="descriptives.html#cb670-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(atx, <span class="fu">aes</span>(<span class="at">x=</span> temp)) <span class="sc">+</span> </span>
-<span id="cb670-2"><a href="descriptives.html#cb670-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">color=</span><span class="st">&quot;black&quot;</span>, <span class="at">fill=</span><span class="st">&quot;lightseagreen&quot;</span>, <span class="at">binwidth =</span> <span class="dv">2</span>)<span class="sc">+</span></span>
-<span id="cb670-3"><a href="descriptives.html#cb670-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>()<span class="sc">+</span></span>
-<span id="cb670-4"><a href="descriptives.html#cb670-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;Average temperature&quot;</span>)</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-334-1.png" width="672" /></p>
+<div class="sourceCode" id="cb672"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb672-1"><a href="descriptives.html#cb672-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(atx, <span class="fu">aes</span>(<span class="at">x=</span> temp)) <span class="sc">+</span> </span>
+<span id="cb672-2"><a href="descriptives.html#cb672-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">color=</span><span class="st">&quot;black&quot;</span>, <span class="at">fill=</span><span class="st">&quot;lightseagreen&quot;</span>, <span class="at">binwidth =</span> <span class="dv">2</span>)<span class="sc">+</span></span>
+<span id="cb672-3"><a href="descriptives.html#cb672-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>()<span class="sc">+</span></span>
+<span id="cb672-4"><a href="descriptives.html#cb672-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;Average temperature&quot;</span>)</span></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-335-1.png" width="672" /></p>
 <p><strong>Basic Descriptives</strong></p>
 <p>Here is a list of some the basic descriptive commands such as calculating the <span class="math inline">\(n\)</span>, the minimum, maximum and range. We apply each function to the whole column of data <code>atx$temp</code>, i.e. all the numbers of the distribution:</p>
-<div class="sourceCode" id="cb671"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb671-1"><a href="descriptives.html#cb671-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(atx<span class="sc">$</span>temp) <span class="co"># length this tells you the &#39;n&#39;</span></span></code></pre></div>
+<div class="sourceCode" id="cb673"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb673-1"><a href="descriptives.html#cb673-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(atx<span class="sc">$</span>temp) <span class="co"># length this tells you the &#39;n&#39;</span></span></code></pre></div>
 <pre><code>## [1] 365</code></pre>
-<div class="sourceCode" id="cb673"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb673-1"><a href="descriptives.html#cb673-1" aria-hidden="true" tabindex="-1"></a><span class="fu">range</span>(atx<span class="sc">$</span>temp) <span class="co"># range </span></span></code></pre></div>
+<div class="sourceCode" id="cb675"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb675-1"><a href="descriptives.html#cb675-1" aria-hidden="true" tabindex="-1"></a><span class="fu">range</span>(atx<span class="sc">$</span>temp) <span class="co"># range </span></span></code></pre></div>
 <pre><code>## [1] 34.5 89.2</code></pre>
-<div class="sourceCode" id="cb675"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb675-1"><a href="descriptives.html#cb675-1" aria-hidden="true" tabindex="-1"></a><span class="fu">min</span>(atx<span class="sc">$</span>temp) <span class="co"># minimum</span></span></code></pre></div>
+<div class="sourceCode" id="cb677"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb677-1"><a href="descriptives.html#cb677-1" aria-hidden="true" tabindex="-1"></a><span class="fu">min</span>(atx<span class="sc">$</span>temp) <span class="co"># minimum</span></span></code></pre></div>
 <pre><code>## [1] 34.5</code></pre>
-<div class="sourceCode" id="cb677"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb677-1"><a href="descriptives.html#cb677-1" aria-hidden="true" tabindex="-1"></a><span class="fu">max</span>(atx<span class="sc">$</span>temp) <span class="co"># maximum</span></span></code></pre></div>
+<div class="sourceCode" id="cb679"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb679-1"><a href="descriptives.html#cb679-1" aria-hidden="true" tabindex="-1"></a><span class="fu">max</span>(atx<span class="sc">$</span>temp) <span class="co"># maximum</span></span></code></pre></div>
 <pre><code>## [1] 89.2</code></pre>
 <p><strong>Mean, Median, and Mode</strong></p>
 <p>These mean and median are straightforward in R:</p>
-<div class="sourceCode" id="cb679"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb679-1"><a href="descriptives.html#cb679-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(atx<span class="sc">$</span>temp) <span class="co"># mean</span></span></code></pre></div>
+<div class="sourceCode" id="cb681"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb681-1"><a href="descriptives.html#cb681-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(atx<span class="sc">$</span>temp) <span class="co"># mean</span></span></code></pre></div>
 <pre><code>## [1] 68.78767</code></pre>
-<div class="sourceCode" id="cb681"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb681-1"><a href="descriptives.html#cb681-1" aria-hidden="true" tabindex="-1"></a><span class="fu">median</span>(atx<span class="sc">$</span>temp) <span class="co"># median</span></span></code></pre></div>
+<div class="sourceCode" id="cb683"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb683-1"><a href="descriptives.html#cb683-1" aria-hidden="true" tabindex="-1"></a><span class="fu">median</span>(atx<span class="sc">$</span>temp) <span class="co"># median</span></span></code></pre></div>
 <pre><code>## [1] 70.8</code></pre>
 <p>For some descriptives, like mode, there is not a function already built into R. One option is to use <code>table()</code> to get frequencies - but this isn’t useful when you have relatively large datasets. The output is too large. Another option is to use <code>tidyverse</code> methods. Here, we use <code>group_by()</code> to get each temperature, then we use <code>count()</code> to count how many of each temperature we have, and then <code>arrange()</code> to determine which is most frequent:</p>
-<div class="sourceCode" id="cb683"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb683-1"><a href="descriptives.html#cb683-1" aria-hidden="true" tabindex="-1"></a>atx <span class="sc">%&gt;%</span></span>
-<span id="cb683-2"><a href="descriptives.html#cb683-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(temp) <span class="sc">%&gt;%</span></span>
-<span id="cb683-3"><a href="descriptives.html#cb683-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb683-4"><a href="descriptives.html#cb683-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="sc">-</span>n)</span></code></pre></div>
+<div class="sourceCode" id="cb685"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb685-1"><a href="descriptives.html#cb685-1" aria-hidden="true" tabindex="-1"></a>atx <span class="sc">%&gt;%</span></span>
+<span id="cb685-2"><a href="descriptives.html#cb685-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(temp) <span class="sc">%&gt;%</span></span>
+<span id="cb685-3"><a href="descriptives.html#cb685-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb685-4"><a href="descriptives.html#cb685-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="sc">-</span>n)</span></code></pre></div>
 <pre><code>## # A tibble: 248 x 2
 ## # Groups:   temp [248]
 ##     temp     n
@@ -878,52 +878,52 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>This shows us that the modal value is 84.8F. In reality however, the mode is never something that you will calculate outside of an introductory stats class.</p>
 <p><strong>Variation</strong></p>
 <p>The default standard variation measure in R is the sample standard deviation <code>sd()</code>, and is the one you should pretty much always use:</p>
-<div class="sourceCode" id="cb685"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb685-1"><a href="descriptives.html#cb685-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(atx<span class="sc">$</span>temp) <span class="co">#  sample standard deviation</span></span></code></pre></div>
+<div class="sourceCode" id="cb687"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb687-1"><a href="descriptives.html#cb687-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(atx<span class="sc">$</span>temp) <span class="co">#  sample standard deviation</span></span></code></pre></div>
 <pre><code>## [1] 14.90662</code></pre>
 <p>Variance can also be calculated using <code>var()</code> - remember this is the standard deviation squared. When you calculate this using the sample standard deviation <span class="math inline">\(s\)</span> the formula notation for the variance is <span class="math inline">\(s^2\)</span>:</p>
-<div class="sourceCode" id="cb687"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb687-1"><a href="descriptives.html#cb687-1" aria-hidden="true" tabindex="-1"></a><span class="fu">var</span>(atx<span class="sc">$</span>temp) <span class="co"># variance </span></span></code></pre></div>
+<div class="sourceCode" id="cb689"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb689-1"><a href="descriptives.html#cb689-1" aria-hidden="true" tabindex="-1"></a><span class="fu">var</span>(atx<span class="sc">$</span>temp) <span class="co"># variance </span></span></code></pre></div>
 <pre><code>## [1] 222.2072</code></pre>
 <p>The lower quartile, upper quartile and inter-quartile range can be calculated like this:</p>
-<div class="sourceCode" id="cb689"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb689-1"><a href="descriptives.html#cb689-1" aria-hidden="true" tabindex="-1"></a><span class="fu">quantile</span>(atx<span class="sc">$</span>temp, .<span class="dv">25</span>)  <span class="co"># this is the lower quartile</span></span></code></pre></div>
+<div class="sourceCode" id="cb691"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb691-1"><a href="descriptives.html#cb691-1" aria-hidden="true" tabindex="-1"></a><span class="fu">quantile</span>(atx<span class="sc">$</span>temp, .<span class="dv">25</span>)  <span class="co"># this is the lower quartile</span></span></code></pre></div>
 <pre><code>##  25% 
 ## 56.5</code></pre>
-<div class="sourceCode" id="cb691"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb691-1"><a href="descriptives.html#cb691-1" aria-hidden="true" tabindex="-1"></a><span class="fu">quantile</span>(atx<span class="sc">$</span>temp, .<span class="dv">75</span>)  <span class="co"># this is the upper quartile</span></span></code></pre></div>
+<div class="sourceCode" id="cb693"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb693-1"><a href="descriptives.html#cb693-1" aria-hidden="true" tabindex="-1"></a><span class="fu">quantile</span>(atx<span class="sc">$</span>temp, .<span class="dv">75</span>)  <span class="co"># this is the upper quartile</span></span></code></pre></div>
 <pre><code>##  75% 
 ## 83.3</code></pre>
-<div class="sourceCode" id="cb693"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb693-1"><a href="descriptives.html#cb693-1" aria-hidden="true" tabindex="-1"></a><span class="fu">IQR</span>(atx<span class="sc">$</span>temp)   <span class="co"># this is the inter-quartile range.</span></span></code></pre></div>
+<div class="sourceCode" id="cb695"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb695-1"><a href="descriptives.html#cb695-1" aria-hidden="true" tabindex="-1"></a><span class="fu">IQR</span>(atx<span class="sc">$</span>temp)   <span class="co"># this is the inter-quartile range.</span></span></code></pre></div>
 <pre><code>## [1] 26.8</code></pre>
 <p>Remember there are several ways of calculating the quartiles (see above).</p>
 <div id="dealing-with-missing-data" class="section level3" number="6.5.1">
 <h3><span class="header-section-number">6.5.1</span> Dealing with Missing Data</h3>
 <p>Often in datasets we have missing data. In R, missing data in our dataframes or vectors is represented by <code>NA</code> or sometimes <code>NaN</code>. A slightly annoying feature of many of the descriptive summary functions is that they do not work if there is missing data.</p>
 <p>Here’s an illustration. We’ve created a vector of data called <code>q</code> that has some numbers but also a ‘missing’ piece of data:</p>
-<div class="sourceCode" id="cb695"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb695-1"><a href="descriptives.html#cb695-1" aria-hidden="true" tabindex="-1"></a>q <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">10</span>, <span class="dv">8</span>, <span class="dv">3</span>, <span class="cn">NA</span>, <span class="dv">7</span>, <span class="dv">1</span>, <span class="dv">2</span>)</span>
-<span id="cb695-2"><a href="descriptives.html#cb695-2" aria-hidden="true" tabindex="-1"></a>q</span></code></pre></div>
+<div class="sourceCode" id="cb697"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb697-1"><a href="descriptives.html#cb697-1" aria-hidden="true" tabindex="-1"></a>q <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">10</span>, <span class="dv">8</span>, <span class="dv">3</span>, <span class="cn">NA</span>, <span class="dv">7</span>, <span class="dv">1</span>, <span class="dv">2</span>)</span>
+<span id="cb697-2"><a href="descriptives.html#cb697-2" aria-hidden="true" tabindex="-1"></a>q</span></code></pre></div>
 <pre><code>## [1]  5 10  8  3 NA  7  1  2</code></pre>
 <p>If we try and calculate some descriptives, R will not like it:</p>
-<div class="sourceCode" id="cb697"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb697-1"><a href="descriptives.html#cb697-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(q)</span></code></pre></div>
+<div class="sourceCode" id="cb699"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb699-1"><a href="descriptives.html#cb699-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(q)</span></code></pre></div>
 <pre><code>## [1] NA</code></pre>
-<div class="sourceCode" id="cb699"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb699-1"><a href="descriptives.html#cb699-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(q)</span></code></pre></div>
+<div class="sourceCode" id="cb701"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb701-1"><a href="descriptives.html#cb701-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(q)</span></code></pre></div>
 <pre><code>## [1] NA</code></pre>
-<div class="sourceCode" id="cb701"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb701-1"><a href="descriptives.html#cb701-1" aria-hidden="true" tabindex="-1"></a><span class="fu">range</span>(q)</span></code></pre></div>
+<div class="sourceCode" id="cb703"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb703-1"><a href="descriptives.html#cb703-1" aria-hidden="true" tabindex="-1"></a><span class="fu">range</span>(q)</span></code></pre></div>
 <pre><code>## [1] NA NA</code></pre>
-<div class="sourceCode" id="cb703"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb703-1"><a href="descriptives.html#cb703-1" aria-hidden="true" tabindex="-1"></a><span class="fu">median</span>(q)</span></code></pre></div>
+<div class="sourceCode" id="cb705"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb705-1"><a href="descriptives.html#cb705-1" aria-hidden="true" tabindex="-1"></a><span class="fu">median</span>(q)</span></code></pre></div>
 <pre><code>## [1] NA</code></pre>
 <p>What we have to do in these situations is to override the missing data. We need to tell it that we really do want to get these values and it should remove the missing data before doing that. We do that by adding the argument <code>na.rm=T</code> to the end of each function:</p>
-<div class="sourceCode" id="cb705"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb705-1"><a href="descriptives.html#cb705-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(q, <span class="at">na.rm=</span>T)</span></code></pre></div>
+<div class="sourceCode" id="cb707"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb707-1"><a href="descriptives.html#cb707-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(q, <span class="at">na.rm=</span>T)</span></code></pre></div>
 <pre><code>## [1] 5.142857</code></pre>
-<div class="sourceCode" id="cb707"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb707-1"><a href="descriptives.html#cb707-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(q, <span class="at">na.rm=</span>T)</span></code></pre></div>
+<div class="sourceCode" id="cb709"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb709-1"><a href="descriptives.html#cb709-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(q, <span class="at">na.rm=</span>T)</span></code></pre></div>
 <pre><code>## [1] 3.338092</code></pre>
-<div class="sourceCode" id="cb709"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb709-1"><a href="descriptives.html#cb709-1" aria-hidden="true" tabindex="-1"></a><span class="fu">range</span>(q, <span class="at">na.rm=</span>T)</span></code></pre></div>
+<div class="sourceCode" id="cb711"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb711-1"><a href="descriptives.html#cb711-1" aria-hidden="true" tabindex="-1"></a><span class="fu">range</span>(q, <span class="at">na.rm=</span>T)</span></code></pre></div>
 <pre><code>## [1]  1 10</code></pre>
-<div class="sourceCode" id="cb711"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb711-1"><a href="descriptives.html#cb711-1" aria-hidden="true" tabindex="-1"></a><span class="fu">median</span>(q, <span class="at">na.rm=</span>T)</span></code></pre></div>
+<div class="sourceCode" id="cb713"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb713-1"><a href="descriptives.html#cb713-1" aria-hidden="true" tabindex="-1"></a><span class="fu">median</span>(q, <span class="at">na.rm=</span>T)</span></code></pre></div>
 <pre><code>## [1] 5</code></pre>
 <p>Now R is happy to do what we want.</p>
 <p>The only ‘gotcha’ that you need to watch out for is <code>length()</code> which we sometimes use to calculate the <span class="math inline">\(n\)</span> of a vector. If we do this for <code>q</code>, we’ll get 8, which includes our missing value:</p>
-<div class="sourceCode" id="cb713"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb713-1"><a href="descriptives.html#cb713-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(q)</span></code></pre></div>
+<div class="sourceCode" id="cb715"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb715-1"><a href="descriptives.html#cb715-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(q)</span></code></pre></div>
 <pre><code>## [1] 8</code></pre>
 <p>This is a way of getting around that - it looks odd, so we’ve just put it here for reference. It’s not necessary for you to remember this. It’s essentially asking what is the length of <code>q</code> when you don’t include the <code>NA</code>:</p>
-<div class="sourceCode" id="cb715"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb715-1"><a href="descriptives.html#cb715-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(q[<span class="sc">!</span><span class="fu">is.na</span>(q)])</span></code></pre></div>
+<div class="sourceCode" id="cb717"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb717-1"><a href="descriptives.html#cb717-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(q[<span class="sc">!</span><span class="fu">is.na</span>(q)])</span></code></pre></div>
 <pre><code>## [1] 7</code></pre>
 </div>
 </div>
@@ -931,9 +931,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">6.6</span> Descriptives for Datasets</h2>
 <p>Often in studies, we are interested in many different outcome variables at once. We are also interested in how groups differ in various descriptive statistics. The following code will show you how to get descriptive statistics for several columns. In the next section we’ll discuss getting descriptives for different groups from data.</p>
 <p>First read in these data that are looking at various sales of different video games.</p>
-<div class="sourceCode" id="cb717"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb717-1"><a href="descriptives.html#cb717-1" aria-hidden="true" tabindex="-1"></a>vg <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;data/videogames.csv&quot;</span>)</span>
-<span id="cb717-2"><a href="descriptives.html#cb717-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb717-3"><a href="descriptives.html#cb717-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(vg)</span></code></pre></div>
+<div class="sourceCode" id="cb719"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb719-1"><a href="descriptives.html#cb719-1" aria-hidden="true" tabindex="-1"></a>vg <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;data/videogames.csv&quot;</span>)</span>
+<span id="cb719-2"><a href="descriptives.html#cb719-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb719-3"><a href="descriptives.html#cb719-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(vg)</span></code></pre></div>
 <pre><code>## # A tibble: 6 x 12
 ##   name  platform  year genre publisher NA_sales EU_sales JP_sales global_sales
 ##   &lt;chr&gt; &lt;chr&gt;    &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;        &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;        &lt;dbl&gt;
@@ -945,7 +945,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 6 Gran~ PS3       2013 Acti~ Take-Two~     7.02     9.14     0.98         21.1
 ## # ... with 3 more variables: critic &lt;dbl&gt;, user &lt;dbl&gt;, rating &lt;chr&gt;</code></pre>
 <p>One way to get quick summary information is to use the R function <code>summary()</code> like this:</p>
-<div class="sourceCode" id="cb719"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb719-1"><a href="descriptives.html#cb719-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(vg)</span></code></pre></div>
+<div class="sourceCode" id="cb721"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb721-1"><a href="descriptives.html#cb721-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(vg)</span></code></pre></div>
 <pre><code>##      name             platform              year         genre          
 ##  Length:2502        Length:2502        Min.   :1992   Length:2502       
 ##  Class :character   Class :character   1st Qu.:2005   Class :character  
@@ -969,8 +969,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##  Max.   :82.5400   Max.   :98.00   Max.   :9.300</code></pre>
 <p>You’ll notice here that it just gives you some summary information for different columns, even those that have no numerical data in them. It’s also not broken down by groups. However, <code>summary()</code> can be a quick way to get some summary information.</p>
 <p>A slightly better function is <code>Describe()</code> in the <code>psych</code> package. Remember to install the <code>psych</code> package before using it. Also, here we are telling it only to provide summaries of the relevant numeric columns (which are the 6th through 11th columns):</p>
-<div class="sourceCode" id="cb721"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb721-1"><a href="descriptives.html#cb721-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(psych)</span>
-<span id="cb721-2"><a href="descriptives.html#cb721-2" aria-hidden="true" tabindex="-1"></a><span class="fu">describe</span>(vg[<span class="fu">c</span>(<span class="dv">6</span><span class="sc">:</span><span class="dv">11</span>)])</span></code></pre></div>
+<div class="sourceCode" id="cb723"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb723-1"><a href="descriptives.html#cb723-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(psych)</span>
+<span id="cb723-2"><a href="descriptives.html#cb723-2" aria-hidden="true" tabindex="-1"></a><span class="fu">describe</span>(vg[<span class="fu">c</span>(<span class="dv">6</span><span class="sc">:</span><span class="dv">11</span>)])</span></code></pre></div>
 <pre><code>##              vars    n  mean    sd median trimmed   mad   min   max range
 ## NA_sales        1 2502  0.49  1.29   0.18    0.27  0.21  0.00 41.36 41.36
 ## EU_sales        2 2502  0.30  0.90   0.10    0.15  0.13  0.00 28.96 28.96
@@ -989,12 +989,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="descriptives-for-groups" class="section level3" number="6.6.1">
 <h3><span class="header-section-number">6.6.1</span> Descriptives for Groups</h3>
 <p>There are a few ways of getting descriptives for different groups. In our videogame dataset <code>vg</code>, we have a column called <code>genre</code>. We can use the function <code>table()</code> to get the <span class="math inline">\(n\)</span> for all groups.</p>
-<div class="sourceCode" id="cb723"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb723-1"><a href="descriptives.html#cb723-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(vg<span class="sc">$</span>genre)</span></code></pre></div>
+<div class="sourceCode" id="cb725"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb725-1"><a href="descriptives.html#cb725-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(vg<span class="sc">$</span>genre)</span></code></pre></div>
 <pre><code>## 
 ##  Action  Racing Shooter  Sports 
 ##     997     349     583     573</code></pre>
 <p>We have four different groups of genres, and we might want to get descriptives for each. We can use the function <code>describeBy()</code> from the <code>psych</code> package to get a very quick and easy, but a bit annoying, look at group summaries. It also ignores missing data which is helpful. We dictate which group to get summaries by using the <code>group = "genre"</code> argument:</p>
-<div class="sourceCode" id="cb725"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb725-1"><a href="descriptives.html#cb725-1" aria-hidden="true" tabindex="-1"></a><span class="fu">describeBy</span>(vg[<span class="fu">c</span>(<span class="dv">4</span>,<span class="dv">6</span><span class="sc">:</span><span class="dv">11</span>)], <span class="at">group =</span> <span class="st">&quot;genre&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb727"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb727-1"><a href="descriptives.html#cb727-1" aria-hidden="true" tabindex="-1"></a><span class="fu">describeBy</span>(vg[<span class="fu">c</span>(<span class="dv">4</span>,<span class="dv">6</span><span class="sc">:</span><span class="dv">11</span>)], <span class="at">group =</span> <span class="st">&quot;genre&quot;</span>)</span></code></pre></div>
 <pre><code>## 
 ##  Descriptive statistics by group 
 ## genre: Action
@@ -1070,9 +1070,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## user         -0.92     0.68 0.06</code></pre>
 <p>The above is a quick and dirty way of getting summary information by group. But it is messy. We suggest an alternative method which is to write code using the <code>tidyverse</code> package. This can give us descriptive statistics in a more organized way.</p>
 <p>For instance, if we wanted to get the mean of the column <code>NA_sales</code> by <code>genre</code> we would use <code>group_by()</code> and <code>summarise()</code> in this way:</p>
-<div class="sourceCode" id="cb727"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb727-1"><a href="descriptives.html#cb727-1" aria-hidden="true" tabindex="-1"></a>vg <span class="sc">%&gt;%</span> </span>
-<span id="cb727-2"><a href="descriptives.html#cb727-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(genre) <span class="sc">%&gt;%</span> </span>
-<span id="cb727-3"><a href="descriptives.html#cb727-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">meanNA =</span> <span class="fu">mean</span>(NA_sales))</span></code></pre></div>
+<div class="sourceCode" id="cb729"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb729-1"><a href="descriptives.html#cb729-1" aria-hidden="true" tabindex="-1"></a>vg <span class="sc">%&gt;%</span> </span>
+<span id="cb729-2"><a href="descriptives.html#cb729-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(genre) <span class="sc">%&gt;%</span> </span>
+<span id="cb729-3"><a href="descriptives.html#cb729-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">meanNA =</span> <span class="fu">mean</span>(NA_sales))</span></code></pre></div>
 <pre><code>## # A tibble: 4 x 2
 ##   genre   meanNA
 ##   &lt;chr&gt;    &lt;dbl&gt;
@@ -1082,9 +1082,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 4 Sports   0.603</code></pre>
 <p>The above code can be read as taking the dataset <code>vg</code>, and then grouping it by the column <code>genre</code>, and then summarizing the data to get the mean of the <code>NA_sales</code> column by group/genre. Please not the British spelling of <code>summarise()</code>. The <code>tidyverse</code> was originally written using British spelling, and although R is usually fine with British or US spelling, this is one situation in which it is usually helpful to stick with the British spelling for boring reasons.</p>
 <p>If you had missing data, you’d do it like this.</p>
-<div class="sourceCode" id="cb729"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb729-1"><a href="descriptives.html#cb729-1" aria-hidden="true" tabindex="-1"></a>vg <span class="sc">%&gt;%</span> </span>
-<span id="cb729-2"><a href="descriptives.html#cb729-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(genre) <span class="sc">%&gt;%</span> </span>
-<span id="cb729-3"><a href="descriptives.html#cb729-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">meanNA =</span> <span class="fu">mean</span>(NA_sales, <span class="at">na.rm =</span> T)) </span></code></pre></div>
+<div class="sourceCode" id="cb731"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb731-1"><a href="descriptives.html#cb731-1" aria-hidden="true" tabindex="-1"></a>vg <span class="sc">%&gt;%</span> </span>
+<span id="cb731-2"><a href="descriptives.html#cb731-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(genre) <span class="sc">%&gt;%</span> </span>
+<span id="cb731-3"><a href="descriptives.html#cb731-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">meanNA =</span> <span class="fu">mean</span>(NA_sales, <span class="at">na.rm =</span> T)) </span></code></pre></div>
 <pre><code>## # A tibble: 4 x 2
 ##   genre   meanNA
 ##   &lt;chr&gt;    &lt;dbl&gt;
@@ -1093,12 +1093,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 3 Shooter  0.555
 ## 4 Sports   0.603</code></pre>
 <p>You can do several summaries at once like this. Here we are getting the means and sample standard deviations of the <code>NA_sales</code> and <code>EU_sales</code> columns by <code>genre</code>:</p>
-<div class="sourceCode" id="cb731"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb731-1"><a href="descriptives.html#cb731-1" aria-hidden="true" tabindex="-1"></a>vg <span class="sc">%&gt;%</span> </span>
-<span id="cb731-2"><a href="descriptives.html#cb731-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(genre) <span class="sc">%&gt;%</span> </span>
-<span id="cb731-3"><a href="descriptives.html#cb731-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">meanNA =</span> <span class="fu">mean</span>(NA_sales),</span>
-<span id="cb731-4"><a href="descriptives.html#cb731-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">sd_NA =</span> <span class="fu">sd</span>(NA_sales),</span>
-<span id="cb731-5"><a href="descriptives.html#cb731-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">meanEU =</span> <span class="fu">mean</span>(EU_sales),</span>
-<span id="cb731-6"><a href="descriptives.html#cb731-6" aria-hidden="true" tabindex="-1"></a>            <span class="at">sd_EU =</span> <span class="fu">sd</span>(EU_sales))</span></code></pre></div>
+<div class="sourceCode" id="cb733"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb733-1"><a href="descriptives.html#cb733-1" aria-hidden="true" tabindex="-1"></a>vg <span class="sc">%&gt;%</span> </span>
+<span id="cb733-2"><a href="descriptives.html#cb733-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(genre) <span class="sc">%&gt;%</span> </span>
+<span id="cb733-3"><a href="descriptives.html#cb733-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">meanNA =</span> <span class="fu">mean</span>(NA_sales),</span>
+<span id="cb733-4"><a href="descriptives.html#cb733-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">sd_NA =</span> <span class="fu">sd</span>(NA_sales),</span>
+<span id="cb733-5"><a href="descriptives.html#cb733-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">meanEU =</span> <span class="fu">mean</span>(EU_sales),</span>
+<span id="cb733-6"><a href="descriptives.html#cb733-6" aria-hidden="true" tabindex="-1"></a>            <span class="at">sd_EU =</span> <span class="fu">sd</span>(EU_sales))</span></code></pre></div>
 <pre><code>## # A tibble: 4 x 5
 ##   genre   meanNA sd_NA meanEU sd_EU
 ##   &lt;chr&gt;    &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;
@@ -1107,22 +1107,22 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 3 Shooter  0.555 1.22   0.331 0.667
 ## 4 Sports   0.603 1.99   0.326 1.44</code></pre>
 <p>To save time, you can tell it to just get the summary of all numeric columns by using <code>summarise_if()</code>.</p>
-<div class="sourceCode" id="cb733"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb733-1"><a href="descriptives.html#cb733-1" aria-hidden="true" tabindex="-1"></a>vg<span class="sc">$</span>year <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(vg<span class="sc">$</span>year) <span class="co"># just need to make year non-numeric first so doesn&#39;t get included in the numeric columns</span></span>
-<span id="cb733-2"><a href="descriptives.html#cb733-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb733-3"><a href="descriptives.html#cb733-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb733-4"><a href="descriptives.html#cb733-4" aria-hidden="true" tabindex="-1"></a>vg <span class="sc">%&gt;%</span></span>
-<span id="cb733-5"><a href="descriptives.html#cb733-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(genre) <span class="sc">%&gt;%</span></span>
-<span id="cb733-6"><a href="descriptives.html#cb733-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise_if</span>(is.numeric, mean, <span class="at">na.rm =</span> T) <span class="sc">%&gt;%</span></span>
-<span id="cb733-7"><a href="descriptives.html#cb733-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as.data.frame</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb735"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb735-1"><a href="descriptives.html#cb735-1" aria-hidden="true" tabindex="-1"></a>vg<span class="sc">$</span>year <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(vg<span class="sc">$</span>year) <span class="co"># just need to make year non-numeric first so doesn&#39;t get included in the numeric columns</span></span>
+<span id="cb735-2"><a href="descriptives.html#cb735-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb735-3"><a href="descriptives.html#cb735-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb735-4"><a href="descriptives.html#cb735-4" aria-hidden="true" tabindex="-1"></a>vg <span class="sc">%&gt;%</span></span>
+<span id="cb735-5"><a href="descriptives.html#cb735-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(genre) <span class="sc">%&gt;%</span></span>
+<span id="cb735-6"><a href="descriptives.html#cb735-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise_if</span>(is.numeric, mean, <span class="at">na.rm =</span> T) <span class="sc">%&gt;%</span></span>
+<span id="cb735-7"><a href="descriptives.html#cb735-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as.data.frame</span>()</span></code></pre></div>
 <pre><code>##     genre  NA_sales  EU_sales   JP_sales global_sales   critic     user
 ## 1  Action 0.4071013 0.2668004 0.04857573    0.8349649 68.01605 7.117954
 ## 2  Racing 0.3967908 0.3085100 0.03246418    0.8630946 69.84241 6.991691
 ## 3 Shooter 0.5554717 0.3310292 0.02288165    1.0245969 70.48714 6.948885
 ## 4  Sports 0.6034031 0.3260733 0.04808028    1.1108028 72.94764 6.970157</code></pre>
-<div class="sourceCode" id="cb735"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb735-1"><a href="descriptives.html#cb735-1" aria-hidden="true" tabindex="-1"></a> vg <span class="sc">%&gt;%</span></span>
-<span id="cb735-2"><a href="descriptives.html#cb735-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(genre) <span class="sc">%&gt;%</span></span>
-<span id="cb735-3"><a href="descriptives.html#cb735-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise_if</span>(is.numeric, sd, <span class="at">na.rm =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb735-4"><a href="descriptives.html#cb735-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as.data.frame</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb737"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb737-1"><a href="descriptives.html#cb737-1" aria-hidden="true" tabindex="-1"></a> vg <span class="sc">%&gt;%</span></span>
+<span id="cb737-2"><a href="descriptives.html#cb737-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(genre) <span class="sc">%&gt;%</span></span>
+<span id="cb737-3"><a href="descriptives.html#cb737-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise_if</span>(is.numeric, sd, <span class="at">na.rm =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb737-4"><a href="descriptives.html#cb737-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as.data.frame</span>()</span></code></pre></div>
 <pre><code>##     genre  NA_sales  EU_sales   JP_sales global_sales   critic     user
 ## 1  Action 0.8189867 0.5772930 0.14425469     1.670552 14.20560 1.339989
 ## 2  Racing 1.0315188 0.8522769 0.24017403     2.363348 14.00640 1.497225
@@ -1134,13 +1134,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3><span class="header-section-number">6.6.2</span> Counts by Group</h3>
 <p>Another common use of <code>group_by()</code> is to get counts of how many we have of each categorical variable. For instance, let’s look more at the videogames dataset <code>vg</code>.</p>
 <p>We have previously seen that we can use <code>table()</code> to count simple frequencies. For instance, the following:</p>
-<div class="sourceCode" id="cb737"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb737-1"><a href="descriptives.html#cb737-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(vg<span class="sc">$</span>genre)</span></code></pre></div>
+<div class="sourceCode" id="cb739"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb739-1"><a href="descriptives.html#cb739-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(vg<span class="sc">$</span>genre)</span></code></pre></div>
 <pre><code>## 
 ##  Action  Racing Shooter  Sports 
 ##     997     349     583     573</code></pre>
 <p>shows us how many observations of each genre we have. We have 997 Action games, 349 Racing games, 583 shooter games and 573 sports games.</p>
 <p>We can look at how these breakdown by platform by adding one more argument into our <code>table()</code> function which relates to our second column of interest:</p>
-<div class="sourceCode" id="cb739"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb739-1"><a href="descriptives.html#cb739-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(vg<span class="sc">$</span>genre, vg<span class="sc">$</span>platform)</span></code></pre></div>
+<div class="sourceCode" id="cb741"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb741-1"><a href="descriptives.html#cb741-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(vg<span class="sc">$</span>genre, vg<span class="sc">$</span>platform)</span></code></pre></div>
 <pre><code>##          
 ##            PC PS2 PS3 Wii X360
 ##   Action  144 247 237 127  242
@@ -1150,9 +1150,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><br></p>
 <p>We can see here that we have 32 Sports games on the PC, 135 racing games on the PS2 and so on.</p>
 <p>This is a nice and straightforward way of doing this. It’s also possible to do it using the <code>tidyverse()</code> which can come in handy sometimes in some circumstances. To do it this way, we make use of <code>group_by()</code> and <code>count()</code>. We tell it the two columns we wish to group our data by (in this case it is the <code>genre</code> and the <code>platform</code> columns), and then tell it to count how many observations we have:</p>
-<div class="sourceCode" id="cb741"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb741-1"><a href="descriptives.html#cb741-1" aria-hidden="true" tabindex="-1"></a>vg <span class="sc">%&gt;%</span></span>
-<span id="cb741-2"><a href="descriptives.html#cb741-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(genre, platform) <span class="sc">%&gt;%</span></span>
-<span id="cb741-3"><a href="descriptives.html#cb741-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb743"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb743-1"><a href="descriptives.html#cb743-1" aria-hidden="true" tabindex="-1"></a>vg <span class="sc">%&gt;%</span></span>
+<span id="cb743-2"><a href="descriptives.html#cb743-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(genre, platform) <span class="sc">%&gt;%</span></span>
+<span id="cb743-3"><a href="descriptives.html#cb743-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>()</span></code></pre></div>
 <pre><code>## # A tibble: 20 x 3
 ## # Groups:   genre, platform [20]
 ##    genre   platform     n
@@ -1179,8 +1179,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 20 Sports  X360       143</code></pre>
 <p><br></p>
 <p>These data are presented in a slightly different way. The count of each combination is shown in the new <code>n</code> column. The nice thing about this tidy approach is that we can further manipulate the data. This is better illustrated with an even busier dataset, the <code>catcolor.csv</code> dataset:</p>
-<div class="sourceCode" id="cb743"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb743-1"><a href="descriptives.html#cb743-1" aria-hidden="true" tabindex="-1"></a>cats <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;data/catcolor.csv&quot;</span>)</span>
-<span id="cb743-2"><a href="descriptives.html#cb743-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(cats)</span></code></pre></div>
+<div class="sourceCode" id="cb745"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb745-1"><a href="descriptives.html#cb745-1" aria-hidden="true" tabindex="-1"></a>cats <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;data/catcolor.csv&quot;</span>)</span>
+<span id="cb745-2"><a href="descriptives.html#cb745-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(cats)</span></code></pre></div>
 <pre><code>## # A tibble: 6 x 7
 ##   animal_id monthyear           name        color1 color2 sex    breed        
 ##   &lt;chr&gt;     &lt;dttm&gt;              &lt;chr&gt;       &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt;        
@@ -1191,9 +1191,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 5 A686497   2014-08-31 15:45:00 Chester     black  &lt;NA&gt;   Male   domestic sho~
 ## 6 A687965   2014-10-31 18:29:00 Oliver      orange &lt;NA&gt;   Male   domestic sho~</code></pre>
 <p>Say we want to know how many male and female cats of each breed we have. With tidyverse, we would do it like this:</p>
-<div class="sourceCode" id="cb745"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb745-1"><a href="descriptives.html#cb745-1" aria-hidden="true" tabindex="-1"></a>cats <span class="sc">%&gt;%</span></span>
-<span id="cb745-2"><a href="descriptives.html#cb745-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(breed,sex) <span class="sc">%&gt;%</span></span>
-<span id="cb745-3"><a href="descriptives.html#cb745-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb747"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb747-1"><a href="descriptives.html#cb747-1" aria-hidden="true" tabindex="-1"></a>cats <span class="sc">%&gt;%</span></span>
+<span id="cb747-2"><a href="descriptives.html#cb747-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(breed,sex) <span class="sc">%&gt;%</span></span>
+<span id="cb747-3"><a href="descriptives.html#cb747-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>()</span></code></pre></div>
 <pre><code>## # A tibble: 87 x 3
 ## # Groups:   breed, sex [87]
 ##    breed                   sex        n
@@ -1211,10 +1211,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## # ... with 77 more rows</code></pre>
 <p><br></p>
 <p>This gives us a lot of information. In fact, we have 87 rows of data. However, we could next sort by the newly created <code>n</code> column, to see which sex/breed combination we have the highest amount of. We can use <code>arrange()</code> to do this:</p>
-<div class="sourceCode" id="cb747"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb747-1"><a href="descriptives.html#cb747-1" aria-hidden="true" tabindex="-1"></a>cats <span class="sc">%&gt;%</span></span>
-<span id="cb747-2"><a href="descriptives.html#cb747-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(breed,sex) <span class="sc">%&gt;%</span></span>
-<span id="cb747-3"><a href="descriptives.html#cb747-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb747-4"><a href="descriptives.html#cb747-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="sc">-</span>n)</span></code></pre></div>
+<div class="sourceCode" id="cb749"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb749-1"><a href="descriptives.html#cb749-1" aria-hidden="true" tabindex="-1"></a>cats <span class="sc">%&gt;%</span></span>
+<span id="cb749-2"><a href="descriptives.html#cb749-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(breed,sex) <span class="sc">%&gt;%</span></span>
+<span id="cb749-3"><a href="descriptives.html#cb749-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb749-4"><a href="descriptives.html#cb749-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="sc">-</span>n)</span></code></pre></div>
 <pre><code>## # A tibble: 87 x 3
 ## # Groups:   breed, sex [87]
 ##    breed               sex        n
@@ -1232,11 +1232,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## # ... with 77 more rows</code></pre>
 <p><br></p>
 <p>Another thing we can do is to count how many there are of a given category or categories that satisfy certain conditions. For example, let’s say we wanted to know the most popular name of each breed for orange cats. We could first filter the data by <code>color1</code> to only keep orange cats, then group by <code>name</code> and <code>breed</code> and then use <code>count()</code> and <code>arrange()</code>:</p>
-<div class="sourceCode" id="cb749"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb749-1"><a href="descriptives.html#cb749-1" aria-hidden="true" tabindex="-1"></a>cats <span class="sc">%&gt;%</span></span>
-<span id="cb749-2"><a href="descriptives.html#cb749-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(color1 <span class="sc">==</span> <span class="st">&quot;orange&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb749-3"><a href="descriptives.html#cb749-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(name,breed) <span class="sc">%&gt;%</span></span>
-<span id="cb749-4"><a href="descriptives.html#cb749-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb749-5"><a href="descriptives.html#cb749-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="sc">-</span>n)</span></code></pre></div>
+<div class="sourceCode" id="cb751"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb751-1"><a href="descriptives.html#cb751-1" aria-hidden="true" tabindex="-1"></a>cats <span class="sc">%&gt;%</span></span>
+<span id="cb751-2"><a href="descriptives.html#cb751-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(color1 <span class="sc">==</span> <span class="st">&quot;orange&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb751-3"><a href="descriptives.html#cb751-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(name,breed) <span class="sc">%&gt;%</span></span>
+<span id="cb751-4"><a href="descriptives.html#cb751-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb751-5"><a href="descriptives.html#cb751-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="sc">-</span>n)</span></code></pre></div>
 <pre><code>## # A tibble: 1,304 x 3
 ## # Groups:   name, breed [1,304]
 ##    name     breed                  n
@@ -1254,13 +1254,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## # ... with 1,294 more rows</code></pre>
 <p>It turns out that the most popular names overall for orange cats are for domestic shorthairs who are called Oliver, then Oscar, Ginger, Sam, Garfield and so on.</p>
 <p>To do exactly what we said above, we can do something a bit different. After we’ve done all the above, we can then tell the chain that we only want to group by <code>breed</code> this time, and we want to keep the highest value with <code>top_n(1)</code>. This returns the following:</p>
-<div class="sourceCode" id="cb751"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb751-1"><a href="descriptives.html#cb751-1" aria-hidden="true" tabindex="-1"></a>cats <span class="sc">%&gt;%</span></span>
-<span id="cb751-2"><a href="descriptives.html#cb751-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(color1 <span class="sc">==</span> <span class="st">&quot;orange&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb751-3"><a href="descriptives.html#cb751-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(name,breed) <span class="sc">%&gt;%</span></span>
-<span id="cb751-4"><a href="descriptives.html#cb751-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb751-5"><a href="descriptives.html#cb751-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="sc">-</span>n) <span class="sc">%&gt;%</span> </span>
-<span id="cb751-6"><a href="descriptives.html#cb751-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(breed) <span class="sc">%&gt;%</span></span>
-<span id="cb751-7"><a href="descriptives.html#cb751-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">top_n</span>(<span class="dv">1</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb753"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb753-1"><a href="descriptives.html#cb753-1" aria-hidden="true" tabindex="-1"></a>cats <span class="sc">%&gt;%</span></span>
+<span id="cb753-2"><a href="descriptives.html#cb753-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(color1 <span class="sc">==</span> <span class="st">&quot;orange&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb753-3"><a href="descriptives.html#cb753-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(name,breed) <span class="sc">%&gt;%</span></span>
+<span id="cb753-4"><a href="descriptives.html#cb753-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb753-5"><a href="descriptives.html#cb753-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="sc">-</span>n) <span class="sc">%&gt;%</span> </span>
+<span id="cb753-6"><a href="descriptives.html#cb753-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(breed) <span class="sc">%&gt;%</span></span>
+<span id="cb753-7"><a href="descriptives.html#cb753-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">top_n</span>(<span class="dv">1</span>)</span></code></pre></div>
 <pre><code>## # A tibble: 23 x 3
 ## # Groups:   breed [11]
 ##    name    breed                   n

@@ -24,7 +24,7 @@
 <meta name="author" content="James P. Curley &amp; Tyler M. Milewski" />
 
 
-<meta name="date" content="2021-09-01" />
+<meta name="date" content="2021-09-02" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -595,50 +595,55 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <pre><code>## [1] &quot;5&quot;        &quot;9&quot;        &quot;11&quot;       &quot;10&quot;       &quot;james&quot;    &quot;tyler&quot;   
 ## [7] &quot;hedgehog&quot;</code></pre>
 <p>Here, each of <code>aa</code> to <code>ee</code> is assigned to be an object and they contain information. When we write <code>c(aa, bb, cc, dd, ee)</code> we don’t need to use quotes as we’re referring to the objects and not to words called <code>aa</code>, <code>ee</code> etc. Also notice that we were able to make vectors that mixed together numbers and characters. Also, some of our original vectors like <code>bb</code> and <code>dd</code> contained more than one element. When we put them all together with <code>c(aa, bb, cc, dd, ee)</code> to create the <code>example</code> object, R just stuck them all together in the order we wrote.</p>
-<p>It’s pretty unusual though to mix numeric and character vectors together. Let’s get back to talking about vectors that contain characters only.</p>
+<p>It’s pretty unusual though to mix numeric and character vectors together. However, if you were to do that, it would make the whole vector a character vector.</p>
+<p>For example, this vector is actually a <code>character</code> vector as it has at least one character in it. All the elements become characters as noted by the quotes around each element:</p>
+<div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb77-1"><a href="basic-syntax.html#cb77-1" aria-hidden="true" tabindex="-1"></a>my_vec <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">4</span>,<span class="dv">6</span>,<span class="dv">9</span>,<span class="dv">11</span>,<span class="st">&quot;k&quot;</span>, <span class="dv">13</span>, <span class="dv">15</span>)</span>
+<span id="cb77-2"><a href="basic-syntax.html#cb77-2" aria-hidden="true" tabindex="-1"></a>my_vec</span></code></pre></div>
+<pre><code>## [1] &quot;1&quot;  &quot;4&quot;  &quot;6&quot;  &quot;9&quot;  &quot;11&quot; &quot;k&quot;  &quot;13&quot; &quot;15&quot;</code></pre>
+<p>Let’s get back to talking about vectors that contain characters only.</p>
 <p>Some functions can work on both character vectors and numeric vectors. One example is <code>length()</code> which counts the number of elements in a vector:</p>
-<div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb77-1"><a href="basic-syntax.html#cb77-1" aria-hidden="true" tabindex="-1"></a>v1</span></code></pre></div>
+<div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb79-1"><a href="basic-syntax.html#cb79-1" aria-hidden="true" tabindex="-1"></a>v1</span></code></pre></div>
 <pre><code>## [1]  5  6  7  8  9 10</code></pre>
-<div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb79-1"><a href="basic-syntax.html#cb79-1" aria-hidden="true" tabindex="-1"></a>the_week</span></code></pre></div>
+<div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb81-1"><a href="basic-syntax.html#cb81-1" aria-hidden="true" tabindex="-1"></a>the_week</span></code></pre></div>
 <pre><code>## [1] &quot;Monday&quot;    &quot;Tuesday&quot;   &quot;Wednesday&quot; &quot;Thursday&quot;  &quot;Friday&quot;    &quot;Saturday&quot; 
 ## [7] &quot;Sunday&quot;</code></pre>
-<div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb81-1"><a href="basic-syntax.html#cb81-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(v1)</span></code></pre></div>
+<div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb83-1"><a href="basic-syntax.html#cb83-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(v1)</span></code></pre></div>
 <pre><code>## [1] 6</code></pre>
-<div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb83-1"><a href="basic-syntax.html#cb83-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(the_week)</span></code></pre></div>
+<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb85-1"><a href="basic-syntax.html#cb85-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(the_week)</span></code></pre></div>
 <pre><code>## [1] 7</code></pre>
 <p>However, some functions only make sense when working with one type or the other. For instance <code>sum()</code> to add up the elements of a vector, only works with numeric data:</p>
-<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb85-1"><a href="basic-syntax.html#cb85-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(v1)</span></code></pre></div>
+<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb87-1"><a href="basic-syntax.html#cb87-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(v1)</span></code></pre></div>
 <pre><code>## [1] 45</code></pre>
 <p>If you try it with character data, then it will give you an error:</p>
-<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb87-1"><a href="basic-syntax.html#cb87-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(the_week)</span></code></pre></div>
+<div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb89-1"><a href="basic-syntax.html#cb89-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(the_week)</span></code></pre></div>
 <pre><code>## Error in sum(the_week): invalid &#39;type&#39; (character) of argument</code></pre>
 <p>Others work with characters. For example, <code>nchar()</code> calculates the number of letters in a piece of character text. Applying it to a vector will tell you how many letters are in each of the days of the week:</p>
-<div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb89-1"><a href="basic-syntax.html#cb89-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nchar</span>(the_week)</span></code></pre></div>
+<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb91-1"><a href="basic-syntax.html#cb91-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nchar</span>(the_week)</span></code></pre></div>
 <pre><code>## [1] 6 7 9 8 6 8 6</code></pre>
 <p>If you try this with numeric vectors, it gives you a funny output of how many characters are in each number!</p>
-<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb91-1"><a href="basic-syntax.html#cb91-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nchar</span>(v1)</span></code></pre></div>
+<div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb93-1"><a href="basic-syntax.html#cb93-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nchar</span>(v1)</span></code></pre></div>
 <pre><code>## [1] 1 1 1 1 1 2</code></pre>
 <p>Regardless of whether you are using numerical or character vectors, indexing works in the same way.</p>
 <p>e.g. To get the 3rd element of each vector:</p>
-<div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb93-1"><a href="basic-syntax.html#cb93-1" aria-hidden="true" tabindex="-1"></a>v1[<span class="dv">3</span>]</span></code></pre></div>
+<div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb95-1"><a href="basic-syntax.html#cb95-1" aria-hidden="true" tabindex="-1"></a>v1[<span class="dv">3</span>]</span></code></pre></div>
 <pre><code>## [1] 7</code></pre>
-<div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb95-1"><a href="basic-syntax.html#cb95-1" aria-hidden="true" tabindex="-1"></a>the_week[<span class="dv">3</span>]</span></code></pre></div>
+<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb97-1"><a href="basic-syntax.html#cb97-1" aria-hidden="true" tabindex="-1"></a>the_week[<span class="dv">3</span>]</span></code></pre></div>
 <pre><code>## [1] &quot;Wednesday&quot;</code></pre>
 <p>e.g. to get the 5th and 5th elements of each vector:</p>
-<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb97-1"><a href="basic-syntax.html#cb97-1" aria-hidden="true" tabindex="-1"></a>v1[<span class="dv">5</span><span class="sc">:</span><span class="dv">6</span>]</span></code></pre></div>
+<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb99-1"><a href="basic-syntax.html#cb99-1" aria-hidden="true" tabindex="-1"></a>v1[<span class="dv">5</span><span class="sc">:</span><span class="dv">6</span>]</span></code></pre></div>
 <pre><code>## [1]  9 10</code></pre>
-<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb99-1"><a href="basic-syntax.html#cb99-1" aria-hidden="true" tabindex="-1"></a>the_week[<span class="dv">5</span><span class="sc">:</span><span class="dv">6</span>]</span></code></pre></div>
+<div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb101-1"><a href="basic-syntax.html#cb101-1" aria-hidden="true" tabindex="-1"></a>the_week[<span class="dv">5</span><span class="sc">:</span><span class="dv">6</span>]</span></code></pre></div>
 <pre><code>## [1] &quot;Friday&quot;   &quot;Saturday&quot;</code></pre>
 <p>e.g. to get the first, fourth, and sixth element of each vector:</p>
-<div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb101-1"><a href="basic-syntax.html#cb101-1" aria-hidden="true" tabindex="-1"></a>v1[<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">4</span>,<span class="dv">6</span>)]</span></code></pre></div>
+<div class="sourceCode" id="cb103"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb103-1"><a href="basic-syntax.html#cb103-1" aria-hidden="true" tabindex="-1"></a>v1[<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">4</span>,<span class="dv">6</span>)]</span></code></pre></div>
 <pre><code>## [1]  5  8 10</code></pre>
-<div class="sourceCode" id="cb103"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb103-1"><a href="basic-syntax.html#cb103-1" aria-hidden="true" tabindex="-1"></a>the_week[<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">4</span>,<span class="dv">6</span>)]</span></code></pre></div>
+<div class="sourceCode" id="cb105"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb105-1"><a href="basic-syntax.html#cb105-1" aria-hidden="true" tabindex="-1"></a>the_week[<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">4</span>,<span class="dv">6</span>)]</span></code></pre></div>
 <pre><code>## [1] &quot;Monday&quot;   &quot;Thursday&quot; &quot;Saturday&quot;</code></pre>
 </div>
 <div id="naming-of-objects" class="section level2" number="3.5">
 <h2><span class="header-section-number">3.5</span> Naming of objects</h2>
 <p>One of the hardest things in R is deciding what to name things. You run out of ideas very fast! There’s only so many times you can call things <code>x</code> or <code>df</code> or <code>v1</code> before you get bored. The best names tend to be short and memorable. If you were saving a vector of color names for example, you might want to call it <code>mycolors</code>:</p>
-<div class="sourceCode" id="cb105"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb105-1"><a href="basic-syntax.html#cb105-1" aria-hidden="true" tabindex="-1"></a>mycolors <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;mistyrose&quot;</span>, <span class="st">&quot;dodgerblue&quot;</span>, <span class="st">&quot;pink&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb107"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb107-1"><a href="basic-syntax.html#cb107-1" aria-hidden="true" tabindex="-1"></a>mycolors <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;mistyrose&quot;</span>, <span class="st">&quot;dodgerblue&quot;</span>, <span class="st">&quot;pink&quot;</span>)</span></code></pre></div>
 <p>There are some important rules for the naming of objects. These are some DOs and some important DON’Ts:</p>
 <ul>
 <li><p>you can use characters or numbers in object names, or both</p></li>
@@ -648,7 +653,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><p>do not use any punctuation in names for objects, dataframes or column names except for the period <code>.</code> or underscore <code>_</code>. Everything else is forbidden.</p></li>
 <li><p>if you do use an underscore <code>_</code> it cannot go at the beginning, e.g.</p></li>
 </ul>
-<div class="sourceCode" id="cb106"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb106-1"><a href="basic-syntax.html#cb106-1" aria-hidden="true" tabindex="-1"></a>_mynumber <span class="ot">&lt;-</span> <span class="dv">17</span></span></code></pre></div>
+<div class="sourceCode" id="cb108"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb108-1"><a href="basic-syntax.html#cb108-1" aria-hidden="true" tabindex="-1"></a>_mynumber <span class="ot">&lt;-</span> <span class="dv">17</span></span></code></pre></div>
 <pre><code>## Error: &lt;text&gt;:1:1: unexpected input
 ## 1: _
 ##     ^</code></pre>
@@ -656,14 +661,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><p>you can use a period <code>.</code> at the beginning of an object name, but please don’t.</p></li>
 <li><p>periods <code>.</code> and underscores <code>_</code> are best used in the middle of object names to help read the name, e.g.</p></li>
 </ul>
-<div class="sourceCode" id="cb108"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb108-1"><a href="basic-syntax.html#cb108-1" aria-hidden="true" tabindex="-1"></a>prime_numbers <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">5</span>,<span class="dv">7</span>,<span class="dv">11</span>,<span class="dv">13</span>)</span>
-<span id="cb108-2"><a href="basic-syntax.html#cb108-2" aria-hidden="true" tabindex="-1"></a>prime_numbers</span></code></pre></div>
+<div class="sourceCode" id="cb110"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb110-1"><a href="basic-syntax.html#cb110-1" aria-hidden="true" tabindex="-1"></a>prime_numbers <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">5</span>,<span class="dv">7</span>,<span class="dv">11</span>,<span class="dv">13</span>)</span>
+<span id="cb110-2"><a href="basic-syntax.html#cb110-2" aria-hidden="true" tabindex="-1"></a>prime_numbers</span></code></pre></div>
 <pre><code>## [1]  1  3  5  7 11 13</code></pre>
 <ul>
 <li>but even better, use short object names!</li>
 </ul>
-<div class="sourceCode" id="cb110"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb110-1"><a href="basic-syntax.html#cb110-1" aria-hidden="true" tabindex="-1"></a>primes <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">5</span>,<span class="dv">7</span>,<span class="dv">11</span>,<span class="dv">13</span>)</span>
-<span id="cb110-2"><a href="basic-syntax.html#cb110-2" aria-hidden="true" tabindex="-1"></a>primes</span></code></pre></div>
+<div class="sourceCode" id="cb112"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb112-1"><a href="basic-syntax.html#cb112-1" aria-hidden="true" tabindex="-1"></a>primes <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">5</span>,<span class="dv">7</span>,<span class="dv">11</span>,<span class="dv">13</span>)</span>
+<span id="cb112-2"><a href="basic-syntax.html#cb112-2" aria-hidden="true" tabindex="-1"></a>primes</span></code></pre></div>
 <pre><code>## [1]  1  3  5  7 11 13</code></pre>
 <ul>
 <li>you should avoid using certain words, as they have other meanings in R and calling something else by that name could confuse things. Examples of words to avoid: <code>if</code>, <code>else</code>, <code>repeat</code>, <code>library</code>, <code>break</code>, <code>while</code>, <code>stop</code>, <code>function</code>, <code>for</code>, <code>in</code>, <code>next</code>, <code>TRUE</code>, <code>FALSE</code>, <code>NULL</code>, <code>Inf</code>, <code>NaN</code>, <code>NA</code>, <code>data</code>, etc. That still leaves a lot of words you can use.</li>
@@ -676,122 +681,122 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="logical-operators" class="section level2" number="3.6">
 <h2><span class="header-section-number">3.6</span> Logical Operators</h2>
 <p>The R language contains several bits of punctuation that can be used for what’s termed ‘logical operators’. These will lead to an output of either <code>TRUE</code> or <code>FALSE</code> being printed to the console. It’s easiest to work out what they do by just seeing them in action:</p>
-<div class="sourceCode" id="cb112"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb112-1"><a href="basic-syntax.html#cb112-1" aria-hidden="true" tabindex="-1"></a><span class="st">&quot;is equals to&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb114"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb114-1"><a href="basic-syntax.html#cb114-1" aria-hidden="true" tabindex="-1"></a><span class="st">&quot;is equals to&quot;</span></span></code></pre></div>
 <pre><code>## [1] &quot;is equals to&quot;</code></pre>
-<div class="sourceCode" id="cb114"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb114-1"><a href="basic-syntax.html#cb114-1" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span><span class="sc">+</span><span class="dv">2</span> <span class="sc">==</span> <span class="dv">4</span></span></code></pre></div>
+<div class="sourceCode" id="cb116"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb116-1"><a href="basic-syntax.html#cb116-1" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span><span class="sc">+</span><span class="dv">2</span> <span class="sc">==</span> <span class="dv">4</span></span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
-<div class="sourceCode" id="cb116"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb116-1"><a href="basic-syntax.html#cb116-1" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span><span class="sc">+</span><span class="dv">2</span> <span class="sc">==</span> <span class="dv">5</span></span></code></pre></div>
+<div class="sourceCode" id="cb118"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb118-1"><a href="basic-syntax.html#cb118-1" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span><span class="sc">+</span><span class="dv">2</span> <span class="sc">==</span> <span class="dv">5</span></span></code></pre></div>
 <pre><code>## [1] FALSE</code></pre>
 <p>The double equals sign <code>==</code> checks if the left hand side is equal to the right hands side. In the top example, 2+2 does equal 4 so we get a <code>TRUE</code>, while in the bottom example, 2+5 does not equal 5 so we get a <code>FALSE</code>.</p>
 <p>You don’t have to check one thing at a time. You could check all elements of a vector at once:</p>
-<div class="sourceCode" id="cb118"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb118-1"><a href="basic-syntax.html#cb118-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">10</span>, <span class="dv">15</span>, <span class="dv">10</span>, <span class="dv">1</span>, <span class="dv">11</span>, <span class="dv">10</span>)</span>
-<span id="cb118-2"><a href="basic-syntax.html#cb118-2" aria-hidden="true" tabindex="-1"></a>x <span class="sc">==</span> <span class="dv">10</span></span></code></pre></div>
+<div class="sourceCode" id="cb120"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb120-1"><a href="basic-syntax.html#cb120-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">10</span>, <span class="dv">15</span>, <span class="dv">10</span>, <span class="dv">1</span>, <span class="dv">11</span>, <span class="dv">10</span>)</span>
+<span id="cb120-2"><a href="basic-syntax.html#cb120-2" aria-hidden="true" tabindex="-1"></a>x <span class="sc">==</span> <span class="dv">10</span></span></code></pre></div>
 <pre><code>## [1] FALSE  TRUE FALSE  TRUE FALSE FALSE  TRUE</code></pre>
 <p>Here it is saying which elements of <code>x</code> are equal to 10 or not.</p>
 <p>If you want to ask whether something is <code>not equal to</code> something, then you use <code>!=</code> like this:</p>
-<div class="sourceCode" id="cb120"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb120-1"><a href="basic-syntax.html#cb120-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">10</span>, <span class="dv">15</span>, <span class="dv">10</span>, <span class="dv">1</span>, <span class="dv">11</span>, <span class="dv">10</span>)</span>
-<span id="cb120-2"><a href="basic-syntax.html#cb120-2" aria-hidden="true" tabindex="-1"></a>x <span class="sc">!=</span> <span class="dv">10</span></span></code></pre></div>
+<div class="sourceCode" id="cb122"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb122-1"><a href="basic-syntax.html#cb122-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">10</span>, <span class="dv">15</span>, <span class="dv">10</span>, <span class="dv">1</span>, <span class="dv">11</span>, <span class="dv">10</span>)</span>
+<span id="cb122-2"><a href="basic-syntax.html#cb122-2" aria-hidden="true" tabindex="-1"></a>x <span class="sc">!=</span> <span class="dv">10</span></span></code></pre></div>
 <pre><code>## [1]  TRUE FALSE  TRUE FALSE  TRUE  TRUE FALSE</code></pre>
 <p>Other logical operators are <code>&lt;</code>, <code>&lt;=</code>, <code>&gt;</code> and <code>&gt;=</code> and can be used in the usual mathematical way:</p>
-<div class="sourceCode" id="cb122"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb122-1"><a href="basic-syntax.html#cb122-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">10</span>, <span class="dv">15</span>, <span class="dv">10</span>, <span class="dv">1</span>, <span class="dv">11</span>, <span class="dv">10</span>)</span>
-<span id="cb122-2"><a href="basic-syntax.html#cb122-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb122-3"><a href="basic-syntax.html#cb122-3" aria-hidden="true" tabindex="-1"></a>x <span class="sc">&lt;</span> <span class="dv">10</span></span></code></pre></div>
+<div class="sourceCode" id="cb124"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb124-1"><a href="basic-syntax.html#cb124-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">10</span>, <span class="dv">15</span>, <span class="dv">10</span>, <span class="dv">1</span>, <span class="dv">11</span>, <span class="dv">10</span>)</span>
+<span id="cb124-2"><a href="basic-syntax.html#cb124-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb124-3"><a href="basic-syntax.html#cb124-3" aria-hidden="true" tabindex="-1"></a>x <span class="sc">&lt;</span> <span class="dv">10</span></span></code></pre></div>
 <pre><code>## [1]  TRUE FALSE FALSE FALSE  TRUE FALSE FALSE</code></pre>
-<div class="sourceCode" id="cb124"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb124-1"><a href="basic-syntax.html#cb124-1" aria-hidden="true" tabindex="-1"></a>x <span class="sc">&lt;=</span> <span class="dv">10</span></span></code></pre></div>
+<div class="sourceCode" id="cb126"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb126-1"><a href="basic-syntax.html#cb126-1" aria-hidden="true" tabindex="-1"></a>x <span class="sc">&lt;=</span> <span class="dv">10</span></span></code></pre></div>
 <pre><code>## [1]  TRUE  TRUE FALSE  TRUE  TRUE FALSE  TRUE</code></pre>
-<div class="sourceCode" id="cb126"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb126-1"><a href="basic-syntax.html#cb126-1" aria-hidden="true" tabindex="-1"></a>x <span class="sc">&gt;</span> <span class="dv">10</span></span></code></pre></div>
+<div class="sourceCode" id="cb128"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb128-1"><a href="basic-syntax.html#cb128-1" aria-hidden="true" tabindex="-1"></a>x <span class="sc">&gt;</span> <span class="dv">10</span></span></code></pre></div>
 <pre><code>## [1] FALSE FALSE  TRUE FALSE FALSE  TRUE FALSE</code></pre>
-<div class="sourceCode" id="cb128"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb128-1"><a href="basic-syntax.html#cb128-1" aria-hidden="true" tabindex="-1"></a>x <span class="sc">&gt;=</span> <span class="dv">10</span></span></code></pre></div>
+<div class="sourceCode" id="cb130"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb130-1"><a href="basic-syntax.html#cb130-1" aria-hidden="true" tabindex="-1"></a>x <span class="sc">&gt;=</span> <span class="dv">10</span></span></code></pre></div>
 <pre><code>## [1] FALSE  TRUE  TRUE  TRUE FALSE  TRUE  TRUE</code></pre>
 <p>You can also add up the logical output. Say you wanted to know how many of your vector of <code>x</code> were equal to 10. You can use <code>sum()</code> to add up. With the <code>TRUE</code> AND <code>FALSE</code> output, <code>sum()</code> will count up the number of <code>TRUE</code>s you have. (It considers <code>TRUE</code> to be 1’s and <code>FALSE</code> to be 0’s)</p>
-<div class="sourceCode" id="cb130"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb130-1"><a href="basic-syntax.html#cb130-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">10</span>, <span class="dv">15</span>, <span class="dv">10</span>, <span class="dv">1</span>, <span class="dv">11</span>, <span class="dv">10</span>)</span>
-<span id="cb130-2"><a href="basic-syntax.html#cb130-2" aria-hidden="true" tabindex="-1"></a>x <span class="sc">==</span> <span class="dv">10</span></span></code></pre></div>
+<div class="sourceCode" id="cb132"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb132-1"><a href="basic-syntax.html#cb132-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">10</span>, <span class="dv">15</span>, <span class="dv">10</span>, <span class="dv">1</span>, <span class="dv">11</span>, <span class="dv">10</span>)</span>
+<span id="cb132-2"><a href="basic-syntax.html#cb132-2" aria-hidden="true" tabindex="-1"></a>x <span class="sc">==</span> <span class="dv">10</span></span></code></pre></div>
 <pre><code>## [1] FALSE  TRUE FALSE  TRUE FALSE FALSE  TRUE</code></pre>
-<div class="sourceCode" id="cb132"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb132-1"><a href="basic-syntax.html#cb132-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(x<span class="sc">==</span><span class="dv">10</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb134"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb134-1"><a href="basic-syntax.html#cb134-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(x<span class="sc">==</span><span class="dv">10</span>)</span></code></pre></div>
 <pre><code>## [1] 3</code></pre>
 <p><strong>Indexing Vectors with Logical Operators</strong></p>
 <p>This is all a bit abstract and vague as to why we should care about logical operators. One common situation we use them is when we want to subset vectors. Remember, we use the square brackets <code>[]</code> to index a vector like this:</p>
-<div class="sourceCode" id="cb134"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb134-1"><a href="basic-syntax.html#cb134-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">10</span>, <span class="dv">15</span>, <span class="dv">10</span>, <span class="dv">1</span>, <span class="dv">11</span>, <span class="dv">10</span>)</span>
-<span id="cb134-2"><a href="basic-syntax.html#cb134-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb134-3"><a href="basic-syntax.html#cb134-3" aria-hidden="true" tabindex="-1"></a>x[<span class="dv">5</span>]</span></code></pre></div>
+<div class="sourceCode" id="cb136"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb136-1"><a href="basic-syntax.html#cb136-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">10</span>, <span class="dv">15</span>, <span class="dv">10</span>, <span class="dv">1</span>, <span class="dv">11</span>, <span class="dv">10</span>)</span>
+<span id="cb136-2"><a href="basic-syntax.html#cb136-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb136-3"><a href="basic-syntax.html#cb136-3" aria-hidden="true" tabindex="-1"></a>x[<span class="dv">5</span>]</span></code></pre></div>
 <pre><code>## [1] 1</code></pre>
-<div class="sourceCode" id="cb136"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb136-1"><a href="basic-syntax.html#cb136-1" aria-hidden="true" tabindex="-1"></a>x[<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>]</span></code></pre></div>
+<div class="sourceCode" id="cb138"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb138-1"><a href="basic-syntax.html#cb138-1" aria-hidden="true" tabindex="-1"></a>x[<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>]</span></code></pre></div>
 <pre><code>## [1]  5 10</code></pre>
 <p>Above we first got the 5th element of <code>x</code> and then we got the first and second elements of <code>x</code>. We can also grab things from vectors using logic. Effectively keeping those elements that give the output <code>TRUE</code> in response to the logic statement. Here are examples:</p>
-<div class="sourceCode" id="cb138"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb138-1"><a href="basic-syntax.html#cb138-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">10</span>, <span class="dv">15</span>, <span class="dv">10</span>, <span class="dv">1</span>, <span class="dv">11</span>, <span class="dv">10</span>)</span>
-<span id="cb138-2"><a href="basic-syntax.html#cb138-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb138-3"><a href="basic-syntax.html#cb138-3" aria-hidden="true" tabindex="-1"></a>x[x<span class="sc">==</span><span class="dv">10</span>]</span></code></pre></div>
+<div class="sourceCode" id="cb140"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb140-1"><a href="basic-syntax.html#cb140-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">10</span>, <span class="dv">15</span>, <span class="dv">10</span>, <span class="dv">1</span>, <span class="dv">11</span>, <span class="dv">10</span>)</span>
+<span id="cb140-2"><a href="basic-syntax.html#cb140-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb140-3"><a href="basic-syntax.html#cb140-3" aria-hidden="true" tabindex="-1"></a>x[x<span class="sc">==</span><span class="dv">10</span>]</span></code></pre></div>
 <pre><code>## [1] 10 10 10</code></pre>
-<div class="sourceCode" id="cb140"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb140-1"><a href="basic-syntax.html#cb140-1" aria-hidden="true" tabindex="-1"></a>x[x<span class="sc">!=</span><span class="dv">10</span>]</span></code></pre></div>
+<div class="sourceCode" id="cb142"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb142-1"><a href="basic-syntax.html#cb142-1" aria-hidden="true" tabindex="-1"></a>x[x<span class="sc">!=</span><span class="dv">10</span>]</span></code></pre></div>
 <pre><code>## [1]  5 15  1 11</code></pre>
-<div class="sourceCode" id="cb142"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb142-1"><a href="basic-syntax.html#cb142-1" aria-hidden="true" tabindex="-1"></a>x[x<span class="sc">&gt;</span><span class="dv">10</span>]</span></code></pre></div>
+<div class="sourceCode" id="cb144"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb144-1"><a href="basic-syntax.html#cb144-1" aria-hidden="true" tabindex="-1"></a>x[x<span class="sc">&gt;</span><span class="dv">10</span>]</span></code></pre></div>
 <pre><code>## [1] 15 11</code></pre>
 <p>Another funky piece of syntax that comes in useful from time to time is <code>%in%</code>. You can basically use it only keep those elements that match those that exist inside another element.</p>
-<div class="sourceCode" id="cb144"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb144-1"><a href="basic-syntax.html#cb144-1" aria-hidden="true" tabindex="-1"></a>stuff <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">5</span>, <span class="dv">15</span>)</span>
-<span id="cb144-2"><a href="basic-syntax.html#cb144-2" aria-hidden="true" tabindex="-1"></a>x[x <span class="sc">%in%</span> stuff]</span></code></pre></div>
+<div class="sourceCode" id="cb146"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb146-1"><a href="basic-syntax.html#cb146-1" aria-hidden="true" tabindex="-1"></a>stuff <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">5</span>, <span class="dv">15</span>)</span>
+<span id="cb146-2"><a href="basic-syntax.html#cb146-2" aria-hidden="true" tabindex="-1"></a>x[x <span class="sc">%in%</span> stuff]</span></code></pre></div>
 <pre><code>## [1]  5 15  1</code></pre>
 </div>
 <div id="some-things-that-are-useful-to-know." class="section level2" number="3.7">
 <h2><span class="header-section-number">3.7</span> Some things that are useful to know.</h2>
 <p><strong>whitespace</strong></p>
 <p>R doesn’t, on the whole, care that much about whitespace - this is space that is between code. It just ignores it. For instance, all of the following give the same result (what’s happening here is that <code>a</code> and <code>b</code> are <code>vectors</code> that each have three <code>elements</code>. Telling <code>a+b</code> will make it add the first element of <code>a</code> to the first element of <code>b</code> and then the 2nd element of <code>a</code> to the 2nd element of <code>b</code> and so on:</p>
-<div class="sourceCode" id="cb146"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb146-1"><a href="basic-syntax.html#cb146-1" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>)</span>
-<span id="cb146-2"><a href="basic-syntax.html#cb146-2" aria-hidden="true" tabindex="-1"></a>b <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>)</span>
-<span id="cb146-3"><a href="basic-syntax.html#cb146-3" aria-hidden="true" tabindex="-1"></a>a <span class="sc">+</span> b</span></code></pre></div>
+<div class="sourceCode" id="cb148"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb148-1"><a href="basic-syntax.html#cb148-1" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>)</span>
+<span id="cb148-2"><a href="basic-syntax.html#cb148-2" aria-hidden="true" tabindex="-1"></a>b <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>)</span>
+<span id="cb148-3"><a href="basic-syntax.html#cb148-3" aria-hidden="true" tabindex="-1"></a>a <span class="sc">+</span> b</span></code></pre></div>
 <pre><code>## [1] 5 7 9</code></pre>
-<div class="sourceCode" id="cb148"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb148-1"><a href="basic-syntax.html#cb148-1" aria-hidden="true" tabindex="-1"></a>a<span class="ot">&lt;-</span> <span class="fu">c</span>(   <span class="dv">1</span>,            <span class="dv">2</span>,     <span class="dv">3</span>)</span>
-<span id="cb148-2"><a href="basic-syntax.html#cb148-2" aria-hidden="true" tabindex="-1"></a>b <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>           )</span>
-<span id="cb148-3"><a href="basic-syntax.html#cb148-3" aria-hidden="true" tabindex="-1"></a>a <span class="sc">+</span>              b</span></code></pre></div>
+<div class="sourceCode" id="cb150"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb150-1"><a href="basic-syntax.html#cb150-1" aria-hidden="true" tabindex="-1"></a>a<span class="ot">&lt;-</span> <span class="fu">c</span>(   <span class="dv">1</span>,            <span class="dv">2</span>,     <span class="dv">3</span>)</span>
+<span id="cb150-2"><a href="basic-syntax.html#cb150-2" aria-hidden="true" tabindex="-1"></a>b <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>           )</span>
+<span id="cb150-3"><a href="basic-syntax.html#cb150-3" aria-hidden="true" tabindex="-1"></a>a <span class="sc">+</span>              b</span></code></pre></div>
 <pre><code>## [1] 5 7 9</code></pre>
-<div class="sourceCode" id="cb150"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb150-1"><a href="basic-syntax.html#cb150-1" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>    ,<span class="dv">2</span>,   <span class="dv">3</span>)</span>
-<span id="cb150-2"><a href="basic-syntax.html#cb150-2" aria-hidden="true" tabindex="-1"></a>b <span class="ot">&lt;-</span>    <span class="fu">c</span>(    <span class="dv">4</span>,<span class="dv">5</span>  ,<span class="dv">6</span>)</span>
-<span id="cb150-3"><a href="basic-syntax.html#cb150-3" aria-hidden="true" tabindex="-1"></a>            a <span class="sc">+</span>    b</span></code></pre></div>
+<div class="sourceCode" id="cb152"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb152-1"><a href="basic-syntax.html#cb152-1" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>    ,<span class="dv">2</span>,   <span class="dv">3</span>)</span>
+<span id="cb152-2"><a href="basic-syntax.html#cb152-2" aria-hidden="true" tabindex="-1"></a>b <span class="ot">&lt;-</span>    <span class="fu">c</span>(    <span class="dv">4</span>,<span class="dv">5</span>  ,<span class="dv">6</span>)</span>
+<span id="cb152-3"><a href="basic-syntax.html#cb152-3" aria-hidden="true" tabindex="-1"></a>            a <span class="sc">+</span>    b</span></code></pre></div>
 <pre><code>## [1] 5 7 9</code></pre>
 <p>Hopefully, you get the point.</p>
 <p>You can also leave whitespace across lines and R will, for the most part, jump to the code ahead and not worry about the whitespace. This example looks ugly because the commas, numbers, and brackets are all on different lines, but R reads it ok:</p>
-<div class="sourceCode" id="cb152"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb152-1"><a href="basic-syntax.html#cb152-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(  </span>
-<span id="cb152-2"><a href="basic-syntax.html#cb152-2" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb152-3"><a href="basic-syntax.html#cb152-3" aria-hidden="true" tabindex="-1"></a>   <span class="dv">4</span>, <span class="dv">5</span>, </span>
-<span id="cb152-4"><a href="basic-syntax.html#cb152-4" aria-hidden="true" tabindex="-1"></a>       </span>
-<span id="cb152-5"><a href="basic-syntax.html#cb152-5" aria-hidden="true" tabindex="-1"></a>       </span>
-<span id="cb152-6"><a href="basic-syntax.html#cb152-6" aria-hidden="true" tabindex="-1"></a>       <span class="dv">3</span>,    <span class="dv">6</span></span>
-<span id="cb152-7"><a href="basic-syntax.html#cb152-7" aria-hidden="true" tabindex="-1"></a>       </span>
-<span id="cb152-8"><a href="basic-syntax.html#cb152-8" aria-hidden="true" tabindex="-1"></a>       ,   <span class="dv">14</span></span>
-<span id="cb152-9"><a href="basic-syntax.html#cb152-9" aria-hidden="true" tabindex="-1"></a>       )</span>
-<span id="cb152-10"><a href="basic-syntax.html#cb152-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb152-11"><a href="basic-syntax.html#cb152-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb152-12"><a href="basic-syntax.html#cb152-12" aria-hidden="true" tabindex="-1"></a>x</span></code></pre></div>
+<div class="sourceCode" id="cb154"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb154-1"><a href="basic-syntax.html#cb154-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(  </span>
+<span id="cb154-2"><a href="basic-syntax.html#cb154-2" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb154-3"><a href="basic-syntax.html#cb154-3" aria-hidden="true" tabindex="-1"></a>   <span class="dv">4</span>, <span class="dv">5</span>, </span>
+<span id="cb154-4"><a href="basic-syntax.html#cb154-4" aria-hidden="true" tabindex="-1"></a>       </span>
+<span id="cb154-5"><a href="basic-syntax.html#cb154-5" aria-hidden="true" tabindex="-1"></a>       </span>
+<span id="cb154-6"><a href="basic-syntax.html#cb154-6" aria-hidden="true" tabindex="-1"></a>       <span class="dv">3</span>,    <span class="dv">6</span></span>
+<span id="cb154-7"><a href="basic-syntax.html#cb154-7" aria-hidden="true" tabindex="-1"></a>       </span>
+<span id="cb154-8"><a href="basic-syntax.html#cb154-8" aria-hidden="true" tabindex="-1"></a>       ,   <span class="dv">14</span></span>
+<span id="cb154-9"><a href="basic-syntax.html#cb154-9" aria-hidden="true" tabindex="-1"></a>       )</span>
+<span id="cb154-10"><a href="basic-syntax.html#cb154-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb154-11"><a href="basic-syntax.html#cb154-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb154-12"><a href="basic-syntax.html#cb154-12" aria-hidden="true" tabindex="-1"></a>x</span></code></pre></div>
 <pre><code>## [1]  4  5  3  6 14</code></pre>
 <p>Although this is possible. Please, please, don’t do it! It’s ugly to read, and what’s more, there are situations in which it can cause you problems.</p>
 <p>Indeed, there are some important place where whitespace needs to be adhered to.</p>
 <p>Firstly, when using the assignment operator <code>&lt;-</code>. R cannot stand it if you put a space in between the <code>&lt;</code> and the <code>-</code>. e.g.</p>
-<div class="sourceCode" id="cb154"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb154-1"><a href="basic-syntax.html#cb154-1" aria-hidden="true" tabindex="-1"></a>eg <span class="sc">&lt;</span> <span class="sc">-</span> <span class="dv">5</span><span class="sc">:</span><span class="dv">10</span></span></code></pre></div>
+<div class="sourceCode" id="cb156"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb156-1"><a href="basic-syntax.html#cb156-1" aria-hidden="true" tabindex="-1"></a>eg <span class="sc">&lt;</span> <span class="sc">-</span> <span class="dv">5</span><span class="sc">:</span><span class="dv">10</span></span></code></pre></div>
 <pre><code>## Error in eval(expr, envir, enclos): object &#39;eg&#39; not found</code></pre>
-<div class="sourceCode" id="cb156"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb156-1"><a href="basic-syntax.html#cb156-1" aria-hidden="true" tabindex="-1"></a>eg</span></code></pre></div>
+<div class="sourceCode" id="cb158"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb158-1"><a href="basic-syntax.html#cb158-1" aria-hidden="true" tabindex="-1"></a>eg</span></code></pre></div>
 <pre><code>## Error in eval(expr, envir, enclos): object &#39;eg&#39; not found</code></pre>
 <p>It is stating here that <code>object 'eg' not found</code> because it thinks you’re trying to ask it if <code>eg</code> is <code>less than</code> <code>-5:10</code>. If <code>eg</code> already existed, then you need to be extra careful here. We won’t go into what could happen in that situation, but it could be bad! So, golden rule, no spaces with <code>&lt;-</code> !</p>
 <p>Secondly, in future sections on carpentry and visualization, you’ll use some syntax that <code>pipes</code> or chains together a series of commands. These operators are <code>+</code> or <code>%&gt;%</code>. When using this syntax, you need to finish each line (expect the last line) with one of these pipe syntaxes. If you do not do that, you’ll get an error message, because R won’t jump to the later lines when it is chaining things together. Although this might be a bit early in your R journey to mention - it is such a frequent error, that we just wanted to reference it here. Hopefully, this will be a useful reference aid if you see this error.</p>
 <p>Here’s a simple example of what this looks like.</p>
-<div class="sourceCode" id="cb158"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb158-1"><a href="basic-syntax.html#cb158-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">4</span>, <span class="dv">6</span>, <span class="dv">5</span>, <span class="dv">10</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">7</span>)</span>
-<span id="cb158-2"><a href="basic-syntax.html#cb158-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb158-3"><a href="basic-syntax.html#cb158-3" aria-hidden="true" tabindex="-1"></a>x </span>
-<span id="cb158-4"><a href="basic-syntax.html#cb158-4" aria-hidden="true" tabindex="-1"></a><span class="sc">%&gt;%</span> unique</span>
-<span id="cb158-5"><a href="basic-syntax.html#cb158-5" aria-hidden="true" tabindex="-1"></a>  </span></code></pre></div>
+<div class="sourceCode" id="cb160"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb160-1"><a href="basic-syntax.html#cb160-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">4</span>, <span class="dv">6</span>, <span class="dv">5</span>, <span class="dv">10</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">7</span>)</span>
+<span id="cb160-2"><a href="basic-syntax.html#cb160-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb160-3"><a href="basic-syntax.html#cb160-3" aria-hidden="true" tabindex="-1"></a>x </span>
+<span id="cb160-4"><a href="basic-syntax.html#cb160-4" aria-hidden="true" tabindex="-1"></a><span class="sc">%&gt;%</span> unique</span>
+<span id="cb160-5"><a href="basic-syntax.html#cb160-5" aria-hidden="true" tabindex="-1"></a>  </span></code></pre></div>
 <pre><code>## Error: &lt;text&gt;:4:1: unexpected SPECIAL
 ## 3: x 
 ## 4: %&gt;%
 ##    ^</code></pre>
 <p>Here we get an error message saying <code>Error: unexpected SPECIAL in "%&gt;%"</code>. What has happened is that R read the lines where we assigned the numbers to <code>x</code> and then on the line that just had <code>x</code> it printed out the numbers. Then when it got to <code>%&gt;% unique</code> it didn’t know what this was referring to. When using chain syntax such as <code>%&gt;%</code> you cannot start a new line with it. Instead you should write:</p>
-<div class="sourceCode" id="cb160"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb160-1"><a href="basic-syntax.html#cb160-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">4</span>, <span class="dv">6</span>, <span class="dv">5</span>, <span class="dv">10</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">7</span>)</span>
-<span id="cb160-2"><a href="basic-syntax.html#cb160-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb160-3"><a href="basic-syntax.html#cb160-3" aria-hidden="true" tabindex="-1"></a>x  <span class="sc">%&gt;%</span> unique</span></code></pre></div>
+<div class="sourceCode" id="cb162"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb162-1"><a href="basic-syntax.html#cb162-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">4</span>, <span class="dv">6</span>, <span class="dv">5</span>, <span class="dv">10</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">7</span>)</span>
+<span id="cb162-2"><a href="basic-syntax.html#cb162-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb162-3"><a href="basic-syntax.html#cb162-3" aria-hidden="true" tabindex="-1"></a>x  <span class="sc">%&gt;%</span> unique</span></code></pre></div>
 <pre><code>## [1]  3  5  6  7  4 10</code></pre>
 <p>Now, it has processed the code appropriately and the output is what we want. Basically, we took our vector of <code>x</code> and extracted all the unique numbers.</p>
 <p>A golden rule should be - be neat with your code !!! and this will avoid a lot of errors and problems.</p>
 <p><strong>Other common errors</strong></p>
 <p><em>Close your brackets</em></p>
 <p>Missing commas or brackets might be the most common errors! You will get an error message though, and it usually will tell you what you did wrong. Also, when you start to type <code>(</code> RStudio will automatically autocomplete to write <code>()</code> which helps you to not forget to close your bracket.</p>
-<div class="sourceCode" id="cb162"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb162-1"><a href="basic-syntax.html#cb162-1" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">7</span></span></code></pre></div>
+<div class="sourceCode" id="cb164"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb164-1"><a href="basic-syntax.html#cb164-1" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">7</span></span></code></pre></div>
 <pre><code>## Error: &lt;text&gt;:2:0: unexpected end of input
 ## 1: a &lt;- c(4, 4, 2, 7
 ##    ^</code></pre>
@@ -801,40 +806,40 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><img src="img/plusok.png" /></p>
 <p><em>Don’t forget commas</em></p>
 <p>Commas need to be watched out for too. They are usually used to split separate items up, such as numbers in a vector or arguments in a function (see section <a href="basic-syntax.html#functions">3.9</a>). Missing them out can cause issues! For instance, here we are trying to make the vector <code>b</code> have the numbers 3, 6, 9 &amp; 10. But the way we write it, R might think we mean 3, 6 &amp; 910 because we forgot the comma. Remember, R often ignores spaces. Fortunately, R catches it because it ‘knows’ numbers need to be paid attention to - and suggests that you’ve missed out a comma. Well, technically it tells you <code>Error: unexpected numeric constant in ....</code> which doesn’t help much - but it’s because we forgot the comma.</p>
-<div class="sourceCode" id="cb164"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb164-1"><a href="basic-syntax.html#cb164-1" aria-hidden="true" tabindex="-1"></a>b <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">6</span>, <span class="dv">9</span> <span class="dv">10</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb166"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb166-1"><a href="basic-syntax.html#cb166-1" aria-hidden="true" tabindex="-1"></a>b <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">6</span>, <span class="dv">9</span> <span class="dv">10</span>)</span></code></pre></div>
 <pre><code>## Error: &lt;text&gt;:1:16: unexpected numeric constant
 ## 1: b &lt;- c(3, 6, 9 10
 ##                    ^</code></pre>
 <p>RStudio can help you as you write code. During most of this course, you will be following code already written by us. However, in the <code>try for yourself</code> examples, you’ll have to fill in blanks. Whenever there is an issue with code and it won’t run, RStudio flags this for you as soon as it realizes. It will give you a big red circle with an X inside of it. These appear in your script. You can see an example below for our problems with missing brackets and commas.</p>
 <p><img src="img/x.png" /></p>
 <p>Another thing that often happens with commas, is that people forget to put something in between them. Here’s this issue:</p>
-<div class="sourceCode" id="cb166"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb166-1"><a href="basic-syntax.html#cb166-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">5</span>,  <span class="dv">8</span>, )</span></code></pre></div>
+<div class="sourceCode" id="cb168"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb168-1"><a href="basic-syntax.html#cb168-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">5</span>,  <span class="dv">8</span>, )</span></code></pre></div>
 <pre><code>## Error in c(5, 8, ): argument 3 is empty</code></pre>
 <p>You get warned that one of your <code>arguments</code> are empty. If you scroll away from your code, you’ll get the X in the red circle telling you something is wrong. If your cursor is still by your code, you may get a yellow warning triangle telling you to beware, similar to this:</p>
 <p><img src="img/yellow.png" /></p>
 <p><em>Check your quote marks</em></p>
 <p>Quote marks <code>"hello"</code> or <code>'hello'</code> are often used in R when we want to make sure something is a character (i.e. text). Most commonly used when we’re inputting data that include words, or when we’re stating a color, or when we’re adding a title or a label to a graph.</p>
 <p>An error that we often see is that quote marks are either missing or not closed. Up to this point in the book, we haven’t yet covered the situations in which this is most likely to occur - so don’t worry about following this code just yet. We’re actually trying to make a scatterplot, that we discuss more in section <a href="data-visualization.html#scatterplots">5.3</a>. Instead, just focus on the error message:</p>
-<div class="sourceCode" id="cb168"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb168-1"><a href="basic-syntax.html#cb168-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb168-2"><a href="basic-syntax.html#cb168-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mtcars, <span class="fu">aes</span>(<span class="at">x=</span>wt, <span class="at">y=</span>mpg)) <span class="sc">+</span> <span class="fu">geom_point</span>(<span class="at">color =</span> purple)</span></code></pre></div>
+<div class="sourceCode" id="cb170"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb170-1"><a href="basic-syntax.html#cb170-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb170-2"><a href="basic-syntax.html#cb170-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mtcars, <span class="fu">aes</span>(<span class="at">x=</span>wt, <span class="at">y=</span>mpg)) <span class="sc">+</span> <span class="fu">geom_point</span>(<span class="at">color =</span> purple)</span></code></pre></div>
 <pre><code>## Error in layer(data = data, mapping = mapping, stat = stat, geom = GeomPoint, : object &#39;purple&#39; not found</code></pre>
 <p>Note that it says <code>object 'purple' not found</code>. That’s because, even though we are trying to make the points of the scatterplot purple, because we didn’t put it in quotes, it’s looking for the <code>object</code> called purple. It thinks there is something called purple that contains the information it needs. The actual code should include purple in quotes, to make sure it processes the word ‘purple’ literally:</p>
-<div class="sourceCode" id="cb170"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb170-1"><a href="basic-syntax.html#cb170-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb170-2"><a href="basic-syntax.html#cb170-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mtcars, <span class="fu">aes</span>(<span class="at">x=</span>wt, <span class="at">y=</span>mpg)) <span class="sc">+</span> <span class="fu">geom_point</span>(<span class="at">color =</span> <span class="st">&quot;purple&quot;</span>)</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-64-1.png" width="672" /></p>
+<div class="sourceCode" id="cb172"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb172-1"><a href="basic-syntax.html#cb172-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb172-2"><a href="basic-syntax.html#cb172-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mtcars, <span class="fu">aes</span>(<span class="at">x=</span>wt, <span class="at">y=</span>mpg)) <span class="sc">+</span> <span class="fu">geom_point</span>(<span class="at">color =</span> <span class="st">&quot;purple&quot;</span>)</span></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-65-1.png" width="672" /></p>
 <p>For the most part in R, you can choose whether you use double quotes <code>"</code> or single quotes <code>'</code> when using quotes. Just make sure you match them, and close them. For example, the following examples are correct:</p>
-<div class="sourceCode" id="cb171"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb171-1"><a href="basic-syntax.html#cb171-1" aria-hidden="true" tabindex="-1"></a>days <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Monday&quot;</span>, <span class="st">&quot;Tuesday&quot;</span>, <span class="st">&quot;Wednesday&quot;</span>)</span>
-<span id="cb171-2"><a href="basic-syntax.html#cb171-2" aria-hidden="true" tabindex="-1"></a>days</span></code></pre></div>
-<pre><code>## [1] &quot;Monday&quot;    &quot;Tuesday&quot;   &quot;Wednesday&quot;</code></pre>
-<div class="sourceCode" id="cb173"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb173-1"><a href="basic-syntax.html#cb173-1" aria-hidden="true" tabindex="-1"></a>days <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&#39;Monday&#39;</span>, <span class="st">&#39;Tuesday&#39;</span>, <span class="st">&#39;Wednesday&#39;</span>)</span>
+<div class="sourceCode" id="cb173"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb173-1"><a href="basic-syntax.html#cb173-1" aria-hidden="true" tabindex="-1"></a>days <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Monday&quot;</span>, <span class="st">&quot;Tuesday&quot;</span>, <span class="st">&quot;Wednesday&quot;</span>)</span>
 <span id="cb173-2"><a href="basic-syntax.html#cb173-2" aria-hidden="true" tabindex="-1"></a>days</span></code></pre></div>
 <pre><code>## [1] &quot;Monday&quot;    &quot;Tuesday&quot;   &quot;Wednesday&quot;</code></pre>
-<p>You can also do this, although it looks a bit odd:</p>
-<div class="sourceCode" id="cb175"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb175-1"><a href="basic-syntax.html#cb175-1" aria-hidden="true" tabindex="-1"></a>days <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&#39;Monday&#39;</span>, <span class="st">&quot;Tuesday&quot;</span>, <span class="st">&#39;Wednesday&#39;</span>)</span>
+<div class="sourceCode" id="cb175"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb175-1"><a href="basic-syntax.html#cb175-1" aria-hidden="true" tabindex="-1"></a>days <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&#39;Monday&#39;</span>, <span class="st">&#39;Tuesday&#39;</span>, <span class="st">&#39;Wednesday&#39;</span>)</span>
 <span id="cb175-2"><a href="basic-syntax.html#cb175-2" aria-hidden="true" tabindex="-1"></a>days</span></code></pre></div>
 <pre><code>## [1] &quot;Monday&quot;    &quot;Tuesday&quot;   &quot;Wednesday&quot;</code></pre>
+<p>You can also do this, although it looks a bit odd:</p>
+<div class="sourceCode" id="cb177"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb177-1"><a href="basic-syntax.html#cb177-1" aria-hidden="true" tabindex="-1"></a>days <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&#39;Monday&#39;</span>, <span class="st">&quot;Tuesday&quot;</span>, <span class="st">&#39;Wednesday&#39;</span>)</span>
+<span id="cb177-2"><a href="basic-syntax.html#cb177-2" aria-hidden="true" tabindex="-1"></a>days</span></code></pre></div>
+<pre><code>## [1] &quot;Monday&quot;    &quot;Tuesday&quot;   &quot;Wednesday&quot;</code></pre>
 <p>Here are some examples of what happens if you don’t close your quotes:</p>
-<div class="sourceCode" id="cb177"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb177-1"><a href="basic-syntax.html#cb177-1" aria-hidden="true" tabindex="-1"></a>days <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Monday, &quot;</span>Tuesday<span class="st">&quot;, &quot;</span>Wednesday<span class="st">&quot;)</span></span></code></pre></div>
+<div class="sourceCode" id="cb179"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb179-1"><a href="basic-syntax.html#cb179-1" aria-hidden="true" tabindex="-1"></a>days <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Monday, &quot;</span>Tuesday<span class="st">&quot;, &quot;</span>Wednesday<span class="st">&quot;)</span></span></code></pre></div>
 <pre><code>## Error: &lt;text&gt;:1:21: unexpected symbol
 ## 1: days &lt;- c(&quot;Monday, &quot;Tuesday
 ##                         ^</code></pre>
@@ -842,26 +847,26 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Another think you’ll notice when you make this error, is that the colors of your code don’t look right. Notice that the colors of each day aren’t consistent:</p>
 <p><img src="img/quotes.png" /></p>
 <p>In general, we’d recommend that when you need to use quotes, that the double quotes <code>"hello"</code> are the better option. There are two reasons for this. First, if you start to type those in R then the second quote mark magically appears. RStudio knows you’re using quotes and already produces the closing quote. This doesn’t happen (for some reason) when you use the single quote <code>'hello'</code>. Secondly, often we use quote marks because we’re adding a title or a label to something. Some example code to add a title to a graph might be:</p>
-<div class="sourceCode" id="cb179"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb179-1"><a href="basic-syntax.html#cb179-1" aria-hidden="true" tabindex="-1"></a>p <span class="sc">+</span> <span class="fu">ggtitle</span>(<span class="st">&quot;Tyler&#39;s first graph&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb181"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb181-1"><a href="basic-syntax.html#cb181-1" aria-hidden="true" tabindex="-1"></a>p <span class="sc">+</span> <span class="fu">ggtitle</span>(<span class="st">&quot;Tyler&#39;s first graph&quot;</span>)</span></code></pre></div>
 <p>Notice in this title that one of the words requires an apostrophe <code>'</code>. If you had used single quotes to wrap around <code>Tyler's first graph</code> then this would have caused confusion as to where you wanted to end the text string. This only arises when using single quotes - so we say that double quotes are safer!</p>
 <p><em>Typos are bad!</em></p>
 <p>R can only run the code that you tell it to run….. (well this is not 100% true… but wait until the end of the paragraph for that). If you don’t precisely tell it what you want, it will get confused or angry. If you typo, then this can cause problems. Let’s do an example. Say we want to make two vectors called <code>apples</code> and <code>oranges</code> and we want to add them together. This works:</p>
-<div class="sourceCode" id="cb180"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb180-1"><a href="basic-syntax.html#cb180-1" aria-hidden="true" tabindex="-1"></a>apples <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">7</span>, <span class="dv">10</span>)</span>
-<span id="cb180-2"><a href="basic-syntax.html#cb180-2" aria-hidden="true" tabindex="-1"></a>oranges <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">2</span>)</span>
-<span id="cb180-3"><a href="basic-syntax.html#cb180-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb180-4"><a href="basic-syntax.html#cb180-4" aria-hidden="true" tabindex="-1"></a>apples <span class="sc">+</span> oranges</span></code></pre></div>
-<pre><code>## [1]  7  8 12</code></pre>
-<p>but this will not work:</p>
 <div class="sourceCode" id="cb182"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb182-1"><a href="basic-syntax.html#cb182-1" aria-hidden="true" tabindex="-1"></a>apples <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">7</span>, <span class="dv">10</span>)</span>
 <span id="cb182-2"><a href="basic-syntax.html#cb182-2" aria-hidden="true" tabindex="-1"></a>oranges <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">2</span>)</span>
 <span id="cb182-3"><a href="basic-syntax.html#cb182-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb182-4"><a href="basic-syntax.html#cb182-4" aria-hidden="true" tabindex="-1"></a>appless <span class="sc">+</span> oranges</span></code></pre></div>
-<pre><code>## Error in eval(expr, envir, enclos): object &#39;appless&#39; not found</code></pre>
-<p>You’ll get the error saying <code>object 'blah' not found</code>. This is the most common error that we see. Basically, it cannot find an object (be it a vector or a dataframe) if it’s not spelled correctly. This also applies to column names of dataframes and so on. R is also case sensitive. The following doesn’t work:</p>
+<span id="cb182-4"><a href="basic-syntax.html#cb182-4" aria-hidden="true" tabindex="-1"></a>apples <span class="sc">+</span> oranges</span></code></pre></div>
+<pre><code>## [1]  7  8 12</code></pre>
+<p>but this will not work:</p>
 <div class="sourceCode" id="cb184"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb184-1"><a href="basic-syntax.html#cb184-1" aria-hidden="true" tabindex="-1"></a>apples <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">7</span>, <span class="dv">10</span>)</span>
 <span id="cb184-2"><a href="basic-syntax.html#cb184-2" aria-hidden="true" tabindex="-1"></a>oranges <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">2</span>)</span>
 <span id="cb184-3"><a href="basic-syntax.html#cb184-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb184-4"><a href="basic-syntax.html#cb184-4" aria-hidden="true" tabindex="-1"></a>apples <span class="sc">+</span> ORANGES</span></code></pre></div>
+<span id="cb184-4"><a href="basic-syntax.html#cb184-4" aria-hidden="true" tabindex="-1"></a>appless <span class="sc">+</span> oranges</span></code></pre></div>
+<pre><code>## Error in eval(expr, envir, enclos): object &#39;appless&#39; not found</code></pre>
+<p>You’ll get the error saying <code>object 'blah' not found</code>. This is the most common error that we see. Basically, it cannot find an object (be it a vector or a dataframe) if it’s not spelled correctly. This also applies to column names of dataframes and so on. R is also case sensitive. The following doesn’t work:</p>
+<div class="sourceCode" id="cb186"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb186-1"><a href="basic-syntax.html#cb186-1" aria-hidden="true" tabindex="-1"></a>apples <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">7</span>, <span class="dv">10</span>)</span>
+<span id="cb186-2"><a href="basic-syntax.html#cb186-2" aria-hidden="true" tabindex="-1"></a>oranges <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">2</span>)</span>
+<span id="cb186-3"><a href="basic-syntax.html#cb186-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb186-4"><a href="basic-syntax.html#cb186-4" aria-hidden="true" tabindex="-1"></a>apples <span class="sc">+</span> ORANGES</span></code></pre></div>
 <pre><code>## Error in eval(expr, envir, enclos): object &#39;ORANGES&#39; not found</code></pre>
 <p>It will not automatically realize you meant <code>oranges</code>.</p>
 <p>However, there is a bit of help that RStudio will give you. Look what happens when we write <code>ORANGES</code> in our code script:</p>
@@ -897,106 +902,106 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <code>sqrt()</code></p>
 <p>As we go through the course, we’ll see lots more functions and it will become second nature to use them. There is one additional thing that we’ll bring up at this point. The things that you put inside functions are called <code>arguments</code>. Sometimes you’ll see them called <code>parameters</code> - but that has other meanings in statistics, so let’s use ‘arguments’. Some functions have one argument, others have more. Most functions have defaults for these arguments, so if you don’t include them, it will still run using it’s predefined default.</p>
 <p>Let’s illustrate this by introducing you to the function called <code>round()</code>. This function will round numbers to various decimal places. Let’s use the number <code>17.10771947</code> as an example. What does round do to this number?</p>
-<div class="sourceCode" id="cb186"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb186-1"><a href="basic-syntax.html#cb186-1" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fl">17.10771947</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb188"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb188-1"><a href="basic-syntax.html#cb188-1" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fl">17.10771947</span>)</span></code></pre></div>
 <pre><code>## [1] 17</code></pre>
 <p>It’s default is to round it to 0 decimal places. Inside of <code>round()</code> the number is in the position of the 1st argument. <code>round()</code> can have two arguments - the second one relates to how many decimal places you would like to round to. So, if you want to round to 3 decimal places, you need to do this:</p>
-<div class="sourceCode" id="cb188"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb188-1"><a href="basic-syntax.html#cb188-1" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fl">17.10771047</span>, <span class="dv">3</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb190"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb190-1"><a href="basic-syntax.html#cb190-1" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fl">17.10771047</span>, <span class="dv">3</span>)</span></code></pre></div>
 <pre><code>## [1] 17.108</code></pre>
 <p>Now we have two arguments. In actual fact, those arguments have names, and you can most often work out what the names for the arguments should be from help guides. Technically, what we have just performed is the following:</p>
-<div class="sourceCode" id="cb190"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb190-1"><a href="basic-syntax.html#cb190-1" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="at">x =</span> <span class="fl">17.10771047</span>, <span class="at">digits =</span> <span class="dv">3</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb192"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb192-1"><a href="basic-syntax.html#cb192-1" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="at">x =</span> <span class="fl">17.10771047</span>, <span class="at">digits =</span> <span class="dv">3</span>)</span></code></pre></div>
 <pre><code>## [1] 17.108</code></pre>
 <p>But as you have already worked out, we didn’t need to write the names of the arguments. R worked it out already. What if we’d got the arguments, the wrong way round?</p>
-<div class="sourceCode" id="cb192"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb192-1"><a href="basic-syntax.html#cb192-1" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="dv">3</span>, <span class="fl">17.10771047</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb194"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb194-1"><a href="basic-syntax.html#cb194-1" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="dv">3</span>, <span class="fl">17.10771047</span>)</span></code></pre></div>
 <pre><code>## [1] 3</code></pre>
 <p>Now it defaulted to giving us the first argument to zero decimal places. Because the second argument isn’t a whole number (integer) then it just ignored it. What if you keep these in this order, but give them their correct argument names?</p>
-<div class="sourceCode" id="cb194"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb194-1"><a href="basic-syntax.html#cb194-1" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="at">digits =</span> <span class="dv">3</span>, <span class="at">x =</span> <span class="fl">17.10771047</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb196"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb196-1"><a href="basic-syntax.html#cb196-1" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="at">digits =</span> <span class="dv">3</span>, <span class="at">x =</span> <span class="fl">17.10771047</span>)</span></code></pre></div>
 <pre><code>## [1] 17.108</code></pre>
 <p>Now it works as expected again. The moral of this story is that it is best practice to use the argument names! If you hit the <code>Tab</code> key as you type out a function name, then it will give you a list of possible arguments for that function:</p>
 <p><img src="img/round.png" /></p>
 <p>Arguments of functions aren’t always numeric. Sometimes you need to write in words, punctuation or the logical statements <code>TRUE</code> or <code>FALSE</code> to tell the function what you want to do. An example is the function <code>paste</code> which joins together two objects. Here we tell it to paste together three objects with an underscore:</p>
-<div class="sourceCode" id="cb196"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb196-1"><a href="basic-syntax.html#cb196-1" aria-hidden="true" tabindex="-1"></a>obj1 <span class="ot">&lt;-</span> <span class="st">&quot;hello&quot;</span></span>
-<span id="cb196-2"><a href="basic-syntax.html#cb196-2" aria-hidden="true" tabindex="-1"></a>obj2 <span class="ot">&lt;-</span> <span class="st">&quot;james&quot;</span></span>
-<span id="cb196-3"><a href="basic-syntax.html#cb196-3" aria-hidden="true" tabindex="-1"></a>obj3 <span class="ot">&lt;-</span> <span class="st">&quot;curley&quot;</span></span>
-<span id="cb196-4"><a href="basic-syntax.html#cb196-4" aria-hidden="true" tabindex="-1"></a><span class="fu">paste</span>(obj1, obj2, obj3, <span class="at">sep =</span> <span class="st">&quot;_&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb198"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb198-1"><a href="basic-syntax.html#cb198-1" aria-hidden="true" tabindex="-1"></a>obj1 <span class="ot">&lt;-</span> <span class="st">&quot;hello&quot;</span></span>
+<span id="cb198-2"><a href="basic-syntax.html#cb198-2" aria-hidden="true" tabindex="-1"></a>obj2 <span class="ot">&lt;-</span> <span class="st">&quot;james&quot;</span></span>
+<span id="cb198-3"><a href="basic-syntax.html#cb198-3" aria-hidden="true" tabindex="-1"></a>obj3 <span class="ot">&lt;-</span> <span class="st">&quot;curley&quot;</span></span>
+<span id="cb198-4"><a href="basic-syntax.html#cb198-4" aria-hidden="true" tabindex="-1"></a><span class="fu">paste</span>(obj1, obj2, obj3, <span class="at">sep =</span> <span class="st">&quot;_&quot;</span>)</span></code></pre></div>
 <pre><code>## [1] &quot;hello_james_curley&quot;</code></pre>
 <p>In functions, punctuation and characters need quote marks around them. <code>TRUE</code> and <code>FALSE</code> should not have punctuation around them.</p>
 <p>If you want to continue with R then it’s also possible to write custom functions that will do what we do whatever we ask them to do - but that is for the future.</p>
 <p><strong>R works from in to out</strong></p>
 <p>One thing to remember about R as a coding language is that it will apply functions from in to out. It will start with the innermost function in a statement, and then move outwards.</p>
 <p>So, if you have the following vector:</p>
-<div class="sourceCode" id="cb198"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb198-1"><a href="basic-syntax.html#cb198-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">5</span>, <span class="dv">3</span>, <span class="dv">7</span>, <span class="dv">10</span>, <span class="dv">11</span>, <span class="dv">13</span>, <span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">2</span>, <span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">3</span>, <span class="dv">7</span>)</span>
-<span id="cb198-2"><a href="basic-syntax.html#cb198-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb198-3"><a href="basic-syntax.html#cb198-3" aria-hidden="true" tabindex="-1"></a>x</span></code></pre></div>
+<div class="sourceCode" id="cb200"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb200-1"><a href="basic-syntax.html#cb200-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">5</span>, <span class="dv">3</span>, <span class="dv">7</span>, <span class="dv">10</span>, <span class="dv">11</span>, <span class="dv">13</span>, <span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">2</span>, <span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">3</span>, <span class="dv">7</span>)</span>
+<span id="cb200-2"><a href="basic-syntax.html#cb200-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb200-3"><a href="basic-syntax.html#cb200-3" aria-hidden="true" tabindex="-1"></a>x</span></code></pre></div>
 <pre><code>##  [1]  1  5  3  7 10 11 13  5  6  2  5  6  3  7</code></pre>
 <p>and you want to get the unique numbers (i.e. get rid of the repeating numbers and only keep one of each of all the numbers), then you could use <code>unique()</code>:</p>
-<div class="sourceCode" id="cb200"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb200-1"><a href="basic-syntax.html#cb200-1" aria-hidden="true" tabindex="-1"></a><span class="fu">unique</span>(x)</span></code></pre></div>
+<div class="sourceCode" id="cb202"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb202-1"><a href="basic-syntax.html#cb202-1" aria-hidden="true" tabindex="-1"></a><span class="fu">unique</span>(x)</span></code></pre></div>
 <pre><code>## [1]  1  5  3  7 10 11 13  6  2</code></pre>
 <p>If you wanted to take the unique numbers, and then square root each of them you could wrap <code>unique(x)</code> in <code>sqrt()</code> like this:</p>
-<div class="sourceCode" id="cb202"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb202-1"><a href="basic-syntax.html#cb202-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sqrt</span>(<span class="fu">unique</span>(x))</span></code></pre></div>
+<div class="sourceCode" id="cb204"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb204-1"><a href="basic-syntax.html#cb204-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sqrt</span>(<span class="fu">unique</span>(x))</span></code></pre></div>
 <pre><code>## [1] 1.000000 2.236068 1.732051 2.645751 3.162278 3.316625 3.605551 2.449490
 ## [9] 1.414214</code></pre>
 <p>That code is still just about readable.</p>
 <p>However, say you want to (for some reason), keep the unique numbers, then take the square root of each number, then add them all up, then round the answer to 2 decimal places. This is what it would like:</p>
-<div class="sourceCode" id="cb204"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb204-1"><a href="basic-syntax.html#cb204-1" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">sum</span>(<span class="fu">sqrt</span>(<span class="fu">unique</span>(x))), <span class="at">digits =</span> <span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb206"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb206-1"><a href="basic-syntax.html#cb206-1" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">sum</span>(<span class="fu">sqrt</span>(<span class="fu">unique</span>(x))), <span class="at">digits =</span> <span class="dv">2</span>)</span></code></pre></div>
 <pre><code>## [1] 21.56</code></pre>
 <p>It finds the object you are working with <code>x</code> then the first function outside of that is <code>unique()</code> then the next one outside of <code>unique(x)</code> is <code>sqrt()</code>, then the next one outside of <code>sqrt(unique(x))</code> is <code>sum()</code> and the next one outside of <code>sum(sqrt(unique(x)))</code> is <code>round()</code>. That’s quite hard to follow!</p>
 <p>Another approach would be to do this in steps and assign objects at each step, like this:</p>
-<div class="sourceCode" id="cb206"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb206-1"><a href="basic-syntax.html#cb206-1" aria-hidden="true" tabindex="-1"></a>x</span></code></pre></div>
+<div class="sourceCode" id="cb208"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb208-1"><a href="basic-syntax.html#cb208-1" aria-hidden="true" tabindex="-1"></a>x</span></code></pre></div>
 <pre><code>##  [1]  1  5  3  7 10 11 13  5  6  2  5  6  3  7</code></pre>
-<div class="sourceCode" id="cb208"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb208-1"><a href="basic-syntax.html#cb208-1" aria-hidden="true" tabindex="-1"></a>x1 <span class="ot">&lt;-</span> <span class="fu">unique</span>(x)</span>
-<span id="cb208-2"><a href="basic-syntax.html#cb208-2" aria-hidden="true" tabindex="-1"></a>x1</span></code></pre></div>
+<div class="sourceCode" id="cb210"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb210-1"><a href="basic-syntax.html#cb210-1" aria-hidden="true" tabindex="-1"></a>x1 <span class="ot">&lt;-</span> <span class="fu">unique</span>(x)</span>
+<span id="cb210-2"><a href="basic-syntax.html#cb210-2" aria-hidden="true" tabindex="-1"></a>x1</span></code></pre></div>
 <pre><code>## [1]  1  5  3  7 10 11 13  6  2</code></pre>
-<div class="sourceCode" id="cb210"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb210-1"><a href="basic-syntax.html#cb210-1" aria-hidden="true" tabindex="-1"></a>x2 <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(x1)</span>
-<span id="cb210-2"><a href="basic-syntax.html#cb210-2" aria-hidden="true" tabindex="-1"></a>x2</span></code></pre></div>
+<div class="sourceCode" id="cb212"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb212-1"><a href="basic-syntax.html#cb212-1" aria-hidden="true" tabindex="-1"></a>x2 <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(x1)</span>
+<span id="cb212-2"><a href="basic-syntax.html#cb212-2" aria-hidden="true" tabindex="-1"></a>x2</span></code></pre></div>
 <pre><code>## [1] 1.000000 2.236068 1.732051 2.645751 3.162278 3.316625 3.605551 2.449490
 ## [9] 1.414214</code></pre>
-<div class="sourceCode" id="cb212"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb212-1"><a href="basic-syntax.html#cb212-1" aria-hidden="true" tabindex="-1"></a>x3 <span class="ot">&lt;-</span> <span class="fu">sum</span>(x2)</span>
-<span id="cb212-2"><a href="basic-syntax.html#cb212-2" aria-hidden="true" tabindex="-1"></a>x3</span></code></pre></div>
+<div class="sourceCode" id="cb214"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb214-1"><a href="basic-syntax.html#cb214-1" aria-hidden="true" tabindex="-1"></a>x3 <span class="ot">&lt;-</span> <span class="fu">sum</span>(x2)</span>
+<span id="cb214-2"><a href="basic-syntax.html#cb214-2" aria-hidden="true" tabindex="-1"></a>x3</span></code></pre></div>
 <pre><code>## [1] 21.56203</code></pre>
-<div class="sourceCode" id="cb214"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb214-1"><a href="basic-syntax.html#cb214-1" aria-hidden="true" tabindex="-1"></a>x4 <span class="ot">&lt;-</span> <span class="fu">round</span>(x3, <span class="at">digits =</span> <span class="dv">2</span>)</span>
-<span id="cb214-2"><a href="basic-syntax.html#cb214-2" aria-hidden="true" tabindex="-1"></a>x4</span></code></pre></div>
+<div class="sourceCode" id="cb216"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb216-1"><a href="basic-syntax.html#cb216-1" aria-hidden="true" tabindex="-1"></a>x4 <span class="ot">&lt;-</span> <span class="fu">round</span>(x3, <span class="at">digits =</span> <span class="dv">2</span>)</span>
+<span id="cb216-2"><a href="basic-syntax.html#cb216-2" aria-hidden="true" tabindex="-1"></a>x4</span></code></pre></div>
 <pre><code>## [1] 21.56</code></pre>
 <p>Another alternative is to chain the syntax together (see next section).</p>
 </div>
 <div id="chaining-syntax" class="section level2" number="3.10">
 <h2><span class="header-section-number">3.10</span> Chaining Syntax</h2>
 <p>The code in the previous section was pretty ugly! Here it is:</p>
-<div class="sourceCode" id="cb216"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb216-1"><a href="basic-syntax.html#cb216-1" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">sum</span>(<span class="fu">sqrt</span>(<span class="fu">unique</span>(x))), <span class="at">digits =</span> <span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb218"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb218-1"><a href="basic-syntax.html#cb218-1" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">sum</span>(<span class="fu">sqrt</span>(<span class="fu">unique</span>(x))), <span class="at">digits =</span> <span class="dv">2</span>)</span></code></pre></div>
 <pre><code>## [1] 21.56</code></pre>
 <p>We could rewrite it however by chaining together the outputs of each function using the <code>pipe</code> or chaining piece of syntax that looks like this <code>%&gt;%</code>. This is how it would look if we chained each function together:</p>
-<div class="sourceCode" id="cb218"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb218-1"><a href="basic-syntax.html#cb218-1" aria-hidden="true" tabindex="-1"></a>x <span class="sc">%&gt;%</span></span>
-<span id="cb218-2"><a href="basic-syntax.html#cb218-2" aria-hidden="true" tabindex="-1"></a>  unique <span class="sc">%&gt;%</span></span>
-<span id="cb218-3"><a href="basic-syntax.html#cb218-3" aria-hidden="true" tabindex="-1"></a>  sqrt <span class="sc">%&gt;%</span></span>
-<span id="cb218-4"><a href="basic-syntax.html#cb218-4" aria-hidden="true" tabindex="-1"></a>  sum <span class="sc">%&gt;%</span></span>
-<span id="cb218-5"><a href="basic-syntax.html#cb218-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">round</span>(<span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb220"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb220-1"><a href="basic-syntax.html#cb220-1" aria-hidden="true" tabindex="-1"></a>x <span class="sc">%&gt;%</span></span>
+<span id="cb220-2"><a href="basic-syntax.html#cb220-2" aria-hidden="true" tabindex="-1"></a>  unique <span class="sc">%&gt;%</span></span>
+<span id="cb220-3"><a href="basic-syntax.html#cb220-3" aria-hidden="true" tabindex="-1"></a>  sqrt <span class="sc">%&gt;%</span></span>
+<span id="cb220-4"><a href="basic-syntax.html#cb220-4" aria-hidden="true" tabindex="-1"></a>  sum <span class="sc">%&gt;%</span></span>
+<span id="cb220-5"><a href="basic-syntax.html#cb220-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">round</span>(<span class="dv">2</span>)</span></code></pre></div>
 <pre><code>## [1] 21.56</code></pre>
 <p>Let’s break down what’s happening bit by bit. Essentially you can read the <code>%&gt;%</code> as <code>and next do this</code>.</p>
 <p>This first bit just keeps the numbers that are unique in the vector, removing duplicates:</p>
-<div class="sourceCode" id="cb220"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb220-1"><a href="basic-syntax.html#cb220-1" aria-hidden="true" tabindex="-1"></a>x <span class="sc">%&gt;%</span></span>
-<span id="cb220-2"><a href="basic-syntax.html#cb220-2" aria-hidden="true" tabindex="-1"></a>  unique </span></code></pre></div>
+<div class="sourceCode" id="cb222"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb222-1"><a href="basic-syntax.html#cb222-1" aria-hidden="true" tabindex="-1"></a>x <span class="sc">%&gt;%</span></span>
+<span id="cb222-2"><a href="basic-syntax.html#cb222-2" aria-hidden="true" tabindex="-1"></a>  unique </span></code></pre></div>
 <pre><code>## [1]  1  5  3  7 10 11 13  6  2</code></pre>
 <p>Next we square root each of those unique numbers:</p>
-<div class="sourceCode" id="cb222"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb222-1"><a href="basic-syntax.html#cb222-1" aria-hidden="true" tabindex="-1"></a>x <span class="sc">%&gt;%</span></span>
-<span id="cb222-2"><a href="basic-syntax.html#cb222-2" aria-hidden="true" tabindex="-1"></a>  unique <span class="sc">%&gt;%</span></span>
-<span id="cb222-3"><a href="basic-syntax.html#cb222-3" aria-hidden="true" tabindex="-1"></a>  sqrt </span></code></pre></div>
+<div class="sourceCode" id="cb224"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb224-1"><a href="basic-syntax.html#cb224-1" aria-hidden="true" tabindex="-1"></a>x <span class="sc">%&gt;%</span></span>
+<span id="cb224-2"><a href="basic-syntax.html#cb224-2" aria-hidden="true" tabindex="-1"></a>  unique <span class="sc">%&gt;%</span></span>
+<span id="cb224-3"><a href="basic-syntax.html#cb224-3" aria-hidden="true" tabindex="-1"></a>  sqrt </span></code></pre></div>
 <pre><code>## [1] 1.000000 2.236068 1.732051 2.645751 3.162278 3.316625 3.605551 2.449490
 ## [9] 1.414214</code></pre>
 <p>Then the next step is to add up those six square rooted numbers:</p>
-<div class="sourceCode" id="cb224"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb224-1"><a href="basic-syntax.html#cb224-1" aria-hidden="true" tabindex="-1"></a>x <span class="sc">%&gt;%</span></span>
-<span id="cb224-2"><a href="basic-syntax.html#cb224-2" aria-hidden="true" tabindex="-1"></a>  unique <span class="sc">%&gt;%</span></span>
-<span id="cb224-3"><a href="basic-syntax.html#cb224-3" aria-hidden="true" tabindex="-1"></a>  sqrt <span class="sc">%&gt;%</span></span>
-<span id="cb224-4"><a href="basic-syntax.html#cb224-4" aria-hidden="true" tabindex="-1"></a>  sum </span></code></pre></div>
-<pre><code>## [1] 21.56203</code></pre>
-<p>Then we round that value to two decimal places:</p>
 <div class="sourceCode" id="cb226"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb226-1"><a href="basic-syntax.html#cb226-1" aria-hidden="true" tabindex="-1"></a>x <span class="sc">%&gt;%</span></span>
 <span id="cb226-2"><a href="basic-syntax.html#cb226-2" aria-hidden="true" tabindex="-1"></a>  unique <span class="sc">%&gt;%</span></span>
 <span id="cb226-3"><a href="basic-syntax.html#cb226-3" aria-hidden="true" tabindex="-1"></a>  sqrt <span class="sc">%&gt;%</span></span>
-<span id="cb226-4"><a href="basic-syntax.html#cb226-4" aria-hidden="true" tabindex="-1"></a>  sum <span class="sc">%&gt;%</span></span>
-<span id="cb226-5"><a href="basic-syntax.html#cb226-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">round</span>(<span class="dv">2</span>)</span></code></pre></div>
+<span id="cb226-4"><a href="basic-syntax.html#cb226-4" aria-hidden="true" tabindex="-1"></a>  sum </span></code></pre></div>
+<pre><code>## [1] 21.56203</code></pre>
+<p>Then we round that value to two decimal places:</p>
+<div class="sourceCode" id="cb228"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb228-1"><a href="basic-syntax.html#cb228-1" aria-hidden="true" tabindex="-1"></a>x <span class="sc">%&gt;%</span></span>
+<span id="cb228-2"><a href="basic-syntax.html#cb228-2" aria-hidden="true" tabindex="-1"></a>  unique <span class="sc">%&gt;%</span></span>
+<span id="cb228-3"><a href="basic-syntax.html#cb228-3" aria-hidden="true" tabindex="-1"></a>  sqrt <span class="sc">%&gt;%</span></span>
+<span id="cb228-4"><a href="basic-syntax.html#cb228-4" aria-hidden="true" tabindex="-1"></a>  sum <span class="sc">%&gt;%</span></span>
+<span id="cb228-5"><a href="basic-syntax.html#cb228-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">round</span>(<span class="dv">2</span>)</span></code></pre></div>
 <pre><code>## [1] 21.56</code></pre>
 <p>It’s also worth pointing out that you don’t have to start a new line after every <code>%&gt;%</code>, you can have these in the middle of rows. Just don’t start rows with them (see errors above)!</p>
 <p>This also is fine:</p>
-<div class="sourceCode" id="cb228"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb228-1"><a href="basic-syntax.html#cb228-1" aria-hidden="true" tabindex="-1"></a>x <span class="sc">%&gt;%</span> unique <span class="sc">%&gt;%</span> sqrt <span class="sc">%&gt;%</span> sum <span class="sc">%&gt;%</span> <span class="fu">round</span>(<span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb230"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb230-1"><a href="basic-syntax.html#cb230-1" aria-hidden="true" tabindex="-1"></a>x <span class="sc">%&gt;%</span> unique <span class="sc">%&gt;%</span> sqrt <span class="sc">%&gt;%</span> sum <span class="sc">%&gt;%</span> <span class="fu">round</span>(<span class="dv">2</span>)</span></code></pre></div>
 <pre><code>## [1] 21.56</code></pre>
 
 </div>

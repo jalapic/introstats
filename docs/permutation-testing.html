@@ -24,7 +24,7 @@
 <meta name="author" content="James P. Curley &amp; Tyler M. Milewski" />
 
 
-<meta name="date" content="2021-09-01" />
+<meta name="date" content="2021-09-02" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -447,17 +447,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="t-test-permutation" class="section level2" number="14.1">
 <h2><span class="header-section-number">14.1</span> t-test Permutation</h2>
 <p>Let’s look at our two independent samples of exam scores:</p>
-<div class="sourceCode" id="cb1701"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1701-1"><a href="permutation-testing.html#cb1701-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb1701-2"><a href="permutation-testing.html#cb1701-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1701-3"><a href="permutation-testing.html#cb1701-3" aria-hidden="true" tabindex="-1"></a>anastasia <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">65</span>, <span class="dv">74</span>, <span class="dv">73</span>, <span class="dv">83</span>, <span class="dv">76</span>, <span class="dv">65</span>, <span class="dv">86</span>, <span class="dv">70</span>, <span class="dv">80</span>, <span class="dv">55</span>, <span class="dv">78</span>, <span class="dv">78</span>, <span class="dv">90</span>, <span class="dv">77</span>, <span class="dv">68</span>)</span>
-<span id="cb1701-4"><a href="permutation-testing.html#cb1701-4" aria-hidden="true" tabindex="-1"></a>bernadette <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">72</span>, <span class="dv">66</span>, <span class="dv">71</span>, <span class="dv">66</span>, <span class="dv">76</span>, <span class="dv">69</span>, <span class="dv">79</span>, <span class="dv">73</span>, <span class="dv">62</span>, <span class="dv">69</span>, <span class="dv">68</span>, <span class="dv">60</span>, <span class="dv">73</span>, <span class="dv">68</span>, <span class="dv">67</span>, <span class="dv">74</span>, <span class="dv">56</span>, <span class="dv">74</span>)</span>
-<span id="cb1701-5"><a href="permutation-testing.html#cb1701-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1701-6"><a href="permutation-testing.html#cb1701-6" aria-hidden="true" tabindex="-1"></a><span class="co"># put into a dataframe:</span></span>
-<span id="cb1701-7"><a href="permutation-testing.html#cb1701-7" aria-hidden="true" tabindex="-1"></a>dd <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">values =</span> <span class="fu">c</span>(anastasia, bernadette),</span>
-<span id="cb1701-8"><a href="permutation-testing.html#cb1701-8" aria-hidden="true" tabindex="-1"></a>                 <span class="at">group =</span> <span class="fu">c</span>(<span class="fu">rep</span>(<span class="st">&quot;Anastasia&quot;</span>,<span class="dv">15</span>), <span class="fu">rep</span>(<span class="st">&quot;Bernadette&quot;</span>, <span class="dv">18</span>))</span>
-<span id="cb1701-9"><a href="permutation-testing.html#cb1701-9" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb1701-10"><a href="permutation-testing.html#cb1701-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1701-11"><a href="permutation-testing.html#cb1701-11" aria-hidden="true" tabindex="-1"></a>dd</span></code></pre></div>
+<div class="sourceCode" id="cb1703"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1703-1"><a href="permutation-testing.html#cb1703-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1703-2"><a href="permutation-testing.html#cb1703-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1703-3"><a href="permutation-testing.html#cb1703-3" aria-hidden="true" tabindex="-1"></a>anastasia <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">65</span>, <span class="dv">74</span>, <span class="dv">73</span>, <span class="dv">83</span>, <span class="dv">76</span>, <span class="dv">65</span>, <span class="dv">86</span>, <span class="dv">70</span>, <span class="dv">80</span>, <span class="dv">55</span>, <span class="dv">78</span>, <span class="dv">78</span>, <span class="dv">90</span>, <span class="dv">77</span>, <span class="dv">68</span>)</span>
+<span id="cb1703-4"><a href="permutation-testing.html#cb1703-4" aria-hidden="true" tabindex="-1"></a>bernadette <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">72</span>, <span class="dv">66</span>, <span class="dv">71</span>, <span class="dv">66</span>, <span class="dv">76</span>, <span class="dv">69</span>, <span class="dv">79</span>, <span class="dv">73</span>, <span class="dv">62</span>, <span class="dv">69</span>, <span class="dv">68</span>, <span class="dv">60</span>, <span class="dv">73</span>, <span class="dv">68</span>, <span class="dv">67</span>, <span class="dv">74</span>, <span class="dv">56</span>, <span class="dv">74</span>)</span>
+<span id="cb1703-5"><a href="permutation-testing.html#cb1703-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1703-6"><a href="permutation-testing.html#cb1703-6" aria-hidden="true" tabindex="-1"></a><span class="co"># put into a dataframe:</span></span>
+<span id="cb1703-7"><a href="permutation-testing.html#cb1703-7" aria-hidden="true" tabindex="-1"></a>dd <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">values =</span> <span class="fu">c</span>(anastasia, bernadette),</span>
+<span id="cb1703-8"><a href="permutation-testing.html#cb1703-8" aria-hidden="true" tabindex="-1"></a>                 <span class="at">group =</span> <span class="fu">c</span>(<span class="fu">rep</span>(<span class="st">&quot;Anastasia&quot;</span>,<span class="dv">15</span>), <span class="fu">rep</span>(<span class="st">&quot;Bernadette&quot;</span>, <span class="dv">18</span>))</span>
+<span id="cb1703-9"><a href="permutation-testing.html#cb1703-9" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb1703-10"><a href="permutation-testing.html#cb1703-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1703-11"><a href="permutation-testing.html#cb1703-11" aria-hidden="true" tabindex="-1"></a>dd</span></code></pre></div>
 <pre><code>##    values      group
 ## 1      65  Anastasia
 ## 2      74  Anastasia
@@ -493,18 +493,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 32     56 Bernadette
 ## 33     74 Bernadette</code></pre>
 <p>We can plot these data as boxplots to get a sense of the within group variation as well as the observed differences between the groups:</p>
-<div class="sourceCode" id="cb1703"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1703-1"><a href="permutation-testing.html#cb1703-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(dd, <span class="fu">aes</span>(<span class="at">x =</span> group, <span class="at">y =</span> values, <span class="at">fill =</span> group)) <span class="sc">+</span></span>
-<span id="cb1703-2"><a href="permutation-testing.html#cb1703-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">alpha=</span>.<span class="dv">3</span>, <span class="at">outlier.shape =</span> <span class="cn">NA</span>) <span class="sc">+</span></span>
-<span id="cb1703-3"><a href="permutation-testing.html#cb1703-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_jitter</span>(<span class="at">width=</span>.<span class="dv">1</span>, <span class="at">size=</span><span class="dv">2</span>) <span class="sc">+</span></span>
-<span id="cb1703-4"><a href="permutation-testing.html#cb1703-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>() <span class="sc">+</span></span>
-<span id="cb1703-5"><a href="permutation-testing.html#cb1703-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">&quot;firebrick&quot;</span>, <span class="st">&quot;dodgerblue&quot;</span>))</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-702-1.png" width="672" /></p>
+<div class="sourceCode" id="cb1705"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1705-1"><a href="permutation-testing.html#cb1705-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(dd, <span class="fu">aes</span>(<span class="at">x =</span> group, <span class="at">y =</span> values, <span class="at">fill =</span> group)) <span class="sc">+</span></span>
+<span id="cb1705-2"><a href="permutation-testing.html#cb1705-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">alpha=</span>.<span class="dv">3</span>, <span class="at">outlier.shape =</span> <span class="cn">NA</span>) <span class="sc">+</span></span>
+<span id="cb1705-3"><a href="permutation-testing.html#cb1705-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_jitter</span>(<span class="at">width=</span>.<span class="dv">1</span>, <span class="at">size=</span><span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb1705-4"><a href="permutation-testing.html#cb1705-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>() <span class="sc">+</span></span>
+<span id="cb1705-5"><a href="permutation-testing.html#cb1705-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">&quot;firebrick&quot;</span>, <span class="st">&quot;dodgerblue&quot;</span>))</span></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-703-1.png" width="672" /></p>
 <p>Now, from our two independent samples, we can directly observe what the difference in sample means is. This is just calculated by subtracting one sample mean from the other:</p>
-<div class="sourceCode" id="cb1704"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1704-1"><a href="permutation-testing.html#cb1704-1" aria-hidden="true" tabindex="-1"></a>meandif <span class="ot">&lt;-</span> <span class="fu">mean</span>(anastasia)  <span class="sc">-</span> <span class="fu">mean</span>(bernadette)   <span class="co"># 5.48</span></span>
-<span id="cb1704-2"><a href="permutation-testing.html#cb1704-2" aria-hidden="true" tabindex="-1"></a>meandif</span></code></pre></div>
+<div class="sourceCode" id="cb1706"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1706-1"><a href="permutation-testing.html#cb1706-1" aria-hidden="true" tabindex="-1"></a>meandif <span class="ot">&lt;-</span> <span class="fu">mean</span>(anastasia)  <span class="sc">-</span> <span class="fu">mean</span>(bernadette)   <span class="co"># 5.48</span></span>
+<span id="cb1706-2"><a href="permutation-testing.html#cb1706-2" aria-hidden="true" tabindex="-1"></a>meandif</span></code></pre></div>
 <pre><code>## [1] 5.477778</code></pre>
 <p>So, from our samples, we observed a difference in grades of 5.48 between the groups. Typically, we would run an independent t-test to test whether these two samples came from theoretical populations that differ in their means:</p>
-<div class="sourceCode" id="cb1706"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1706-1"><a href="permutation-testing.html#cb1706-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(anastasia, bernadette, <span class="at">var.equal =</span> T)</span></code></pre></div>
+<div class="sourceCode" id="cb1708"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1708-1"><a href="permutation-testing.html#cb1708-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(anastasia, bernadette, <span class="at">var.equal =</span> T)</span></code></pre></div>
 <pre><code>## 
 ##  Two Sample t-test
 ## 
@@ -521,84 +521,84 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Essentially what we are going to do is ask how surprising it was to get a difference of 5.48 given our real data. Put another way, if we shuffled the data into different groups of 15 and 18 (the respective sample sizes of Anastasia and Bernadette), would we get a difference in sample means of greater or lower than 5.48? If we did this thousands of times, how many times would we get differences in sample means above 5.48?</p>
 <p>Let’s apply this theory to just one permutation.</p>
 <p>First, we combine all the data:</p>
-<div class="sourceCode" id="cb1708"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1708-1"><a href="permutation-testing.html#cb1708-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1</span>) <span class="co"># just to keep the random number generator the same for all of us</span></span>
-<span id="cb1708-2"><a href="permutation-testing.html#cb1708-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1708-3"><a href="permutation-testing.html#cb1708-3" aria-hidden="true" tabindex="-1"></a>allscores <span class="ot">&lt;-</span> <span class="fu">c</span>(anastasia, bernadette)</span>
-<span id="cb1708-4"><a href="permutation-testing.html#cb1708-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1708-5"><a href="permutation-testing.html#cb1708-5" aria-hidden="true" tabindex="-1"></a>allscores</span></code></pre></div>
+<div class="sourceCode" id="cb1710"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1710-1"><a href="permutation-testing.html#cb1710-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1</span>) <span class="co"># just to keep the random number generator the same for all of us</span></span>
+<span id="cb1710-2"><a href="permutation-testing.html#cb1710-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1710-3"><a href="permutation-testing.html#cb1710-3" aria-hidden="true" tabindex="-1"></a>allscores <span class="ot">&lt;-</span> <span class="fu">c</span>(anastasia, bernadette)</span>
+<span id="cb1710-4"><a href="permutation-testing.html#cb1710-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1710-5"><a href="permutation-testing.html#cb1710-5" aria-hidden="true" tabindex="-1"></a>allscores</span></code></pre></div>
 <pre><code>##  [1] 65 74 73 83 76 65 86 70 80 55 78 78 90 77 68 72 66 71 66 76 69 79 73 62
 ## [25] 69 68 60 73 68 67 74 56 74</code></pre>
 <p>Next, we shuffle them into new groups of 15 and 18.:</p>
-<div class="sourceCode" id="cb1710"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1710-1"><a href="permutation-testing.html#cb1710-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">split</span>(<span class="fu">sample</span>(allscores), <span class="fu">rep</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>, <span class="fu">c</span>(<span class="dv">15</span>,<span class="dv">18</span>))) </span>
-<span id="cb1710-2"><a href="permutation-testing.html#cb1710-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1710-3"><a href="permutation-testing.html#cb1710-3" aria-hidden="true" tabindex="-1"></a>x</span></code></pre></div>
+<div class="sourceCode" id="cb1712"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1712-1"><a href="permutation-testing.html#cb1712-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">split</span>(<span class="fu">sample</span>(allscores), <span class="fu">rep</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>, <span class="fu">c</span>(<span class="dv">15</span>,<span class="dv">18</span>))) </span>
+<span id="cb1712-2"><a href="permutation-testing.html#cb1712-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1712-3"><a href="permutation-testing.html#cb1712-3" aria-hidden="true" tabindex="-1"></a>x</span></code></pre></div>
 <pre><code>## $`1`
 ##  [1] 83 86 65 74 68 73 78 77 71 66 74 69 79 55 68
 ## 
 ## $`2`
 ##  [1] 76 56 80 68 76 62 72 78 90 69 67 70 65 73 74 73 60 66</code></pre>
 <p>We have two brand new samples that contain all of the scores from our original data, but they’ve just been shuffled around. We could look at what the difference in sample means is between these two new samples:</p>
-<div class="sourceCode" id="cb1712"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1712-1"><a href="permutation-testing.html#cb1712-1" aria-hidden="true" tabindex="-1"></a>x[[<span class="dv">1</span>]] <span class="co"># this is our shuffled sample of size 15</span></span></code></pre></div>
+<div class="sourceCode" id="cb1714"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1714-1"><a href="permutation-testing.html#cb1714-1" aria-hidden="true" tabindex="-1"></a>x[[<span class="dv">1</span>]] <span class="co"># this is our shuffled sample of size 15</span></span></code></pre></div>
 <pre><code>##  [1] 83 86 65 74 68 73 78 77 71 66 74 69 79 55 68</code></pre>
-<div class="sourceCode" id="cb1714"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1714-1"><a href="permutation-testing.html#cb1714-1" aria-hidden="true" tabindex="-1"></a>x[[<span class="dv">2</span>]] <span class="co"># this is our shuffled sample of size 18</span></span></code></pre></div>
+<div class="sourceCode" id="cb1716"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1716-1"><a href="permutation-testing.html#cb1716-1" aria-hidden="true" tabindex="-1"></a>x[[<span class="dv">2</span>]] <span class="co"># this is our shuffled sample of size 18</span></span></code></pre></div>
 <pre><code>##  [1] 76 56 80 68 76 62 72 78 90 69 67 70 65 73 74 73 60 66</code></pre>
-<div class="sourceCode" id="cb1716"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1716-1"><a href="permutation-testing.html#cb1716-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(x[[<span class="dv">1</span>]])  <span class="co"># mean of the new sample of size 15</span></span></code></pre></div>
+<div class="sourceCode" id="cb1718"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1718-1"><a href="permutation-testing.html#cb1718-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(x[[<span class="dv">1</span>]])  <span class="co"># mean of the new sample of size 15</span></span></code></pre></div>
 <pre><code>## [1] 72.4</code></pre>
-<div class="sourceCode" id="cb1718"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1718-1"><a href="permutation-testing.html#cb1718-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(x[[<span class="dv">2</span>]])  <span class="co"># mean of the new sample of size 18</span></span></code></pre></div>
+<div class="sourceCode" id="cb1720"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1720-1"><a href="permutation-testing.html#cb1720-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(x[[<span class="dv">2</span>]])  <span class="co"># mean of the new sample of size 18</span></span></code></pre></div>
 <pre><code>## [1] 70.83333</code></pre>
-<div class="sourceCode" id="cb1720"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1720-1"><a href="permutation-testing.html#cb1720-1" aria-hidden="true" tabindex="-1"></a><span class="co"># what&#39;s the difference in their means?</span></span>
-<span id="cb1720-2"><a href="permutation-testing.html#cb1720-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(x[[<span class="dv">1</span>]]) <span class="sc">-</span> <span class="fu">mean</span>(x[[<span class="dv">2</span>]]) </span></code></pre></div>
+<div class="sourceCode" id="cb1722"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1722-1"><a href="permutation-testing.html#cb1722-1" aria-hidden="true" tabindex="-1"></a><span class="co"># what&#39;s the difference in their means?</span></span>
+<span id="cb1722-2"><a href="permutation-testing.html#cb1722-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(x[[<span class="dv">1</span>]]) <span class="sc">-</span> <span class="fu">mean</span>(x[[<span class="dv">2</span>]]) </span></code></pre></div>
 <pre><code>## [1] 1.566667</code></pre>
 <p>The difference in sample means is 1.81, which is a lot smaller than our original difference in sample means.</p>
 <p>Let’s do this same process 10,000 times! Don’t worry too much about the details of the code. What we are doing is the above process, just putting it in a loop and asking it to do it 10,000 times. We save all the results in an object called <code>results</code>.</p>
-<div class="sourceCode" id="cb1722"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1722-1"><a href="permutation-testing.html#cb1722-1" aria-hidden="true" tabindex="-1"></a>results<span class="ot">&lt;-</span><span class="fu">vector</span>(<span class="st">&#39;list&#39;</span>,<span class="dv">10000</span>)</span>
-<span id="cb1722-2"><a href="permutation-testing.html#cb1722-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10000</span>){</span>
-<span id="cb1722-3"><a href="permutation-testing.html#cb1722-3" aria-hidden="true" tabindex="-1"></a>  x <span class="ot">&lt;-</span> <span class="fu">split</span>(<span class="fu">sample</span>(allscores), <span class="fu">rep</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>, <span class="fu">c</span>(<span class="dv">15</span>,<span class="dv">18</span>)))</span>
-<span id="cb1722-4"><a href="permutation-testing.html#cb1722-4" aria-hidden="true" tabindex="-1"></a>  results[[i]]<span class="ot">&lt;-</span><span class="fu">mean</span>(x[[<span class="dv">1</span>]]) <span class="sc">-</span> <span class="fu">mean</span>(x[[<span class="dv">2</span>]])  </span>
-<span id="cb1722-5"><a href="permutation-testing.html#cb1722-5" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb1722-6"><a href="permutation-testing.html#cb1722-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1722-7"><a href="permutation-testing.html#cb1722-7" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">unlist</span>(results)) <span class="co"># these are all our mean differences from 10,000 shuffles of the data. We&#39;re just looking at the first 6.</span></span></code></pre></div>
+<div class="sourceCode" id="cb1724"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1724-1"><a href="permutation-testing.html#cb1724-1" aria-hidden="true" tabindex="-1"></a>results<span class="ot">&lt;-</span><span class="fu">vector</span>(<span class="st">&#39;list&#39;</span>,<span class="dv">10000</span>)</span>
+<span id="cb1724-2"><a href="permutation-testing.html#cb1724-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10000</span>){</span>
+<span id="cb1724-3"><a href="permutation-testing.html#cb1724-3" aria-hidden="true" tabindex="-1"></a>  x <span class="ot">&lt;-</span> <span class="fu">split</span>(<span class="fu">sample</span>(allscores), <span class="fu">rep</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>, <span class="fu">c</span>(<span class="dv">15</span>,<span class="dv">18</span>)))</span>
+<span id="cb1724-4"><a href="permutation-testing.html#cb1724-4" aria-hidden="true" tabindex="-1"></a>  results[[i]]<span class="ot">&lt;-</span><span class="fu">mean</span>(x[[<span class="dv">1</span>]]) <span class="sc">-</span> <span class="fu">mean</span>(x[[<span class="dv">2</span>]])  </span>
+<span id="cb1724-5"><a href="permutation-testing.html#cb1724-5" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb1724-6"><a href="permutation-testing.html#cb1724-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1724-7"><a href="permutation-testing.html#cb1724-7" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">unlist</span>(results)) <span class="co"># these are all our mean differences from 10,000 shuffles of the data. We&#39;re just looking at the first 6.</span></span></code></pre></div>
 <pre><code>## [1] -4.0555556  4.7444444 -2.3444444 -0.3888889  1.6888889 -6.7444444</code></pre>
 <p>We can actually make a histogram showing the distribution of these differences in sample means.</p>
-<div class="sourceCode" id="cb1724"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1724-1"><a href="permutation-testing.html#cb1724-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">difs =</span> <span class="fu">unlist</span>(results))</span>
-<span id="cb1724-2"><a href="permutation-testing.html#cb1724-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1724-3"><a href="permutation-testing.html#cb1724-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df, <span class="fu">aes</span>(<span class="at">x=</span>difs)) <span class="sc">+</span></span>
-<span id="cb1724-4"><a href="permutation-testing.html#cb1724-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">color=</span><span class="st">&quot;black&quot;</span>, <span class="at">fill=</span><span class="st">&quot;green&quot;</span>, <span class="at">alpha=</span>.<span class="dv">4</span>) <span class="sc">+</span></span>
-<span id="cb1724-5"><a href="permutation-testing.html#cb1724-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">color=</span><span class="st">&quot;navy&quot;</span>,<span class="at">lwd=</span><span class="dv">1</span>,<span class="at">lty=</span><span class="dv">2</span>,<span class="at">xintercept =</span> <span class="fl">5.48</span>) <span class="sc">+</span></span>
-<span id="cb1724-6"><a href="permutation-testing.html#cb1724-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>()<span class="sc">+</span></span>
-<span id="cb1724-7"><a href="permutation-testing.html#cb1724-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;Mean Differences from </span><span class="sc">\n</span><span class="st"> 10000 Permutations of Raw Data&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb1726"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1726-1"><a href="permutation-testing.html#cb1726-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">difs =</span> <span class="fu">unlist</span>(results))</span>
+<span id="cb1726-2"><a href="permutation-testing.html#cb1726-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1726-3"><a href="permutation-testing.html#cb1726-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df, <span class="fu">aes</span>(<span class="at">x=</span>difs)) <span class="sc">+</span></span>
+<span id="cb1726-4"><a href="permutation-testing.html#cb1726-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">color=</span><span class="st">&quot;black&quot;</span>, <span class="at">fill=</span><span class="st">&quot;green&quot;</span>, <span class="at">alpha=</span>.<span class="dv">4</span>) <span class="sc">+</span></span>
+<span id="cb1726-5"><a href="permutation-testing.html#cb1726-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">color=</span><span class="st">&quot;navy&quot;</span>,<span class="at">lwd=</span><span class="dv">1</span>,<span class="at">lty=</span><span class="dv">2</span>,<span class="at">xintercept =</span> <span class="fl">5.48</span>) <span class="sc">+</span></span>
+<span id="cb1726-6"><a href="permutation-testing.html#cb1726-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>()<span class="sc">+</span></span>
+<span id="cb1726-7"><a href="permutation-testing.html#cb1726-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;Mean Differences from </span><span class="sc">\n</span><span class="st"> 10000 Permutations of Raw Data&quot;</span>)</span></code></pre></div>
 <pre><code>## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-709-1.png" width="672" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-710-1.png" width="672" /></p>
 <p>This histogram shows that for some of our 10,000 shuffles, we actually got some differences between our two samples of higher than 5.48 (the dotted blue line), but the vast majority of shuffles led to samples that had mean differences lower than 5.48. In fact, several shuffles led to samples where the sample of size 18 (Bernadette in the original data) had a sample mean that was higher than the sample of size 15 (Anastasia in the original data).</p>
 <p>We can directly calculate how many times out of 10,000 shuffles we got a difference in sample means that was greater than 5.48</p>
-<div class="sourceCode" id="cb1726"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1726-1"><a href="permutation-testing.html#cb1726-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">unlist</span>(results) <span class="sc">&gt;</span> <span class="fl">5.48</span>)  <span class="co"># 202 times out of 10000</span></span></code></pre></div>
+<div class="sourceCode" id="cb1728"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1728-1"><a href="permutation-testing.html#cb1728-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">unlist</span>(results) <span class="sc">&gt;</span> <span class="fl">5.48</span>)  <span class="co"># 202 times out of 10000</span></span></code></pre></div>
 <pre><code>## [1] 202</code></pre>
 <p>To convert this to a p-value, we simply divide this value by the number of shuffles we ran - which was 10,000.</p>
-<div class="sourceCode" id="cb1728"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1728-1"><a href="permutation-testing.html#cb1728-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">unlist</span>(results) <span class="sc">&gt;</span> <span class="fl">5.48</span>) <span class="sc">/</span><span class="dv">10000</span>  <span class="co"># which is 0.0202 proportion of the time</span></span></code></pre></div>
+<div class="sourceCode" id="cb1730"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1730-1"><a href="permutation-testing.html#cb1730-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">unlist</span>(results) <span class="sc">&gt;</span> <span class="fl">5.48</span>) <span class="sc">/</span><span class="dv">10000</span>  <span class="co"># which is 0.0202 proportion of the time</span></span></code></pre></div>
 <pre><code>## [1] 0.0202</code></pre>
 <p>So our p-value is <code>p=0.0215</code> which is similar to a one-tailed p-value. If we wished to have a 2-tailed p-value we would simply multiply this value by 2:</p>
-<div class="sourceCode" id="cb1730"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1730-1"><a href="permutation-testing.html#cb1730-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 2-tailed value</span></span>
-<span id="cb1730-2"><a href="permutation-testing.html#cb1730-2" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span> <span class="sc">*</span> (<span class="fu">sum</span>(<span class="fu">unlist</span>(results) <span class="sc">&gt;</span> <span class="fl">5.48</span>) <span class="sc">/</span><span class="dv">10000</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb1732"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1732-1"><a href="permutation-testing.html#cb1732-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 2-tailed value</span></span>
+<span id="cb1732-2"><a href="permutation-testing.html#cb1732-2" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span> <span class="sc">*</span> (<span class="fu">sum</span>(<span class="fu">unlist</span>(results) <span class="sc">&gt;</span> <span class="fl">5.48</span>) <span class="sc">/</span><span class="dv">10000</span>)</span></code></pre></div>
 <pre><code>## [1] 0.0404</code></pre>
 <p><strong>Example 2:</strong></p>
 <p>Let’s take a look at a second example. Here, we have various subjects rating their anxiety levels. They do this after either taking a new anxiolytic drug or a placebo. The subjects in each group are independent of each other. The placebo group has 19 subjects and the drug group has 21 subjects.</p>
 <p>The data:</p>
-<div class="sourceCode" id="cb1732"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1732-1"><a href="permutation-testing.html#cb1732-1" aria-hidden="true" tabindex="-1"></a>placebo <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">15</span>, <span class="dv">16</span>, <span class="dv">19</span>, <span class="dv">19</span>, <span class="dv">17</span>, <span class="dv">20</span>, <span class="dv">18</span>, <span class="dv">14</span>, <span class="dv">18</span>, <span class="dv">20</span>, <span class="dv">20</span>, <span class="dv">20</span>, <span class="dv">13</span>, <span class="dv">11</span>, <span class="dv">16</span>, <span class="dv">19</span>, <span class="dv">19</span>, <span class="dv">16</span>, <span class="dv">10</span>) </span>
-<span id="cb1732-2"><a href="permutation-testing.html#cb1732-2" aria-hidden="true" tabindex="-1"></a>drug <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">15</span>, <span class="dv">15</span>, <span class="dv">16</span>, <span class="dv">13</span>, <span class="dv">11</span>, <span class="dv">19</span>, <span class="dv">17</span>, <span class="dv">17</span>, <span class="dv">11</span>, <span class="dv">14</span>, <span class="dv">10</span>, <span class="dv">18</span>, <span class="dv">19</span>, <span class="dv">14</span>, <span class="dv">13</span>, <span class="dv">16</span>, <span class="dv">16</span>, <span class="dv">17</span>, <span class="dv">14</span>, <span class="dv">10</span>, <span class="dv">14</span>)</span>
-<span id="cb1732-3"><a href="permutation-testing.html#cb1732-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1732-4"><a href="permutation-testing.html#cb1732-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1732-5"><a href="permutation-testing.html#cb1732-5" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(placebo) <span class="co">#19</span></span></code></pre></div>
+<div class="sourceCode" id="cb1734"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1734-1"><a href="permutation-testing.html#cb1734-1" aria-hidden="true" tabindex="-1"></a>placebo <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">15</span>, <span class="dv">16</span>, <span class="dv">19</span>, <span class="dv">19</span>, <span class="dv">17</span>, <span class="dv">20</span>, <span class="dv">18</span>, <span class="dv">14</span>, <span class="dv">18</span>, <span class="dv">20</span>, <span class="dv">20</span>, <span class="dv">20</span>, <span class="dv">13</span>, <span class="dv">11</span>, <span class="dv">16</span>, <span class="dv">19</span>, <span class="dv">19</span>, <span class="dv">16</span>, <span class="dv">10</span>) </span>
+<span id="cb1734-2"><a href="permutation-testing.html#cb1734-2" aria-hidden="true" tabindex="-1"></a>drug <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">15</span>, <span class="dv">15</span>, <span class="dv">16</span>, <span class="dv">13</span>, <span class="dv">11</span>, <span class="dv">19</span>, <span class="dv">17</span>, <span class="dv">17</span>, <span class="dv">11</span>, <span class="dv">14</span>, <span class="dv">10</span>, <span class="dv">18</span>, <span class="dv">19</span>, <span class="dv">14</span>, <span class="dv">13</span>, <span class="dv">16</span>, <span class="dv">16</span>, <span class="dv">17</span>, <span class="dv">14</span>, <span class="dv">10</span>, <span class="dv">14</span>)</span>
+<span id="cb1734-3"><a href="permutation-testing.html#cb1734-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1734-4"><a href="permutation-testing.html#cb1734-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1734-5"><a href="permutation-testing.html#cb1734-5" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(placebo) <span class="co">#19</span></span></code></pre></div>
 <pre><code>## [1] 19</code></pre>
-<div class="sourceCode" id="cb1734"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1734-1"><a href="permutation-testing.html#cb1734-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(drug)  <span class="co">#21</span></span></code></pre></div>
+<div class="sourceCode" id="cb1736"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1736-1"><a href="permutation-testing.html#cb1736-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(drug)  <span class="co">#21</span></span></code></pre></div>
 <pre><code>## [1] 21</code></pre>
 <p>If we were interested in doing a Student’s t-test, we might want to check whether the data are approximately normal. We could perform Shapiro-Wilk tests to do this:</p>
-<div class="sourceCode" id="cb1736"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1736-1"><a href="permutation-testing.html#cb1736-1" aria-hidden="true" tabindex="-1"></a><span class="fu">shapiro.test</span>(drug)    <span class="co"># approximately normal as p&gt;.05</span></span></code></pre></div>
+<div class="sourceCode" id="cb1738"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1738-1"><a href="permutation-testing.html#cb1738-1" aria-hidden="true" tabindex="-1"></a><span class="fu">shapiro.test</span>(drug)    <span class="co"># approximately normal as p&gt;.05</span></span></code></pre></div>
 <pre><code>## 
 ##  Shapiro-Wilk normality test
 ## 
 ## data:  drug
 ## W = 0.95184, p-value = 0.3688</code></pre>
-<div class="sourceCode" id="cb1738"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1738-1"><a href="permutation-testing.html#cb1738-1" aria-hidden="true" tabindex="-1"></a><span class="fu">shapiro.test</span>(placebo) <span class="co"># not enough evidence to be normal as p&lt;.05</span></span></code></pre></div>
+<div class="sourceCode" id="cb1740"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1740-1"><a href="permutation-testing.html#cb1740-1" aria-hidden="true" tabindex="-1"></a><span class="fu">shapiro.test</span>(placebo) <span class="co"># not enough evidence to be normal as p&lt;.05</span></span></code></pre></div>
 <pre><code>## 
 ##  Shapiro-Wilk normality test
 ## 
@@ -606,14 +606,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## W = 0.88372, p-value = 0.02494</code></pre>
 <p>From this we find that the placebo group is not approximately normally distributed (p value of the Shapiro-Wilk test is &lt;.05). We could do a non-parametric test such as Wilcoxon Ranked Sum test (see xxx.xxx), but an alternative strategy is to perform a permutation test.</p>
 <p>Let’s first plot the data, and then look at our observed difference in anxiety scores between our two independent samples:</p>
-<div class="sourceCode" id="cb1740"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1740-1"><a href="permutation-testing.html#cb1740-1" aria-hidden="true" tabindex="-1"></a><span class="co"># put into dataframe - long format</span></span>
-<span id="cb1740-2"><a href="permutation-testing.html#cb1740-2" aria-hidden="true" tabindex="-1"></a>ddf <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">anxiety =</span> <span class="fu">c</span>(placebo, drug),</span>
-<span id="cb1740-3"><a href="permutation-testing.html#cb1740-3" aria-hidden="true" tabindex="-1"></a>                 <span class="at">group =</span> <span class="fu">c</span>(<span class="fu">rep</span>(<span class="st">&quot;placebo&quot;</span>, <span class="fu">length</span>(placebo)), </span>
-<span id="cb1740-4"><a href="permutation-testing.html#cb1740-4" aria-hidden="true" tabindex="-1"></a>                           <span class="fu">rep</span>(<span class="st">&quot;drug&quot;</span>, <span class="fu">length</span>(drug))</span>
-<span id="cb1740-5"><a href="permutation-testing.html#cb1740-5" aria-hidden="true" tabindex="-1"></a>                 )</span>
-<span id="cb1740-6"><a href="permutation-testing.html#cb1740-6" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb1740-7"><a href="permutation-testing.html#cb1740-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1740-8"><a href="permutation-testing.html#cb1740-8" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(ddf)</span></code></pre></div>
+<div class="sourceCode" id="cb1742"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1742-1"><a href="permutation-testing.html#cb1742-1" aria-hidden="true" tabindex="-1"></a><span class="co"># put into dataframe - long format</span></span>
+<span id="cb1742-2"><a href="permutation-testing.html#cb1742-2" aria-hidden="true" tabindex="-1"></a>ddf <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">anxiety =</span> <span class="fu">c</span>(placebo, drug),</span>
+<span id="cb1742-3"><a href="permutation-testing.html#cb1742-3" aria-hidden="true" tabindex="-1"></a>                 <span class="at">group =</span> <span class="fu">c</span>(<span class="fu">rep</span>(<span class="st">&quot;placebo&quot;</span>, <span class="fu">length</span>(placebo)), </span>
+<span id="cb1742-4"><a href="permutation-testing.html#cb1742-4" aria-hidden="true" tabindex="-1"></a>                           <span class="fu">rep</span>(<span class="st">&quot;drug&quot;</span>, <span class="fu">length</span>(drug))</span>
+<span id="cb1742-5"><a href="permutation-testing.html#cb1742-5" aria-hidden="true" tabindex="-1"></a>                 )</span>
+<span id="cb1742-6"><a href="permutation-testing.html#cb1742-6" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb1742-7"><a href="permutation-testing.html#cb1742-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1742-8"><a href="permutation-testing.html#cb1742-8" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(ddf)</span></code></pre></div>
 <pre><code>##   anxiety   group
 ## 1      15 placebo
 ## 2      16 placebo
@@ -621,40 +621,40 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 4      19 placebo
 ## 5      17 placebo
 ## 6      20 placebo</code></pre>
-<div class="sourceCode" id="cb1742"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1742-1"><a href="permutation-testing.html#cb1742-1" aria-hidden="true" tabindex="-1"></a><span class="co">#boxplots</span></span>
-<span id="cb1742-2"><a href="permutation-testing.html#cb1742-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(ddf, <span class="fu">aes</span>(<span class="at">x=</span>group, <span class="at">y=</span>anxiety, <span class="at">fill=</span>group)) <span class="sc">+</span> </span>
-<span id="cb1742-3"><a href="permutation-testing.html#cb1742-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">outlier.shape =</span> <span class="cn">NA</span>, <span class="at">alpha=</span>.<span class="dv">4</span>) <span class="sc">+</span></span>
-<span id="cb1742-4"><a href="permutation-testing.html#cb1742-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_jitter</span>(<span class="at">width=</span>.<span class="dv">1</span>) <span class="sc">+</span></span>
-<span id="cb1742-5"><a href="permutation-testing.html#cb1742-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>() <span class="sc">+</span></span>
-<span id="cb1742-6"><a href="permutation-testing.html#cb1742-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values=</span><span class="fu">c</span>(<span class="st">&quot;orange&quot;</span>, <span class="st">&quot;brown&quot;</span>))</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-715-1.png" width="672" /></p>
-<div class="sourceCode" id="cb1743"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1743-1"><a href="permutation-testing.html#cb1743-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(placebo) <span class="sc">-</span> <span class="fu">mean</span>(drug) <span class="co">#2.128</span></span></code></pre></div>
+<div class="sourceCode" id="cb1744"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1744-1"><a href="permutation-testing.html#cb1744-1" aria-hidden="true" tabindex="-1"></a><span class="co">#boxplots</span></span>
+<span id="cb1744-2"><a href="permutation-testing.html#cb1744-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(ddf, <span class="fu">aes</span>(<span class="at">x=</span>group, <span class="at">y=</span>anxiety, <span class="at">fill=</span>group)) <span class="sc">+</span> </span>
+<span id="cb1744-3"><a href="permutation-testing.html#cb1744-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">outlier.shape =</span> <span class="cn">NA</span>, <span class="at">alpha=</span>.<span class="dv">4</span>) <span class="sc">+</span></span>
+<span id="cb1744-4"><a href="permutation-testing.html#cb1744-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_jitter</span>(<span class="at">width=</span>.<span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb1744-5"><a href="permutation-testing.html#cb1744-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>() <span class="sc">+</span></span>
+<span id="cb1744-6"><a href="permutation-testing.html#cb1744-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values=</span><span class="fu">c</span>(<span class="st">&quot;orange&quot;</span>, <span class="st">&quot;brown&quot;</span>))</span></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-716-1.png" width="672" /></p>
+<div class="sourceCode" id="cb1745"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1745-1"><a href="permutation-testing.html#cb1745-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(placebo) <span class="sc">-</span> <span class="fu">mean</span>(drug) <span class="co">#2.128</span></span></code></pre></div>
 <pre><code>## [1] 2.12782</code></pre>
 <p>So our observed difference in sample means is 2.128. In the permutation test, what we’ll do is shuffle all the scores randomly between the two groups, creating new samples of the same size (19 and 21). Then we’ll see what difference in sample means we get from those shuffled groups. We’ll also do this 10,000 times.</p>
-<div class="sourceCode" id="cb1745"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1745-1"><a href="permutation-testing.html#cb1745-1" aria-hidden="true" tabindex="-1"></a>allvalues <span class="ot">&lt;-</span> <span class="fu">c</span>(placebo, drug)</span>
-<span id="cb1745-2"><a href="permutation-testing.html#cb1745-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1745-3"><a href="permutation-testing.html#cb1745-3" aria-hidden="true" tabindex="-1"></a>results<span class="ot">&lt;-</span><span class="fu">vector</span>(<span class="st">&#39;list&#39;</span>,<span class="dv">10000</span>)</span>
-<span id="cb1745-4"><a href="permutation-testing.html#cb1745-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10000</span>){</span>
-<span id="cb1745-5"><a href="permutation-testing.html#cb1745-5" aria-hidden="true" tabindex="-1"></a>  x <span class="ot">&lt;-</span> <span class="fu">split</span>(<span class="fu">sample</span>(allvalues), <span class="fu">rep</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>, <span class="fu">c</span>(<span class="dv">19</span>,<span class="dv">21</span>)))</span>
-<span id="cb1745-6"><a href="permutation-testing.html#cb1745-6" aria-hidden="true" tabindex="-1"></a>  results[[i]]<span class="ot">&lt;-</span><span class="fu">mean</span>(x[[<span class="dv">1</span>]]) <span class="sc">-</span> <span class="fu">mean</span>(x[[<span class="dv">2</span>]])  </span>
-<span id="cb1745-7"><a href="permutation-testing.html#cb1745-7" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb1745-8"><a href="permutation-testing.html#cb1745-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1745-9"><a href="permutation-testing.html#cb1745-9" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">unlist</span>(results)) <span class="co"># these are the first six of all our mean differences from 10,000 shuffles of the data.</span></span></code></pre></div>
+<div class="sourceCode" id="cb1747"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1747-1"><a href="permutation-testing.html#cb1747-1" aria-hidden="true" tabindex="-1"></a>allvalues <span class="ot">&lt;-</span> <span class="fu">c</span>(placebo, drug)</span>
+<span id="cb1747-2"><a href="permutation-testing.html#cb1747-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1747-3"><a href="permutation-testing.html#cb1747-3" aria-hidden="true" tabindex="-1"></a>results<span class="ot">&lt;-</span><span class="fu">vector</span>(<span class="st">&#39;list&#39;</span>,<span class="dv">10000</span>)</span>
+<span id="cb1747-4"><a href="permutation-testing.html#cb1747-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10000</span>){</span>
+<span id="cb1747-5"><a href="permutation-testing.html#cb1747-5" aria-hidden="true" tabindex="-1"></a>  x <span class="ot">&lt;-</span> <span class="fu">split</span>(<span class="fu">sample</span>(allvalues), <span class="fu">rep</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>, <span class="fu">c</span>(<span class="dv">19</span>,<span class="dv">21</span>)))</span>
+<span id="cb1747-6"><a href="permutation-testing.html#cb1747-6" aria-hidden="true" tabindex="-1"></a>  results[[i]]<span class="ot">&lt;-</span><span class="fu">mean</span>(x[[<span class="dv">1</span>]]) <span class="sc">-</span> <span class="fu">mean</span>(x[[<span class="dv">2</span>]])  </span>
+<span id="cb1747-7"><a href="permutation-testing.html#cb1747-7" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb1747-8"><a href="permutation-testing.html#cb1747-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1747-9"><a href="permutation-testing.html#cb1747-9" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">unlist</span>(results)) <span class="co"># these are the first six of all our mean differences from 10,000 shuffles of the data.</span></span></code></pre></div>
 <pre><code>## [1]  1.1253133  0.7243108 -0.5789474 -0.6791980  0.5238095  1.7268170</code></pre>
 <p>Let’s plot the distribution of these data to see what proportion of times our shuffled groups got samples that were greater than 2.128.</p>
-<div class="sourceCode" id="cb1747"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1747-1"><a href="permutation-testing.html#cb1747-1" aria-hidden="true" tabindex="-1"></a>df0 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">difs =</span> <span class="fu">unlist</span>(results))</span>
-<span id="cb1747-2"><a href="permutation-testing.html#cb1747-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1747-3"><a href="permutation-testing.html#cb1747-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df0, <span class="fu">aes</span>(<span class="at">x=</span>difs)) <span class="sc">+</span></span>
-<span id="cb1747-4"><a href="permutation-testing.html#cb1747-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">color=</span><span class="st">&quot;black&quot;</span>, <span class="at">fill=</span><span class="st">&quot;pink&quot;</span>, <span class="at">alpha=</span>.<span class="dv">4</span>) <span class="sc">+</span></span>
-<span id="cb1747-5"><a href="permutation-testing.html#cb1747-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">color=</span><span class="st">&quot;navy&quot;</span>,<span class="at">lwd=</span><span class="dv">1</span>,<span class="at">lty=</span><span class="dv">2</span>,<span class="at">xintercept =</span> <span class="fl">2.128</span>) <span class="sc">+</span></span>
-<span id="cb1747-6"><a href="permutation-testing.html#cb1747-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>()<span class="sc">+</span></span>
-<span id="cb1747-7"><a href="permutation-testing.html#cb1747-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;Mean Differences from </span><span class="sc">\n</span><span class="st"> 10000 Permutations of Raw Data&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb1749"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1749-1"><a href="permutation-testing.html#cb1749-1" aria-hidden="true" tabindex="-1"></a>df0 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">difs =</span> <span class="fu">unlist</span>(results))</span>
+<span id="cb1749-2"><a href="permutation-testing.html#cb1749-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1749-3"><a href="permutation-testing.html#cb1749-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df0, <span class="fu">aes</span>(<span class="at">x=</span>difs)) <span class="sc">+</span></span>
+<span id="cb1749-4"><a href="permutation-testing.html#cb1749-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">color=</span><span class="st">&quot;black&quot;</span>, <span class="at">fill=</span><span class="st">&quot;pink&quot;</span>, <span class="at">alpha=</span>.<span class="dv">4</span>) <span class="sc">+</span></span>
+<span id="cb1749-5"><a href="permutation-testing.html#cb1749-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">color=</span><span class="st">&quot;navy&quot;</span>,<span class="at">lwd=</span><span class="dv">1</span>,<span class="at">lty=</span><span class="dv">2</span>,<span class="at">xintercept =</span> <span class="fl">2.128</span>) <span class="sc">+</span></span>
+<span id="cb1749-6"><a href="permutation-testing.html#cb1749-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>()<span class="sc">+</span></span>
+<span id="cb1749-7"><a href="permutation-testing.html#cb1749-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;Mean Differences from </span><span class="sc">\n</span><span class="st"> 10000 Permutations of Raw Data&quot;</span>)</span></code></pre></div>
 <pre><code>## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-717-1.png" width="672" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-718-1.png" width="672" /></p>
 <p>It looks like very few times did we get two samples that had differences in sample means that were greater than 2.128. We can calculate exactly how many times, and express this as the proportion of times we got a difference in sample means greater than 2.128:</p>
-<div class="sourceCode" id="cb1749"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1749-1"><a href="permutation-testing.html#cb1749-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">unlist</span>(results) <span class="sc">&gt;</span> <span class="fl">2.128</span>)  <span class="co"># 109 times out of 10000</span></span></code></pre></div>
+<div class="sourceCode" id="cb1751"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1751-1"><a href="permutation-testing.html#cb1751-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">unlist</span>(results) <span class="sc">&gt;</span> <span class="fl">2.128</span>)  <span class="co"># 109 times out of 10000</span></span></code></pre></div>
 <pre><code>## [1] 116</code></pre>
-<div class="sourceCode" id="cb1751"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1751-1"><a href="permutation-testing.html#cb1751-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">unlist</span>(results) <span class="sc">&gt;</span> <span class="fl">2.128</span>) <span class="sc">/</span><span class="dv">10000</span>  <span class="co"># which is 0.0109 proportion of the time</span></span></code></pre></div>
+<div class="sourceCode" id="cb1753"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1753-1"><a href="permutation-testing.html#cb1753-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">unlist</span>(results) <span class="sc">&gt;</span> <span class="fl">2.128</span>) <span class="sc">/</span><span class="dv">10000</span>  <span class="co"># which is 0.0109 proportion of the time</span></span></code></pre></div>
 <pre><code>## [1] 0.0116</code></pre>
 <p>So, in this case we can say that the probability of getting a difference in sample means between the drug and placebo groups that was larger than our observed difference of 2.128 was <code>p = 0.0109</code>. This is very strong evidence that the observed difference is significantly greater than we’d expect by chance.</p>
 </div>
@@ -662,9 +662,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">14.2</span> Correlation Coefficient Permutation Tests</h2>
 <p>You can apply the logic of permutation tests to almost any statistical test. Let’s look at an example for Pearson correlations.</p>
 <p>In these data, we are looking at 15 subjects who are completing a task. We measured the time they spent on the task and their high scores.</p>
-<div class="sourceCode" id="cb1753"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1753-1"><a href="permutation-testing.html#cb1753-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb1753-2"><a href="permutation-testing.html#cb1753-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1753-3"><a href="permutation-testing.html#cb1753-3" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span>  <span class="fu">read_csv</span>(<span class="st">&quot;data/timescore.csv&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb1755"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1755-1"><a href="permutation-testing.html#cb1755-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1755-2"><a href="permutation-testing.html#cb1755-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1755-3"><a href="permutation-testing.html#cb1755-3" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span>  <span class="fu">read_csv</span>(<span class="st">&quot;data/timescore.csv&quot;</span>)</span></code></pre></div>
 <pre><code>## Rows: 15 Columns: 3</code></pre>
 <pre><code>## -- Column specification ------------------------------------------------------
 ## Delimiter: &quot;,&quot;
@@ -673,7 +673,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <pre><code>## 
 ## i Use `spec()` to retrieve the full column specification for this data.
 ## i Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
-<div class="sourceCode" id="cb1757"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1757-1"><a href="permutation-testing.html#cb1757-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(df)</span></code></pre></div>
+<div class="sourceCode" id="cb1759"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1759-1"><a href="permutation-testing.html#cb1759-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(df)</span></code></pre></div>
 <pre><code>## # A tibble: 6 x 3
 ##   subject  time score
 ##   &lt;chr&gt;   &lt;dbl&gt; &lt;dbl&gt;
@@ -684,15 +684,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 5 5E        9.3  12.2
 ## 6 6F        2.5   3.5</code></pre>
 <p>If we make a scatterplot of the data, we can see that those who spent longer on the task tended to get higher scores:</p>
-<div class="sourceCode" id="cb1759"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1759-1"><a href="permutation-testing.html#cb1759-1" aria-hidden="true" tabindex="-1"></a><span class="co"># scatterplot</span></span>
-<span id="cb1759-2"><a href="permutation-testing.html#cb1759-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df, <span class="fu">aes</span>(<span class="at">x =</span> time, <span class="at">y =</span> score)) <span class="sc">+</span> </span>
-<span id="cb1759-3"><a href="permutation-testing.html#cb1759-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb1759-4"><a href="permutation-testing.html#cb1759-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>, <span class="at">se=</span>F)</span></code></pre></div>
+<div class="sourceCode" id="cb1761"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1761-1"><a href="permutation-testing.html#cb1761-1" aria-hidden="true" tabindex="-1"></a><span class="co"># scatterplot</span></span>
+<span id="cb1761-2"><a href="permutation-testing.html#cb1761-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df, <span class="fu">aes</span>(<span class="at">x =</span> time, <span class="at">y =</span> score)) <span class="sc">+</span> </span>
+<span id="cb1761-3"><a href="permutation-testing.html#cb1761-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb1761-4"><a href="permutation-testing.html#cb1761-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>, <span class="at">se=</span>F)</span></code></pre></div>
 <pre><code>## `geom_smooth()` using formula &#39;y ~ x&#39;</code></pre>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-720-1.png" width="672" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-721-1.png" width="672" /></p>
 <p>Using a standard approach, we could find the correlation of these two variables and run a significance test using <code>cor.test()</code>. We can see that there is a moderate Pearson’s r of <code>r=0.55</code> which is statistically significant (p=0.031).</p>
-<div class="sourceCode" id="cb1761"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1761-1"><a href="permutation-testing.html#cb1761-1" aria-hidden="true" tabindex="-1"></a><span class="co"># regular significance test</span></span>
-<span id="cb1761-2"><a href="permutation-testing.html#cb1761-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cor.test</span>(df<span class="sc">$</span>time,df<span class="sc">$</span>score) <span class="co">#r=0.55, p=0.031</span></span></code></pre></div>
+<div class="sourceCode" id="cb1763"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1763-1"><a href="permutation-testing.html#cb1763-1" aria-hidden="true" tabindex="-1"></a><span class="co"># regular significance test</span></span>
+<span id="cb1763-2"><a href="permutation-testing.html#cb1763-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cor.test</span>(df<span class="sc">$</span>time,df<span class="sc">$</span>score) <span class="co">#r=0.55, p=0.031</span></span></code></pre></div>
 <pre><code>## 
 ##  Pearson&#39;s product-moment correlation
 ## 
@@ -706,19 +706,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 0.5582129</code></pre>
 <p>We could take an alternative tack, and decide to do a permutation test. The idea here is again, how surprising is it to get a correlation of 0.55 with these data? Were there other ways of ordering the <code>x</code> and <code>y</code> variables to get higher correlation coefficients?</p>
 <p>Let’s look at our <code>y</code> axis variable, the <code>score</code>:</p>
-<div class="sourceCode" id="cb1763"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1763-1"><a href="permutation-testing.html#cb1763-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1</span>) <span class="co"># just doing this so all our results look same</span></span>
-<span id="cb1763-2"><a href="permutation-testing.html#cb1763-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1763-3"><a href="permutation-testing.html#cb1763-3" aria-hidden="true" tabindex="-1"></a>df<span class="sc">$</span>score  <span class="co"># actual data in order</span></span></code></pre></div>
+<div class="sourceCode" id="cb1765"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1765-1"><a href="permutation-testing.html#cb1765-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1</span>) <span class="co"># just doing this so all our results look same</span></span>
+<span id="cb1765-2"><a href="permutation-testing.html#cb1765-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1765-3"><a href="permutation-testing.html#cb1765-3" aria-hidden="true" tabindex="-1"></a>df<span class="sc">$</span>score  <span class="co"># actual data in order</span></span></code></pre></div>
 <pre><code>##  [1]  3.0  6.9 17.9 10.5 12.2  3.5 11.0  7.6  8.4 13.4 10.1  9.0 10.1 17.7
 ## [15]  6.8</code></pre>
 <p>This is the original order of the data. If we use <code>sample()</code> we can shuffle the data:</p>
-<div class="sourceCode" id="cb1765"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1765-1"><a href="permutation-testing.html#cb1765-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sample</span>(df<span class="sc">$</span>score)  <span class="co"># actual data but order shuffled</span></span></code></pre></div>
+<div class="sourceCode" id="cb1767"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1767-1"><a href="permutation-testing.html#cb1767-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sample</span>(df<span class="sc">$</span>score)  <span class="co"># actual data but order shuffled</span></span></code></pre></div>
 <pre><code>##  [1]  8.4 10.5 11.0  3.0  6.9 10.1 10.1 17.9  7.6  9.0 12.2  3.5  6.8 13.4
 ## [15] 17.7</code></pre>
 <p>Let’s shuffle the score again, but this time store it in the original dataframe:</p>
-<div class="sourceCode" id="cb1767"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1767-1"><a href="permutation-testing.html#cb1767-1" aria-hidden="true" tabindex="-1"></a>df<span class="sc">$</span>shuffle1 <span class="ot">&lt;-</span> <span class="fu">sample</span>(df<span class="sc">$</span>score) <span class="co">#create a new column with shuffled data</span></span>
-<span id="cb1767-2"><a href="permutation-testing.html#cb1767-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1767-3"><a href="permutation-testing.html#cb1767-3" aria-hidden="true" tabindex="-1"></a>df</span></code></pre></div>
+<div class="sourceCode" id="cb1769"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1769-1"><a href="permutation-testing.html#cb1769-1" aria-hidden="true" tabindex="-1"></a>df<span class="sc">$</span>shuffle1 <span class="ot">&lt;-</span> <span class="fu">sample</span>(df<span class="sc">$</span>score) <span class="co">#create a new column with shuffled data</span></span>
+<span id="cb1769-2"><a href="permutation-testing.html#cb1769-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1769-3"><a href="permutation-testing.html#cb1769-3" aria-hidden="true" tabindex="-1"></a>df</span></code></pre></div>
 <pre><code>## # A tibble: 15 x 4
 ##    subject  time score shuffle1
 ##    &lt;chr&gt;   &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;
@@ -738,14 +738,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 14 14N       8.3  17.7      3  
 ## 15 15O       5.1   6.8     17.9</code></pre>
 <p>If we plot this shuffled <code>y</code> (score) against the original <code>x</code> (time), we now get this scatterplot, which basically shows no relationship:</p>
-<div class="sourceCode" id="cb1769"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1769-1"><a href="permutation-testing.html#cb1769-1" aria-hidden="true" tabindex="-1"></a><span class="co"># this is what that new column looks like:</span></span>
-<span id="cb1769-2"><a href="permutation-testing.html#cb1769-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df, <span class="fu">aes</span>(<span class="at">x =</span> time, <span class="at">y =</span> shuffle1)) <span class="sc">+</span> </span>
-<span id="cb1769-3"><a href="permutation-testing.html#cb1769-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb1769-4"><a href="permutation-testing.html#cb1769-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>, <span class="at">se=</span>F)</span></code></pre></div>
+<div class="sourceCode" id="cb1771"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1771-1"><a href="permutation-testing.html#cb1771-1" aria-hidden="true" tabindex="-1"></a><span class="co"># this is what that new column looks like:</span></span>
+<span id="cb1771-2"><a href="permutation-testing.html#cb1771-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df, <span class="fu">aes</span>(<span class="at">x =</span> time, <span class="at">y =</span> shuffle1)) <span class="sc">+</span> </span>
+<span id="cb1771-3"><a href="permutation-testing.html#cb1771-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb1771-4"><a href="permutation-testing.html#cb1771-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>, <span class="at">se=</span>F)</span></code></pre></div>
 <pre><code>## `geom_smooth()` using formula &#39;y ~ x&#39;</code></pre>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-725-1.png" width="672" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-726-1.png" width="672" /></p>
 <p>And the correlation for this new scatterplot is really close to 0! r = 0.0005:</p>
-<div class="sourceCode" id="cb1771"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1771-1"><a href="permutation-testing.html#cb1771-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor.test</span>(df<span class="sc">$</span>time, df<span class="sc">$</span>shuffle1) <span class="co"># now relationship is a bit negative</span></span></code></pre></div>
+<div class="sourceCode" id="cb1773"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1773-1"><a href="permutation-testing.html#cb1773-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor.test</span>(df<span class="sc">$</span>time, df<span class="sc">$</span>shuffle1) <span class="co"># now relationship is a bit negative</span></span></code></pre></div>
 <pre><code>## 
 ##  Pearson&#39;s product-moment correlation
 ## 
@@ -758,37 +758,37 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##       cor 
 ## -0.317602</code></pre>
 <p>We could shuffle the score variable even more times, and directly calculate the <code>r</code> value against the time variable for each shuffle using <code>cor()</code>.</p>
-<div class="sourceCode" id="cb1773"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1773-1"><a href="permutation-testing.html#cb1773-1" aria-hidden="true" tabindex="-1"></a><span class="co"># we can do this many times</span></span>
-<span id="cb1773-2"><a href="permutation-testing.html#cb1773-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(df<span class="sc">$</span>time, <span class="fu">sample</span>(df<span class="sc">$</span>score))</span></code></pre></div>
+<div class="sourceCode" id="cb1775"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1775-1"><a href="permutation-testing.html#cb1775-1" aria-hidden="true" tabindex="-1"></a><span class="co"># we can do this many times</span></span>
+<span id="cb1775-2"><a href="permutation-testing.html#cb1775-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(df<span class="sc">$</span>time, <span class="fu">sample</span>(df<span class="sc">$</span>score))</span></code></pre></div>
 <pre><code>## [1] 0.1600023</code></pre>
-<div class="sourceCode" id="cb1775"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1775-1"><a href="permutation-testing.html#cb1775-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(df<span class="sc">$</span>time, <span class="fu">sample</span>(df<span class="sc">$</span>score)) </span></code></pre></div>
-<pre><code>## [1] -0.1238816</code></pre>
 <div class="sourceCode" id="cb1777"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1777-1"><a href="permutation-testing.html#cb1777-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(df<span class="sc">$</span>time, <span class="fu">sample</span>(df<span class="sc">$</span>score)) </span></code></pre></div>
-<pre><code>## [1] 0.3472331</code></pre>
+<pre><code>## [1] -0.1238816</code></pre>
 <div class="sourceCode" id="cb1779"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1779-1"><a href="permutation-testing.html#cb1779-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(df<span class="sc">$</span>time, <span class="fu">sample</span>(df<span class="sc">$</span>score)) </span></code></pre></div>
+<pre><code>## [1] 0.3472331</code></pre>
+<div class="sourceCode" id="cb1781"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1781-1"><a href="permutation-testing.html#cb1781-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(df<span class="sc">$</span>time, <span class="fu">sample</span>(df<span class="sc">$</span>score)) </span></code></pre></div>
 <pre><code>## [1] 0.04201647</code></pre>
 <p>As you can see, the more shuffles we do, we get varied values of <code>r</code>. What we really should do is perform 10,000 (or another really high number) shuffles of the score variable and re-calculate <code>r</code> against the time variable for all 10,000 of these shuffles. Don’t worry about the code below, but that’s exactly what we’re doing. We’re saving the <code>r</code> values from the 10,000 shuffles in the object called <code>results</code>.</p>
-<div class="sourceCode" id="cb1781"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1781-1"><a href="permutation-testing.html#cb1781-1" aria-hidden="true" tabindex="-1"></a>results <span class="ot">&lt;-</span> <span class="fu">vector</span>(<span class="st">&#39;list&#39;</span>,<span class="dv">10000</span>)</span>
-<span id="cb1781-2"><a href="permutation-testing.html#cb1781-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10000</span>){</span>
-<span id="cb1781-3"><a href="permutation-testing.html#cb1781-3" aria-hidden="true" tabindex="-1"></a>  results[[i]] <span class="ot">&lt;-</span> <span class="fu">cor</span>(df<span class="sc">$</span>time, <span class="fu">sample</span>(df<span class="sc">$</span>score))</span>
-<span id="cb1781-4"><a href="permutation-testing.html#cb1781-4" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb1781-5"><a href="permutation-testing.html#cb1781-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1781-6"><a href="permutation-testing.html#cb1781-6" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">unlist</span>(results)) <span class="co"># this are the correlations for the first 6 of  10,000 shuffles</span></span></code></pre></div>
+<div class="sourceCode" id="cb1783"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1783-1"><a href="permutation-testing.html#cb1783-1" aria-hidden="true" tabindex="-1"></a>results <span class="ot">&lt;-</span> <span class="fu">vector</span>(<span class="st">&#39;list&#39;</span>,<span class="dv">10000</span>)</span>
+<span id="cb1783-2"><a href="permutation-testing.html#cb1783-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10000</span>){</span>
+<span id="cb1783-3"><a href="permutation-testing.html#cb1783-3" aria-hidden="true" tabindex="-1"></a>  results[[i]] <span class="ot">&lt;-</span> <span class="fu">cor</span>(df<span class="sc">$</span>time, <span class="fu">sample</span>(df<span class="sc">$</span>score))</span>
+<span id="cb1783-4"><a href="permutation-testing.html#cb1783-4" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb1783-5"><a href="permutation-testing.html#cb1783-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1783-6"><a href="permutation-testing.html#cb1783-6" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">unlist</span>(results)) <span class="co"># this are the correlations for the first 6 of  10,000 shuffles</span></span></code></pre></div>
 <pre><code>## [1] -0.05905503  0.14874908 -0.25029004  0.10780960 -0.03206121 -0.49661730</code></pre>
 <p>We can plot the results in a histogram, and also put a vertical line at 0.56 which was our original observed correlation between time and score from the raw unshuffled data.</p>
-<div class="sourceCode" id="cb1783"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1783-1"><a href="permutation-testing.html#cb1783-1" aria-hidden="true" tabindex="-1"></a>results.df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x =</span> <span class="fu">unlist</span>(results))</span>
-<span id="cb1783-2"><a href="permutation-testing.html#cb1783-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1783-3"><a href="permutation-testing.html#cb1783-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(results.df, <span class="fu">aes</span>(x)) <span class="sc">+</span> </span>
-<span id="cb1783-4"><a href="permutation-testing.html#cb1783-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">color=</span><span class="st">&quot;darkgreen&quot;</span>,<span class="at">fill=</span><span class="st">&quot;lightseagreen&quot;</span>) <span class="sc">+</span></span>
-<span id="cb1783-5"><a href="permutation-testing.html#cb1783-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="fl">0.56</span>, <span class="at">lwd=</span><span class="dv">1</span>, <span class="at">lty=</span><span class="dv">2</span>) <span class="sc">+</span></span>
-<span id="cb1783-6"><a href="permutation-testing.html#cb1783-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;r&quot;</span>) </span></code></pre></div>
+<div class="sourceCode" id="cb1785"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1785-1"><a href="permutation-testing.html#cb1785-1" aria-hidden="true" tabindex="-1"></a>results.df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x =</span> <span class="fu">unlist</span>(results))</span>
+<span id="cb1785-2"><a href="permutation-testing.html#cb1785-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1785-3"><a href="permutation-testing.html#cb1785-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(results.df, <span class="fu">aes</span>(x)) <span class="sc">+</span> </span>
+<span id="cb1785-4"><a href="permutation-testing.html#cb1785-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">color=</span><span class="st">&quot;darkgreen&quot;</span>,<span class="at">fill=</span><span class="st">&quot;lightseagreen&quot;</span>) <span class="sc">+</span></span>
+<span id="cb1785-5"><a href="permutation-testing.html#cb1785-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="fl">0.56</span>, <span class="at">lwd=</span><span class="dv">1</span>, <span class="at">lty=</span><span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb1785-6"><a href="permutation-testing.html#cb1785-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;r&quot;</span>) </span></code></pre></div>
 <pre><code>## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-729-1.png" width="672" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-730-1.png" width="672" /></p>
 <p>As you can see, there were a few shuffles (or permutations) that we got an <code>r</code> value of greater than 0.56, but not that many. In fact, we can directly calculate how many:</p>
-<div class="sourceCode" id="cb1785"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1785-1"><a href="permutation-testing.html#cb1785-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">unlist</span>(results) <span class="sc">&gt;</span> <span class="fl">0.56</span>) <span class="co">#163 were greater.</span></span></code></pre></div>
+<div class="sourceCode" id="cb1787"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1787-1"><a href="permutation-testing.html#cb1787-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">unlist</span>(results) <span class="sc">&gt;</span> <span class="fl">0.56</span>) <span class="co">#163 were greater.</span></span></code></pre></div>
 <pre><code>## [1] 130</code></pre>
 <p>It turns out that 163 times out of 10,000 shuffles we got a <code>r</code> value of greater than 0.56. WE could calculate this as a proportion by dividing by 10,000:</p>
-<div class="sourceCode" id="cb1787"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1787-1"><a href="permutation-testing.html#cb1787-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">unlist</span>(results) <span class="sc">&gt;</span> <span class="fl">0.56</span>)  <span class="sc">/</span> <span class="dv">10000</span>  <span class="co">#0.0163</span></span></code></pre></div>
+<div class="sourceCode" id="cb1789"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1789-1"><a href="permutation-testing.html#cb1789-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">unlist</span>(results) <span class="sc">&gt;</span> <span class="fl">0.56</span>)  <span class="sc">/</span> <span class="dv">10000</span>  <span class="co">#0.0163</span></span></code></pre></div>
 <pre><code>## [1] 0.013</code></pre>
 <p>We can use this value as our p-value. Because it is relatively low, we could argue that we were very unlikely by chance alone to have got a <code>r</code> value of 0.56 from our data. This suggests that the correlation between time and score is significant.</p>
 <p>The advantages of running a permutation test is that it is free of the assumptions of normality for the Pearson’s r correlation significance test. It’s also a cool method, and pretty intuitive.</p>
@@ -797,11 +797,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">14.3</span> Permutation test for a Paired t-test</h2>
 <p>We can apply the same principle of permutation to the paired t-test. Remember, essentially the paired t-test is focused on performing a one-sample t-test on the difference in scores between the paired data - testing whether the mean of the differences could potentially come from a population with <span class="math inline">\(\mu=0\)</span>.</p>
 <p>Let’s look at the following data that record scores for the same individual over two time points - ‘before’ and ‘after’.</p>
-<div class="sourceCode" id="cb1789"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1789-1"><a href="permutation-testing.html#cb1789-1" aria-hidden="true" tabindex="-1"></a><span class="co"># take a look at these before and after scores</span></span>
-<span id="cb1789-2"><a href="permutation-testing.html#cb1789-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1789-3"><a href="permutation-testing.html#cb1789-3" aria-hidden="true" tabindex="-1"></a>ba <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;data/beforeafter1.csv&quot;</span>)</span>
-<span id="cb1789-4"><a href="permutation-testing.html#cb1789-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1789-5"><a href="permutation-testing.html#cb1789-5" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(ba)</span></code></pre></div>
+<div class="sourceCode" id="cb1791"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1791-1"><a href="permutation-testing.html#cb1791-1" aria-hidden="true" tabindex="-1"></a><span class="co"># take a look at these before and after scores</span></span>
+<span id="cb1791-2"><a href="permutation-testing.html#cb1791-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1791-3"><a href="permutation-testing.html#cb1791-3" aria-hidden="true" tabindex="-1"></a>ba <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;data/beforeafter1.csv&quot;</span>)</span>
+<span id="cb1791-4"><a href="permutation-testing.html#cb1791-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1791-5"><a href="permutation-testing.html#cb1791-5" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(ba)</span></code></pre></div>
 <pre><code>## # A tibble: 6 x 3
 ##   id    before after
 ##   &lt;chr&gt;  &lt;dbl&gt; &lt;dbl&gt;
@@ -812,17 +812,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 5 ln       5.3   5.3
 ## 6 oe       5.2   5.1</code></pre>
 <p>We could plot these data using a scatterplot to examine the overall trend of how scores change from before to after:</p>
-<div class="sourceCode" id="cb1791"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1791-1"><a href="permutation-testing.html#cb1791-1" aria-hidden="true" tabindex="-1"></a><span class="co"># make a scatterplot with the x being &#39;before&#39; and y being &#39;after&#39;</span></span>
-<span id="cb1791-2"><a href="permutation-testing.html#cb1791-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(ba, <span class="fu">aes</span>(<span class="at">x=</span>before, <span class="at">y=</span>after)) <span class="sc">+</span></span>
-<span id="cb1791-3"><a href="permutation-testing.html#cb1791-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb1791-4"><a href="permutation-testing.html#cb1791-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>()<span class="sc">+</span></span>
-<span id="cb1791-5"><a href="permutation-testing.html#cb1791-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_abline</span>(<span class="at">intercept =</span><span class="dv">0</span> , <span class="at">slope =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
-<span id="cb1791-6"><a href="permutation-testing.html#cb1791-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlim</span>(<span class="dv">2</span>,<span class="dv">8</span>)<span class="sc">+</span></span>
-<span id="cb1791-7"><a href="permutation-testing.html#cb1791-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylim</span>(<span class="dv">2</span>,<span class="dv">8</span>)</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-733-1.png" width="672" /></p>
+<div class="sourceCode" id="cb1793"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1793-1"><a href="permutation-testing.html#cb1793-1" aria-hidden="true" tabindex="-1"></a><span class="co"># make a scatterplot with the x being &#39;before&#39; and y being &#39;after&#39;</span></span>
+<span id="cb1793-2"><a href="permutation-testing.html#cb1793-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(ba, <span class="fu">aes</span>(<span class="at">x=</span>before, <span class="at">y=</span>after)) <span class="sc">+</span></span>
+<span id="cb1793-3"><a href="permutation-testing.html#cb1793-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb1793-4"><a href="permutation-testing.html#cb1793-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>()<span class="sc">+</span></span>
+<span id="cb1793-5"><a href="permutation-testing.html#cb1793-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_abline</span>(<span class="at">intercept =</span><span class="dv">0</span> , <span class="at">slope =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb1793-6"><a href="permutation-testing.html#cb1793-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlim</span>(<span class="dv">2</span>,<span class="dv">8</span>)<span class="sc">+</span></span>
+<span id="cb1793-7"><a href="permutation-testing.html#cb1793-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylim</span>(<span class="dv">2</span>,<span class="dv">8</span>)</span></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-734-1.png" width="672" /></p>
 <p>As most of these points are below the diagonal line, this seems to suggest that the scores for the ‘before’ data seem to be lower on the whole than the scores for the ‘above’ data.</p>
 <p>Typically, we would run a paired t-test with such data to examine if there was a difference:</p>
-<div class="sourceCode" id="cb1792"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1792-1"><a href="permutation-testing.html#cb1792-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(ba<span class="sc">$</span>before, ba<span class="sc">$</span>after, <span class="at">paired=</span>T)</span></code></pre></div>
+<div class="sourceCode" id="cb1794"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1794-1"><a href="permutation-testing.html#cb1794-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(ba<span class="sc">$</span>before, ba<span class="sc">$</span>after, <span class="at">paired=</span>T)</span></code></pre></div>
 <pre><code>## 
 ##  Paired t-test
 ## 
@@ -835,11 +835,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## mean of the differences 
 ##                     0.8</code></pre>
 <p>This suggests that there is a significant difference <code>p&lt;.05</code> with the 95% confidence interval of the true difference in means being between 0.13 and 1.47. However, the paired t-test assumes that the data are from an approximately normal distribution. In particular, that the differences scores (the difference between the ‘before’ and ‘after’ scores for each individual) are normally distributed. We can check that using a Shapiro-Wilk test:</p>
-<div class="sourceCode" id="cb1794"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1794-1"><a href="permutation-testing.html#cb1794-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create a difference column for the difference between before and after</span></span>
-<span id="cb1794-2"><a href="permutation-testing.html#cb1794-2" aria-hidden="true" tabindex="-1"></a>ba<span class="sc">$</span>difference <span class="ot">&lt;-</span> ba<span class="sc">$</span>before <span class="sc">-</span> ba<span class="sc">$</span>after</span>
-<span id="cb1794-3"><a href="permutation-testing.html#cb1794-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1794-4"><a href="permutation-testing.html#cb1794-4" aria-hidden="true" tabindex="-1"></a><span class="co"># run a Shapiro test on the difference column</span></span>
-<span id="cb1794-5"><a href="permutation-testing.html#cb1794-5" aria-hidden="true" tabindex="-1"></a><span class="fu">shapiro.test</span>(ba<span class="sc">$</span>difference)</span></code></pre></div>
+<div class="sourceCode" id="cb1796"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1796-1"><a href="permutation-testing.html#cb1796-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create a difference column for the difference between before and after</span></span>
+<span id="cb1796-2"><a href="permutation-testing.html#cb1796-2" aria-hidden="true" tabindex="-1"></a>ba<span class="sc">$</span>difference <span class="ot">&lt;-</span> ba<span class="sc">$</span>before <span class="sc">-</span> ba<span class="sc">$</span>after</span>
+<span id="cb1796-3"><a href="permutation-testing.html#cb1796-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1796-4"><a href="permutation-testing.html#cb1796-4" aria-hidden="true" tabindex="-1"></a><span class="co"># run a Shapiro test on the difference column</span></span>
+<span id="cb1796-5"><a href="permutation-testing.html#cb1796-5" aria-hidden="true" tabindex="-1"></a><span class="fu">shapiro.test</span>(ba<span class="sc">$</span>difference)</span></code></pre></div>
 <pre><code>## 
 ##  Shapiro-Wilk normality test
 ## 
@@ -847,7 +847,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## W = 0.82621, p-value = 0.02081</code></pre>
 <p>With the p-value here being <code>p&lt;.05</code>, this suggests that our data are not normally distributed. One option would be to do a non-parametric Wilcoxon-signed rank test (see section <a href="two-sample-inferential-statistics.html#non-parametric-alternatives-to-the-two-sample-t-tests">11.12</a>). Alternatively, we could do a permutation test.</p>
 <p>Let’s look at our data again, and focus on the difference column.</p>
-<div class="sourceCode" id="cb1796"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1796-1"><a href="permutation-testing.html#cb1796-1" aria-hidden="true" tabindex="-1"></a>ba</span></code></pre></div>
+<div class="sourceCode" id="cb1798"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1798-1"><a href="permutation-testing.html#cb1798-1" aria-hidden="true" tabindex="-1"></a>ba</span></code></pre></div>
 <pre><code>## # A tibble: 11 x 4
 ##    id    before after difference
 ##    &lt;chr&gt;  &lt;dbl&gt; &lt;dbl&gt;      &lt;dbl&gt;
@@ -863,50 +863,50 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 10 mj       6.6   3.9      2.7  
 ## 11 kb       5     5.2     -0.200</code></pre>
 <p>Our observed mean for the differences scores is 0.8.</p>
-<div class="sourceCode" id="cb1798"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1798-1"><a href="permutation-testing.html#cb1798-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(ba<span class="sc">$</span>difference)</span></code></pre></div>
+<div class="sourceCode" id="cb1800"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1800-1"><a href="permutation-testing.html#cb1800-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(ba<span class="sc">$</span>difference)</span></code></pre></div>
 <pre><code>## [1] 0.8</code></pre>
 <p>How likely were we to get this mean difference if our ‘before’ and ‘after’ conditions were randomized? For example, for individual ‘mj’, their before score was 6.6 and after was 3.9 leading to a difference of 2.7. But what if their before and after were switched? Then the difference score would be -2.7. What we would like to do, is to randomly flip the before and after columns for each individual and recalculate the difference scores. Each time we do this, we will calculate the mean of the difference scores. A programmatic shortcut to doing this is to multiple each difference score randomly by either +1 or -1. Here is the first shuffle we could perform:</p>
-<div class="sourceCode" id="cb1800"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1800-1"><a href="permutation-testing.html#cb1800-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1</span>)</span>
-<span id="cb1800-2"><a href="permutation-testing.html#cb1800-2" aria-hidden="true" tabindex="-1"></a>shuffle1 <span class="ot">&lt;-</span> ba<span class="sc">$</span>difference <span class="sc">*</span> <span class="fu">sample</span>(<span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>,<span class="dv">1</span>), <span class="dv">11</span>, <span class="at">replace =</span> T)</span>
-<span id="cb1800-3"><a href="permutation-testing.html#cb1800-3" aria-hidden="true" tabindex="-1"></a>shuffle1</span></code></pre></div>
+<div class="sourceCode" id="cb1802"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1802-1"><a href="permutation-testing.html#cb1802-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1</span>)</span>
+<span id="cb1802-2"><a href="permutation-testing.html#cb1802-2" aria-hidden="true" tabindex="-1"></a>shuffle1 <span class="ot">&lt;-</span> ba<span class="sc">$</span>difference <span class="sc">*</span> <span class="fu">sample</span>(<span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>,<span class="dv">1</span>), <span class="dv">11</span>, <span class="at">replace =</span> T)</span>
+<span id="cb1802-3"><a href="permutation-testing.html#cb1802-3" aria-hidden="true" tabindex="-1"></a>shuffle1</span></code></pre></div>
 <pre><code>##  [1] -0.2  0.4 -1.1 -0.3  0.0 -0.1 -0.4 -2.5  1.3  2.7  0.2</code></pre>
-<div class="sourceCode" id="cb1802"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1802-1"><a href="permutation-testing.html#cb1802-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(shuffle1)</span></code></pre></div>
+<div class="sourceCode" id="cb1804"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1804-1"><a href="permutation-testing.html#cb1804-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(shuffle1)</span></code></pre></div>
 <pre><code>## [1] -8.07361e-17</code></pre>
 <p>In this example, the ‘before’ and ‘after’ scores were randomly flipped for individuals ‘mc’, ‘ma’, ‘mj’ and ‘kb’. Let’s do a second shuffle:</p>
-<div class="sourceCode" id="cb1804"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1804-1"><a href="permutation-testing.html#cb1804-1" aria-hidden="true" tabindex="-1"></a>shuffle2 <span class="ot">&lt;-</span> ba<span class="sc">$</span>difference <span class="sc">*</span> <span class="fu">sample</span>(<span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>,<span class="dv">1</span>), <span class="dv">11</span>, <span class="at">replace =</span> T)</span>
-<span id="cb1804-2"><a href="permutation-testing.html#cb1804-2" aria-hidden="true" tabindex="-1"></a>shuffle2</span></code></pre></div>
+<div class="sourceCode" id="cb1806"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1806-1"><a href="permutation-testing.html#cb1806-1" aria-hidden="true" tabindex="-1"></a>shuffle2 <span class="ot">&lt;-</span> ba<span class="sc">$</span>difference <span class="sc">*</span> <span class="fu">sample</span>(<span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>,<span class="dv">1</span>), <span class="dv">11</span>, <span class="at">replace =</span> T)</span>
+<span id="cb1806-2"><a href="permutation-testing.html#cb1806-2" aria-hidden="true" tabindex="-1"></a>shuffle2</span></code></pre></div>
 <pre><code>##  [1] -0.2 -0.4 -1.1 -0.3  0.0  0.1  0.4  2.5 -1.3 -2.7  0.2</code></pre>
-<div class="sourceCode" id="cb1806"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1806-1"><a href="permutation-testing.html#cb1806-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(shuffle2)</span></code></pre></div>
+<div class="sourceCode" id="cb1808"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1808-1"><a href="permutation-testing.html#cb1808-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(shuffle2)</span></code></pre></div>
 <pre><code>## [1] -0.2545455</code></pre>
 <p>In this example, the ‘before’ and ‘after’ scores were randomly flipped for individuals ‘mc’, ‘co’, ‘kj’, ‘oe’, ‘mb’, ‘dg’ and ‘mj’. In both shuffles the mean of the difference scores was less than our observed mean of 0.8.</p>
 <p>We can put this into a loop to do it 10,000 times:</p>
-<div class="sourceCode" id="cb1808"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1808-1"><a href="permutation-testing.html#cb1808-1" aria-hidden="true" tabindex="-1"></a>results <span class="ot">&lt;-</span> <span class="fu">vector</span>(<span class="st">&#39;list&#39;</span>,<span class="dv">10000</span>)</span>
-<span id="cb1808-2"><a href="permutation-testing.html#cb1808-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10000</span>){</span>
-<span id="cb1808-3"><a href="permutation-testing.html#cb1808-3" aria-hidden="true" tabindex="-1"></a>results[[i]] <span class="ot">&lt;-</span>  <span class="fu">mean</span>(ba<span class="sc">$</span>difference <span class="sc">*</span> <span class="fu">sample</span>(<span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>,<span class="dv">1</span>), <span class="dv">11</span>, <span class="at">replace =</span> T))</span>
-<span id="cb1808-4"><a href="permutation-testing.html#cb1808-4" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb1810"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1810-1"><a href="permutation-testing.html#cb1810-1" aria-hidden="true" tabindex="-1"></a>results <span class="ot">&lt;-</span> <span class="fu">vector</span>(<span class="st">&#39;list&#39;</span>,<span class="dv">10000</span>)</span>
+<span id="cb1810-2"><a href="permutation-testing.html#cb1810-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10000</span>){</span>
+<span id="cb1810-3"><a href="permutation-testing.html#cb1810-3" aria-hidden="true" tabindex="-1"></a>results[[i]] <span class="ot">&lt;-</span>  <span class="fu">mean</span>(ba<span class="sc">$</span>difference <span class="sc">*</span> <span class="fu">sample</span>(<span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>,<span class="dv">1</span>), <span class="dv">11</span>, <span class="at">replace =</span> T))</span>
+<span id="cb1810-4"><a href="permutation-testing.html#cb1810-4" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <p>And we can plot these results as a histogram:</p>
-<div class="sourceCode" id="cb1809"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1809-1"><a href="permutation-testing.html#cb1809-1" aria-hidden="true" tabindex="-1"></a>df1 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">difs =</span> <span class="fu">unlist</span>(results))</span>
-<span id="cb1809-2"><a href="permutation-testing.html#cb1809-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1809-3"><a href="permutation-testing.html#cb1809-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df1, <span class="fu">aes</span>(<span class="at">x=</span>difs)) <span class="sc">+</span></span>
-<span id="cb1809-4"><a href="permutation-testing.html#cb1809-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">color=</span><span class="st">&quot;black&quot;</span>, <span class="at">fill=</span><span class="st">&quot;pink&quot;</span>, <span class="at">alpha=</span>.<span class="dv">4</span>, <span class="at">binwidth =</span> .<span class="dv">05</span>) <span class="sc">+</span></span>
-<span id="cb1809-5"><a href="permutation-testing.html#cb1809-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">color=</span><span class="st">&quot;navy&quot;</span>,<span class="at">lwd=</span><span class="dv">1</span>,<span class="at">lty=</span><span class="dv">2</span>,<span class="at">xintercept =</span> .<span class="dv">8</span>) <span class="sc">+</span></span>
-<span id="cb1809-6"><a href="permutation-testing.html#cb1809-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>()<span class="sc">+</span></span>
-<span id="cb1809-7"><a href="permutation-testing.html#cb1809-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;Mean Differences from </span><span class="sc">\n</span><span class="st"> 10000 Permutations of Raw Data&quot;</span>)</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-741-1.png" width="672" /></p>
+<div class="sourceCode" id="cb1811"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1811-1"><a href="permutation-testing.html#cb1811-1" aria-hidden="true" tabindex="-1"></a>df1 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">difs =</span> <span class="fu">unlist</span>(results))</span>
+<span id="cb1811-2"><a href="permutation-testing.html#cb1811-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1811-3"><a href="permutation-testing.html#cb1811-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df1, <span class="fu">aes</span>(<span class="at">x=</span>difs)) <span class="sc">+</span></span>
+<span id="cb1811-4"><a href="permutation-testing.html#cb1811-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">color=</span><span class="st">&quot;black&quot;</span>, <span class="at">fill=</span><span class="st">&quot;pink&quot;</span>, <span class="at">alpha=</span>.<span class="dv">4</span>, <span class="at">binwidth =</span> .<span class="dv">05</span>) <span class="sc">+</span></span>
+<span id="cb1811-5"><a href="permutation-testing.html#cb1811-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">color=</span><span class="st">&quot;navy&quot;</span>,<span class="at">lwd=</span><span class="dv">1</span>,<span class="at">lty=</span><span class="dv">2</span>,<span class="at">xintercept =</span> .<span class="dv">8</span>) <span class="sc">+</span></span>
+<span id="cb1811-6"><a href="permutation-testing.html#cb1811-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>()<span class="sc">+</span></span>
+<span id="cb1811-7"><a href="permutation-testing.html#cb1811-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;Mean Differences from </span><span class="sc">\n</span><span class="st"> 10000 Permutations of Raw Data&quot;</span>)</span></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-742-1.png" width="672" /></p>
 <p>We can also calculate the number of times out of 10,000 that we observed a mean difference higher than the mean of 0.8 in our original data, which is only in 19 shuffles out fo 10,000:</p>
-<div class="sourceCode" id="cb1810"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1810-1"><a href="permutation-testing.html#cb1810-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">unlist</span>(results)<span class="sc">&gt;</span><span class="fl">0.8</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb1812"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1812-1"><a href="permutation-testing.html#cb1812-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">unlist</span>(results)<span class="sc">&gt;</span><span class="fl">0.8</span>)</span></code></pre></div>
 <pre><code>## [1] 16</code></pre>
 <p>We divide this number by 10,000 to get our p-value:</p>
-<div class="sourceCode" id="cb1812"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1812-1"><a href="permutation-testing.html#cb1812-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">unlist</span>(results)<span class="sc">&gt;</span><span class="fl">0.8</span>) <span class="sc">/</span> <span class="dv">10000</span></span></code></pre></div>
+<div class="sourceCode" id="cb1814"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1814-1"><a href="permutation-testing.html#cb1814-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">unlist</span>(results)<span class="sc">&gt;</span><span class="fl">0.8</span>) <span class="sc">/</span> <span class="dv">10000</span></span></code></pre></div>
 <pre><code>## [1] 0.0016</code></pre>
 <p>This suggests that we have a highly significant <code>p=0.002</code> difference between our ‘before’ and ‘after’ data within subjects.</p>
 </div>
 <div id="permutation-tests-in-packages" class="section level2" number="14.4">
 <h2><span class="header-section-number">14.4</span> Permutation tests in Packages</h2>
 <p>Above we wrote script from scratch to perform our permutation tests. In many ways, this is our preferred approach as it is more customizable. However, in some packages there are some permutation tests already available as functions. One example is the <code>independence_test</code> from the package <code>coin</code> that will do a permutation t-test for between subjects. The code for this is below (this requires dataframes to be in the long format):</p>
-<div class="sourceCode" id="cb1814"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1814-1"><a href="permutation-testing.html#cb1814-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(coin)</span>
-<span id="cb1814-2"><a href="permutation-testing.html#cb1814-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1814-3"><a href="permutation-testing.html#cb1814-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(ddf)</span></code></pre></div>
+<div class="sourceCode" id="cb1816"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1816-1"><a href="permutation-testing.html#cb1816-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(coin)</span>
+<span id="cb1816-2"><a href="permutation-testing.html#cb1816-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1816-3"><a href="permutation-testing.html#cb1816-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(ddf)</span></code></pre></div>
 <pre><code>##   anxiety   group
 ## 1      15 placebo
 ## 2      16 placebo
@@ -914,10 +914,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 4      19 placebo
 ## 5      17 placebo
 ## 6      20 placebo</code></pre>
-<div class="sourceCode" id="cb1816"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1816-1"><a href="permutation-testing.html#cb1816-1" aria-hidden="true" tabindex="-1"></a><span class="co"># for some reason, the coin package makes you make the &#39;group&#39; column/variable a factor</span></span>
-<span id="cb1816-2"><a href="permutation-testing.html#cb1816-2" aria-hidden="true" tabindex="-1"></a>ddf<span class="sc">$</span>group <span class="ot">&lt;-</span> <span class="fu">factor</span>(ddf<span class="sc">$</span>group) </span>
-<span id="cb1816-3"><a href="permutation-testing.html#cb1816-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1816-4"><a href="permutation-testing.html#cb1816-4" aria-hidden="true" tabindex="-1"></a><span class="fu">independence_test</span>(anxiety <span class="sc">~</span> group, <span class="at">data =</span> ddf, <span class="at">alternative =</span> <span class="st">&quot;less&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb1818"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1818-1"><a href="permutation-testing.html#cb1818-1" aria-hidden="true" tabindex="-1"></a><span class="co"># for some reason, the coin package makes you make the &#39;group&#39; column/variable a factor</span></span>
+<span id="cb1818-2"><a href="permutation-testing.html#cb1818-2" aria-hidden="true" tabindex="-1"></a>ddf<span class="sc">$</span>group <span class="ot">&lt;-</span> <span class="fu">factor</span>(ddf<span class="sc">$</span>group) </span>
+<span id="cb1818-3"><a href="permutation-testing.html#cb1818-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1818-4"><a href="permutation-testing.html#cb1818-4" aria-hidden="true" tabindex="-1"></a><span class="fu">independence_test</span>(anxiety <span class="sc">~</span> group, <span class="at">data =</span> ddf, <span class="at">alternative =</span> <span class="st">&quot;less&quot;</span>)</span></code></pre></div>
 <pre><code>## 
 ##  Asymptotic General Independence Test
 ## 
@@ -926,8 +926,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## alternative hypothesis: less</code></pre>
 <p>As you can see, this gives a roughly similar result to our own permutation script.</p>
 <p>You can also do a 2-tailed version:</p>
-<div class="sourceCode" id="cb1818"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1818-1"><a href="permutation-testing.html#cb1818-1" aria-hidden="true" tabindex="-1"></a><span class="co">#2-tailed permutation test</span></span>
-<span id="cb1818-2"><a href="permutation-testing.html#cb1818-2" aria-hidden="true" tabindex="-1"></a><span class="fu">independence_test</span>(anxiety <span class="sc">~</span> group, <span class="at">data =</span> ddf)</span></code></pre></div>
+<div class="sourceCode" id="cb1820"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1820-1"><a href="permutation-testing.html#cb1820-1" aria-hidden="true" tabindex="-1"></a><span class="co">#2-tailed permutation test</span></span>
+<span id="cb1820-2"><a href="permutation-testing.html#cb1820-2" aria-hidden="true" tabindex="-1"></a><span class="fu">independence_test</span>(anxiety <span class="sc">~</span> group, <span class="at">data =</span> ddf)</span></code></pre></div>
 <pre><code>## 
 ##  Asymptotic General Independence Test
 ## 
