@@ -24,7 +24,7 @@
 <meta name="author" content="James P. Curley &amp; Tyler M. Milewski" />
 
 
-<meta name="date" content="2021-09-02" />
+<meta name="date" content="2021-09-07" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -569,8 +569,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="basic-syntax.html#cb63-1" aria-hidden="true" tabindex="-1"></a>the_week <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Monday&quot;</span>, <span class="st">&quot;Tuesday&quot;</span>, <span class="st">&quot;Wednesday&quot;</span>, <span class="st">&quot;Thursday&quot;</span>, <span class="st">&quot;Friday&quot;</span>, <span class="st">&quot;Saturday&quot;</span>, <span class="st">&quot;Sunday&quot;</span>)</span>
 <span id="cb63-2"><a href="basic-syntax.html#cb63-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb63-3"><a href="basic-syntax.html#cb63-3" aria-hidden="true" tabindex="-1"></a>the_week</span></code></pre></div>
-<pre><code>## [1] &quot;Monday&quot;    &quot;Tuesday&quot;   &quot;Wednesday&quot; &quot;Thursday&quot;  &quot;Friday&quot;    &quot;Saturday&quot; 
-## [7] &quot;Sunday&quot;</code></pre>
+<pre><code>## [1] &quot;Monday&quot;    &quot;Tuesday&quot;   &quot;Wednesday&quot; &quot;Thursday&quot;  &quot;Friday&quot;    &quot;Saturday&quot;  &quot;Sunday&quot;</code></pre>
 <p>Here we have an object called <code>the_week</code> that has 7 elements. Each element is separated by a comma. This is pretty similar to when we enter numbers except for situation when we can use the <code>:</code> shortcut such as using <code>5:8</code> to mean <code>5, 6, 7, 8</code>. We also stick everything together into a vector using <code>c()</code> as we did with numbers. The major difference is that to make sure R knows that each of these words is a character or text string, we have put quote marks around each word. If we didn’t do that, it would be looking for objects called <code>Monday</code>, <code>Tuesday</code> etc.</p>
 <p>Actually, let’s see an example of using words to create a vector, when the words are actually objects:</p>
 <div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="basic-syntax.html#cb65-1" aria-hidden="true" tabindex="-1"></a>aa <span class="ot">&lt;-</span> <span class="dv">5</span></span>
@@ -592,8 +591,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb75-1"><a href="basic-syntax.html#cb75-1" aria-hidden="true" tabindex="-1"></a>example <span class="ot">&lt;-</span> <span class="fu">c</span>(aa, bb, cc, dd, ee)</span>
 <span id="cb75-2"><a href="basic-syntax.html#cb75-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb75-3"><a href="basic-syntax.html#cb75-3" aria-hidden="true" tabindex="-1"></a>example</span></code></pre></div>
-<pre><code>## [1] &quot;5&quot;        &quot;9&quot;        &quot;11&quot;       &quot;10&quot;       &quot;james&quot;    &quot;tyler&quot;   
-## [7] &quot;hedgehog&quot;</code></pre>
+<pre><code>## [1] &quot;5&quot;        &quot;9&quot;        &quot;11&quot;       &quot;10&quot;       &quot;james&quot;    &quot;tyler&quot;    &quot;hedgehog&quot;</code></pre>
 <p>Here, each of <code>aa</code> to <code>ee</code> is assigned to be an object and they contain information. When we write <code>c(aa, bb, cc, dd, ee)</code> we don’t need to use quotes as we’re referring to the objects and not to words called <code>aa</code>, <code>ee</code> etc. Also notice that we were able to make vectors that mixed together numbers and characters. Also, some of our original vectors like <code>bb</code> and <code>dd</code> contained more than one element. When we put them all together with <code>c(aa, bb, cc, dd, ee)</code> to create the <code>example</code> object, R just stuck them all together in the order we wrote.</p>
 <p>It’s pretty unusual though to mix numeric and character vectors together. However, if you were to do that, it would make the whole vector a character vector.</p>
 <p>For example, this vector is actually a <code>character</code> vector as it has at least one character in it. All the elements become characters as noted by the quotes around each element:</p>
@@ -605,8 +603,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb79-1"><a href="basic-syntax.html#cb79-1" aria-hidden="true" tabindex="-1"></a>v1</span></code></pre></div>
 <pre><code>## [1]  5  6  7  8  9 10</code></pre>
 <div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb81-1"><a href="basic-syntax.html#cb81-1" aria-hidden="true" tabindex="-1"></a>the_week</span></code></pre></div>
-<pre><code>## [1] &quot;Monday&quot;    &quot;Tuesday&quot;   &quot;Wednesday&quot; &quot;Thursday&quot;  &quot;Friday&quot;    &quot;Saturday&quot; 
-## [7] &quot;Sunday&quot;</code></pre>
+<pre><code>## [1] &quot;Monday&quot;    &quot;Tuesday&quot;   &quot;Wednesday&quot; &quot;Thursday&quot;  &quot;Friday&quot;    &quot;Saturday&quot;  &quot;Sunday&quot;</code></pre>
 <div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb83-1"><a href="basic-syntax.html#cb83-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(v1)</span></code></pre></div>
 <pre><code>## [1] 6</code></pre>
 <div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb85-1"><a href="basic-syntax.html#cb85-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(the_week)</span></code></pre></div>
@@ -775,7 +772,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb158"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb158-1"><a href="basic-syntax.html#cb158-1" aria-hidden="true" tabindex="-1"></a>eg</span></code></pre></div>
 <pre><code>## Error in eval(expr, envir, enclos): object &#39;eg&#39; not found</code></pre>
 <p>It is stating here that <code>object 'eg' not found</code> because it thinks you’re trying to ask it if <code>eg</code> is <code>less than</code> <code>-5:10</code>. If <code>eg</code> already existed, then you need to be extra careful here. We won’t go into what could happen in that situation, but it could be bad! So, golden rule, no spaces with <code>&lt;-</code> !</p>
-<p>Secondly, in future sections on carpentry and visualization, you’ll use some syntax that <code>pipes</code> or chains together a series of commands. These operators are <code>+</code> or <code>%&gt;%</code>. When using this syntax, you need to finish each line (expect the last line) with one of these pipe syntaxes. If you do not do that, you’ll get an error message, because R won’t jump to the later lines when it is chaining things together. Although this might be a bit early in your R journey to mention - it is such a frequent error, that we just wanted to reference it here. Hopefully, this will be a useful reference aid if you see this error.</p>
+<p>Secondly, in future sections on carpentry and visualization, you’ll use some syntax that <code>pipes</code> or chains together a series of commands. These operators are <code>+</code> or <code>%&gt;%</code>. When using this syntax, you need to finish each line (except the last line) with one of these pipe syntaxes. If you do not do that, you’ll get an error message, because R won’t jump to the later lines when it is chaining things together. Although this might be a bit early in your R journey to mention - it is such a frequent error, that we just wanted to reference it here. Hopefully, this will be a useful reference aid if you see this error.</p>
 <p>Here’s a simple example of what this looks like.</p>
 <div class="sourceCode" id="cb160"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb160-1"><a href="basic-syntax.html#cb160-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">4</span>, <span class="dv">6</span>, <span class="dv">5</span>, <span class="dv">10</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">7</span>)</span>
 <span id="cb160-2"><a href="basic-syntax.html#cb160-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -938,8 +935,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <pre><code>## [1]  1  5  3  7 10 11 13  6  2</code></pre>
 <p>If you wanted to take the unique numbers, and then square root each of them you could wrap <code>unique(x)</code> in <code>sqrt()</code> like this:</p>
 <div class="sourceCode" id="cb204"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb204-1"><a href="basic-syntax.html#cb204-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sqrt</span>(<span class="fu">unique</span>(x))</span></code></pre></div>
-<pre><code>## [1] 1.000000 2.236068 1.732051 2.645751 3.162278 3.316625 3.605551 2.449490
-## [9] 1.414214</code></pre>
+<pre><code>## [1] 1.000000 2.236068 1.732051 2.645751 3.162278 3.316625 3.605551 2.449490 1.414214</code></pre>
 <p>That code is still just about readable.</p>
 <p>However, say you want to (for some reason), keep the unique numbers, then take the square root of each number, then add them all up, then round the answer to 2 decimal places. This is what it would like:</p>
 <div class="sourceCode" id="cb206"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb206-1"><a href="basic-syntax.html#cb206-1" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">sum</span>(<span class="fu">sqrt</span>(<span class="fu">unique</span>(x))), <span class="at">digits =</span> <span class="dv">2</span>)</span></code></pre></div>
@@ -953,8 +949,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <pre><code>## [1]  1  5  3  7 10 11 13  6  2</code></pre>
 <div class="sourceCode" id="cb212"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb212-1"><a href="basic-syntax.html#cb212-1" aria-hidden="true" tabindex="-1"></a>x2 <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(x1)</span>
 <span id="cb212-2"><a href="basic-syntax.html#cb212-2" aria-hidden="true" tabindex="-1"></a>x2</span></code></pre></div>
-<pre><code>## [1] 1.000000 2.236068 1.732051 2.645751 3.162278 3.316625 3.605551 2.449490
-## [9] 1.414214</code></pre>
+<pre><code>## [1] 1.000000 2.236068 1.732051 2.645751 3.162278 3.316625 3.605551 2.449490 1.414214</code></pre>
 <div class="sourceCode" id="cb214"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb214-1"><a href="basic-syntax.html#cb214-1" aria-hidden="true" tabindex="-1"></a>x3 <span class="ot">&lt;-</span> <span class="fu">sum</span>(x2)</span>
 <span id="cb214-2"><a href="basic-syntax.html#cb214-2" aria-hidden="true" tabindex="-1"></a>x3</span></code></pre></div>
 <pre><code>## [1] 21.56203</code></pre>
@@ -984,8 +979,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb224"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb224-1"><a href="basic-syntax.html#cb224-1" aria-hidden="true" tabindex="-1"></a>x <span class="sc">%&gt;%</span></span>
 <span id="cb224-2"><a href="basic-syntax.html#cb224-2" aria-hidden="true" tabindex="-1"></a>  unique <span class="sc">%&gt;%</span></span>
 <span id="cb224-3"><a href="basic-syntax.html#cb224-3" aria-hidden="true" tabindex="-1"></a>  sqrt </span></code></pre></div>
-<pre><code>## [1] 1.000000 2.236068 1.732051 2.645751 3.162278 3.316625 3.605551 2.449490
-## [9] 1.414214</code></pre>
+<pre><code>## [1] 1.000000 2.236068 1.732051 2.645751 3.162278 3.316625 3.605551 2.449490 1.414214</code></pre>
 <p>Then the next step is to add up those six square rooted numbers:</p>
 <div class="sourceCode" id="cb226"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb226-1"><a href="basic-syntax.html#cb226-1" aria-hidden="true" tabindex="-1"></a>x <span class="sc">%&gt;%</span></span>
 <span id="cb226-2"><a href="basic-syntax.html#cb226-2" aria-hidden="true" tabindex="-1"></a>  unique <span class="sc">%&gt;%</span></span>

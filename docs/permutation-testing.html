@@ -24,7 +24,7 @@
 <meta name="author" content="James P. Curley &amp; Tyler M. Milewski" />
 
 
-<meta name="date" content="2021-09-02" />
+<meta name="date" content="2021-09-07" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -526,8 +526,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb1710-3"><a href="permutation-testing.html#cb1710-3" aria-hidden="true" tabindex="-1"></a>allscores <span class="ot">&lt;-</span> <span class="fu">c</span>(anastasia, bernadette)</span>
 <span id="cb1710-4"><a href="permutation-testing.html#cb1710-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1710-5"><a href="permutation-testing.html#cb1710-5" aria-hidden="true" tabindex="-1"></a>allscores</span></code></pre></div>
-<pre><code>##  [1] 65 74 73 83 76 65 86 70 80 55 78 78 90 77 68 72 66 71 66 76 69 79 73 62
-## [25] 69 68 60 73 68 67 74 56 74</code></pre>
+<pre><code>##  [1] 65 74 73 83 76 65 86 70 80 55 78 78 90 77 68 72 66 71 66 76 69 79 73 62 69 68 60 73 68 67
+## [31] 74 56 74</code></pre>
 <p>Next, we shuffle them into new groups of 15 and 18.:</p>
 <div class="sourceCode" id="cb1712"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1712-1"><a href="permutation-testing.html#cb1712-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">split</span>(<span class="fu">sample</span>(allscores), <span class="fu">rep</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>, <span class="fu">c</span>(<span class="dv">15</span>,<span class="dv">18</span>))) </span>
 <span id="cb1712-2"><a href="permutation-testing.html#cb1712-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -666,7 +666,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb1755-2"><a href="permutation-testing.html#cb1755-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1755-3"><a href="permutation-testing.html#cb1755-3" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span>  <span class="fu">read_csv</span>(<span class="st">&quot;data/timescore.csv&quot;</span>)</span></code></pre></div>
 <pre><code>## Rows: 15 Columns: 3</code></pre>
-<pre><code>## -- Column specification ------------------------------------------------------
+<pre><code>## -- Column specification -----------------------------------------------------------------------
 ## Delimiter: &quot;,&quot;
 ## chr (1): subject
 ## dbl (2): time, score</code></pre>
@@ -709,12 +709,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb1765"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1765-1"><a href="permutation-testing.html#cb1765-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1</span>) <span class="co"># just doing this so all our results look same</span></span>
 <span id="cb1765-2"><a href="permutation-testing.html#cb1765-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1765-3"><a href="permutation-testing.html#cb1765-3" aria-hidden="true" tabindex="-1"></a>df<span class="sc">$</span>score  <span class="co"># actual data in order</span></span></code></pre></div>
-<pre><code>##  [1]  3.0  6.9 17.9 10.5 12.2  3.5 11.0  7.6  8.4 13.4 10.1  9.0 10.1 17.7
-## [15]  6.8</code></pre>
+<pre><code>##  [1]  3.0  6.9 17.9 10.5 12.2  3.5 11.0  7.6  8.4 13.4 10.1  9.0 10.1 17.7  6.8</code></pre>
 <p>This is the original order of the data. If we use <code>sample()</code> we can shuffle the data:</p>
 <div class="sourceCode" id="cb1767"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1767-1"><a href="permutation-testing.html#cb1767-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sample</span>(df<span class="sc">$</span>score)  <span class="co"># actual data but order shuffled</span></span></code></pre></div>
-<pre><code>##  [1]  8.4 10.5 11.0  3.0  6.9 10.1 10.1 17.9  7.6  9.0 12.2  3.5  6.8 13.4
-## [15] 17.7</code></pre>
+<pre><code>##  [1]  8.4 10.5 11.0  3.0  6.9 10.1 10.1 17.9  7.6  9.0 12.2  3.5  6.8 13.4 17.7</code></pre>
 <p>Let’s shuffle the score again, but this time store it in the original dataframe:</p>
 <div class="sourceCode" id="cb1769"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1769-1"><a href="permutation-testing.html#cb1769-1" aria-hidden="true" tabindex="-1"></a>df<span class="sc">$</span>shuffle1 <span class="ot">&lt;-</span> <span class="fu">sample</span>(df<span class="sc">$</span>score) <span class="co">#create a new column with shuffled data</span></span>
 <span id="cb1769-2"><a href="permutation-testing.html#cb1769-2" aria-hidden="true" tabindex="-1"></a></span>

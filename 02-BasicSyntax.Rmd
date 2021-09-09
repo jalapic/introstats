@@ -621,7 +621,7 @@ eg
 It is stating here that `object 'eg' not found` because it thinks you're trying to ask it if `eg` is `less than` `-5:10`.    If `eg` already existed, then you need to be extra careful here. We won't go into what could happen in that situation, but it could be bad!  So, golden rule,  no spaces with `<-` !
 
 
-Secondly, in future sections on carpentry and visualization, you'll use some syntax that `pipes` or chains together a series of commands. These operators are `+` or `%>%`. When using this syntax, you need to finish each line (expect the last line) with one of these pipe syntaxes. If you do not do that, you'll get an error message, because R won't jump to the later lines when it is chaining things together.  Although this might be a bit early in your R journey to mention - it is such a frequent error, that we just wanted to reference it here.  Hopefully, this will be a useful reference aid if you see this error.
+Secondly, in future sections on carpentry and visualization, you'll use some syntax that `pipes` or chains together a series of commands. These operators are `+` or `%>%`. When using this syntax, you need to finish each line (except the last line) with one of these pipe syntaxes. If you do not do that, you'll get an error message, because R won't jump to the later lines when it is chaining things together.  Although this might be a bit early in your R journey to mention - it is such a frequent error, that we just wanted to reference it here.  Hopefully, this will be a useful reference aid if you see this error.
 
 
 Here's a simple example of what this looks like. 
