@@ -14,7 +14,7 @@ If this seems a little confusing, hopefully seeing it in action will help...
 
 Let's look at our two independent samples of exam scores:
 
-```{r}
+```{r, warning=FALSE, message=FALSE}
 library(tidyverse)
 
 anastasia <- c(65, 74, 73, 83, 76, 65, 86, 70, 80, 55, 78, 78, 90, 77, 68)
@@ -32,7 +32,7 @@ dd
 
 We can plot these data as boxplots to get a sense of the within group variation as well as the observed differences between the groups:
 
-```{r}
+```{r, warning=FALSE, message=FALSE}
 ggplot(dd, aes(x = group, y = values, fill = group)) +
   geom_boxplot(alpha=.3, outlier.shape = NA) +
   geom_jitter(width=.1, size=2) +
@@ -109,7 +109,7 @@ mean(x[[1]]) - mean(x[[2]])
 
 ```
 
-The difference in sample means is 1.81, which is a lot smaller than our original difference in sample means.
+The difference in sample means is 1.57, which is a lot smaller than our original difference in sample means.
 
 Let's do this same process 10,000 times!  Don't worry too much about the details of the code. What we are doing is the above process, just putting it in a loop and asking it to do it 10,000 times. We save all the results in an object called `results`.
 
@@ -127,7 +127,7 @@ head(unlist(results)) # these are all our mean differences from 10,000 shuffles 
 
 We can actually make a histogram showing the distribution of these differences in sample means.
 
-```{r}
+```{r,warning=FALSE, message=FALSE}
 df <- data.frame(difs = unlist(results))
 
 ggplot(df, aes(x=difs)) +
@@ -153,7 +153,7 @@ To convert this to a p-value, we simply divide this value by the number of shuff
 sum(unlist(results) > 5.48) /10000  # which is 0.0202 proportion of the time
 ```
 
-So our p-value is `p=0.0215` which is similar to a one-tailed p-value.  If we wished to have a 2-tailed p-value we would simply multiply this value by 2:
+So our p-value is `p=0.0202` which is similar to a one-tailed p-value.  If we wished to have a 2-tailed p-value we would simply multiply this value by 2:
 
 
 ```{r}
@@ -161,7 +161,7 @@ So our p-value is `p=0.0215` which is similar to a one-tailed p-value.  If we wi
 2 * (sum(unlist(results) > 5.48) /10000)
 ```
 
-
+<br>
 
 **Example 2:**
 
@@ -238,7 +238,7 @@ head(unlist(results)) # these are the first six of all our mean differences from
 
 Let's plot the distribution of these data to see what proportion of times our shuffled groups got samples that were greater than 2.128.
 
-```{r}
+```{r, message=FALSE, warning=FALSE}
 
 df0 <- data.frame(difs = unlist(results))
 
@@ -253,13 +253,13 @@ ggplot(df0, aes(x=difs)) +
 It looks like very few times did we get two samples that had differences in sample means that were greater than 2.128.  We can calculate exactly how many times, and express this as the proportion of times we got a difference in sample means greater than 2.128:
 
 ```{r}
-sum(unlist(results) > 2.128)  # 109 times out of 10000
+sum(unlist(results) > 2.128)  # 116 times out of 10000
 
-sum(unlist(results) > 2.128) /10000  # which is 0.0109 proportion of the time
+sum(unlist(results) > 2.128) /10000  # which is 0.0116 proportion of the time
 
 ```
 
-So, in this case we can say that the probability of getting a difference in sample means between the drug and placebo groups that was larger than our observed difference of 2.128 was `p = 0.0109`. This is very strong evidence that the observed difference is significantly greater than we'd expect by chance.
+So, in this case we can say that the probability of getting a difference in sample means between the drug and placebo groups that was larger than our observed difference of 2.128 was `p = 0.0116`. This is very strong evidence that the observed difference is significantly greater than we'd expect by chance.
 
 
 
@@ -271,7 +271,7 @@ You can apply the logic of permutation tests to almost any statistical test.  Le
 
 In these data, we are looking at 15 subjects who are completing a task. We measured the time they spent on the task and their high scores.  
 
-```{r}
+```{r, message=FALSE, warning=FALSE}
 
 library(tidyverse)
 
@@ -283,7 +283,7 @@ head(df)
 
 If we make a scatterplot of the data, we can see that those who spent longer on the task tended to get higher scores:
 
-```{r}
+```{r, warning=FALSE, message=FALSE}
 # scatterplot
 ggplot(df, aes(x = time, y = score)) + 
   geom_point() +
@@ -325,9 +325,9 @@ df
 ```
 
 
-If we plot this shuffled `y` (score) against the original `x` (time), we now get this scatterplot, which basically shows no relationship:
+If we plot this shuffled `y` (score) against the original `x` (time), we now get this scatterplot, which shows a slight negative relationship:
 
-```{r}
+```{r, warning=FALSE, message=FALSE}
 # this is what that new column looks like:
 ggplot(df, aes(x = time, y = shuffle1)) + 
   geom_point() +
@@ -335,7 +335,7 @@ ggplot(df, aes(x = time, y = shuffle1)) +
 
 ```
 
-And the correlation for this new scatterplot is really close to 0! r = 0.0005:
+And the correlation for this new scatterplot is r = -0.32:
 
 ```{r}
 cor.test(df$time, df$shuffle1) # now relationship is a bit negative
@@ -357,7 +357,7 @@ cor(df$time, sample(df$score))
 
 As you can see, the more shuffles we do, we get varied values of `r`.  What we really should do is perform 10,000 (or another really high number) shuffles of the score variable and re-calculate `r` against the time variable for all 10,000 of these shuffles.  Don't worry about the code below, but that's exactly what we're doing.  We're saving the `r` values from the 10,000 shuffles in the object called `results`.
 
-```{r}
+```{r, message=FALSE, warning=FALSE}
 
 results <- vector('list',10000)
 for(i in 1:10000){
@@ -372,7 +372,7 @@ head(unlist(results)) # this are the correlations for the first 6 of  10,000 shu
 We can plot the results in a histogram, and also put a vertical line at 0.56 which was our original observed correlation between time and score from the raw unshuffled data.
 
 
-```{r}
+```{r, message=FALSE, warning=FALSE}
 results.df <- data.frame(x = unlist(results))
 
 ggplot(results.df, aes(x)) + 
@@ -386,13 +386,13 @@ As you can see, there were a few shuffles (or permutations) that we got an `r` v
 
 
 ```{r}
-sum(unlist(results) > 0.56) #163 were greater.
+sum(unlist(results) > 0.56) #130 were greater.
 ```
 
 It turns out that 163 times out of 10,000 shuffles we got a `r` value of greater than 0.56.  WE could calculate this as a proportion by dividing by 10,000:
 
 ```{r}
-sum(unlist(results) > 0.56)  / 10000  #0.0163
+sum(unlist(results) > 0.56)  / 10000  #0.013
 
 ```
 
@@ -409,7 +409,7 @@ We can apply the same principle of permutation to the paired t-test. Remember, e
 Let's look at the following data that record scores for the same individual over two time points - 'before' and 'after'.
 
 
-```{r, message=FALSE}
+```{r}
 
 # take a look at these before and after scores
 
@@ -531,7 +531,7 @@ This suggests that we have a highly significant `p=0.002` difference between our
 
 Above we wrote script from scratch to perform our permutation tests. In many ways, this is our preferred approach as it is more customizable. However, in some packages there are some permutation tests already available as functions.  One example is the `independence_test` from the package `coin` that will do a permutation t-test for between subjects. The code for this is below (this requires dataframes to be in the long format):
 
-```{r, message=FALSE}
+```{r}
 library(coin)
 
 head(ddf)

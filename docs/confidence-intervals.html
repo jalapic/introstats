@@ -24,7 +24,7 @@
 <meta name="author" content="James P. Curley &amp; Tyler M. Milewski" />
 
 
-<meta name="date" content="2021-09-07" />
+<meta name="date" content="2021-11-02" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -462,15 +462,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Now, let’s collect samples of size <span class="math inline">\(n=15\)</span>. Here’s one sample, and it’s sample mean <span class="math inline">\(\overline{x}\)</span>:</p>
 <div class="sourceCode" id="cb905"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb905-1"><a href="confidence-intervals.html#cb905-1" aria-hidden="true" tabindex="-1"></a>samp1 <span class="ot">&lt;-</span> <span class="fu">sample</span>(x, <span class="at">size =</span> <span class="dv">15</span>, <span class="at">replace =</span> T)</span>
 <span id="cb905-2"><a href="confidence-intervals.html#cb905-2" aria-hidden="true" tabindex="-1"></a>samp1</span></code></pre></div>
-<pre><code>##  [1] 7.887566 7.639644 8.262722 7.672396 7.782234 7.775534 8.027597 7.531366 7.729648 7.901003
-## [11] 7.223573 8.133634 7.818117 7.646168 7.760589</code></pre>
+<pre><code>##  [1] 7.887566 7.639644 8.262722 7.672396 7.782234 7.775534 8.027597 7.531366
+##  [9] 7.729648 7.901003 7.223573 8.133634 7.818117 7.646168 7.760589</code></pre>
 <div class="sourceCode" id="cb907"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb907-1"><a href="confidence-intervals.html#cb907-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(samp1)</span></code></pre></div>
 <pre><code>## [1] 7.786119</code></pre>
 <p>Our observed sample mean is <span class="math inline">\(\overline{x}=7.71\)</span> which is close to the population mean of <span class="math inline">\(\mu=7.8\)</span>. But if we were to collect another sample, then that sample mean will be slightly different. Let’s do it again:</p>
 <div class="sourceCode" id="cb909"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb909-1"><a href="confidence-intervals.html#cb909-1" aria-hidden="true" tabindex="-1"></a>samp2 <span class="ot">&lt;-</span> <span class="fu">sample</span>(x, <span class="at">size =</span> <span class="dv">15</span>, <span class="at">replace =</span> T)</span>
 <span id="cb909-2"><a href="confidence-intervals.html#cb909-2" aria-hidden="true" tabindex="-1"></a>samp2</span></code></pre></div>
-<pre><code>##  [1] 7.807306 7.777020 8.016991 8.039386 7.775994 7.418834 8.143334 7.808769 7.883243 7.687917
-## [11] 7.760589 7.898745 7.644706 8.286361 8.140363</code></pre>
+<pre><code>##  [1] 7.807306 7.777020 8.016991 8.039386 7.775994 7.418834 8.143334 7.808769
+##  [9] 7.883243 7.687917 7.760589 7.898745 7.644706 8.286361 8.140363</code></pre>
 <div class="sourceCode" id="cb911"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb911-1"><a href="confidence-intervals.html#cb911-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(samp2)</span></code></pre></div>
 <pre><code>## [1] 7.872637</code></pre>
 <p>This time our sample mean (our estimate) is <span class="math inline">\(\overline{x}=7.81\)</span> which is very close.</p>
@@ -519,8 +519,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">8.2</span> Calculating a confidence interval with z-distribution</h2>
 <p>Let’s go back to our first sample of size 15 that we collected, with <span class="math inline">\(\overline{x}=7.71\)</span>.</p>
 <div class="sourceCode" id="cb922"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb922-1"><a href="confidence-intervals.html#cb922-1" aria-hidden="true" tabindex="-1"></a>samp1</span></code></pre></div>
-<pre><code>##  [1] 7.887566 7.639644 8.262722 7.672396 7.782234 7.775534 8.027597 7.531366 7.729648 7.901003
-## [11] 7.223573 8.133634 7.818117 7.646168 7.760589</code></pre>
+<pre><code>##  [1] 7.887566 7.639644 8.262722 7.672396 7.782234 7.775534 8.027597 7.531366
+##  [9] 7.729648 7.901003 7.223573 8.133634 7.818117 7.646168 7.760589</code></pre>
 <div class="sourceCode" id="cb924"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb924-1"><a href="confidence-intervals.html#cb924-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(samp1)</span></code></pre></div>
 <pre><code>## [1] 7.786119</code></pre>
 <p>What we want to do now is put a confidence interval around 7.71. We want to say that our population mean is equal to <span class="math inline">\(7.71 \pm margin.of.error\)</span> The actual formula for the <span class="math inline">\(z\)</span>-distribution confidence interval is:</p>
@@ -654,8 +654,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb959"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb959-1"><a href="confidence-intervals.html#cb959-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1</span>)</span>
 <span id="cb959-2"><a href="confidence-intervals.html#cb959-2" aria-hidden="true" tabindex="-1"></a>samp3 <span class="ot">&lt;-</span> <span class="fu">sample</span>(x, <span class="at">size =</span> <span class="dv">15</span>, <span class="at">replace =</span> T)</span>
 <span id="cb959-3"><a href="confidence-intervals.html#cb959-3" aria-hidden="true" tabindex="-1"></a>samp3</span></code></pre></div>
-<pre><code>##  [1] 7.526290 8.190835 8.421406 7.249145 7.783075 8.226420 7.204423 7.836702 7.802225 7.326620
-## [11] 7.820477 8.123679 7.519023 7.649536 7.465758</code></pre>
+<pre><code>##  [1] 7.526290 8.190835 8.421406 7.249145 7.783075 8.226420 7.204423 7.836702
+##  [9] 7.802225 7.326620 7.820477 8.123679 7.519023 7.649536 7.465758</code></pre>
 <div class="sourceCode" id="cb961"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb961-1"><a href="confidence-intervals.html#cb961-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(samp3)</span></code></pre></div>
 <pre><code>## [1] 7.743041</code></pre>
 <div class="sourceCode" id="cb963"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb963-1"><a href="confidence-intervals.html#cb963-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(samp3)</span></code></pre></div>

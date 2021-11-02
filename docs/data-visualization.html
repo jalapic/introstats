@@ -24,7 +24,7 @@
 <meta name="author" content="James P. Curley &amp; Tyler M. Milewski" />
 
 
-<meta name="date" content="2021-09-07" />
+<meta name="date" content="2021-11-02" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -834,14 +834,15 @@ Here you can see it automatically puts a shaded area around your trendline, whic
 <div class="sourceCode" id="cb455"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb455-1"><a href="data-visualization.html#cb455-1" aria-hidden="true" tabindex="-1"></a>olives <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;data/olives.csv&quot;</span>)</span>
 <span id="cb455-2"><a href="data-visualization.html#cb455-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(olives)</span></code></pre></div>
 <pre><code>## # A tibble: 6 x 10
-##   macro.area region       palmitic palmitoleic stearic oleic linoleic linolenic arachidic eicosenoic
-##   &lt;chr&gt;      &lt;chr&gt;           &lt;dbl&gt;       &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;      &lt;dbl&gt;
-## 1 South      Apulia.north     1075          75     226  7823      672        36        60         29
-## 2 South      Apulia.north     1088          73     224  7709      781        31        61         29
-## 3 South      Apulia.north      911          54     246  8113      549        31        63         29
-## 4 South      Apulia.north      966          57     240  7952      619        50        78         35
-## 5 South      Apulia.north     1051          67     259  7771      672        50        80         46
-## 6 South      Apulia.north      911          49     268  7924      678        51        70         44</code></pre>
+##   macro.area region       palmitic palmitoleic stearic oleic linoleic linolenic
+##   &lt;chr&gt;      &lt;chr&gt;           &lt;dbl&gt;       &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;
+## 1 South      Apulia.north     1075          75     226  7823      672        36
+## 2 South      Apulia.north     1088          73     224  7709      781        31
+## 3 South      Apulia.north      911          54     246  8113      549        31
+## 4 South      Apulia.north      966          57     240  7952      619        50
+## 5 South      Apulia.north     1051          67     259  7771      672        50
+## 6 South      Apulia.north      911          49     268  7924      678        51
+## # ... with 2 more variables: arachidic &lt;dbl&gt;, eicosenoic &lt;dbl&gt;</code></pre>
 <p>If we use <code>table()</code>, we can see how many different regions are represented in the data. There are three unique Italian areas where the olives come from:</p>
 <div class="sourceCode" id="cb457"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb457-1"><a href="data-visualization.html#cb457-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(olives<span class="sc">$</span>macro.area)</span></code></pre></div>
 <pre><code>## 
@@ -1362,14 +1363,15 @@ Here you can see it automatically puts a shaded area around your trendline, whic
 <div class="sourceCode" id="cb527"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb527-1"><a href="data-visualization.html#cb527-1" aria-hidden="true" tabindex="-1"></a>penguins <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;data/penguins.csv&quot;</span>)</span>
 <span id="cb527-2"><a href="data-visualization.html#cb527-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(penguins)</span></code></pre></div>
 <pre><code>## # A tibble: 6 x 7
-##   species island    culmen_length_mm culmen_depth_mm flipper_length_mm body_mass_g sex   
-##   &lt;chr&gt;   &lt;chr&gt;                &lt;dbl&gt;           &lt;dbl&gt;             &lt;dbl&gt;       &lt;dbl&gt; &lt;chr&gt; 
-## 1 Adelie  Torgersen             39.1            18.7               181        3750 MALE  
-## 2 Adelie  Torgersen             39.5            17.4               186        3800 FEMALE
-## 3 Adelie  Torgersen             40.3            18                 195        3250 FEMALE
-## 4 Adelie  Torgersen             36.7            19.3               193        3450 FEMALE
-## 5 Adelie  Torgersen             39.3            20.6               190        3650 MALE  
-## 6 Adelie  Torgersen             38.9            17.8               181        3625 FEMALE</code></pre>
+##   species island    culmen_length_mm culmen_depth_mm flipper_length_~ body_mass_g
+##   &lt;chr&gt;   &lt;chr&gt;                &lt;dbl&gt;           &lt;dbl&gt;            &lt;dbl&gt;       &lt;dbl&gt;
+## 1 Adelie  Torgersen             39.1            18.7              181        3750
+## 2 Adelie  Torgersen             39.5            17.4              186        3800
+## 3 Adelie  Torgersen             40.3            18                195        3250
+## 4 Adelie  Torgersen             36.7            19.3              193        3450
+## 5 Adelie  Torgersen             39.3            20.6              190        3650
+## 6 Adelie  Torgersen             38.9            17.8              181        3625
+## # ... with 1 more variable: sex &lt;chr&gt;</code></pre>
 <p>The dataset contains three different species:</p>
 <div class="sourceCode" id="cb529"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb529-1"><a href="data-visualization.html#cb529-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(penguins<span class="sc">$</span>species)</span></code></pre></div>
 <pre><code>## 

@@ -24,7 +24,7 @@
 <meta name="author" content="James P. Curley &amp; Tyler M. Milewski" />
 
 
-<meta name="date" content="2021-09-07" />
+<meta name="date" content="2021-11-02" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -523,7 +523,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>In this dataset, we have 7486 rows of data (observations). Each row is a MLB player. The three numerical columns refer to the career total hits (<code>totalH</code>), career total at bats (<code>totalAB</code>), and career batting average (<code>avg</code>) of each player.</p>
 <div class="sourceCode" id="cb767"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb767-1"><a href="distributions.html#cb767-1" aria-hidden="true" tabindex="-1"></a>bats <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;data/batting.csv&quot;</span>)</span></code></pre></div>
 <pre><code>## Rows: 7486 Columns: 4</code></pre>
-<pre><code>## -- Column specification -----------------------------------------------------------------------
+<pre><code>## -- Column specification --------------------------------------------------------
 ## Delimiter: &quot;,&quot;
 ## chr (1): playerID
 ## dbl (3): totalH, totalAB, avg</code></pre>
@@ -636,8 +636,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb799"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb799-1"><a href="distributions.html#cb799-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">10</span>)</span>
 <span id="cb799-2"><a href="distributions.html#cb799-2" aria-hidden="true" tabindex="-1"></a>x1 <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="at">n =</span> <span class="dv">10</span>, <span class="at">mean =</span> <span class="dv">100</span>, <span class="at">sd =</span> <span class="fl">5.0</span>)</span>
 <span id="cb799-3"><a href="distributions.html#cb799-3" aria-hidden="true" tabindex="-1"></a>x1</span></code></pre></div>
-<pre><code>##  [1] 100.09373  99.07874  93.14335  97.00416 101.47273 101.94897  93.95962  98.18162  91.86664
-## [10]  98.71761</code></pre>
+<pre><code>##  [1] 100.09373  99.07874  93.14335  97.00416 101.47273 101.94897  93.95962
+##  [8]  98.18162  91.86664  98.71761</code></pre>
 <div class="sourceCode" id="cb801"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb801-1"><a href="distributions.html#cb801-1" aria-hidden="true" tabindex="-1"></a><span class="fu">skewness</span>(x1)</span></code></pre></div>
 <pre><code>## [1] -0.4021377</code></pre>
 <div class="sourceCode" id="cb803"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb803-1"><a href="distributions.html#cb803-1" aria-hidden="true" tabindex="-1"></a><span class="fu">kurtosis</span>(x1)</span></code></pre></div>
@@ -687,8 +687,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb813"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb813-1"><a href="distributions.html#cb813-1" aria-hidden="true" tabindex="-1"></a>z <span class="ot">&lt;-</span> (ages <span class="sc">-</span> <span class="fu">mean</span>(ages)) <span class="sc">/</span> <span class="fu">sd</span>(ages)</span>
 <span id="cb813-2"><a href="distributions.html#cb813-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb813-3"><a href="distributions.html#cb813-3" aria-hidden="true" tabindex="-1"></a>z</span></code></pre></div>
-<pre><code>##  [1] -0.61398401 -0.86804636 -0.74101519  0.02117186  1.16445243  0.46578097 -1.05859312
-##  [8] -1.12210871  1.79960831  1.41851478 -0.16937490 -0.29640607</code></pre>
+<pre><code>##  [1] -0.61398401 -0.86804636 -0.74101519  0.02117186  1.16445243  0.46578097
+##  [7] -1.05859312 -1.12210871  1.79960831  1.41851478 -0.16937490 -0.29640607</code></pre>
 <p>You’ll notice that those individuals that have negative z-scores are younger than the mean age of 32.67. Those individuals with positive z-scores are older than the mean age of 32.67. The largest z-score in terms of magnitude (either in the positive or negative direction) is 1.8. This person was 61 and was 1.8 standard deviations older than the average age.</p>
 <p>Although it’s possible to calculate z-scores for any sample, if the sample data come from a normally distributed population then we can use this z-score principle to perform inferential statistics (see xxx.xxx)</p>
 </div>
@@ -716,7 +716,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Let’s look at the proportions under the curve to the left of plus or minus 0, 1, 2, or 3 standard deviations from the mean.</p>
 <div class="sourceCode" id="cb821"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb821-1"><a href="distributions.html#cb821-1" aria-hidden="true" tabindex="-1"></a>zvals <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">3</span>,<span class="sc">-</span><span class="dv">2</span>,<span class="sc">-</span><span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>)</span>
 <span id="cb821-2"><a href="distributions.html#cb821-2" aria-hidden="true" tabindex="-1"></a><span class="fu">pnorm</span>(zvals)</span></code></pre></div>
-<pre><code>## [1] 0.001349898 0.022750132 0.158655254 0.500000000 0.841344746 0.977249868 0.998650102</code></pre>
+<pre><code>## [1] 0.001349898 0.022750132 0.158655254 0.500000000 0.841344746 0.977249868
+## [7] 0.998650102</code></pre>
 <p>Hopefully you can see that these values mirror those in the table provided above.</p>
 <p><br></p>
 <div id="z-score-and-probability-problems." class="section level4" number="7.1.2.1">
@@ -799,8 +800,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb846-2"><a href="distributions.html#cb846-2" aria-hidden="true" tabindex="-1"></a>samp1 <span class="ot">&lt;-</span> <span class="fu">sample</span>(archerfish, <span class="dv">10</span>, <span class="at">replace =</span> T)  </span>
 <span id="cb846-3"><a href="distributions.html#cb846-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb846-4"><a href="distributions.html#cb846-4" aria-hidden="true" tabindex="-1"></a>samp1</span></code></pre></div>
-<pre><code>##  [1]  95.84601 106.80884  95.77485  89.09022  94.47476  85.87588  90.68373  98.53963  91.73568
-## [10]  75.49939</code></pre>
+<pre><code>##  [1]  95.84601 106.80884  95.77485  89.09022  94.47476  85.87588  90.68373
+##  [8]  98.53963  91.73568  75.49939</code></pre>
 <div class="sourceCode" id="cb848"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb848-1"><a href="distributions.html#cb848-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(samp1)</span></code></pre></div>
 <pre><code>## [1] 92.4329</code></pre>
 <p>Our sample mean is <span class="math inline">\(\overline{x}=95.6\)</span> - that’s fairly close to the actual population mean of 100.0mm. Let’s grab another three samples of 10 archerfish and see what the sample means are of those sample:</p>

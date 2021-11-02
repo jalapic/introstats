@@ -24,7 +24,7 @@
 <meta name="author" content="James P. Curley &amp; Tyler M. Milewski" />
 
 
-<meta name="date" content="2021-09-07" />
+<meta name="date" content="2021-11-02" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -502,13 +502,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb1116-2"><a href="two-sample-inferential-statistics.html#cb1116-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1116-3"><a href="two-sample-inferential-statistics.html#cb1116-3" aria-hidden="true" tabindex="-1"></a>a1 <span class="ot">&lt;-</span> <span class="fu">sample</span>(A, <span class="dv">17</span>)</span>
 <span id="cb1116-4"><a href="two-sample-inferential-statistics.html#cb1116-4" aria-hidden="true" tabindex="-1"></a>a1</span></code></pre></div>
-<pre><code>##  [1] 12.71908 12.92693 15.57082 10.12655 14.14926 11.05455 18.55350 16.56168 13.77205 11.85902
-## [11] 15.30585 19.11841 11.05516 17.02920 13.56701 12.41693 12.65853</code></pre>
+<pre><code>##  [1] 12.71908 12.92693 15.57082 10.12655 14.14926 11.05455 18.55350 16.56168
+##  [9] 13.77205 11.85902 15.30585 19.11841 11.05516 17.02920 13.56701 12.41693
+## [17] 12.65853</code></pre>
 <div class="sourceCode" id="cb1118"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1118-1"><a href="two-sample-inferential-statistics.html#cb1118-1" aria-hidden="true" tabindex="-1"></a>b1 <span class="ot">&lt;-</span> <span class="fu">sample</span>(B, <span class="dv">20</span>)</span>
 <span id="cb1118-2"><a href="two-sample-inferential-statistics.html#cb1118-2" aria-hidden="true" tabindex="-1"></a>b1</span></code></pre></div>
-<pre><code>##  [1] 13.858019 13.763390 15.319093 16.544886 12.123180 16.548515 14.489600 12.282872 17.494397
-## [10] 18.731744 15.390983 12.210302  4.441760 13.084765 16.135640 10.655858  8.588236 12.964748
-## [19]  8.492675 15.173493</code></pre>
+<pre><code>##  [1] 13.858019 13.763390 15.319093 16.544886 12.123180 16.548515 14.489600
+##  [8] 12.282872 17.494397 18.731744 15.390983 12.210302  4.441760 13.084765
+## [15] 16.135640 10.655858  8.588236 12.964748  8.492675 15.173493</code></pre>
 <div class="sourceCode" id="cb1120"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1120-1"><a href="two-sample-inferential-statistics.html#cb1120-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(a1)</span></code></pre></div>
 <pre><code>## [1] 14.02615</code></pre>
 <div class="sourceCode" id="cb1122"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1122-1"><a href="two-sample-inferential-statistics.html#cb1122-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(b1)</span></code></pre></div>
@@ -519,13 +520,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>We could do this again. Let’s select another sample from population A of size 17, and another sample from population B of size 20:</p>
 <div class="sourceCode" id="cb1126"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1126-1"><a href="two-sample-inferential-statistics.html#cb1126-1" aria-hidden="true" tabindex="-1"></a>a2 <span class="ot">&lt;-</span> <span class="fu">sample</span>(A, <span class="dv">17</span>)</span>
 <span id="cb1126-2"><a href="two-sample-inferential-statistics.html#cb1126-2" aria-hidden="true" tabindex="-1"></a>a2</span></code></pre></div>
-<pre><code>##  [1] 14.64137 14.27232 17.76051 13.22621 19.59587 17.75243 13.07573 15.97000 12.42184 15.64717
-## [11] 16.65829 14.46694 15.17954 14.59615 11.85324 12.99201 13.77815</code></pre>
+<pre><code>##  [1] 14.64137 14.27232 17.76051 13.22621 19.59587 17.75243 13.07573 15.97000
+##  [9] 12.42184 15.64717 16.65829 14.46694 15.17954 14.59615 11.85324 12.99201
+## [17] 13.77815</code></pre>
 <div class="sourceCode" id="cb1128"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1128-1"><a href="two-sample-inferential-statistics.html#cb1128-1" aria-hidden="true" tabindex="-1"></a>b2 <span class="ot">&lt;-</span> <span class="fu">sample</span>(B, <span class="dv">20</span>)</span>
 <span id="cb1128-2"><a href="two-sample-inferential-statistics.html#cb1128-2" aria-hidden="true" tabindex="-1"></a>b2</span></code></pre></div>
-<pre><code>##  [1] 12.329417 15.680443 11.936513  9.741032  9.916850 10.447803 13.427905  6.700831  4.941283
-## [10] 11.883711 10.742010 13.571716 12.491560 10.580204 12.902325 10.743859 14.281017 13.581381
-## [19]  6.859580  9.807432</code></pre>
+<pre><code>##  [1] 12.329417 15.680443 11.936513  9.741032  9.916850 10.447803 13.427905
+##  [8]  6.700831  4.941283 11.883711 10.742010 13.571716 12.491560 10.580204
+## [15] 12.902325 10.743859 14.281017 13.581381  6.859580  9.807432</code></pre>
 <div class="sourceCode" id="cb1130"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1130-1"><a href="two-sample-inferential-statistics.html#cb1130-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(a2)</span></code></pre></div>
 <pre><code>## [1] 14.93457</code></pre>
 <div class="sourceCode" id="cb1132"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1132-1"><a href="two-sample-inferential-statistics.html#cb1132-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(b2)</span></code></pre></div>
@@ -617,11 +619,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb1165-3"><a href="two-sample-inferential-statistics.html#cb1165-3" aria-hidden="true" tabindex="-1"></a>d1 <span class="ot">&lt;-</span> <span class="fu">sample</span>(D, <span class="dv">14</span>)</span>
 <span id="cb1165-4"><a href="two-sample-inferential-statistics.html#cb1165-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1165-5"><a href="two-sample-inferential-statistics.html#cb1165-5" aria-hidden="true" tabindex="-1"></a>c1</span></code></pre></div>
-<pre><code>##  [1]  7.262896  7.512318 10.684988  4.151858  8.979111  5.265462 14.264197 11.874013  8.526464
-## [10]  6.230820 10.367020</code></pre>
+<pre><code>##  [1]  7.262896  7.512318 10.684988  4.151858  8.979111  5.265462 14.264197
+##  [8] 11.874013  8.526464  6.230820 10.367020</code></pre>
 <div class="sourceCode" id="cb1167"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1167-1"><a href="two-sample-inferential-statistics.html#cb1167-1" aria-hidden="true" tabindex="-1"></a>d1</span></code></pre></div>
-<pre><code>##  [1] 17.197083  5.400551 16.514897 11.088543  4.907419  9.764055 12.229622 12.116067 13.982912
-## [10] 15.453863 10.147816 15.458219 12.987520 10.339447</code></pre>
+<pre><code>##  [1] 17.197083  5.400551 16.514897 11.088543  4.907419  9.764055 12.229622
+##  [8] 12.116067 13.982912 15.453863 10.147816 15.458219 12.987520 10.339447</code></pre>
 <div class="sourceCode" id="cb1169"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1169-1"><a href="two-sample-inferential-statistics.html#cb1169-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(c1)</span></code></pre></div>
 <pre><code>## [1] 8.647195</code></pre>
 <div class="sourceCode" id="cb1171"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1171-1"><a href="two-sample-inferential-statistics.html#cb1171-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(d1)</span></code></pre></div>
@@ -1430,7 +1432,8 @@ scores is <span class="math inline">\(CI_{95\%} = 1.405[0.951, 1.859]\)</span>. 
 <p>An alternative approach would be to do what’s called a non-parametric alternative to the independent t-test. This test is called <strong>Wilcoxon Ranked Sum Test</strong> (also called a Mann-Whitney U test). Essentially this test ranks the data from both groups and examines whether one group has significantly more of the higher or lower ranks. Practically, what it is testing is whether there is a difference in the medians of the populations that the two samples came from.</p>
 <p>To run this test in R, we just use the function <code>wilcox.test()</code> and include our two vectors of data:</p>
 <div class="sourceCode" id="cb1363"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1363-1"><a href="two-sample-inferential-statistics.html#cb1363-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wilcox.test</span>(placebo, drug) <span class="co"># 2-tailed</span></span></code></pre></div>
-<pre><code>## Warning in wilcox.test.default(placebo, drug): cannot compute exact p-value with ties</code></pre>
+<pre><code>## Warning in wilcox.test.default(placebo, drug): cannot compute exact p-value with
+## ties</code></pre>
 <pre><code>## 
 ##  Wilcoxon rank sum test with continuity correction
 ## 
