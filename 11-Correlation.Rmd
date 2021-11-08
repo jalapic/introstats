@@ -435,7 +435,7 @@ cor(samp1$x, samp1$y)
 
 ```
 
-In our sample we get $r=0.80$ which is a little bit higher than our population correlation. What if we take a few more samples of size 15? What would we get for those sample correlations?  Let's do it:
+In our sample we get $r=0.57$ which is a little bit lower than our population correlation. What if we take a few more samples of size 15? What would we get for those sample correlations?  Let's do it:
 
 ```{r, message=F, warning=F}
 samp2 <- dfr[sample(1:nrow(dfr),15, T),]
@@ -453,7 +453,7 @@ cor(samp5$x, samp5$y)
 
 ```
 
-The next three samples have correlations that are also higher than the population correlation.  The fifth sample we collected is much lower with the sample correlation being $r=0.55$. As you might have worked out by now, if we keep doing this over and over again (thousands of times) we would end up with a **sampling distribution of correlation coefficients**.  Let's do that:
+Two of the next four samples have correlations that are pretty close to $r=0.75$ and the other two are a bit lower. As you might have worked out by now, if we keep doing this over and over again (thousands of times) we would end up with a **sampling distribution of correlation coefficients**.  Let's do that:
 
 ```{r, message=F, warning=F}
 #this code is to get 50,000 correlation coefficients from samples of n=15
