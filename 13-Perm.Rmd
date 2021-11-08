@@ -400,6 +400,8 @@ We can use this value as our p-value. Because it is relatively low, we could arg
 
 The advantages of running a permutation test is that it is free of the assumptions of normality for the Pearson's r correlation significance test.  It's also a cool method, and pretty intuitive.
 
+<br>
+<br>
 
 
 ## Permutation test for a Paired t-test
@@ -409,7 +411,7 @@ We can apply the same principle of permutation to the paired t-test. Remember, e
 Let's look at the following data that record scores for the same individual over two time points - 'before' and 'after'.
 
 
-```{r}
+```{r, message=FALSE, warning=FALSE}
 
 # take a look at these before and after scores
 
@@ -418,10 +420,11 @@ ba <- read_csv("data/beforeafter1.csv")
 head(ba)
 ```
 
+<br>
 
 We could plot these data using a scatterplot to examine the overall trend of how scores change from before to after:
 
-```{r}
+```{r, message=FALSE, warning=FALSE}
 # make a scatterplot with the x being 'before' and y being 'after'
 ggplot(ba, aes(x=before, y=after)) +
   geom_point() +

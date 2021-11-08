@@ -24,7 +24,7 @@
 <meta name="author" content="James P. Curley &amp; Tyler M. Milewski" />
 
 
-<meta name="date" content="2021-11-02" />
+<meta name="date" content="2021-11-08" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -876,10 +876,11 @@ Now we see that we get the same <span class="math inline">\(t\)</span>- and p-va
 <p><img src="bookdownproj_files/figure-html/unnamed-chunk-609-1.png" width="672" /></p>
 <p>What is the first thing that you notice about this sampling distribution? Hopefully it is that it is <em>not symmetrical</em>. It is highly skewed. This is because correlation coefficients are bounded between -1 and +1. We do not get an approximately normally distributed sampling distribution (with the one exception being when the population correlation <span class="math inline">\(\rho=0\)</span>. The red line represents our original population coefficient of <span class="math inline">\(\rho=0.75\)</span>.</p>
 <p>There is however a trick that we can employ to make this sampling distribution approximately normal. We can do something called <strong>Fisher Transform</strong> our sample correlations in the sampling distribution. So for every value of <span class="math inline">\(r\)</span> in our sampling distribution, we can apply the following formula:</p>
-<p><span class="math inline">\(\Large z&#39; = 0.5 \times \log(\frac{1 + r}{1 - r})\)</span></p>
+<p><span class="math inline">\(\Large z&#39; = 0.5 \times \ln(\frac{1 + r}{1 - r})\)</span></p>
 <p><span class="math inline">\(z&#39;\)</span> is referred to as the Fisher Transformed <span class="math inline">\(r\)</span> value. So, if we had a sample correlation of <span class="math inline">\(r=0.56\)</span>, that would equate to a <span class="math inline">\(z&#39;\)</span> value of <span class="math inline">\(z&#39;=0.63\)</span>:</p>
 <div class="sourceCode" id="cb1481"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1481-1"><a href="correlation.html#cb1481-1" aria-hidden="true" tabindex="-1"></a><span class="fl">0.5</span> <span class="sc">*</span> <span class="fu">log</span>( (<span class="dv">1</span><span class="fl">+0.56</span>) <span class="sc">/</span> (<span class="dv">1</span><span class="fl">-0.56</span>) )</span></code></pre></div>
 <pre><code>## [1] 0.6328332</code></pre>
+<p>Note that in R, the function <code>log()</code> is calculating the natural logarithm ‘ln’.</p>
 <p>Alternatively, a correlation of <span class="math inline">\(r=0.75\)</span> would have a Fisher transformed score of <span class="math inline">\(z&#39;=0.97\)</span>:</p>
 <div class="sourceCode" id="cb1483"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1483-1"><a href="correlation.html#cb1483-1" aria-hidden="true" tabindex="-1"></a><span class="fl">0.5</span> <span class="sc">*</span> <span class="fu">log</span>( (<span class="dv">1</span><span class="fl">+0.75</span>) <span class="sc">/</span> (<span class="dv">1</span><span class="fl">-0.75</span>) )</span></code></pre></div>
 <pre><code>## [1] 0.9729551</code></pre>

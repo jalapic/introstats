@@ -489,7 +489,7 @@ What is the first thing that you notice about this sampling distribution?  Hopef
 There is however a trick that we can employ to make this sampling distribution approximately normal. We can do something called **Fisher Transform** our sample correlations in the sampling distribution. So for every value of $r$ in our sampling distribution, we can apply the following formula:
 
 
-$\Large z' = 0.5 \times \log(\frac{1 + r}{1 - r})$
+$\Large z' = 0.5 \times \ln(\frac{1 + r}{1 - r})$
 
 
 $z'$ is referred to as the Fisher Transformed $r$ value.  So, if we had a sample correlation of $r=0.56$, that would equate to a $z'$ value of $z'=0.63$:
@@ -497,6 +497,8 @@ $z'$ is referred to as the Fisher Transformed $r$ value.  So, if we had a sample
 ```{r, message=F, warning=F}
 0.5 * log( (1+0.56) / (1-0.56) )
 ```
+
+Note that in R, the function `log()` is calculating the natural logarithm 'ln'. 
 
 Alternatively, a correlation of $r=0.75$ would have a Fisher transformed score of $z'=0.97$:
 
